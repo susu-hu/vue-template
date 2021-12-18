@@ -1,1 +1,4 @@
 点个关注再走吧！
+npm i
+npm run serve
+npm run build
