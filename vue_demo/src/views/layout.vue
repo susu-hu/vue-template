@@ -31,8 +31,13 @@
             <Icon type="ios-paw"></Icon>
             <span class="menuTitle">首页</span>
           </MenuItem>
-          <Submenu v-for="(item, index) in menuMap" :name="index" :key="index" class="sub_title">
-            <template slot="title" >
+          <Submenu
+            v-for="(item, index) in menuMap"
+            :name="index"
+            :key="index"
+            class="sub_title"
+          >
+            <template slot="title">
               <svg class="icon" aria-hidden="true" v-if="item.fonticon">
                 <use :xlink:href="item.fonticon"></use>
               </svg>
@@ -108,7 +113,7 @@
       </Layout>
     </Layout>
     <!-- 修改密码 -->
-    <Modal
+    <!-- <Modal
       v-model="formModel"
       title="修改密码"
       :loading="formModalLoading"
@@ -162,7 +167,7 @@
           </Input>
         </FormItem>
       </Form>
-    </Modal>
+    </Modal> -->
   </div>
 </template>
 <script>
@@ -170,31 +175,16 @@
 const menuTree = [
   {
     code: "0001",
-    createtime: "2021-08-06 16:35:55",
     icon: "ios-add-circle",
-    label: "2111",
-    mType: "0",
+    label: "iview篇章",
     parent: "",
-    platformCode: "0001",
-    showIndex: 1,
-    status: "0",
-    updatetime: "2021-08-06 16:35:55",
     url: "/",
-    visible: "0",
   },
   {
     code: "0002",
-    createtime: "2021-08-06 16:35:55",
-    icon: "md-battery-charging",
-    label: "22",
-    mType: "0",
+    label: "Table",
     parent: "0001",
-    platformCode: "0001",
-    showIndex: 1,
-    status: "0",
-    updatetime: "2021-08-06 16:35:55",
     url: "/",
-    visible: "0",
   },
 ];
 
@@ -259,7 +249,41 @@ export default {
       this.ishomepage = this.$route.name === "index" ? true : false;
     },
   },
+  mounted() {},
   created() {
+    var mm = [
+      {
+        code: "0086",
+        createtime: "2021-12-18 19:51:47",
+        icon: "",
+        label: "添加按钮",
+        mType: "2",
+        parent: "0002",
+        platformCode: "0001",
+        showIndex: 1,
+        status: "0",
+        updatetime: "2021-12-18 19:51:47",
+        url: "m.add",
+        visible: "0",
+      },
+      {
+        code: "0086",
+        createtime: "2021-12-18 19:51:47",
+        icon: "",
+        label: "删除按钮",
+        mType: "2",
+        parent: "0002",
+        platformCode: "0001",
+        showIndex: 1,
+        status: "0",
+        updatetime: "2021-12-18 19:51:47",
+        url: "m.del",
+        visible: "0",
+      },
+    ];
+
+    window.sessionStorage.setItem("menus", encodeURIComponent(JSON.stringify(mm)));
+
     this.list = this.$route.meta.menu;
     this.ishomepage = this.$route.name === "index" ? true : false;
     // // 获取菜单
@@ -327,33 +351,33 @@ export default {
     },
     // 退出登录
     loginOut() {
-      let that = this;
-      let data = {
-        token: window.sessionStorage.getItem("token"),
-      };
-      this.$Modal.confirm({
-        title: "提示",
-        content: `确认退出登录`,
-        okText: "确定",
-        cancelText: "取消",
-        onOk: async () => {
-          that.$api["userExit"](data).then((res) => {
-            if (res.code == "200") {
-              that.$Message.success("退出成功");
-              window.sessionStorage.clear();
-              that.$router.replace("/login");
-            }
-          });
-        },
-      });
+      // let that = this;
+      // let data = {
+      //   token: window.sessionStorage.getItem("token"),
+      // };
+      // this.$Modal.confirm({
+      //   title: "提示",
+      //   content: `确认退出登录`,
+      //   okText: "确定",
+      //   cancelText: "取消",
+      //   onOk: async () => {
+      //     that.$api["userExit"](data).then((res) => {
+      //       if (res.code == "200") {
+      //         that.$Message.success("退出成功");
+      //         window.sessionStorage.clear();
+      //         that.$router.replace("/login");
+      //       }
+      //     });
+      //   },
+      // });
     },
   },
 };
 </script>
-<style lang="less" scoped>
+<style lang="less" >
 .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
-  color: #ffc0cb;
-  background: #ecf0f3;
+  color: #ffc0cb !important;
+  background: #ecf0f3 !important;
   z-index: 2;
 }
 .ivu-menu-light.ivu-menu-vertical
@@ -365,7 +389,7 @@ export default {
   top: 0;
   bottom: 0;
   right: 0;
-  background: #ffc0cb;
+  background: #ffc0cb !important;
 }
 .ivu-menu-vertical .ivu-menu-item:hover,
 .ivu-menu-vertical .ivu-menu-submenu-title:hover {
@@ -376,8 +400,8 @@ export default {
 .ivu-menu-vertical .ivu-menu-submenu-title:hover {
   color: #ffc0cb !important;
 }
-.sub_title .ivu-menu-vertical .ivu-menu-submenu-title:hover{
-    color: #ffc0cb !important;
+.sub_title .ivu-menu-vertical .ivu-menu-submenu-title:hover {
+  color: #ffc0cb !important;
 }
 </style>
 <style scoped>

@@ -13,6 +13,25 @@ Vue.use(ElementUI);
 // 引用iview
 Vue.use(iView);
 
+// 处理按钮权限
+Vue.directive("access", {
+  inserted: (el, binding) => {
+    console.log(el, binding)
+    let menus = window.sessionStorage.getItem("menus");
+    menus = JSON.parse(decodeURIComponent(menus));
+    console.log(menus)
+    const buttonAccess = menus.reduce((prev, curr) => {
+      if (!curr.url.includes("/")) {
+        prev = prev.concat(curr.url);
+      }
+      return prev;
+    }, []);
+    console.log(buttonAccess)
+    if (!buttonAccess.includes(binding.value)) {
+      el.parentNode.removeChild(el);
+    }
+  }
+});
 new Vue({
   router,
   store,
