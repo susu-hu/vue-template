@@ -6,7 +6,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import iView from 'iview';
 import 'iview/dist/styles/iview.css';    // 使用 CSS
-
+import { hasPermission } from '@/permission/index.js'
 Vue.config.productionTip = false;
 // 引入饿了么ui
 Vue.use(ElementUI);
@@ -32,6 +32,9 @@ Vue.directive("access", {
     }
   }
 });
+
+Vue.prototype.hasPermission = hasPermission; // 通用方法
+
 new Vue({
   router,
   store,

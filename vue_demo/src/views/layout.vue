@@ -251,6 +251,7 @@ export default {
   },
   mounted() {},
   created() {
+    this.getPermission()
     var mm = [
       {
         code: "0086",
@@ -371,6 +372,15 @@ export default {
       //   },
       // });
     },
+
+     getPermission(){ // 模拟接口 获取 权限数据集合
+      // 模拟获取的数据 有以下几个权限
+      let perms = ['search','view','edit','delete','add'];
+      // 用于把权限集合提交到 actions 中的 SET_PERMISSION 函数
+      // 第一个为函数名，后面的参数为 我们需要提交的参数，可以是多个
+      this.$store.dispatch("SET_PERMISSION",perms);
+    }
+
   },
 };
 </script>
