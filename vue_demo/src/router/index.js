@@ -3,6 +3,8 @@ import Router from "vue-router";
 import layout from "@/views/layout.vue";
 //首页
 import index from "@/views/index/index.vue";
+// sass
+import sassColor from "@/views/sass/color.vue";
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -42,7 +44,11 @@ const router = new Router({
                             name: "欢迎来到苏苏的vue之旅"
                         }]
                     }
-                }
+                }, {
+                    path: "/sassColor",
+                    name: "sassColor",
+                    component: sassColor
+                },
             ]
         },
     ],

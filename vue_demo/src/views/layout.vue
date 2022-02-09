@@ -181,10 +181,24 @@ const menuTree = [
     url: "/",
   },
   {
-    code: "0002",
+    code: "0001-01",
     label: "Table",
     parent: "0001",
     url: "/",
+  },
+  {
+    code: "0002",
+    icon: "ios-add-circle",
+    label: "预处理器sass",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0002-01",
+    icon: "ios-add-circle",
+    label: "颜色函数",
+    parent: "0002",
+    url: "/sassColor",
   },
 ];
 
