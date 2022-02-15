@@ -200,6 +200,20 @@ const menuTree = [
     parent: "0002",
     url: "/sassColor",
   },
+   {
+    code: "0003",
+    icon: "ios-add-circle",
+    label: "页面布局",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0003-01",
+    icon: "ios-add-circle",
+    label: "瀑布流布局",
+    parent: "0003",
+    url: "/layIndex",
+  },
 ];
 
 // const icons = {
@@ -460,7 +474,8 @@ export default {
 .content {
   padding: 24px;
   background: #ecf0f3;
-  min-height: calc(100vh - 112px);
+  /* min-height: calc(100vh - 112px); */
+  min-height: calc(100vh - 64px);
 }
 .autor {
   height: 42px;

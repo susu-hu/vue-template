@@ -5,6 +5,8 @@ import layout from "@/views/layout.vue";
 import index from "@/views/index/index.vue";
 // sass
 import sassColor from "@/views/sass/color.vue";
+//layout
+import layIndex from "@/views/layout/layIndex.vue";
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -49,6 +51,11 @@ const router = new Router({
                     name: "sassColor",
                     component: sassColor
                 },
+                {
+                    path: "/layIndex",
+                    name: "layIndex",
+                    component: layIndex
+                }
             ]
         },
     ],
