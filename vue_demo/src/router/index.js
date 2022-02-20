@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Router from "vue-router";
 import layout from "@/views/layout.vue";
 //首页
-import index from "@/views/index/index.vue";
+import index from "@/views/index/home.vue";
 // sass
 import sassColor from "@/views/sass/color.vue";
 Vue.use(Router);

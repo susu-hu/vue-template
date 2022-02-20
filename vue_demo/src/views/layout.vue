@@ -90,11 +90,11 @@
                     关于苏苏
                   </Dropdown-item>
                   <Dropdown-item
-                    @click.native="loginOut"
+                    @click.native="formModel = true"
                     name="loginOut"
                     key="loginOut"
                   >
-                    苏苏的微信
+                    联系我
                   </Dropdown-item>
                 </Dropdown-menu>
               </Dropdown>
@@ -112,62 +112,16 @@
         </Content>
       </Layout>
     </Layout>
-    <!-- 修改密码 -->
-    <!-- <Modal
+    <!-- 关于苏苏 -->
+    <Modal
       v-model="formModel"
-      title="修改密码"
+      title="关于苏苏"
       :loading="formModalLoading"
       :mask-closable="false"
       @on-ok="submit"
       @on-cancel="cancel"
     >
-      <Form
-        ref="formValidate"
-        :model="formItem"
-        :rules="ruleValidate"
-        :label-width="100"
-      >
-        <FormItem label="原密码" prop="pwd">
-          <Input
-            v-model="formItem.pwd"
-            :type="eye ? 'text' : 'password'"
-            placeholder="请输入原密码"
-          >
-            <Icon
-              slot="suffix"
-              :type="eye ? 'ios-eye' : 'ios-eye-off'"
-              @click="eye = !eye"
-            />
-          </Input>
-        </FormItem>
-        <FormItem label="新密码" prop="newPwd">
-          <Input
-            v-model="formItem.newPwd"
-            :type="eye1 ? 'text' : 'password'"
-            placeholder="请输入新密码"
-          >
-            <Icon
-              slot="suffix"
-              :type="eye1 ? 'ios-eye' : 'ios-eye-off'"
-              @click="eye1 = !eye1"
-            />
-          </Input>
-        </FormItem>
-        <FormItem label="确认新密码" prop="newPwd2">
-          <Input
-            v-model="formItem.newPwd2"
-            :type="eye2 ? 'text' : 'password'"
-            placeholder="请确认新密码"
-          >
-            <Icon
-              slot="suffix"
-              :type="eye2 ? 'ios-eye' : 'ios-eye-off'"
-              @click="eye2 = !eye2"
-            />
-          </Input>
-        </FormItem>
-      </Form>
-    </Modal> -->
+    </Modal>
   </div>
 </template>
 <script>
@@ -201,58 +155,16 @@ const menuTree = [
     url: "/sassColor",
   },
 ];
-
-// const icons = {
-//   "0001": "ios-settings",
-//   "0006": "md-cube",
-//   "0017": "md-home",
-//   "0022": "md-card",
-//   "0029": "md-notifications",
-//   "0031": "md-options",
-//   "0034": "logo-usd",
-//   "0038": "md-cash",
-//   "0043": "ios-podium",
-//   "0045": "md-list-box",
-// }
 export default {
   name: "layout",
   data() {
-    var validatePass2 = (rule, value, callback) => {
-      if (value === "") {
-        callback(new Error("请再次输入新密码"));
-      } else if (value !== this.formItem.newPwd) {
-        callback(new Error("两次输入新密码不一致!"));
-      } else {
-        callback();
-      }
-    };
     return {
       logoURL: require("@/assets/img/logo.png"),
       userAvar: "https://i.postimg.cc/mgsKJGLw/susu1.jpg",
-      crumList: [],
-
       menuTree,
-      menuMap: {},
-      name: "",
-      roleName: "",
       isCollapsed: false,
       formModel: false,
-      formModalLoading: true,
-      formItem: {
-        pwd: "",
-        newPwd: "",
-        newPwd2: "",
-      },
-      eye: false,
-      eye1: false,
-      eye2: false,
-      ruleValidate: {
-        pwd: [{ required: true, message: "请输入原密码", trigger: "blur" }],
-        newPwd: [{ required: true, message: "请输入新密码", trigger: "blur" }],
-        newPwd2: [
-          { required: true, validator: validatePass2, trigger: "blur" },
-        ],
-      },
+      menuMap: {},
     };
   },
   watch: {
@@ -265,7 +177,7 @@ export default {
   },
   mounted() {},
   created() {
-    this.getPermission()
+    this.getPermission();
     var mm = [
       {
         code: "0086",
@@ -296,8 +208,10 @@ export default {
         visible: "0",
       },
     ];
-
-    window.sessionStorage.setItem("menus", encodeURIComponent(JSON.stringify(mm)));
+    window.sessionStorage.setItem(
+      "menus",
+      encodeURIComponent(JSON.stringify(mm))
+    );
 
     this.list = this.$route.meta.menu;
     this.ishomepage = this.$route.name === "index" ? true : false;
@@ -323,7 +237,6 @@ export default {
         });
       }
     });
-    // console.log(menuMap)
     this.$set(this, "menuMap", menuMap);
   },
   methods: {
@@ -338,33 +251,6 @@ export default {
         path: this.list[this.list.length - 2].path,
       });
     },
-    // 修改密码
-    submit() {
-      this.formModalLoading = false;
-      this.$nextTick(() => {
-        this.formModalLoading = true;
-      });
-      let data = { ...this.formItem };
-      this.$refs["formValidate"].validate((valid) => {
-        if (valid) {
-          delete data.newPwd2;
-          this.$api["userUpdatePwdCurr"](data).then((res) => {
-            if (res.code == "200") {
-              this.$Message.success("修改成功");
-              this.cancel();
-            }
-          });
-        }
-      });
-    },
-    cancel() {
-      Object.keys(this.formItem).forEach((key) => {
-        this.formItem[key] = "";
-      });
-      this.$refs["formValidate"].resetFields();
-      this.formModel = false;
-    },
-    // 退出登录
     loginOut() {
       // let that = this;
       // let data = {
@@ -387,14 +273,14 @@ export default {
       // });
     },
 
-     getPermission(){ // 模拟接口 获取 权限数据集合
+    getPermission() {
+      // 模拟接口 获取 权限数据集合
       // 模拟获取的数据 有以下几个权限
-      let perms = ['search','view','edit','delete','add'];
+      let perms = ["search", "view", "edit", "delete", "add"];
       // 用于把权限集合提交到 actions 中的 SET_PERMISSION 函数
       // 第一个为函数名，后面的参数为 我们需要提交的参数，可以是多个
-      this.$store.dispatch("SET_PERMISSION",perms);
-    }
-
+      this.$store.dispatch("SET_PERMISSION", perms);
+    },
   },
 };
 </script>
