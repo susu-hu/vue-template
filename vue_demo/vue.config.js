@@ -15,16 +15,16 @@ module.exports = {
         open: true,
         host: '0.0.0.0',
         port: 9999,
-        proxy: {
-            '/api': { // 匹配所有以 '/api'开头的请求路径
-                target: process.env.VUE_APP_URL, // 代理目标的基础路径
-                secure: false,
-                changeOrigin: true, // 支持跨域
-                pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
-                    '^/api': '',// 替换成target中的地址
-                }
-            }
-        },
+        // proxy: {
+        //     '/api': { // 匹配所有以 '/api'开头的请求路径
+        //         target: process.env.VUE_APP_URL, // 代理目标的基础路径
+        //         secure: false,
+        //         changeOrigin: true, // 支持跨域
+        //         pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
+        //             '^/api': '',// 替换成target中的地址
+        //         }
+        //     }
+        // },
         https: false,
         hotOnly: false,
     },

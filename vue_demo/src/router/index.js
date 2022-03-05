@@ -49,7 +49,13 @@ const router = new Router({
                 }, {
                     path: "/sassColor",
                     name: "sassColor",
-                    component: sassColor
+                    component: sassColor,
+                    meta: {
+                        menu: [{
+                            path: "/",
+                            name: "颜色函数"
+                        }]
+                    }
                 },
                 {
                     path: "/layIndex",
