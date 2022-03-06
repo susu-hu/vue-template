@@ -6,12 +6,62 @@
       .g-queue
         - for(var j = 0; j<8; j++)
           .g-item
+  <div @click="download('https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/dev/a69d6452-e528-40c9-b84d-5455294f5bea/套餐区域额度-1646572523317.xls','苏苏')" >123123</div>
 </template>
 
 <script>
 export default {
   data() {
     return {};
+  },
+  methods: {
+    download(url, title) {
+      const aLink = document.createElement("a");
+      let blob = new Blob([url], { type: "application/vnd.ms-excel" });
+      aLink.href = URL.createObjectURL(blob);
+      aLink.setAttribute("download", title + ".xlsx"); // 设置下载文件名称
+      aLink.click();
+       document.body.appendChild(aLink);
+      // console.log(title);
+      // const self = this;
+      // self.loading = true;
+      // const x = new XMLHttpRequest();
+      // x.open("GET", url, true);
+      // x.responseType = "blob";
+      // x.onload = function () {
+      //   const herf = window.URL.createObjectURL(x.response);
+      //   const a = document.createElement("a");
+      //   a.href = herf;
+      //   a.download = title;
+      //   a.click();
+      //   if (navigator.msSaveBlob) {
+      //     navigator.msSaveBlob(x.response, title);
+      //   }
+      // };
+      // // todo: 添加下载进度
+      // x.onprogress = function (event) {
+      //   // 只有 e.lengthComputable 为真，才会有进度条的信息
+      //   if (event.lengthComputable) {
+      //     var percentComplete = event.loaded / event.total;
+      //     var progress = parseInt(percentComplete * 100);
+      //     self.shipvalue = progress++;
+      //   }
+      // };
+      // x.onreadystatechange = function () {
+      //   if (x.readyState === 4) {
+      //     // 4 = "loaded"
+      //     if (x.status === 200) {
+      //       // 200 = "OK"
+      //       setTimeout(() => {
+      //         self.loading = false;
+      //       }, 800);
+      //     } else {
+      //       alert("Problem retrieving data:" + x.statusText);
+      //     }
+      //   }
+      // };
+      // x.send();
+    },
   },
 };
 </script>

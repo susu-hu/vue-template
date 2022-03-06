@@ -1,12 +1,15 @@
 import Vue from 'vue';
 import Router from "vue-router";
 import layout from "@/views/layout.vue";
+import page404 from "@/views/404.vue";
 //首页
 import index from "@/views/index/home.vue";
 // sass
 import sassColor from "@/views/sass/color.vue";
-//layout
-import layIndex from "@/views/layout/layIndex.vue";
+//layout路由懒加载
+const layIndex = r => require.ensure([], () => r(require('@/views/layout/layIndex.vue')), 'layIndex')// import layIndex from "@/views/layout/layIndex.vue";
+// 自定义下拉组件
+import dropItem from "@/views/custom/dropItem.vue";
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -61,20 +64,37 @@ const router = new Router({
                     path: "/layIndex",
                     name: "layIndex",
                     component: layIndex
-                }
+                },
+                {
+                    path: '/custom/dropItem', //(一级路由)
+                    name: 'dropItem',
+                    component: dropItem,
+                },
             ]
         },
+
+        // 404页面需要放在最底下
+        {
+            path: "/404",
+            name: "404",
+            meta: {
+                noAuth: true
+            },
+            component: page404
+        },
+        {
+            path: "*",
+            redirect: '/404'
+        }
     ],
-    mode: "hash" // mode 设置为history ，去掉地址栏上的 # 号
+    mode: "history" // mode 设置为history ，去掉地址栏上的 # 号
 });
 router.beforeEach((to, from, next) => {
     // if (to.path === "/login") return next();
     // //获取token
     // const tokenStr = window.sessionStorage.getItem("token");
     // if (!tokenStr) return next("/login");
-
     // next()
-
     // // TODO:
     // let menus = window.sessionStorage.getItem("menus");
     // menus = JSON.parse(decodeURIComponent(menus))

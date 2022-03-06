@@ -1,8 +1,7 @@
 import axios from 'axios'; // 引入axios
 // import QS from 'qs';
 import { Message } from "iview";
-import router from "./router";
-
+// import router from "./router";
 /**axios封装
  * 请求拦截、相应拦截、错误统一处理
  */
@@ -61,6 +60,7 @@ axios.interceptors.response.use(
                     window.sessionStorage.clear();
                     Message.error('3秒后退出系统');
                     setTimeout(function () {
+                        // eslint-disable-next-line no-undef
                         router.replace({ path: '/login' });
                     }, 3000)
                     break;

@@ -22,6 +22,9 @@
           />
         </div>
         <Menu
+          ref="asideMenu"
+          :active-name="activeName"
+          :open-names="openNames"
           accordion
           theme="light"
           :style="{ width: 'auto' }"
@@ -206,6 +209,27 @@ const menuTree = [
     parent: "0003",
     url: "/layIndex",
   },
+   {
+    code: "0003-02",
+    icon: "ios-add-circle",
+    label: "文件导出",
+    parent: "0003",
+    url: "/layIndex",
+  },
+  {
+    code: "0004",
+    icon: "ios-add-circle",
+    label: "自定义组件",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0004-01",
+    icon: "ios-add-circle",
+    label: "下拉框",
+    parent: "0004",
+    url: "/custom/dropItem",
+  },
 ];
 import { mapState } from "vuex";
 export default {
@@ -238,6 +262,16 @@ export default {
       this.list = [];
       this.list = this.$route.meta.menu;
       this.ishomepage = this.$route.name === "index" ? true : false;
+    },
+    openNames() {
+      this.$nextTick(() => {
+        this.$refs.asideMenu.updateOpened();
+      });
+    },
+    activeName() {
+      this.$nextTick(() => {
+        this.$refs.asideMenu.updateActiveName();
+      });
     },
   },
   mounted() {},
@@ -311,7 +345,6 @@ export default {
     },
     //点击返回
     goback() {
-      console.log("23243");
       this.$router.push({
         path: this.list[this.list.length - 2].path,
       });
@@ -425,16 +458,21 @@ export default {
       });
     },
     getTrans(e) {
-      const width = this.$refs.tags.clientWidth;
+      let width = 0;
+      if (this.$refs.tags) {
+        width = this.$refs.tags.clientWidth;
+      }
       this.tabList.map((item, index) => {
         if (item.path === this.activePath) {
           this.currentIndex = index;
         }
-        this.$set(
-          this.tabList[index],
-          "width",
-          this.$refs[`tag${index}`][0].$el.clientWidth + 4
-        );
+        if (this.$refs[`tag${index}`] && this.$refs[`tag${index}`][0]) {
+          this.$set(
+            this.tabList[index],
+            "width",
+            this.$refs[`tag${index}`][0].$el.clientWidth + 4
+          );
+        }
       });
       let list = this.tabList.filter((item, index) => {
         return index <= this.currentIndex;
@@ -447,7 +485,7 @@ export default {
       }, 0);
 
       if (e == 0) {
-        if (Number(width) > Number(totalWidth)) {
+        if (Number(width) > Number(totalWidth) || Number(width) == 0) {
           this.setTranx(-0);
           return false;
         }
