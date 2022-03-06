@@ -6,7 +6,6 @@
       .g-queue
         - for(var j = 0; j<8; j++)
           .g-item
-  <div @click="download('https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/dev/a69d6452-e528-40c9-b84d-5455294f5bea/套餐区域额度-1646572523317.xls','苏苏')" >123123</div>
 </template>
 
 <script>

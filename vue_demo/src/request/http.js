@@ -5,10 +5,9 @@ import { Message } from "iview";
 /**axios封装
  * 请求拦截、相应拦截、错误统一处理
  */
-const domain = '//'
-const domainUat = "//";
-const domainProd = "//";
-
+const domain = '//beta-mock.apipost.cn/app/mock/project/'
+const domainUat = "//beta-mock.apipost.cn/app/mock/project/";
+const domainProd = "//beta-mock.apipost.cn/app/mock/project/";
 axios.defaults.baseURL = domain;
 // 环境的切换
 if (

@@ -10,6 +10,9 @@ import sassColor from "@/views/sass/color.vue";
 const layIndex = r => require.ensure([], () => r(require('@/views/layout/layIndex.vue')), 'layIndex')// import layIndex from "@/views/layout/layIndex.vue";
 // 自定义下拉组件
 import dropItem from "@/views/custom/dropItem.vue";
+// 文件导出
+import exportFile from "@/views/layout/export.vue";
+import table from "@/views/table/index.vue";
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -64,6 +67,16 @@ const router = new Router({
                     path: "/layIndex",
                     name: "layIndex",
                     component: layIndex
+                },
+                {
+                    path: "/table",
+                    name: "table",
+                    component: table
+                },
+                {
+                    path: "/exportFile",
+                    name: "exportFile",
+                    component: exportFile
                 },
                 {
                     path: '/custom/dropItem', //(一级路由)

@@ -11,8 +11,8 @@ const link = {
      * @returns
      */
 
-    // 用户管理
-    userLogin: p => post('/user/login', p),
+    // 表格数据
+    tableList: p => post('/9fb92020-4e3d-4c40-8e1f-e6f81d231a71', p),
     userExit: p => post('/user/exit', p),
     userUpdatePwdCurr: p => get('/user/updatePwdCurr', p),
 

@@ -5,7 +5,22 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {};
+  },
+  created() {
+    this.getList();
+  },
+  methods: {
+    getList() {
+      console.log(1322);
+      this.$api.tableList().then((res) => {
+        console.log(res);
+      });
+    },
+  },
+};
 </script>
 
 <style>

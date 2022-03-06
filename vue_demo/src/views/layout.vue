@@ -179,7 +179,7 @@ const menuTree = [
     code: "0001-01",
     label: "Table",
     parent: "0001",
-    url: "/",
+    url: "/table",
   },
   {
     code: "0002",
@@ -214,7 +214,7 @@ const menuTree = [
     icon: "ios-add-circle",
     label: "文件导出",
     parent: "0003",
-    url: "/layIndex",
+    url: "/exportFile",
   },
   {
     code: "0004",
