@@ -9,10 +9,15 @@
     >
       文件导出</Button
     >
+    <img
+      src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
+      @click="downImg('https://i.postimg.cc/mgsKJGLw/susu1.jpg')"
+    />
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
   data() {
     return {
@@ -20,6 +25,18 @@ export default {
     };
   },
   methods: {
+    downImg(url) {
+      axios.request({
+        url: url,
+        method: "get",
+        onDownloadProgress(progress) {
+          console.log(progress)
+          console.log(
+            Math.round((progress.loaded / progress.total) * 100) + "%"
+          );
+        },
+      });
+    },
     exportHandler() {
       this.can_click = false;
       let url =
