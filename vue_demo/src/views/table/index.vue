@@ -1,23 +1,27 @@
 <template>
-  <div>
-    <a>新增</a>
-  </div>
+  <div></div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      params: {
+        page: 1,
+        pageSize: 10,
+      },
+    };
   },
   created() {
     this.getList();
   },
   methods: {
-    getList() {
-      console.log(1322);
-      this.$api.tableList().then((res) => {
-        console.log(res);
-      });
+    async getList() {
+      const { code, data, total } = await this.$api.tableList(this.params);
+      if (code == "200") {
+        this.tbList = data;
+        this.total = total;
+      }
     },
   },
 };

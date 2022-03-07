@@ -80,7 +80,6 @@ export default new Vuex.Store({
             state.catch_components = cache
         },
         setTranx(state, val) {
-            console.log(val)
             state.tranx = val
         },
         //关闭菜单

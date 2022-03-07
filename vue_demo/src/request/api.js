@@ -12,9 +12,8 @@ const link = {
      */
 
     // 表格数据
-    tableList: p => post('/9fb92020-4e3d-4c40-8e1f-e6f81d231a71', p),
+    tableList: p => post('/table/list', p),
     userExit: p => post('/user/exit', p),
     userUpdatePwdCurr: p => get('/user/updatePwdCurr', p),
-
 }
 export default link;

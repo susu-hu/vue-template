@@ -9,10 +9,12 @@
     >
       文件导出</Button
     >
-    <img
-      src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
-      @click="downImg('https://i.postimg.cc/mgsKJGLw/susu1.jpg')"
-    />
+    <div>
+      <img
+        src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
+        @click="downImg('https://i.postimg.cc/mgsKJGLw/susu1.jpg')"
+      />
+    </div>
   </div>
 </template>
 
@@ -30,7 +32,7 @@ export default {
         url: url,
         method: "get",
         onDownloadProgress(progress) {
-          console.log(progress)
+          console.log(progress);
           console.log(
             Math.round((progress.loaded / progress.total) * 100) + "%"
           );
