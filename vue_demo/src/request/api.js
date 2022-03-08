@@ -12,7 +12,7 @@ const link = {
      */
 
     // 表格数据
-    tableList: p => post('/susutest/table/list', p,true,'加载中....'),
+    tableList: (p,show,msg )=> post('/susutest/table/list', p,show,msg),
     aaa: p => get('/dev/c31597bf-27f1-40b9-b569-268fdc614147/订单配送服务1646721023844.xls', p),
 }
 export default link;

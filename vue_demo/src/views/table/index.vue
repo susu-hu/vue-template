@@ -108,7 +108,7 @@ export default {
     async getList() {
       // this.$Spin.show();
       // this.$loading.show('加载中...');
-      const { code, data, total } = await this.$api.tableList(this.params);
+      const { code, data, total } = await this.$api.tableList(this.params,true,'加载中');
       if (code == "200") {
         this.tbList = data;
         this.total = total;
