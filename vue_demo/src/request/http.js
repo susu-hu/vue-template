@@ -133,14 +133,19 @@ export function post(url, params, is_show_msg = false, msg = '') {
                     Message.error(d.message);
                 }
                 resolve(res.data);
+
+            })
+            .catch(err => {
+                reject(err.data)
+                console.log('xib xib ')
+            })
+            .finally(() => {
+                console.log('sldfshjdfhsjdfhsdj')
                 if (is_show_msg) {
                     Vue.$loading.hide()
                     // Vue.prototype.$loading.hide()
                     // this.$loading.hide()
                 }
-            })
-            .catch(err => {
-                reject(err.data)
             })
     });
 }
