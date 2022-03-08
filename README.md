@@ -8,6 +8,8 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/tab%E5%88%87%E6%8D%A2.gif)
 
 ## 1.iview篇章
+#### 1.1 表格数据分页多选
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E5%88%86%E9%A1%B5%E5%A4%9A%E9%80%89.gif)
 ## 2. 预处理器sass篇章
 #### 2.1 sass中的颜色函数
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/sasscolor.png)
