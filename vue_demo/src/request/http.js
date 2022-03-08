@@ -10,11 +10,24 @@ const domainUat = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susu
 const domainProd = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest";
 axios.defaults.baseURL = domain;
 // 环境的切换
+// if (
+//     process.env.NODE_ENV == "development" ||
+//     process.env.NODE_ENV == "debug" ||
+//     process.env.HOST == "dev"
+// ) {
+//     axios.defaults.baseURL = domain;
+// } else if (process.env.NODE_ENV == "uat" || process.env.HOST == "uat") {
+//     axios.defaults.baseURL = domainUat;
+// } else if (process.env.NODE_ENV == "production" || process.env.HOST == "prod") {
+//     axios.defaults.baseURL = domainProd;
+// }
+
 if (
-    process.env.NODE_ENV == "development" ||
-    process.env.NODE_ENV == "debug" ||
-    process.env.HOST == "dev"
+    process.env.NODE_ENV == "development"
 ) {
+    console.log('123123123123')
+    axios.defaults.baseURL = "";
+} else if (process.env.HOST == "dev") {
     axios.defaults.baseURL = domain;
 } else if (process.env.NODE_ENV == "uat" || process.env.HOST == "uat") {
     axios.defaults.baseURL = domainUat;

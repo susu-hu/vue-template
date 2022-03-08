@@ -209,7 +209,7 @@ const menuTree = [
     parent: "0003",
     url: "/layIndex",
   },
-   {
+  {
     code: "0003-02",
     icon: "ios-add-circle",
     label: "文件导出",
@@ -229,6 +229,20 @@ const menuTree = [
     label: "下拉框",
     parent: "0004",
     url: "/custom/dropItem",
+  },
+   {
+    code: "0005",
+    icon: "ios-add-circle",
+    label: "事件优化",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0005-01",
+    icon: "ios-add-circle",
+    label: "节流和防抖",
+    parent: "0005",
+    url: "/event/throttle",
   },
 ];
 import { mapState } from "vuex";
@@ -392,6 +406,7 @@ export default {
       }
       // 删除keepAlive缓存
       this.$store.commit("removeKeepAliveCache", tab.path);
+      this.getTrans(2, tab);
       if (tab.path !== oldActivePath) {
         return;
       }
@@ -428,7 +443,6 @@ export default {
         });
         this.$router.push({ path: oldTabList[index].path });
       }
-      this.getTrans(2);
     },
     changeMenu(item) {
       var oldActivePath = this.$store.state.activePath;
@@ -457,7 +471,7 @@ export default {
         this.getTrans(0);
       });
     },
-    getTrans(e) {
+    getTrans(e, tab) {
       let width = 0;
       if (this.$refs.tags) {
         width = this.$refs.tags.clientWidth;
@@ -501,6 +515,11 @@ export default {
           this.$store.state.tranx < 0
         ) {
           this.setTranx(-0);
+        } else {
+          let double = Math.floor(Number(totalAllWidth) / Number(width));
+          if (double > 0) {
+            this.setTranx(this.$store.state.tranx + tab.width);
+          }
         }
       }
     },
