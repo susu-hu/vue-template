@@ -13,6 +13,9 @@ import dropItem from "@/views/custom/dropItem.vue";
 // 文件导出
 import exportFile from "@/views/layout/export.vue";
 import table from "@/views/table/index.vue";
+
+const loading = r => require.ensure([], () => r(require('@/views/layout/loading.vue')), 'loading')
+
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -67,6 +70,11 @@ const router = new Router({
                     path: "/layIndex",
                     name: "layIndex",
                     component: layIndex
+                },
+                {
+                    path: "/loading",
+                    name: "loading",
+                    component: loading
                 },
                 {
                     path: "/table",
