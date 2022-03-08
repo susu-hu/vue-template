@@ -9,8 +9,9 @@ const instance = new LoadingConstructor({
 
 instance.show = false // 默认隐藏
 const loading = {
-    show() { // 显示方法
+    show(tip) { // 显示方法
         instance.show = true
+        instance.content = tip
         document.body.appendChild(instance.$el)
     },
     hide() { // 隐藏方法

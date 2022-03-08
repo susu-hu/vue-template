@@ -149,5 +149,10 @@ router.beforeEach((to, from, next) => {
 //         return path === menu.url
 //     })
 // }
+// 标题
+// router.beforeEach((to, from, next) => {
+//     to.meta.title && (document.title = to.meta.title);
+//     next()
+// });
 
 export default router;

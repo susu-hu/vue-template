@@ -1,6 +1,8 @@
 import axios from 'axios'; // 引入axios
 // import QS from 'qs';
 import { Message } from "iview";
+// import loading from '@/components/load2/index.js' // 引入loading
+import Vue from 'vue';
 // import router from "./router";
 /**axios封装
  * 请求拦截、相应拦截、错误统一处理
@@ -114,7 +116,15 @@ export function get(url, params) {
  * @param {Object} params [请求时携带的参数]
  * QS.stringify(params)
  */
-export function post(url, params) {
+export function post(url, params, is_show_msg = false, msg = '') {
+    if (is_show_msg) {
+        // this.$loading.show(msg)
+        // loading.show(msg)
+        console.log(msg)
+        // this.$Spin.show()
+        Vue.$loading.show(msg)
+        // Vue.prototype.$loading.show(msg)
+    }
     return new Promise((resolve, reject) => {
         axios.post(url, params)
             .then(res => {
@@ -123,6 +133,11 @@ export function post(url, params) {
                     Message.error(d.message);
                 }
                 resolve(res.data);
+                if (is_show_msg) {
+                    Vue.$loading.hide()
+                    // Vue.prototype.$loading.hide()
+                    // this.$loading.hide()
+                }
             })
             .catch(err => {
                 reject(err.data)

@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show">
+  <div v-if="show" class="loading-box">
     <div class="load-circle flex-col">
       <div class="rect">
         <div class="rect1"></div>
@@ -8,7 +8,7 @@
         <div class="rect4"></div>
         <div class="rect5"></div>
       </div>
-      <div class="text">加载中...</div>
+      <div class="text" v-if="content">{{ content }}</div>
     </div>
   </div>
   <!-- <div v-if="show" class="lds-spinner">
@@ -23,6 +23,7 @@ export default {
   name: "Loading",
   props: {
     show: Boolean,
+    content: String,
   },
   data() {
     return {};
@@ -30,6 +31,17 @@ export default {
 };
 </script>
 <style lang="scss" scoped>
+.loading-box {
+  position: fixed;
+  z-index: 1000;
+  top: 0;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  -webkit-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+}
 .flex-col {
   display: flex;
   align-items: center;
@@ -38,8 +50,7 @@ export default {
 .text {
   margin-top: 10px;
   font-size: 15px;
-  font-weight: bold;
-  color: #333;
+  color: #fff;
 }
 .load-circle {
   position: fixed;
@@ -49,7 +60,7 @@ export default {
   z-index: 9999;
 }
 .load-circle .rect > div {
-  background-color: #2d8cf0;
+  background-color: #ffc0cb;
   height: 15px;
   width: 15px;
   border-radius: 50%;

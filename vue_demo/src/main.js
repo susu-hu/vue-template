@@ -27,8 +27,6 @@ Vue.use(load)
 import loading from '@/components/load2/index.js' // 引入loading
 Vue.use(loading) // 全局使用loading
 
-import loadingPlugin from 'v-loading-plugin';
-Vue.use(loadingPlugin)
 
 Vue.config.productionTip = false;// 阻止启动生产消息
 // 引入饿了么ui
