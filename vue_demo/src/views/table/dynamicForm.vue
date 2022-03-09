@@ -8,10 +8,11 @@
         :model="formInline"
         :rules="ruleValidate"
       >
-        <FormItem label="审核结果：" prop="invoiceStatus">
+        <FormItem label="审核结果：" prop="status">
           <Select
-            v-model="formInline.invoiceStatus"
+            v-model="formInline.status"
             placeholder="请选择审核结果"
+            @on-change="change"
           >
             <Option value="1">审核通过</Option>
             <Option value="2">审核驳回</Option>
@@ -19,14 +20,14 @@
         </FormItem>
         <FormItem
           label="备注："
-          prop="invoiceRemark"
+          prop="remark"
           :rules="
-            formInline.invoiceStatus == '2'
-              ? ruleValidate.invoiceRemark
+            formInline.status == '2'
+              ? ruleValidate.remark
               : [{ required: false }]
           "
         >
-          <Input v-model="formInline.invoiceRemark" type="textarea"></Input>
+          <Input v-model="formInline.remark" type="textarea"></Input>
         </FormItem>
         <div style="text-align: right; padding: 20px 0">
           <Button size="large" type="default" @click="cancelAction" class="mr10"
@@ -44,20 +45,31 @@ export default {
   data() {
     return {
       formInline: {
-        invoiceRemark: "",
-        invoiceStatus: "",
+        remark: "",
+        status: "",
       },
       ruleValidate: {
-        invoiceStatus: [
+        status: [
           { required: true, message: "审核结果不能为空", trigger: "change" },
         ],
-        invoiceRemark: [
+        remark: [
           { required: true, message: "请填写不通过原因", trigger: "blur" },
         ],
       },
     };
   },
   methods: {
+    change(e) {
+      console.log(e);
+      if (e == 1) {
+        for (let item of this.$refs.formValidate.fields) {
+          if (item.prop === "remark") {
+            item.validateState = "";
+            item.validateMessage = "";
+          }
+        }
+      }
+    },
     addAction() {
       let data = { ...this.formInline };
       console.log(data);

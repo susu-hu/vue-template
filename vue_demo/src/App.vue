@@ -121,4 +121,7 @@ a:hover {
   background-color: #fff;
   border-color: #ffc0cb !important;
 }
+.ivu-btn-primary:hover {
+  color: #fff !important;
+}
 </style>
