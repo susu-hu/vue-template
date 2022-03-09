@@ -182,6 +182,12 @@ const menuTree = [
     url: "/table",
   },
   {
+    code: "0001-02",
+    label: "表单动态校验",
+    parent: "0001",
+    url: "/table/dynamicForm",
+  },
+  {
     code: "0002",
     icon: "ios-add-circle",
     label: "预处理器sass",
@@ -215,6 +221,13 @@ const menuTree = [
     label: "文件导出",
     parent: "0003",
     url: "/exportFile",
+  },
+  {
+    code: "0003-03",
+    icon: "ios-add-circle",
+    label: "loading动画",
+    parent: "0003",
+    url: "/loading",
   },
   {
     code: "0004",

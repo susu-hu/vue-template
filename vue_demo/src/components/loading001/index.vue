@@ -1,5 +1,7 @@
 <template>
-  <div></div>
+  <div v-if="show">
+      
+  </div>
 </template>
 
 <script>

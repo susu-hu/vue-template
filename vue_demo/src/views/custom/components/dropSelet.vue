@@ -140,7 +140,7 @@ ul {
     align-items: center;
     justify-content: space-between;
     &.active {
-      color: #fd9716;
+      color: pink;
     }
     .icon {
       width: 20px;

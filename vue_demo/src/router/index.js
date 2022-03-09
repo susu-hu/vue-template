@@ -15,7 +15,8 @@ import exportFile from "@/views/layout/export.vue";
 import table from "@/views/table/index.vue";
 
 const loading = r => require.ensure([], () => r(require('@/views/layout/loading.vue')), 'loading')
-
+const throttle = r => require.ensure([], () => r(require('@/views/event/throttle.vue')), 'throttle')
+const dynamicForm = r => require.ensure([], () => r(require('@/views/table/dynamicForm.vue')), 'dynamicForm')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -90,6 +91,16 @@ const router = new Router({
                     path: '/custom/dropItem', //(一级路由)
                     name: 'dropItem',
                     component: dropItem,
+                },
+                {
+                    path: '/event/throttle',
+                    name: 'throttle',
+                    component: throttle,
+                },
+                {
+                    path: '/table/dynamicForm',
+                    name: 'dynamicForm',
+                    component: dynamicForm,
                 },
             ]
         },

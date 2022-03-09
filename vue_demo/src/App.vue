@@ -111,4 +111,14 @@ a:hover {
   border-color: #ffc0cb !important;
   background-color: #ffc0cb !important;
 }
+// input框
+.ivu-input:hover {
+  border-color: #ffc0cb !important;
+}
+// 按钮
+.ivu-btn:hover {
+  color: #ffc0cb !important;
+  background-color: #fff;
+  border-color: #ffc0cb !important;
+}
 </style>
