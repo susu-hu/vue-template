@@ -230,7 +230,7 @@ const menuTree = [
     parent: "0004",
     url: "/custom/dropItem",
   },
-   {
+  {
     code: "0005",
     icon: "ios-add-circle",
     label: "事件优化",
@@ -517,7 +517,7 @@ export default {
           this.setTranx(-0);
         } else {
           let double = Math.floor(Number(totalAllWidth) / Number(width));
-          if (double > 0) {
+          if (double > 0 && this.$store.state.tranx < 0) {
             this.setTranx(this.$store.state.tranx + tab.width);
           }
         }

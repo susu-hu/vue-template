@@ -99,16 +99,24 @@ export default {
       tbList: [],
       total: 0,
       checkedList: [],
+      myInterval: "",
     };
   },
   created() {
     this.getList();
   },
+  destroyed() {
+    // clearInterval(this.myInterval);
+  },
   methods: {
     async getList() {
       // this.$Spin.show();
       // this.$loading.show('加载中...');
-      const { code, data, total } = await this.$api.tableList(this.params,true,'加载中');
+      const { code, data, total } = await this.$api.tableList(
+        this.params,
+        false,
+        "加载中"
+      );
       if (code == "200") {
         this.tbList = data;
         this.total = total;
@@ -123,6 +131,10 @@ export default {
           }
         });
         this.selectedData();
+
+        // this.myInterval = window.setInterval(() => {
+        //   this.getList();
+        // }, 1000);
       }
     },
     pageNumChange(page, type) {
