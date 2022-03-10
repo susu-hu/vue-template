@@ -27,6 +27,13 @@ Vue.use(load)
 import loading from '@/components/load2/index.js' // 引入loading
 Vue.use(loading) // 全局使用loading
 
+import Storage from 'vue-ls';
+const options = {
+  namespace: 'vuejs__', // key键前缀
+  name: 'ls', // 命名Vue变量.[ls]或this.[$ls],
+  storage: 'local', // 存储名称: session, local, memory
+};
+Vue.use(Storage, options);
 
 Vue.config.productionTip = false;// 阻止启动生产消息
 // 引入饿了么ui

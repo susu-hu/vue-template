@@ -150,11 +150,16 @@ export default {
         "加载中"
       );
       if (code == "200") {
+        this.$ls.set("susu", "小苏苏");
+        // 设置有效期
+        this.$ls.set("susu", "小苏苏", 60 * 60 * 1000); //有效1小时
+        let a = this.$ls.get("susu");
+        console.log(a);
+        this.$ls.get("susu", "大苏苏"); // 如果没有设置susu返回默认值大苏苏
+        this.$ls.remove("susu"); // 移除
+
         this.tbList = data;
         this.total = total;
-        // setTimeout(() => {
-        //   this.$loading.hide();
-        // }, 100);
         this.tbList.forEach((item, index) => {
           if (index % 2 == 0) {
             this.$set(this.tbList[index], "_disabled", false);
@@ -163,10 +168,6 @@ export default {
           }
         });
         this.selectedData();
-
-        // this.myInterval = window.setInterval(() => {
-        //   this.getList();
-        // }, 1000);
       }
     },
     pageNumChange(page, type) {
