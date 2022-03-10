@@ -143,13 +143,17 @@ export default {
   methods: {
     async getList() {
       // this.$Spin.show();
-      // this.$loading.show('加载中...');
+      this.$showLoading.show();
+      // this.$loading.show();
       const { code, data, total } = await this.$api.tableList(
         this.params,
         false,
         "加载中"
       );
       if (code == "200") {
+        setTimeout(() => {
+          this.$showLoading.hide();
+        }, 400);
         this.$ls.set("susu", "小苏苏");
         // 设置有效期
         this.$ls.set("susu", "小苏苏", 60 * 60 * 1000); //有效1小时

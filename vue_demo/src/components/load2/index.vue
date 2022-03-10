@@ -1,5 +1,5 @@
 <template>
-  <div v-if="show" class="loading-box">
+  <div v-if="show" :class="{ 'loading-box': content != '' }">
     <div class="load-circle flex-col">
       <div class="rect">
         <div class="rect1"></div>

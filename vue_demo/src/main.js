@@ -27,6 +27,12 @@ Vue.use(load)
 import loading from '@/components/load2/index.js' // 引入loading
 Vue.use(loading) // 全局使用loading
 
+import loading001 from '@/components/loading001/index.js'
+Vue.use(loading001)
+
+import btn from '@/directive/btn.js'
+Vue.use(btn)
+
 import Storage from 'vue-ls';
 const options = {
   namespace: 'vuejs__', // key键前缀

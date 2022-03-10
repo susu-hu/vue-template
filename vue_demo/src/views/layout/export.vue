@@ -1,5 +1,7 @@
 <template>
   <div>
+    <button v-btn @click="btnClick">测试自定义指令</button>
+    <Button v-btn type="primary" @click="btnClick">这是一个自定义指令</Button>
     <my-loading :loadFlag="loadFlag"></my-loading>
     <Button
       icon="ios-download-outline"
@@ -49,6 +51,9 @@ export default {
     // });
   },
   methods: {
+    btnClick() {
+      console.log("zidy ceccee");
+    },
     async getList() {
       const { code, data, total } = await this.$api.aaa();
       if (code == "200") {
