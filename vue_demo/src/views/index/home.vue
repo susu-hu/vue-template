@@ -120,9 +120,10 @@ export default {
 </script>
 
 <style scoped>
+
 .container {
   width: 100%;
-  background-image: url(https://files.cnblogs.com/files/yanggb/flower-opacity-30-lit.gif) ;
+  background-image: url(https://files.cnblogs.com/files/yanggb/flower-opacity-30-lit.gif);
 }
 .title {
   position: relative;

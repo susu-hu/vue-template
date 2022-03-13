@@ -5,14 +5,15 @@
 <script>
 export default {
   data() {
-    return{
-      
-    }
+    return {};
   },
   created() {
     this.$showLoading.show();
   },
   methods: {},
+  destroyed() {
+    this.$showLoading.hide();
+  },
 };
 </script>
 
