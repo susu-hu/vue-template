@@ -17,6 +17,8 @@ import table from "@/views/table/index.vue";
 const loading = r => require.ensure([], () => r(require('@/views/layout/loading.vue')), 'loading')
 const throttle = r => require.ensure([], () => r(require('@/views/event/throttle.vue')), 'throttle')
 const dynamicForm = r => require.ensure([], () => r(require('@/views/table/dynamicForm.vue')), 'dynamicForm')
+const cAndM = r => require.ensure([], () => r(require('@/views/base/createdAndMounted.vue')), 'cAndM')
+
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -102,6 +104,12 @@ const router = new Router({
                     name: 'dynamicForm',
                     component: dynamicForm,
                 },
+                {
+                    path: '/base/cAndM',
+                    name: 'cAndM',
+                    component: cAndM,
+                },
+
             ]
         },
 

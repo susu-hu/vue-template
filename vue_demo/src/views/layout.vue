@@ -257,6 +257,20 @@ const menuTree = [
     parent: "0005",
     url: "/event/throttle",
   },
+  {
+    code: "0006",
+    icon: "ios-add-circle",
+    label: "Vue基础",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0006-01",
+    icon: "ios-add-circle",
+    label: "created+mounted",
+    parent: "0006",
+    url: "/base/cAndM",
+  },
 ];
 import { mapState } from "vuex";
 export default {

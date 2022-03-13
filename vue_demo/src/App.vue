@@ -26,6 +26,9 @@ export default {
 </script>
 <style lang="less">
 @import "./assets/css/common.css";
+* {
+  cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur), default; 
+}
 ::-webkit-scrollbar {
   width: 10px;
   height: 6px;
@@ -123,5 +126,9 @@ a:hover {
 }
 .ivu-btn-primary:hover {
   color: #fff !important;
+}
+
+.ivu-avatar > img {
+  object-fit: cover;
 }
 </style>
