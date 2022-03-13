@@ -26,15 +26,15 @@ module.exports = {
                     // '^/api': '',// 替换成target中的地址
                 }
             },
-            // '/dev': {
-            //     target: 'https://eln-public.oss-cn-shanghai.aliyuncs.com/', // 代理目标的基础路径
-            //     secure: false,// 如果是https接口的话，需要配置这个参数
-            //     changeOrigin: true, // 支持跨域
-            //     ws: true, // 是否代理websockets
-            //     pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
-            //         // '^/api': '',// 替换成target中的地址
-            //     }
-            // },
+            '/api': {
+                target: 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest', // 代理目标的基础路径
+                secure: false,// 如果是https接口的话，需要配置这个参数
+                changeOrigin: true, // 支持跨域
+                ws: true, // 是否代理websockets
+                pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
+                    '^/api': '',// 替换成target中的地址
+                }
+            },
             '/dev': {
                 target: 'https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/', // 代理目标的基础路径
                 secure: false,// 如果是https接口的话，需要配置这个参数
@@ -44,8 +44,6 @@ module.exports = {
                     // '^/api': '',// 替换成target中的地址
                 }
             },
-
-            // https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/dev/4472da00-3d5b-4a55-990c-5cf4447d864e/仓库导入模板.xlsx
         },
         hotOnly: false,
     },

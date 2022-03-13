@@ -145,7 +145,7 @@ export default {
       // this.$Spin.show();
       this.$showLoading.show();
       // this.$loading.show();
-      const { code, data, total } = await this.$api.tableList(
+      const { code, data, total } = await this.$api.tableList2(
         this.params,
         false,
         "加载中"

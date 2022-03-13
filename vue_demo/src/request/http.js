@@ -27,13 +27,16 @@ axios.defaults.baseURL = domain;
 if (
     process.env.NODE_ENV == "development"
 ) {
-    console.log('123123123123')
-    axios.defaults.baseURL = "";
+    console.log('开发环境')
+    axios.defaults.baseURL = "/api";
 } else if (process.env.HOST == "dev") {
+    console.log('dev')
     axios.defaults.baseURL = domain;
 } else if (process.env.NODE_ENV == "uat" || process.env.HOST == "uat") {
+    console.log('uat')
     axios.defaults.baseURL = domainUat;
 } else if (process.env.NODE_ENV == "production" || process.env.HOST == "prod") {
+    console.log('生产环境')
     axios.defaults.baseURL = domainProd;
 }
 
