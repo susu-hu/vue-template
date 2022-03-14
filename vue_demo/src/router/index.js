@@ -18,7 +18,8 @@ const loading = r => require.ensure([], () => r(require('@/views/layout/loading.
 const throttle = r => require.ensure([], () => r(require('@/views/event/throttle.vue')), 'throttle')
 const dynamicForm = r => require.ensure([], () => r(require('@/views/table/dynamicForm.vue')), 'dynamicForm')
 const cAndM = r => require.ensure([], () => r(require('@/views/base/createdAndMounted.vue')), 'cAndM')
-
+const childAp = r => require.ensure([], () => r(require('@/views/base/childAp.vue')), 'childAp')
+const sync = r => require.ensure([], () => r(require('@/views/base/sync.vue')), 'sync')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -105,9 +106,19 @@ const router = new Router({
                     component: dynamicForm,
                 },
                 {
+                    path: '/base/childAp',
+                    name: 'childAp',
+                    component: childAp,
+                },
+                {
                     path: '/base/cAndM',
                     name: 'cAndM',
                     component: cAndM,
+                },
+                {
+                    path: '/base/sync',
+                    name: 'sync',
+                    component: sync,
                 },
 
             ]

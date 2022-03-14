@@ -4,11 +4,11 @@ function resolve(dir) {
 }
 
 module.exports = {
+    runtimeCompiler: true,
     publicPath: '/', //根路径
     outputDir: "dist",
     assetsDir: "assets",
     lintOnSave: true,
-    runtimeCompiler: false,
     productionSourceMap: true,
     devServer: {
         disableHostCheck: true,

@@ -8,6 +8,7 @@
 export default {
   name: "App",
   created() {
+    console.log(process.env);
     if (sessionStorage.getItem("store")) {
       this.$store.replaceState(
         Object.assign(
@@ -27,7 +28,8 @@ export default {
 <style lang="less">
 @import "./assets/css/common.css";
 * {
-  cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur), default; 
+  cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
+    default;
 }
 ::-webkit-scrollbar {
   width: 10px;
@@ -130,5 +132,23 @@ a:hover {
 
 .ivu-avatar > img {
   object-fit: cover;
+}
+
+/*  去掉button的默认样式*/
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+button::after {
+  outline: none;
+  border: none;
+}
+/*点击后样式*/
+.button-hover {
+  background: transparent;
 }
 </style>

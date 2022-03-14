@@ -271,6 +271,20 @@ const menuTree = [
     parent: "0006",
     url: "/base/cAndM",
   },
+  {
+    code: "0006-02",
+    icon: "ios-add-circle",
+    label: ".sync修饰符",
+    parent: "0006",
+    url: "/base/sync",
+  },
+  {
+    code: "0006-03",
+    icon: "ios-add-circle",
+    label: "父组件与子组件执行顺序",
+    parent: "0006",
+    url: "/base/childAp",
+  },
 ];
 import { mapState } from "vuex";
 export default {
