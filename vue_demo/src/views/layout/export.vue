@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button v-btn @click="btnClick">测试自定义指令</button>
+    <button v-btn @click="btnClick" class="btn1">测试自定义指令</button>
     <Button v-btn type="primary" @click="btnClick">这是一个自定义指令</Button>
     <my-loading :loadFlag="loadFlag"></my-loading>
     <Button
@@ -12,16 +12,18 @@
     >
       文件导出</Button
     >
-    <Button @click="downloadTask">导出111</Button>
-    <Button @click="lll">23423423</Button>
-    <Button @click="downTTT">12324234234 dsvfd </Button>
+    <Button @click="downloadTask" type="primary">导出1</Button>
+    <Button @click="lll" type="primary">导出2</Button>
+    <Button @click="downTTT" type="primary"> 导出进度条</Button>
     <Progress
+      class="pro"
       :percent="filePercentage"
       stroke-color="['#108ee9', '#87d068']"
       :hide-info="false"
     ></Progress>
     <div>
       <img
+        style="display: block; margin: 20px auto"
         src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
         @click="downImg('https://i.postimg.cc/mgsKJGLw/susu1.jpg')"
       />
@@ -34,7 +36,7 @@ import axios from "axios";
 export default {
   data() {
     return {
-      loadFlag: true,
+      loadFlag: false,
       can_click: true,
       filePercentage: 0,
     };
@@ -113,7 +115,6 @@ export default {
       //     this.fullscreenLoading = false;
       //   });
     },
-
     downImg(url) {
       axios.request({
         url: url,
@@ -206,5 +207,49 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+/*  去掉button的默认样式*/
+button {
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+button::after {
+  outline: none;
+  border: none;
+}
+/*点击后样式*/
+.button-hover {
+  background: transparent;
+}
+.btn1 {
+  display: block;
+  width: 132px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  margin: 20px auto;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  color: #fff;
+}
+/* 禁用样式 */
+button[disabled] {
+  background: #f8c9c8 !important;
+}
+Button {
+  display: block;
+  margin: 20px auto;
+}
+.pro {
+  width: 200px;
+  display: block;
+  margin: 20px auto;
+}
+.ivu-progress-success .ivu-progress-bg {
+  background-color: pink;
+}
 </style>
