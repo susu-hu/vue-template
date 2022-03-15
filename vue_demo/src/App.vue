@@ -44,7 +44,7 @@ export default {
       var Sys = {};
       var ua = navigator.userAgent.toLowerCase();
       var s;
-      // eslint-disable-next-line no-cond-assign
+      /* eslint-disable */
       (s = ua.match(/rv:([\d.]+)\) like gecko/))
         ? (Sys.ie = s[1])
         : (s = ua.match(/msie ([\d\.]+)/))
@@ -103,6 +103,7 @@ export default {
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
+  min-height: calc(100vh - 260px)
 }
 @import "./assets/css/common.css";
 * {

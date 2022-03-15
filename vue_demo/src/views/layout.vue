@@ -286,6 +286,13 @@ const menuTree = [
     parent: "0006",
     url: "/base/childAp",
   },
+  {
+    code: "0006-04",
+    icon: "ios-add-circle",
+    label: "slot插槽",
+    parent: "0006",
+    url: "/base/slot",
+  },
 ];
 import { mapState } from "vuex";
 export default {

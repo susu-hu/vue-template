@@ -20,6 +20,7 @@ const dynamicForm = r => require.ensure([], () => r(require('@/views/table/dynam
 const cAndM = r => require.ensure([], () => r(require('@/views/base/createdAndMounted.vue')), 'cAndM')
 const childAp = r => require.ensure([], () => r(require('@/views/base/childAp.vue')), 'childAp')
 const sync = r => require.ensure([], () => r(require('@/views/base/sync.vue')), 'sync')
+const slot = r => require.ensure([], () => r(require('@/views/base/slot.vue')), 'slot')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -127,6 +128,11 @@ const router = new Router({
                     path: '/base/sync',
                     name: 'sync',
                     component: sync,
+                },
+                {
+                    path: '/base/slot',
+                    name: 'slot',
+                    component: slot,
                 },
 
             ]
