@@ -1,6 +1,6 @@
 <template>
   <div class="content">
-    <div class="i_box"></div>
+    <div class="i_box">嘻嘻嘻嘻嘻嘻嘻嘻嘻</div>
     <div><a v-access="'m.add'">新增</a></div>
     <a v-access="'m.del'">删除</a>
     <div><a v-if="hasPermission('add')">新增</a></div>
