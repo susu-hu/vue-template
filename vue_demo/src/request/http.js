@@ -8,8 +8,8 @@ import Vue from 'vue';
  * 请求拦截、相应拦截、错误统一处理
  */
 const domain = 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest'
-const domainUat = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest/uat";
-const domainProd = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest/prod";
+const domainUat = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest";
+const domainProd = "https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest";
 axios.defaults.baseURL = domain;
 // 环境的切换
 // if (

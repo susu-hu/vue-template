@@ -42,6 +42,14 @@ Router.prototype.replace = function (location, onComplete, onAbort) {
 }
 
 const router = new Router({
+    // 滚动到页面顶部
+    scrollBehavior(to, from, savedPosition) {
+        if (savedPosition) {
+            return savedPosition
+        } else {
+            return { x: 0, y: 0 }
+        }
+    },
     routes: [
         {
             path: "/",
