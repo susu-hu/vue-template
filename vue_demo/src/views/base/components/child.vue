@@ -17,23 +17,19 @@ export default {
     },
   },
   beforeCreate() {
-    // eslint-disable-next-line no-debugger
-    debugger;
+    //debugger;
     console.log("子组件的beforeCreate");
   },
   created() {
-    // eslint-disable-next-line no-debugger
-    debugger;
+    //debugger;
     console.log("子组件的created");
   },
   beforeMount() {
-    // eslint-disable-next-line no-debugger
-    debugger;
+    //debugger;
     console.log("子组件的beforeMount");
   },
   mounted() {
-    // eslint-disable-next-line no-debugger
-    debugger;
+    //debugger;
     console.log("子组件的mounted");
   },
 };

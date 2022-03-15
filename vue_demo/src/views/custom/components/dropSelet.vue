@@ -99,13 +99,19 @@ export default {
 .display {
   display: flex;
   align-items: center;
-  height: 50px;
+  height: 36px;
   font-size: 14px;
+  width: 200px;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 10px;
+  color: #fff;
+  justify-content: space-between;
 }
 .arrow {
   border-width: 6px;
   border-bottom: 0;
-  border-color: #919cad transparent transparent transparent;
+  border-color: #fff transparent transparent transparent;
   border-style: solid;
   width: 0;
   height: 0;
@@ -125,7 +131,7 @@ ul {
   width: 250px;
   box-sizing: border-box;
   box-shadow: 0px 0px 15px 0px rgba(18, 28, 47, 0.04);
-  border-radius: 1px;
+  border-radius: 5px;
   position: absolute;
   z-index: 99;
   top: 50px;

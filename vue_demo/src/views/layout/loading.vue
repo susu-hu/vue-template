@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contentBox">
     <div class="loading1">
       <div></div>
       <div></div>
@@ -50,6 +50,9 @@ export default {
 </script>
 
 <style scoped>
+.contentBox {
+  background: pink;
+}
 div {
   margin: 20px auto;
 }

@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contentBox">
     <Card>
       <p slot="title">分页多选数据</p>
       <template slot="extra">
@@ -241,7 +241,7 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.contentBox {
   width: 100%;
   height: 100%;
   padding: 20px;

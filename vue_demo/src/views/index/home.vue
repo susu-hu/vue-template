@@ -4,6 +4,7 @@
       Welcome to SUSU's Blog
       <div class="head"></div>
     </div>
+    <div class="box"></div>
   </div>
 </template>
 
@@ -120,8 +121,9 @@ export default {
 </script>
 
 <style scoped>
-
 .container {
+  background: pink;
+  border-radius: 10px;
   width: 100%;
   background-image: url(https://files.cnblogs.com/files/yanggb/flower-opacity-30-lit.gif);
 }
@@ -137,11 +139,11 @@ export default {
     color-stop(0, #fbccd0),
     color-stop(0.15, #f3eca4),
     color-stop(0.3, #a1c0fe),
-    color-stop(0.45, #9cd2a5),
+    color-stop(0.45, #8de29b),
     color-stop(0.6, #fbccd0),
     color-stop(0.75, #f3eca4),
     color-stop(0.9, #a1c0fe),
-    color-stop(1, #9cd2a5)
+    color-stop(1, #64dcec)
   );
   color: transparent;
   background-clip: text;
@@ -158,5 +160,12 @@ export default {
   right: 0;
   top: 0;
   z-index: 1;
+}
+.box {
+  width: 100%;
+  height: calc(100vh - 260px);
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
 }
 </style>

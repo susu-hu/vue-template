@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contentBox">
     <Card>
       <p slot="title">表单动态校验</p>
       <Form
@@ -91,7 +91,8 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.contentBox {
+  height: calc(100vh - 260px);
   padding: 20px;
   background: #fff;
   border-radius: 5px;

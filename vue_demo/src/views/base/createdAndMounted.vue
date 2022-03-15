@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contentBox">
     <List>
       <ListItem>
         <ListItemMeta
@@ -152,7 +152,7 @@ export default {
 </script>
 
 <style scoped>
-.content {
+.contentBox {
   padding: 20px;
   background: #fff;
   border-radius: 5px;

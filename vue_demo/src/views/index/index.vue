@@ -1,5 +1,5 @@
 <template>
-  <div class="content">
+  <div class="contentBox">
     <div class="i_box"></div>
     <div><a v-access="'m.add'">新增</a></div>
     <a v-access="'m.del'">删除</a>
@@ -30,7 +30,7 @@ export default {
 </script>
 
 <style lang="less" scoped>
-// .content {
+// .contentBox {
 
 // }
 </style>

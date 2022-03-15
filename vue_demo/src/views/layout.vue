@@ -2,6 +2,7 @@
   <div class="layout">
     <Layout>
       <Sider
+        class="sider"
         ref="side1"
         hide-trigger
         collapsible
@@ -140,7 +141,7 @@
             </div>
           </Row>
         </Header>
-        <Content class="content">
+        <Content class="content" ref="Content">
           <div v-if="list && !ishomepage" class="topBar">
             <div class="topBarTitle">{{ list[list.length - 1].name }}</div>
             <Button @click="goback">返回</Button>
@@ -317,6 +318,8 @@ export default {
       this.list = [];
       this.list = this.$route.meta.menu;
       this.ishomepage = this.$route.name === "index" ? true : false;
+      // 路由跳转页面回到0
+      this.$refs.Content.$el.scrollTo(0, 0);
     },
     openNames() {
       this.$nextTick(() => {
@@ -674,11 +677,7 @@ export default {
 .content {
   padding: 24px;
   background: #ecf0f3;
-  /* min-height: calc(100vh - 112px); */
-  min-height: calc(100vh - 64px);
-  margin: 0;
-  min-height: 100vh;
-  background-color: #e493d0;
+  /* background-color: #e493d0;
   background-image: radial-gradient(
       closest-side,
       rgba(235, 105, 78, 1),
@@ -705,7 +704,7 @@ export default {
   background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
     -30vmax -10vmax, 50vmax 50vmax;
   background-repeat: no-repeat;
-  animation: 10s movement linear infinite;
+  animation: 10s movement linear infinite; */
 }
 .autor {
   height: 42px;
@@ -831,5 +830,46 @@ export default {
 .head-left.right {
   right: 0;
   border-left: 1px solid rgb(0 0 0 / 8%);
+}
+/* 侧边栏 */
+.sider {
+  height: 100vh;
+  overflow: scroll;
+  -ms-overflow-style: none;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+.sider::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+.content {
+  height: calc(100vh - 114px);
+  overflow: scroll;
+  box-sizing: border-box;
+}
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  background-color: #ffc0cb;
+  background-image: -webkit-linear-gradient(
+    45deg,
+    hsla(0, 0%, 100%, 0.2) 25%,
+    transparent 0,
+    transparent 50%,
+    hsla(0, 0%, 100%, 0.2) 0,
+    hsla(0, 0%, 100%, 0.2) 75%,
+    transparent 0,
+    transparent
+  );
+}
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+  background: #fff;
+  border-radius: 10px;
 }
 </style>

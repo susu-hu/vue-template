@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contentBox">
     <List>
       <ListItem>
         <ListItemMeta

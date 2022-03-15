@@ -98,6 +98,12 @@ export default {
 };
 </script>
 <style lang="less">
+.contentBox {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
+}
 @import "./assets/css/common.css";
 * {
   cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
