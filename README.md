@@ -36,6 +36,7 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.png)
 #### 6.4 slot插槽的使用(具名插槽+默认插槽+作用域插槽)
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/slot%E6%8F%92%E6%A7%BD.png)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/v-slot.png)
 
 #### 参与贡献
 
