@@ -11,6 +11,13 @@
       <ListItem>
         <ListItemMeta
           :avatar="src"
+          title="什么是默认插槽"
+          description=" 木有name的就是默认插槽，捕获所有未被匹配的内容"
+        />
+      </ListItem>
+      <ListItem>
+        <ListItemMeta
+          :avatar="src"
           title="什么是具名插槽"
           description="具名插槽，就是给这个插槽起个名字，如起名一个为name，一个为age，一个不命名"
         />
@@ -117,7 +124,8 @@
     <div style="margin: 20px; font-weight: bold; font-size: 20px">
       具名插槽的缩写,跟 v-on 和 v-bind 一样，v-slot
       也有缩写，即把参数之前的所有内容 (v-slot:) 替换为字符 #。例如
-      v-slot:header 可以被重写为 #header,然而，和其它指令一样，该缩写只在其有参数的时候才可用，你希望使用缩写的话，你必须始终以明确插槽名取而代之，以#default=开始
+      v-slot:header 可以被重写为
+      #header,然而，和其它指令一样，该缩写只在其有参数的时候才可用，你希望使用缩写的话，你必须始终以明确插槽名取而代之，以#default=开始
     </div>
   </div>
 </template>

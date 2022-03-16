@@ -56,17 +56,31 @@ export default {
     };
   },
   created() {
-    setTimeout(() => {
-      console.log("settime 西哈哈哈");
-    }, 0);
-    console.log("嘻嘻嘻哈哈哈");
-    for (var i = 0; i < 5; i++) {
-      setTimeout(
-        (function (i) {
-          console.log(i);
-        })(i),
-        i * 1000
-      );
+    // setInterval不会清除定时器队列
+    this.timer = window.setInterval(() => {
+      setTimeout(() => {
+        console.log("settime 西哈哈哈");
+      }, 0);
+    }, 10000);
+    this.timer2 = setTimeout(() => {
+      console.log("settimeout");
+    }, 1000);
+    // setTimeout(() => {
+    //   console.log("settime 西哈哈哈");
+    // }, 0);
+    // console.log("嘻嘻嘻哈哈哈");
+    // for (var i = 0; i < 5; i++) {
+    //   setTimeout(
+    //     (function (i) {
+    //       console.log(i);
+    //     })(i),
+    //     i * 1000
+    //   );
+    // }
+  },
+  beforeDestroy() {
+    if (this.timer) {
+      clearInterval(this.timer);
     }
   },
   methods: {

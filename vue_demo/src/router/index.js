@@ -24,7 +24,7 @@ const slot = r => require.ensure([], () => r(require('@/views/base/slot.vue')), 
 const reForm = r => require.ensure([], () => r(require('@/views/elmUI/reForm.vue')), 'reForm')
 const jsIndex= r => require.ensure([], () => r(require('@/views/baseJavascript/index.vue')), 'jsIndex')
 const closure= r => require.ensure([], () => r(require('@/views/baseJavascript/closure.vue')), 'closure')
-
+const autoSave= r => require.ensure([], () => r(require('@/views/event/autoSave.vue')), 'autoSave')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -153,6 +153,12 @@ const router = new Router({
                     name: 'closure',
                     component: closure,
                 },
+                {
+                    path: '/event/autoSave',
+                    name: 'autoSave',
+                    component: autoSave,
+                },
+                
 
             ]
         },

@@ -90,6 +90,13 @@ export default {
             url: "/event/throttle",
         },
         {
+            code: "0005-02",
+            icon: "ios-add-circle",
+            label: "表单自动保存",
+            parent: "0005",
+            url: "/event/autoSave",
+        },
+        {
             code: "0006",
             icon: "ios-add-circle",
             label: "Vue基础",
