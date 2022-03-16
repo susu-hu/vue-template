@@ -13,6 +13,7 @@ Vue.prototype.$echarts = echarts;
 
 import api from "@/request/api.js"; // 导入api接口
 import tools from "@/utils/tools.js";
+import menus from './utils/menu';
 import { hasPermission } from '@/permission/index.js'
 
 import Loading from '@/components/loading'
@@ -70,6 +71,7 @@ Vue.directive("access", {
 Vue.prototype.hasPermission = hasPermission; // 通用方法
 Vue.prototype.$api = api; // 接口
 Vue.prototype.tools = tools; // 通用方法
+Vue.prototype.menus = menus; // 通用方法
 Vue.prototype.$http = axios; // 临时处理
 
 Vue.prototype.$sessionToken = () => sessionStorage.token;

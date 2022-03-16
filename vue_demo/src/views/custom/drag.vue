@@ -1,10 +1,13 @@
 <template>
-  <div>懒加载和按需加载</div>
+  <div class="contentBox">拖拽</div>
 </template>
 
 <script>
-export default {};
+export default {
+
+}
 </script>
 
 <style>
+
 </style>

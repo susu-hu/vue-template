@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contentBox">
     <DropSelet
       :showText="true"
       v-slot="{ selectedData }"

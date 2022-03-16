@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="contentBox">
     <button v-btn @click="btnClick" class="btn1">测试自定义指令</button>
     <Button v-btn type="primary" @click="btnClick">这是一个自定义指令</Button>
     <my-loading :loadFlag="loadFlag"></my-loading>

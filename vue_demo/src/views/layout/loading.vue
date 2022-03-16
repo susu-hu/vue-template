@@ -1,37 +1,57 @@
 <template>
   <div class="contentBox">
-    <div class="loading1">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="box">
+      <div class="loading1">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="loading2">
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="box">
+      <div class="loading2">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="loading3">
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
-      <div></div>
+    <div class="box">
+      <div class="loading3">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="loading4" style="margin-top: 50px">
-      <div></div>
-      <div></div>
+    <div class="box">
+      <div class="loading4">
+        <div></div>
+        <div></div>
+      </div>
     </div>
-    <div class="loading5" style="margin-top: 50px">
-      <div class="shape shape-1"></div>
-      <div class="shape shape-2"></div>
-      <div class="shape shape-3"></div>
-      <div class="shape shape-4"></div>
+    <div class="box">
+      <div class="loading5">
+        <div class="shape shape-1"></div>
+        <div class="shape shape-2"></div>
+        <div class="shape shape-3"></div>
+        <div class="shape shape-4"></div>
+      </div>
+    </div>
+    <div class="box">
+      <div class="rect_box">
+        <div class="box1"></div>
+        <div class="box2"></div>
+        <div class="box3"></div>
+        <div class="box4"></div>
+        <div class="box5"></div>
+        <div class="box6"></div>
+      </div>
     </div>
   </div>
 </template>
@@ -49,12 +69,79 @@ export default {
 };
 </script>
 
-<style scoped>
+<style lang="less" scoped>
+.box {
+  margin: 50px auto;
+  width: 200px;
+}
 .contentBox {
   background: pink;
 }
-div {
-  margin: 20px auto;
+.bf {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rect_box {
+  height: 200px;
+  transform-style: preserve-3d;
+  transform: rotateX(45deg) rotateY(45deg);
+  animation: myAnimation 10s infinite linear;
+  div {
+    .bf();
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    opacity: 0.5;
+    color: white;
+  }
+
+  .box1 {
+    background-color: #222;
+    transform: rotateX(0deg) rotateY(0deg);
+  }
+
+  .box2 {
+    background-color: skyblue;
+    transform: rotateX(270deg) rotateY(270deg) rotateZ(270deg);
+    transform-origin: 50px center -50px;
+  }
+
+  .box3 {
+    z-index: 99;
+    background-color: #000;
+    transform: rotateX(0deg) rotateY(180deg);
+    transform-origin: 50px center -50px;
+  }
+
+  .box4 {
+    background-color: aquamarine;
+    transform: rotateX(0deg) rotateY(90deg);
+    transform-origin: 50px center -50px;
+  }
+
+  .box5 {
+    background-color: purple;
+    transform: rotateX(90deg) rotateY(0deg) rotateZ(0deg);
+    transform-origin: center 50px -50px;
+  }
+
+  .box6 {
+    background-color: red;
+    transform: rotateX(90deg) rotateY(0deg);
+    transform-origin: center bottom;
+  }
+}
+
+@keyframes myAnimation {
+  from {
+    transform: rotateX(0deg) rotateY(0deg) rotateY(0);
+  }
+
+  to {
+    transform: rotateX(360deg) rotateY(360deg) rotateY(360deg);
+  }
 }
 
 .loading5 {

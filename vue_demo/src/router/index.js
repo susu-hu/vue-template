@@ -21,6 +21,10 @@ const cAndM = r => require.ensure([], () => r(require('@/views/base/createdAndMo
 const childAp = r => require.ensure([], () => r(require('@/views/base/childAp.vue')), 'childAp')
 const sync = r => require.ensure([], () => r(require('@/views/base/sync.vue')), 'sync')
 const slot = r => require.ensure([], () => r(require('@/views/base/slot.vue')), 'slot')
+const reForm = r => require.ensure([], () => r(require('@/views/elmUI/reForm.vue')), 'reForm')
+const jsIndex= r => require.ensure([], () => r(require('@/views/baseJavascript/index.vue')), 'jsIndex')
+const closure= r => require.ensure([], () => r(require('@/views/baseJavascript/closure.vue')), 'closure')
+
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -133,6 +137,21 @@ const router = new Router({
                     path: '/base/slot',
                     name: 'slot',
                     component: slot,
+                },
+                {
+                    path: '/eleUi/reForm',
+                    name: 'reForm',
+                    component: reForm,
+                },
+                {
+                    path: '/js/index',
+                    name: 'jsIndex',
+                    component: jsIndex,
+                },
+                {
+                    path: '/js/closure',
+                    name: 'closure',
+                    component: closure,
                 },
 
             ]

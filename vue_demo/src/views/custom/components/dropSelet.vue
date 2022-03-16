@@ -102,16 +102,16 @@ export default {
   height: 36px;
   font-size: 14px;
   width: 200px;
-  border: 1px solid #fff;
+  border: 1px solid pink;
   border-radius: 5px;
   padding: 10px;
-  color: #fff;
+  color: pink;
   justify-content: space-between;
 }
 .arrow {
   border-width: 6px;
   border-bottom: 0;
-  border-color: #fff transparent transparent transparent;
+  border-color: pink transparent transparent transparent;
   border-style: solid;
   width: 0;
   height: 0;
