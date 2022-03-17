@@ -1,5 +1,12 @@
 <template>
   <div class="layout">
+    <a
+      style="position: fixed; z-index: 11111; right: 10px; bottom: 15px; cursor: pointer"
+      href="https://gitee.com/susuhhhhhh/su-sus-vue"
+      ><img
+        src="https://gitee.com/susuhhhhhh/su-sus-vue/widgets/widget_2.svg"
+        alt="Fork me on Gitee"
+    /></a>
     <Layout>
       <Sider
         class="sider"

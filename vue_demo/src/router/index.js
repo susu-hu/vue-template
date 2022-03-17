@@ -22,9 +22,12 @@ const childAp = r => require.ensure([], () => r(require('@/views/base/childAp.vu
 const sync = r => require.ensure([], () => r(require('@/views/base/sync.vue')), 'sync')
 const slot = r => require.ensure([], () => r(require('@/views/base/slot.vue')), 'slot')
 const reForm = r => require.ensure([], () => r(require('@/views/elmUI/reForm.vue')), 'reForm')
-const jsIndex= r => require.ensure([], () => r(require('@/views/baseJavascript/index.vue')), 'jsIndex')
-const closure= r => require.ensure([], () => r(require('@/views/baseJavascript/closure.vue')), 'closure')
-const autoSave= r => require.ensure([], () => r(require('@/views/event/autoSave.vue')), 'autoSave')
+const jsIndex = r => require.ensure([], () => r(require('@/views/baseJavascript/index.vue')), 'jsIndex')
+const closure = r => require.ensure([], () => r(require('@/views/baseJavascript/closure.vue')), 'closure')
+const autoSave = r => require.ensure([], () => r(require('@/views/event/autoSave.vue')), 'autoSave')
+const vuedraggable = r => require.ensure([], () => r(require('@/views/plug/vuedraggable.vue')), 'vuedraggable')
+const demoDrag = r => require.ensure([], () => r(require('@/views/plug/demoDrag.vue')), 'demoDrag')
+const aweDnd = r => require.ensure([], () => r(require('@/views/plug/aweDnd.vue')), 'aweDnd')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -158,7 +161,21 @@ const router = new Router({
                     name: 'autoSave',
                     component: autoSave,
                 },
-                
+                {
+                    path: '/plug/vuedraggable',
+                    name: 'vuedraggable',
+                    component: vuedraggable,
+                },
+                {
+                    path: '/plug/demoDrag',
+                    name: 'demoDrag',
+                    component: demoDrag,
+                },
+                {
+                    path: '/plug/aweDnd',
+                    name: 'aweDnd',
+                    component: aweDnd,
+                },
 
             ]
         },

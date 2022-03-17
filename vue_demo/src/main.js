@@ -34,6 +34,10 @@ Vue.use(loading001)
 import btn from '@/directive/btn.js'
 Vue.use(btn)
 
+import VueDND from 'awe-dnd'
+
+Vue.use(VueDND)
+
 import Storage from 'vue-ls';
 const options = {
   namespace: 'vuejs__', // key键前缀

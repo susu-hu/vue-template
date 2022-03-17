@@ -166,5 +166,26 @@ export default {
             parent: "0008",
             url: "/js/closure",
         },
+        {
+            code: "0009",
+            icon: "ios-add-circle",
+            label: "Vue插件",
+            parent: "",
+            url: "/",
+        },
+        {
+            code: "0009-01",
+            icon: "ios-add-circle",
+            label: "vuedraggable",
+            parent: "0009",
+            url: "/plug/vuedraggable",
+        },
+        {
+            code: "0009-02",
+            icon: "ios-add-circle",
+            label: "awe-dnd",
+            parent: "0009",
+            url: "/plug/aweDnd",
+        },
     ]
 }
