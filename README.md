@@ -59,6 +59,11 @@
 #### 6.4 slot插槽的使用(具名插槽+默认插槽+作用域插槽)
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/slot%E6%8F%92%E6%A7%BD.png)
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/v-slot.png)
+## 7.vue插件
+#### 7.1 vuedraggable
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-drag.gif)
+#### 7.2 awe-dnd
+![输入图片说明](awe-dnd.gif)
 
 #### 参与贡献
 
