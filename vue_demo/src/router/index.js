@@ -28,6 +28,7 @@ const autoSave = r => require.ensure([], () => r(require('@/views/event/autoSave
 const vuedraggable = r => require.ensure([], () => r(require('@/views/plug/vuedraggable.vue')), 'vuedraggable')
 const demoDrag = r => require.ensure([], () => r(require('@/views/plug/demoDrag.vue')), 'demoDrag')
 const aweDnd = r => require.ensure([], () => r(require('@/views/plug/aweDnd.vue')), 'aweDnd')
+const loadsh= r => require.ensure([], () => r(require('@/views/event/loadsh.vue')), 'loadsh')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -115,6 +116,11 @@ const router = new Router({
                     path: '/event/throttle',
                     name: 'throttle',
                     component: throttle,
+                },
+                {
+                    path: '/event/loadsh',
+                    name: 'loadsh',
+                    component: loadsh,
                 },
                 {
                     path: '/table/dynamicForm',

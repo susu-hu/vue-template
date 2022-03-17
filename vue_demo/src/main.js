@@ -38,6 +38,9 @@ import VueDND from 'awe-dnd'
 
 Vue.use(VueDND)
 
+import Debounce000 from './utils/throDebo.js'
+Vue.component('Debounce000', Debounce000);
+
 import Storage from 'vue-ls';
 const options = {
   namespace: 'vuejs__', // key键前缀
