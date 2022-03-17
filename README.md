@@ -5,6 +5,12 @@
 ![输入图片说明](https://img.shields.io/badge/vuex-3.6.2-red)
 ![输入图片说明](https://img.shields.io/badge/less--loader-4.1.0-red)
 ![输入图片说明](https://img.shields.io/badge/node--sass-4.14.1-red)
+
+|  插件   | 版本  |介绍|
+|  ----  | ----  |----  |
+| vuedraggable  | 2.24.3 |vuedraggable 是标准的组件式封装，并且将可拖动元素放进了 transition-group 上面，过渡动画都比较好|
+| awe-dnd  | 0.3.4 |封装了 v-dragging 全局指令，然后通过全局指令去数据绑定等。相比及 vuedraggable 来说， awe-dnd 是没有双向绑定（这里没有双向绑定并不是很严谨，准确的来说没有暴露双向绑定的方式），因此提供了事件，在拖拽结束的时候用来更新列表（不需要手动更新列表，其实内部是实现了双向绑定的）或者是去触发父组件监听的事件|
+
 #### 介绍
 总结在vue使用过程中遇到的一些问题们~，战胜小困难，成为大boss吧！
 
