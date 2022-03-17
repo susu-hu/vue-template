@@ -1,5 +1,10 @@
 # 苏苏的vue
-
+![输入图片说明](https://img.shields.io/badge/vue-2.6.11-red)
+![输入图片说明](https://img.shields.io/badge/iview-3.5.4-orange)
+![输入图片说明](https://img.shields.io/badge/element--ui-2.15.6-brightgreen)
+![输入图片说明](https://img.shields.io/badge/vuex-3.6.2-red)
+![输入图片说明](https://img.shields.io/badge/less--loader-4.1.0-red)
+![输入图片说明](https://img.shields.io/badge/node--sass-4.14.1-red)
 #### 介绍
 总结在vue使用过程中遇到的一些问题们~，战胜小困难，成为大boss吧！
 
