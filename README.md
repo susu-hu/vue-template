@@ -63,8 +63,7 @@
 #### 7.1 vuedraggable
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-drag.gif)
 #### 7.2 awe-dnd
-![输入图片说明](awe-dnd.gif)
-
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/awe-dnd.gif)
 #### 参与贡献
 
 1.  Fork 本仓库
