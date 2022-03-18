@@ -29,6 +29,7 @@ const vuedraggable = r => require.ensure([], () => r(require('@/views/plug/vuedr
 const demoDrag = r => require.ensure([], () => r(require('@/views/plug/demoDrag.vue')), 'demoDrag')
 const aweDnd = r => require.ensure([], () => r(require('@/views/plug/aweDnd.vue')), 'aweDnd')
 const loadsh= r => require.ensure([], () => r(require('@/views/event/loadsh.vue')), 'loadsh')
+const lineG= r => require.ensure([], () => r(require('@/views/layout/lineG.vue')), 'lineG')
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push
@@ -182,7 +183,11 @@ const router = new Router({
                     name: 'aweDnd',
                     component: aweDnd,
                 },
-
+                {
+                    path: '/layout/lineG',
+                    name: 'lineG',
+                    component: lineG,
+                },
             ]
         },
 

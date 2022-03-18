@@ -233,4 +233,8 @@ button::after {
 .mb20{
   margin-bottom: 20px;
 }
+.hd_t{
+  font-size:20px;
+  font-weight: bold;
+}
 </style>

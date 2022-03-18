@@ -62,6 +62,13 @@ export default {
             url: "/loading",
         },
         {
+            code: "0003-04",
+            icon: "ios-add-circle",
+            label: "平行四边形渐变",
+            parent: "0003",
+            url: "/layout/lineG",
+        },
+        {
             code: "0004",
             icon: "ios-add-circle",
             label: "自定义组件",
