@@ -53,6 +53,12 @@
         <div class="box6"></div>
       </div>
     </div>
+    <div class="box">
+      <div class="loader-ring">
+        <div class="loader-ring-light"></div>
+        <div class="loader-ring-track"></div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -70,9 +76,58 @@ export default {
 </script>
 
 <style lang="less" scoped>
+.loader-ring {
+  position: relative;
+  width: 240px;
+  height: 240px;
+}
+
+.loader-ring-light {
+  width: 240px;
+  height: 240px;
+  -moz-border-radius: 240px;
+  -webkit-border-radius: 240px;
+  border-radius: 240px;
+  -moz-box-shadow: 0 4px 0 #00abf2 inset;
+  -webkit-box-shadow: 0 4px 0 #00abf2 inset;
+  box-shadow: 0 4px 0 #00abf2 inset;
+  animation: rotate-360 2s linear infinite;
+}
+
+.loader-ring-track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 240px;
+  height: 240px;
+  -moz-border-radius: 240px;
+  -webkit-border-radius: 240px;
+  border-radius: 240px;
+  -moz-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3) inset;
+  -webkit-box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3) inset;
+  box-shadow: 0 0 10px 4px rgba(0, 0, 0, 0.3) inset;
+}
+
+@keyframes rotate-360 {
+  from {
+    -moz-transform: rotate(0);
+    -ms-transform: rotate(0);
+    -webkit-transform: rotate(0);
+    transform: rotate(0);
+  }
+  to {
+    -moz-transform: rotate(360deg);
+    -ms-transform: rotate(360deg);
+    -webkit-transform: rotate(360deg);
+    transform: rotate(360deg);
+  }
+}
 .box {
   margin: 50px auto;
-  width: 200px;
+  width: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .contentBox {
   background: pink;

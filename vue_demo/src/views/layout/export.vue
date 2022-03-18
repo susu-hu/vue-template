@@ -23,6 +23,8 @@
     ></Progress>
     <div>
       <img
+        width="100"
+        height="100"
         style="display: block; margin: 20px auto"
         src="https://i.postimg.cc/mgsKJGLw/susu1.jpg"
         @click="downImg('https://i.postimg.cc/mgsKJGLw/susu1.jpg')"

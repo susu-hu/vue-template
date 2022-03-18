@@ -4,14 +4,31 @@
       <p>Welcome to SUSU's Blog</p>
       <div class="head"></div>
     </div>
-    <div class="box"></div>
+    <div class="box">
+      <ul>
+        <li
+          v-for="(item, index) in tabList"
+          :key="index"
+          :style="{ '--clr': item.clr }"
+        >
+          <a href="javascript:;" :data-text="item.name">{{ item.name }}</a>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   data() {
-    return {};
+    return {
+      tabList: [
+        {
+          name: "follow me on Gitee",
+          clr: "#000",
+        },
+      ],
+    };
   },
   mounted() {
     // window.addEventListener("resize", function () {
@@ -119,7 +136,45 @@ export default {
   methods: {},
 };
 </script>
+<style scoped>
+ul {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
 
+ul li {
+  position: relative;
+  list-style: none;
+}
+
+ul li a {
+  font-size: 28px;
+  text-decoration: none;
+  letter-spacing: 2px;
+  line-height: 1em;
+  text-transform: uppercase;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(0, 85, 127, 0.5);
+}
+
+ul li a::before {
+  content: attr(data-text);
+  position: absolute;
+  color: var(--clr);
+  width: 0;
+  overflow: hidden;
+  transition: 1s;
+  border-right: 8px solid var(--clr);
+  -webkit-text-stroke: 1px var(--clr);
+}
+
+ul li a:hover::before {
+  width: 100%;
+  filter: drop-shadow(0 0 25px var(--clr));
+}
+</style>
 <style scoped>
 .container {
   background: pink;
