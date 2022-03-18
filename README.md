@@ -42,6 +42,8 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E6%96%87%E4%BB%B6%E5%AF%BC%E5%87%BA.png)
 #### 3.2 loading动画
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/loading-v.png)
+#### 3.3 平行四边形渐变
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E5%B9%B3%E8%A1%8C%E5%9B%9B%E8%BE%B9%E5%BD%A2.png)
 ## 4.自定义组件
 #### 4.1 自定义下拉框
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E4%B8%8B%E6%8B%89%E6%A1%86.gif)
