@@ -5,6 +5,28 @@
       <div class="head"></div>
     </div>
     <div class="box">
+      <div class="perspective">
+        <label class="tab" for="tab-top">test1</label>
+        <label class="tab" for="tab-front">test2</label>
+        <label class="tab" for="tab-bottom">test2</label>
+        <input type="radio" name="tabs" id="tab-top" />
+        <input type="radio" name="tabs" id="tab-front" />
+        <input type="radio" name="tabs" id="tab-bottom" />
+        <div class="cube">
+          <div class="tab-content">
+            <h1>welcome</h1>
+            <p>This is my page</p>
+          </div>
+          <div class="tab-content">
+            <h1>welcome</h1>
+            <p>This is my page</p>
+          </div>
+          <div class="tab-content">
+            <h1>welcome</h1>
+            <p>This is my page</p>
+          </div>
+        </div>
+      </div>
       <ul>
         <li
           v-for="(item, index) in tabList"
@@ -24,8 +46,12 @@ export default {
     return {
       tabList: [
         {
-          name: "follow me on Gitee",
-          clr: "#000",
+          name: "\u00a0\u00a0" + "follow me on Gitee",
+          clr: "#64dcec",
+        },
+        {
+          name: "\u00a0\u00a0" + "contact me",
+          clr: "#f3eca4",
         },
       ],
     };
@@ -137,11 +163,125 @@ export default {
 };
 </script>
 <style scoped>
+.perspective {
+  -webkit-perspective: 76em;
+  perspective: 76em;
+  -webkit-perspective-origin: 50% 50px;
+  perspective-origin: 50% 50px;
+  width: 494px;
+  margin: 0 auto;
+  font-family: "Roboto", sans-serif;
+  font-weight: 100;
+  color: #fff;
+  text-align: center;
+}
+
+input {
+  display: none;
+}
+
+.tab {
+  position: absolute;
+  width: 80px;
+  height: 70px;
+  background: pink;
+  right: -9px;
+  line-height: 70px;
+  font-weight: 300;
+  border-radius: 10px;
+}
+
+.tab:nth-child(1) {
+  top: -6px;
+  background: #e7651a;
+}
+
+.tab:nth-child(2) {
+  top: 72px;
+  background: #bfe8ee;
+}
+
+.tab:nth-child(3) {
+  top: 148px;
+  background: #f3eca4;
+}
+
+.cube {
+  position: relative;
+  margin: 60px auto;
+  width: 300px;
+  height: 200px;
+  -webkit-transform-origin: 0 100px;
+  transform-origin: 0 100px;
+  -webkit-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+}
+
+.tab-content {
+  width: 300px;
+  height: 200px;
+  position: absolute;
+}
+
+.tab-content h1 {
+  font-size: 25px;
+  margin: 75px 0 10px;
+  font-weight: 300;
+}
+
+.tab-content p {
+  font-size: 12px;
+}
+
+.tab-content:nth-child(2) {
+  -webkit-transform: translateZ(100px);
+  transform: translateZ(100px);
+  background: #bfe8ee;
+}
+
+.tab-content:nth-child(1) {
+  -webkit-transform: rotateX(-270deg) translateY(-100px);
+  transform: rotateX(-270deg) translateY(-100px);
+  -webkit-transform-origin: top left;
+  transform-origin: top left;
+  background: #e7651a;
+}
+
+.tab-content:nth-child(3) {
+  -webkit-transform: rotateX(-90deg) translateY(100px);
+  transform: rotateX(-90deg) translateY(100px);
+  -webkit-transform-origin: bottom center;
+  transform-origin: bottom center;
+  background: #f3eca4;
+}
+
+#tab-top:checked ~ .cube {
+  -webkit-transform: rotateX(-90deg);
+  transform: rotateX(-90deg);
+}
+
+#tab-front:checked ~ .cube {
+  -webkit-transform: rotateX(0deg);
+  transform: rotateX(0deg);
+}
+
+#tab-bottom:checked ~ .cube {
+  -webkit-transform: rotateX(90deg);
+  transform: rotateX(90deg);
+}
+</style>
+<style scoped>
 ul {
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  align-items: center;
+  margin-top: 40px;
 }
 
 ul li {
@@ -150,13 +290,13 @@ ul li {
 }
 
 ul li a {
-  font-size: 28px;
+  font-size: 32px;
   text-decoration: none;
   letter-spacing: 2px;
   line-height: 1em;
   text-transform: uppercase;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(0, 85, 127, 0.5);
+  -webkit-text-stroke: 1px #00557f80;
 }
 
 ul li a::before {
@@ -168,6 +308,7 @@ ul li a::before {
   transition: 1s;
   border-right: 8px solid var(--clr);
   -webkit-text-stroke: 1px var(--clr);
+  white-space: nowrap;
 }
 
 ul li a:hover::before {
