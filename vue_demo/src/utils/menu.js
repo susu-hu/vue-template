@@ -201,5 +201,19 @@ export default {
             parent: "0009",
             url: "/plug/aweDnd",
         },
+        {
+            code: "0010",
+            icon: "ios-add-circle",
+            label: "数据可视化",
+            parent: "",
+            url: "/",
+        },
+        {
+            code: "0010-01",
+            icon: "ios-add-circle",
+            label: "data-V",
+            parent: "0010",
+            url: "/data/dataV",
+        },
     ]
 }

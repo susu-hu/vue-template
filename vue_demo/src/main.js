@@ -41,6 +41,11 @@ Vue.use(VueDND)
 import Debounce000 from './utils/throDebo.js'
 Vue.component('Debounce000', Debounce000);
 
+// 将自动注册所有组件为全局组件
+import dataV from '@jiaminghi/data-view'
+
+Vue.use(dataV)
+
 import Storage from 'vue-ls';
 const options = {
   namespace: 'vuejs__', // key键前缀

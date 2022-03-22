@@ -103,7 +103,7 @@ export default {
   background: #fff;
   border-radius: 5px;
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
-  min-height: calc(100vh - 260px)
+  min-height: calc(100vh - 260px);
 }
 @import "./assets/css/common.css";
 * {
@@ -230,11 +230,17 @@ button::after {
 .button-hover {
   background: transparent;
 }
-.mb20{
+.mb20 {
   margin-bottom: 20px;
 }
-.hd_t{
-  font-size:20px;
+.hd_t {
+  font-size: 20px;
   font-weight: bold;
+}
+.flex-wrap {
+  flex-wrap: wrap;
+}
+.mt20 {
+  margin-top: 20px;
 }
 </style>
