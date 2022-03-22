@@ -66,6 +66,9 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-drag.gif)
 #### 7.2 awe-dnd
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/awe-dnd.gif)
+## 8.数据可视化
+#### 8.1 data-V
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
 #### 参与贡献
 
 1.  Fork 本仓库
