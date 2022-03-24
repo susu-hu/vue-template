@@ -243,4 +243,10 @@ button::after {
 .mt20 {
   margin-top: 20px;
 }
+// 饿了么ui
+.el-button--primary {
+  color: #fff;
+  background-color: pink !important;
+  border-color: pink !important;
+}
 </style>

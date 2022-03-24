@@ -2,16 +2,16 @@ import regex from "../../../utils/regex.js" // 正则表达式
 export default {
     formObj: [{
         input: true, //是input
-        label: "input+正则", //字段
+        label: "手机号", //字段
         prop: "input", //字段名
         placeholder: "请填写手机号", //提示内容
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false, //是否禁用
-        unit: '单位',
+        unit: '提示',
         rules: [{
             required: true,
             message: '联系方式'
-        }, { //可以自己写utils，封装正则验证
+        }, {
             validator: (rule, value, callback) => {
                 if (!value || !regex.isPhone(value)) {
                     callback(new Error());
@@ -19,26 +19,26 @@ export default {
                     callback();
                 }
             },
-            message: "联系方式不对",
+            message: "请输入正确的手机号",
         }] //验证
     }, {
         textarea: true, //是input
         label: "输入框", //字段
         prop: "textearea", //字段名
         placeholder: "请填写输入框", //提示内容
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false, //是否禁用
         rules: [{
             required: true,
             message: '输入框'
-        },] //验证
+        },] 
     },
     {
         select: true,
         label: "选择框",
         prop: "select",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: [{
             label: "options1",
@@ -56,7 +56,7 @@ export default {
         label: "select搜索框",
         prop: "searchSelect",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: [],
         rules: [{
@@ -67,7 +67,7 @@ export default {
         dateTimeRange: true,
         label: "年月日时分秒开",
         prop: "dateTimeRange",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: {
             selectableRange: '18:30:00 - 20:30:00'
@@ -81,7 +81,7 @@ export default {
         label: "时分秒选择器",
         prop: "timePicker",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: "",
         rules: [{
@@ -93,7 +93,7 @@ export default {
         label: "时分秒开始结束",
         prop: "timePickerIsRange",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: "",
         rules: [{
@@ -105,7 +105,7 @@ export default {
         label: "年月日选择器",
         prop: "datePicker",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: "",
         rules: [{
@@ -117,7 +117,7 @@ export default {
         label: "年月日开始结束",
         prop: "datePickerIsRange",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: "",
         rules: [{
@@ -129,7 +129,7 @@ export default {
         label: " 年月日时分秒",
         prop: "dateTime",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: "",
         rules: [{
@@ -141,7 +141,7 @@ export default {
         label: "switch",
         prop: "switch",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         rules: [{
             required: true,
@@ -152,7 +152,7 @@ export default {
         label: "单选框",
         prop: "radio",
         placeholder: "请选择",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
         options: [{
             label: "单选框1",
@@ -170,7 +170,7 @@ export default {
         label: "复选框",
         prop: "checkbox",
         disabled: false,
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         options: [{
             label: "复选框1",
             value: "1"
@@ -207,14 +207,14 @@ export default {
         label: "按钮",
         prop: "buttona",
         placeholder: "发送验证码",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
     },
     {
         text: true,
         label: "文本",
         prop: "text",
-        width: 12, //参考el-col
+        width: 24, //参考el-col
         disabled: false,
     },
     {

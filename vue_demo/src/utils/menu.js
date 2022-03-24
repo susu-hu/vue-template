@@ -195,6 +195,13 @@ export default {
             url: "/plug/vuedraggable",
         },
         {
+            code: "0009-03",
+            icon: "ios-add-circle",
+            label: "quillEditor",
+            parent: "0009",
+            url: "/plug/quillEditor",
+        },
+        {
             code: "0009-02",
             icon: "ios-add-circle",
             label: "awe-dnd",
@@ -214,6 +221,13 @@ export default {
             label: "data-V",
             parent: "0010",
             url: "/data/dataV",
+        },
+        {
+            code: "0011",
+            icon: "ios-add-circle",
+            label: "antV篇章",
+            parent: "",
+            url: "/",
         },
     ]
 }

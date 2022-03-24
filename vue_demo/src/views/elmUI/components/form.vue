@@ -1,11 +1,11 @@
 
 <template>
   <el-form
+    style="min-width: 600px"
     :model="formData"
-    class="demo-ruleForm"
     ref="ruleForm"
     label-position="left"
-    label-width="120px"
+    label-width="150px"
   >
     <el-col
       :span="formobj.width ? formobj.width : 24"
@@ -18,7 +18,6 @@
         :prop="formobj.prop"
         :rules="formobj.rules"
       >
-        <!-- inupt输入框 -->
         <el-input
           size="small"
           v-if="formobj.input"
@@ -28,7 +27,6 @@
           @input="inputINPUT($event, index, formobj.prop)"
           @change="inputChange($event, index, formobj.prop)"
         ></el-input>
-        <!-- textarea输入框 -->
         <el-input
           size="small"
           type="textarea"
@@ -37,7 +35,6 @@
           v-model="formData[formobj.prop]"
           :placeholder="formobj.placeholder"
         ></el-input>
-        <!-- select选择器 -->
         <el-select
           size="small"
           v-if="formobj.select"
@@ -54,7 +51,7 @@
           >
           </el-option>
         </el-select>
-        <!-- select搜索框 -->
+
         <el-select
           size="small"
           v-if="formobj.searchSelect"
@@ -76,7 +73,6 @@
           >
           </el-option>
         </el-select>
-        <!-- 年月日时分秒选择器 -->
         <el-date-picker
           value-format="yyyy-MM-dd HH:mm:ss"
           type="datetime"
@@ -86,7 +82,6 @@
           v-model="formData[formobj.prop]"
           :placeholder="formobj.placeholder"
         ></el-date-picker>
-        <!-- 年月日时分秒，开始和结束时间 -->
         <el-date-picker
           value-format="yyyy-MM-dd HH:mm:ss"
           format="yyyy-MM-dd HH:mm:ss"
@@ -99,7 +94,6 @@
           start-placeholder="开始日期"
           end-placeholder="结束日期"
         ></el-date-picker>
-        <!-- 时分秒选择器 -->
         <el-time-picker
           value-format="HH:mm:ss"
           format="HH:mm:ss"
@@ -111,7 +105,6 @@
           :picker-options="formobj.options"
         >
         </el-time-picker>
-        <!-- 时分秒选择器，开始和结束时间 -->
         <el-time-picker
           value-format="HH:mm:ss"
           format="HH:mm:ss"
@@ -125,7 +118,7 @@
           end-placeholder="结束时间"
           placeholder="选择时间范围"
         ></el-time-picker>
-        <!-- 年月日选择器 -->
+
         <el-date-picker
           value-format="yyyy-MM-dd"
           size="small"
@@ -135,7 +128,7 @@
           :placeholder="formobj.placeholder"
         >
         </el-date-picker>
-        <!-- 年月日选择器，开始和介绍年月日 -->
+
         <el-date-picker
           value-format="yyyy-MM-dd"
           type="daterange"
@@ -148,7 +141,7 @@
           start-placeholder="开始日期"
           end-placeholder="结束日期"
         ></el-date-picker>
-        <!-- switch开关 -->
+
         <el-switch
           size="small"
           v-if="formobj.switch"
@@ -156,7 +149,7 @@
           v-model="formData[formobj.prop]"
           @change="formSwitchChange($event, index, formobj.prop)"
         ></el-switch>
-        <!-- radio单选框 -->
+
         <el-radio-group
           v-if="formobj.radio"
           :disabled="formobj.disabled"
@@ -170,7 +163,7 @@
           >
           </el-radio>
         </el-radio-group>
-        <!-- checkbox复选框 -->
+
         <el-checkbox-group
           v-if="formobj.checkbox"
           :disabled="formobj.disabled"
@@ -184,7 +177,6 @@
           >
           </el-checkbox>
         </el-checkbox-group>
-        <!-- 文件上传 --><!-- 如果对象有值就回显，没有值就为空 -->
         <el-upload
           :accept="formobj.accept ? formobj.accept : 'PNG,JPEG'"
           v-if="formobj.upload"
@@ -235,7 +227,6 @@
           <img width="100%" :src="dialogImageUrl" alt="" />
         </el-dialog>
 
-        <!-- 按钮 -->
         <el-button
           size="small"
           v-if="formobj.button"
@@ -245,12 +236,8 @@
           @click="buttonClick(formobj.prop, index)"
           >{{ formobj.placeholder }}</el-button
         >
-        <!-- text展示 -->
         <span v-if="formobj.text" v-text="formData[formobj.prop]"></span>
-        <!-- 计量单位 -->
         <span class="left10" v-if="formobj.unit">{{ formobj.unit }}</span>
-
-        <!-- 高德地图 -->
         <!-- <div class="amap_div" v-if="formobj.aMap">
 					<el-input size="small" v-model="formData[formobj.prop]" @input="aMapInput($event,formobj.prop)"></el-input>
 					<ul v-show="searchShow==formobj.prop" class="sreach_ul">
@@ -261,6 +248,7 @@
 					<aMap :ref="'aMap'+formobj.prop" :aMapId="'aMapId'+formobj.prop" :location="formData[formobj.prop+'location']" @cbSearch="cbSearch($event,formobj.prop)"></aMap>
 				</div> -->
         <quillEditor
+          class="editor"
           v-if="formobj.quillEditor"
           :quill="formData[formobj.prop]"
         ></quillEditor>
@@ -269,10 +257,19 @@
   </el-form>
 </template>
 <script>
+import "quill/dist/quill.core.css";
+import "quill/dist/quill.snow.css";
+import "quill/dist/quill.bubble.css";
+import { quillEditor } from "vue-quill-editor";
 // 富文本编辑器:vue-quill-editor---地址：https://github.com/surmon-china/vue-quill-editor
 // 1.vue-quill-editor是基于quill(github地址)适用于Vue2的富文本编辑器，所以对于quill的原生属性扩展也是支持的。quill文档地址
 // 2.quill 中有许多扩展和自定义方法功能。比如图片的重定义大小、图片上传的点击处理等
+// 支持服务端渲染和单页应用.兼容IE10+
+// npm install vue-quill-editor -S
 export default {
+  components: {
+    quillEditor,
+  },
   props: {
     formObj: {
       type: Array,
@@ -287,7 +284,7 @@ export default {
     },
   },
   data() {
-    let uploadFileUrl = this.$store.state.user.uploadFileUrl;
+    let uploadFileUrl = "";
     return {
       uploadUrl: uploadFileUrl,
       dialogImageUrl: "",
@@ -301,19 +298,18 @@ export default {
   created() {},
   watch: {},
   methods: {
-    //select变化调用
     selectChange(value, index, prop) {
       this.$emit("selectChange", value, index, prop);
     },
-    // input的input事件
+
     inputINPUT(value, index, prop) {
       this.$emit("inputINPUT", value, index, prop);
     },
-    // input的change事件
+
     inputChange(value, index, prop) {
       this.$emit("inputChange", value, index, prop);
     },
-    // 搜索类型select搜索
+
     remoteMethod(query, index, prop) {
       if (query) {
         this.searchSelectLoading = true;
@@ -326,32 +322,30 @@ export default {
         this.searchSelectOptios = [];
       }
     },
-    //switch变化
+
     formSwitchChange(val, index, prop) {
       this.$emit("formSwitchChange", val, index, prop);
     },
-    //按钮点击事件
+
     buttonClick(prop, index) {
       this.$emit("buttonClick", prop, index);
     },
 
-    //文件上传成功回调
     uploadSuccess(response, file, fileList, limit, prop, index) {
-      this.formObj[index].uploadObj.hideUpload = fileList.length == limit; //文件列表变化后判断当前文件列表长度是否等于限制长度。目的，当长度相等时隐藏文件上传按钮
+      this.formObj[index].uploadObj.hideUpload = fileList.length == limit;
       this.pushUpload(file, fileList, limit, prop);
     },
-    //文件删除
+
     handleRemove(file, fileList, limit, prop, index) {
-      this.formObj[index].uploadObj.hideUpload = fileList.length == limit; //文件删除后判断当前文件列表长度是否等于限制长度。目的，当长度相等时隐藏文件上传按钮
+      this.formObj[index].uploadObj.hideUpload = fileList.length == limit;
       this.pushUpload(file, fileList, limit, prop);
     },
-    // 文件预览
+
     handlePictureCardPreview(file) {
       this.dialogImageUrl = file.url;
       this.dialogVisible = true;
     },
 
-    //提交时验证表单，直接在父级调用
     submitForm() {
       let formValidate = Boolean;
       this.$refs.ruleForm.validate((valid) => {
@@ -412,7 +406,6 @@ export default {
       this.setSearchVal = val.tips; //子组件
       this.searchShow = prop; //显示input输入联想
     },
-    //选中地图值
     /* eslint-disable */
     selectVal(val, prop, index) {
       // 赋值的时候，拿到键，及formobj的下标，进行赋值
@@ -423,7 +416,7 @@ export default {
         lat: val.location.lat,
       };
       this.formData[`${prop}location`] = lngLat;
-      this.searchShow = ""; //隐藏input输入联想
+      this.searchShow = "";
     },
   },
 };

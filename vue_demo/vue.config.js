@@ -1,3 +1,4 @@
+var webpack = require('webpack');
 const path = require('path');        //引入path模块
 function resolve(dir) {
     return path.join(__dirname, dir)  //path.join(__dirname)设置绝对路径
@@ -68,4 +69,14 @@ module.exports = {
             patterns: [path.resolve(__dirname, "./src/assets/css/variable.less")],
         },
     },
+    // 要引入webpack
+    configureWebpack: {
+        plugins: [
+            new webpack.ProvidePlugin({
+                'window.Quill': 'quill/dist/quill.js',//注意路径，可能与你们路径不一致
+                'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
+            }),
+        ]
+    }
+
 }
