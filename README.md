@@ -10,6 +10,7 @@
 |  ----  | ----  |----  |
 | vuedraggable  | 2.24.3 |vuedraggable 是标准的组件式封装，并且将可拖动元素放进了 transition-group 上面，过渡动画都比较好|
 | awe-dnd  | 0.3.4 |封装了 v-dragging 全局指令，然后通过全局指令去数据绑定等。相比及 vuedraggable 来说， awe-dnd 是没有双向绑定（这里没有双向绑定并不是很严谨，准确的来说没有暴露双向绑定的方式），因此提供了事件，在拖拽结束的时候用来更新列表（不需要手动更新列表，其实内部是实现了双向绑定的）或者是去触发父组件监听的事件|
+| vue-quill-editor  | 3.0.6 |基于 Quill,适用于Vue的富文本编辑器,支持服务端渲染和单页应用，兼容IE10+|
 
 #### 介绍
 ##### 1.vue基础语法 
@@ -66,6 +67,8 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-drag.gif)
 #### 7.2 awe-dnd
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/awe-dnd.gif)
+#### 7.3 富文本编辑器vue-quill-editor
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-quill-editor.gif)
 ## 8.数据可视化
 #### 8.1 data-V
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
