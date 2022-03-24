@@ -41,6 +41,10 @@ Vue.use(VueDND)
 import Debounce000 from './utils/throDebo.js'
 Vue.component('Debounce000', Debounce000);
 
+// main.js 全局引入lodash
+// import _ from 'lodash'
+// Vue.prototype._ = _ // 使用 this._.debounce(this.handleClick,1000,false)
+
 // 将自动注册所有组件为全局组件
 import dataV from '@jiaminghi/data-view'
 
