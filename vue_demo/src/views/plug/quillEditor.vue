@@ -39,7 +39,7 @@ import ImageResize from "quill-image-resize-module";
 import { ImageDrop } from "quill-image-drop-module";
 Quill.register("modules/imageDrop", ImageDrop);
 Quill.register("modules/imageResize", ImageResize);
-
+// npm install vue-quill-editor -S
 // npm install quill-image-resize-module -S  //缩放
 // npm install quill-image-drop-module -S //拖动
 // //还需要安装quill 因为这几个插件都是依赖于quill

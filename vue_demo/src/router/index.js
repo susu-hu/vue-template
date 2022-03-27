@@ -27,7 +27,7 @@ const autoSave = r => require.ensure([], () => r(require('@/views/event/autoSave
 const vuedraggable = r => require.ensure([], () => r(require('@/views/plug/vuedraggable.vue')), 'vuedraggable')
 const demoDrag = r => require.ensure([], () => r(require('@/views/plug/demoDrag.vue')), 'demoDrag')
 const aweDnd = r => require.ensure([], () => r(require('@/views/plug/aweDnd.vue')), 'aweDnd')
-const loadsh = r => require.ensure([], () => r(require('@/views/event/loadsh.vue')), 'loadsh')
+const lodash = r => require.ensure([], () => r(require('@/views/event/lodash.vue')), 'lodash')
 const lineG = r => require.ensure([], () => r(require('@/views/layout/lineG.vue')), 'lineG')
 const dataV = r => require.ensure([], () => r(require('@/views/dataCharts/dataV.vue')), 'dataV')
 
@@ -120,9 +120,9 @@ const router = new Router({
                     component: throttle,
                 },
                 {
-                    path: '/event/loadsh',
-                    name: 'loadsh',
-                    component: loadsh,
+                    path: '/event/lodash',
+                    name: 'lodash',
+                    component: lodash,
                 },
                 {
                     path: '/table/dynamicForm',
@@ -178,6 +178,11 @@ const router = new Router({
                     path: '/plug/quillEditor',
                     name: 'quillEditor',
                     component: () => import('@/views/plug/quillEditor.vue'),
+                },
+                {
+                    path: '/plug/reviewer',
+                    name: 'reviewer',
+                    component: () => import('@/views/plug/reviewer.vue'),
                 },
                 {
                     path: '/plug/demoDrag',

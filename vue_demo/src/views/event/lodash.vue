@@ -8,7 +8,7 @@
 
 <script>
 /* eslint-disable */
-import _ from "lodash"; //导入loadsh插件
+import _ from "lodash"; //导入lodash插件
 export default {
   data() {
     return {
