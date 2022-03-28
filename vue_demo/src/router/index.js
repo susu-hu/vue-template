@@ -204,6 +204,11 @@ const router = new Router({
                     name: 'dataV',
                     component: dataV,
                 },
+                {
+                    path: '/jest/index',
+                    name: 'jestIndex',
+                    component: () => import('@/views/jest/index.vue'),
+                },
 
             ]
         },

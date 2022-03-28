@@ -237,5 +237,19 @@ export default {
       parent: "",
       url: "/",
     },
+    {
+      code: "0012",
+      icon: "ios-add-circle",
+      label: "Jest",
+      parent: "",
+      url: "/",
+    },
+    {
+      code: "0012-01",
+      icon: "ios-add-circle",
+      label: "Jest",
+      parent: "0012",
+      url: "/jest/index",
+    },
   ],
 };
