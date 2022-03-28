@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="contentBox">
-      <List>
+      <!-- <List>
         <ListItem>
           <ListItemMeta :avatar="src" title="" description="" />
         </ListItem>
@@ -14,7 +14,7 @@
         <ListItem>
           <ListItemMeta :avatar="src" title=" " description="  " />
         </ListItem>
-      </List>
+      </List> -->
       <section
         id="nice"
         data-tool="mdnice编辑器"

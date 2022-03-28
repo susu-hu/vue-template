@@ -165,6 +165,11 @@ const router = new Router({
                     component: closure,
                 },
                 {
+                    path: '/js/export',
+                    name: 'export',
+                    component: () => import('@/views/baseJavascript/export.vue'),
+                },
+                {
                     path: '/event/autoSave',
                     name: 'autoSave',
                     component: autoSave,
@@ -209,7 +214,21 @@ const router = new Router({
                     name: 'jestIndex',
                     component: () => import('@/views/jest/index.vue'),
                 },
-
+                {
+                    path: '/jest/test01',
+                    name: 'test01',
+                    component: () => import('@/views/jest/test01.vue'),
+                },
+                {
+                    path: '/canvas/index',
+                    name: 'demo01',
+                    component: () => import('@/views/canvas/index.vue'),
+                },
+                {
+                    path: '/canvas/ggk',
+                    name: '刮刮卡',
+                    component: () => import('@/views/canvas/ggk.vue'),
+                },
             ]
         },
 

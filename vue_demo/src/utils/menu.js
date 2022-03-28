@@ -162,7 +162,7 @@ export default {
     {
       code: "0008",
       icon: "ios-add-circle",
-      label: "原生js+",
+      label: "js+",
       parent: "",
       url: "/",
     },
@@ -180,6 +180,14 @@ export default {
       parent: "0008",
       url: "/js/closure",
     },
+    {
+      code: "0008-03",
+      icon: "ios-add-circle",
+      label: "export",
+      parent: "0008",
+      url: "/js/export",
+    },
+
     {
       code: "0009",
       icon: "ios-add-circle",
@@ -250,6 +258,34 @@ export default {
       label: "Jest",
       parent: "0012",
       url: "/jest/index",
+    },
+    {
+      code: "0012-02",
+      icon: "ios-add-circle",
+      label: "test01",
+      parent: "0012",
+      url: "/jest/test01",
+    },
+    {
+      code: "0013",
+      icon: "ios-add-circle",
+      label: "canvas",
+      parent: "",
+      url: "/",
+    },
+    {
+      code: "0013-01",
+      icon: "ios-add-circle",
+      label: "demo-001",
+      parent: "0013",
+      url: "/canvas/index",
+    },
+    {
+      code: "0013-02",
+      icon: "ios-add-circle",
+      label: "刮刮卡",
+      parent: "0013",
+      url: "/canvas/ggk",
     },
   ],
 };
