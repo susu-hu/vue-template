@@ -287,5 +287,19 @@ export default {
       parent: "0013",
       url: "/canvas/ggk",
     },
+    {
+      code: "0014",
+      icon: "ios-add-circle",
+      label: "地图",
+      parent: "",
+      url: "/",
+    },
+    {
+      code: "0014-01",
+      icon: "ios-add-circle",
+      label: "高德地图",
+      parent: "0014",
+      url: "/map/amap",
+    },
   ],
 };
