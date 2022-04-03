@@ -12,6 +12,8 @@
 | awe-dnd  | 0.3.4 |封装了 v-dragging 全局指令，然后通过全局指令去数据绑定等。相比及 vuedraggable 来说， awe-dnd 是没有双向绑定（这里没有双向绑定并不是很严谨，准确的来说没有暴露双向绑定的方式），因此提供了事件，在拖拽结束的时候用来更新列表（不需要手动更新列表，其实内部是实现了双向绑定的）或者是去触发父组件监听的事件|
 | vue-quill-editor  | 3.0.6 |基于 Quill,适用于Vue的富文本编辑器,支持服务端渲染和单页应用，兼容IE10+|
 | Jest  | 27.5.1 |Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。并且它对同样是 Facebook 的开源前端框架 React 的测试十分友好。|
+| dplayer| 1.26.0 | 视频播放组件：http://dplayer.js.org/|
+| vue-dplayer| 0.0.10 | 视频播放组件，npm对DPlayer做了封装，vue项目中使用vue-dplayer|
 
 #### 介绍
 ##### 1.vue基础语法 
