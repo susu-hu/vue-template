@@ -301,5 +301,27 @@ export default {
       parent: "0014",
       url: "/map/amap",
     },
+    {
+      code: "0015",
+      icon: "ios-add-circle",
+      label: "媒体",
+      parent: "",
+      url: "/",
+    },
+    {
+      code: "0015-01",
+      icon: "ios-add-circle",
+      label: "DPlayer播放器",
+      parent: "0015",
+      url: "/media/video",
+    },
+    {
+      code: "0015-02",
+      icon: "ios-add-circle",
+      label: "vueDplayer",
+      parent: "0015",
+      url: "/media/vueDplayer",
+    },
+    
   ],
 };

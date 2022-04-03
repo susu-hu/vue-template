@@ -294,6 +294,16 @@ const router = new Router({
           name: "amap2",
           component: () => import("@/views/map/amap2.vue"),
         },
+        {
+          path: "/media/video",
+          name: "video",
+          component: () => import("@/views/media/video.vue"),
+        },
+        {
+          path: "/media/vueDplayer",
+          name: "vueDplayer",
+          component: () => import("@/views/media/vueDplayer.vue"),
+        },
       ],
     },
 
