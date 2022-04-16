@@ -87,7 +87,7 @@ const originPush = Router.prototype.push;
 const originReplace = Router.prototype.replace;
 Router.prototype.push = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
-    return originPush.call(this, location, onComplete, onAbort).catch(() => {});
+    return originPush.call(this, location, onComplete, onAbort).catch(() => { });
   } else {
     originPush.call(this, location, onComplete, onAbort);
   }
@@ -96,7 +96,7 @@ Router.prototype.replace = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
     return originReplace
       .call(this, location, onComplete, onAbort)
-      .catch(() => {});
+      .catch(() => { });
   } else {
     originReplace.call(this, location, onComplete, onAbort);
   }
@@ -208,6 +208,11 @@ const router = new Router({
           path: "/base/slot",
           name: "slot",
           component: slot,
+        },
+        {
+          path: "/base/mixin",
+          name: "mixin",
+          component: () => import('@/views/base/mixin.vue'),
         },
         {
           path: "/eleUi/reForm",

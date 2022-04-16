@@ -37,7 +37,9 @@
 #### 1.1 表格数据分页多选
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E5%88%86%E9%A1%B5%E5%A4%9A%E9%80%89.gif)
 #### 1.2 动态表单校验
-
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/%E5%8A%A8%E6%80%81%E6%A0%A1%E9%AA%8C.gif)
+#### 1.3 日期选择+禁用
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E6%97%A5%E6%9C%9F%E9%80%89%E6%8B%A9+%E7%A6%81%E7%94%A8.gif)
 ## 2. 预处理器sass篇章
 #### 2.1 sass中的颜色函数
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/sasscolor.png)

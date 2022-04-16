@@ -21,6 +21,8 @@
       stroke-color="['#108ee9', '#87d068']"
       :hide-info="false"
     ></Progress>
+    <Button type="primary" @click="downImg11('https://i.postimg.cc/mgsKJGLw/susu1.jpg')">图片下载</Button>
+
     <div>
       <img
         width="100"
@@ -204,6 +206,23 @@ export default {
       //         this.can_click = true;
       //       }, 1000);
       //     });
+    },
+    /* eslint-disable */ 
+    downImg11(domImg) {
+      // window.location.href = "https://i.postimg.cc/mgsKJGLw/susu1.jpg";
+      // var eleLink = document.createElement("a");
+      // eleLink.download = "ss";
+      // eleLink.style.display = "none";
+      // var canvas = document.createElement("canvas");
+      // var context = canvas.getContext("2d");
+      // var width = domImg.naturalWidth;
+      // var height = domImg.naturalHeight;
+      // context.drawImage(domImg, 0, 0);
+      // // 如果是PNG图片，则canvas.toDataURL('image/png')
+      // eleLink.href = canvas.toDataURL("image/jpeg");
+      // document.body.appendChild(eleLink);
+      // eleLink.click();
+      // document.body.removeChild(eleLink);
     },
   },
 };

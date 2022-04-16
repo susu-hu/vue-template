@@ -153,6 +153,14 @@ export default {
       url: "/base/slot",
     },
     {
+      code: "0006-05",
+      icon: "ios-add-circle",
+      label: "混入Mixin",
+      parent: "0006",
+      url: "/base/mixin",
+    },
+
+    {
       code: "0007",
       icon: "ios-add-circle",
       label: "饿了么ui篇章",
