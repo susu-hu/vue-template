@@ -186,6 +186,18 @@ li {
 }
 
 
+.clearfix:after {
+    content   : ".";
+    display   : block;
+    height    : 0;
+    clear     : both;
+    visibility: hidden;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
 /* 去掉IE的input框自带的X */
 ::-ms-clear,
 ::-ms-reveal {

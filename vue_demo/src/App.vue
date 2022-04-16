@@ -98,6 +98,7 @@ export default {
 };
 </script>
 <style lang="less">
+@import "./assets/css/common.css";
 .contentBox {
   padding: 20px;
   background: #fff;
@@ -105,7 +106,6 @@ export default {
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
   min-height: calc(100vh - 260px);
 }
-@import "./assets/css/common.css";
 * {
   cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
     default;

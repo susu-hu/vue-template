@@ -90,6 +90,13 @@ export default {
       url: "/custom/dropItem",
     },
     {
+      code: "0004-02",
+      icon: "ios-add-circle",
+      label: "日期组件-主题色",
+      parent: "0004",
+      url: "/custom/calendar",
+    },
+    {
       code: "0005",
       icon: "ios-add-circle",
       label: "事件优化",

@@ -1,11 +1,11 @@
 <template>
   <div class="container">
     <div class="title">
-      <p>Welcome to SUSU's Blog</p>
+      <p>Welcome to SUSU's Vue</p>
       <div class="head"></div>
     </div>
     <div class="box">
-      <div class="perspective">
+      <!-- <div class="perspective">
         <label class="tab" for="tab-top">test1</label>
         <label class="tab" for="tab-front">test2</label>
         <label class="tab" for="tab-bottom">test2</label>
@@ -26,7 +26,7 @@
             <p>This is my page</p>
           </div>
         </div>
-      </div>
+      </div> -->
       <ul>
         <li
           v-for="(item, index) in tabList"
@@ -347,7 +347,7 @@ ul li a:hover::before {
   background-clip: text;
   -webkit-background-clip: text;
   transform-origin: center center;
-  animation: shake 5s infinite ease-in-out running;
+  animation: shake 25s infinite ease-in-out running;
 }
 @keyframes shake {
   0% {
