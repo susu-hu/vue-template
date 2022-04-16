@@ -20,6 +20,13 @@ export default {
       url: "/table/dynamicForm",
     },
     {
+      code: "0001-03",
+      label: "日期选择器",
+      parent: "0001",
+      url: "/table/datepicker",
+    },
+
+    {
       code: "0002",
       icon: "ios-add-circle",
       label: "预处理器sass",
@@ -322,6 +329,5 @@ export default {
       parent: "0015",
       url: "/media/vueDplayer",
     },
-    
   ],
 };

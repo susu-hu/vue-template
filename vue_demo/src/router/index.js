@@ -185,6 +185,11 @@ const router = new Router({
           component: dynamicForm,
         },
         {
+          path: "/table/datepicker",
+          name: "datepicker",
+          component: () => import("@/views/table/datepicker.vue"),
+        },
+        {
           path: "/base/childAp",
           name: "childAp",
           component: childAp,
