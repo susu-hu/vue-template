@@ -86,6 +86,12 @@ Vue.directive("access", {
     }
   },
 });
+// 全局注册组件
+import Components from './components'
+Vue.use(Components)
+
+// import Page from '@/views/custom/components/page.vue'
+// Vue.component('Pager',Page)
 
 Vue.prototype.hasPermission = hasPermission; // 通用方法
 Vue.prototype.$api = api; // 接口

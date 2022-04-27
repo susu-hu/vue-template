@@ -2,7 +2,7 @@
   <transition name="u-loading-fade">
     <div v-show="visible" class="u-loading-mask">
       <div class="u-loading-spinner">
-        <img src="~@/assets/loading.gif" />
+        <!-- <img src="~@/assets/loading.gif" /> -->
         <p class="u-loading-text">{{ text }}</p>
       </div>
     </div>
@@ -10,6 +10,7 @@
 </template>
 <script>
 export default {
+  name: "loading002",
   data() {
     return {
       visible: true,

@@ -1,6 +1,13 @@
 export default {
   menuTree: [
     {
+      code: "0006",
+      icon: "ios-add-circle",
+      label: "Vue基础",
+      parent: "",
+      url: "/",
+    },
+    {
       code: "0001",
       icon: "ios-add-circle",
       label: "iview篇章",
@@ -97,6 +104,13 @@ export default {
       url: "/custom/calendar",
     },
     {
+      code: "0004-03",
+      icon: "ios-add-circle",
+      label: "iview二次封装-Page",
+      parent: "0004",
+      url: "/custom/page",
+    },
+    {
       code: "0005",
       icon: "ios-add-circle",
       label: "事件优化",
@@ -123,13 +137,6 @@ export default {
       label: "表单自动保存",
       parent: "0005",
       url: "/event/autoSave",
-    },
-    {
-      code: "0006",
-      icon: "ios-add-circle",
-      label: "Vue基础",
-      parent: "",
-      url: "/",
     },
     {
       code: "0006-01",
@@ -166,7 +173,13 @@ export default {
       parent: "0006",
       url: "/base/mixin",
     },
-
+    {
+      code: "0006-06",
+      icon: "ios-add-circle",
+      label: "路由白名单",
+      parent: "0006",
+      url: "/base/whiteRouter",
+    },
     {
       code: "0007",
       icon: "ios-add-circle",

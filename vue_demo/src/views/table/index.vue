@@ -27,7 +27,7 @@
         </template>
       </Table>
       <div>
-        <Page
+        <Pager
           class="public-page"
           :style="{ marginTop: '20px' }"
           :total="total"
