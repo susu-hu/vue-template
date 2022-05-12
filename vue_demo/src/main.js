@@ -6,7 +6,9 @@ import axios from "axios";
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 import iView from "iview";
-import "iview/dist/styles/iview.css"; // 使用 CSS
+import "iview/dist/styles/iview.css";
+import './index.scss';
+
 
 import * as echarts from "echarts";
 Vue.prototype.$echarts = echarts;

@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="container0">
     <div class="title">
       <p>Welcome to SUSU's Vue</p>
       <div class="head"></div>
@@ -317,7 +317,7 @@ ul li a:hover::before {
 }
 </style>
 <style scoped>
-.container {
+.container0 {
   background: pink;
   border-radius: 10px;
   width: 100%;

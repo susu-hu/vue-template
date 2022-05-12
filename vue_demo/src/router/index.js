@@ -144,6 +144,11 @@ const router = new Router({
           },
         },
         {
+          path: "/tailwindCSS",
+          name: "tailwindCSS",
+          component: () => import('@/views/sass/tailwindCSS.vue'),
+        },
+        {
           path: "/layIndex",
           name: "layIndex",
           component: layIndex,

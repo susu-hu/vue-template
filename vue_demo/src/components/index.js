@@ -16,11 +16,10 @@ const components = [
 
 const install = function (Vue) {
     components.forEach(component => {
-        console.log(component)
         Vue.component(component.name, component);
     })
-    Vue.prototype.$loading001=loading001.install;
-    Vue.prototype.$loading002=loading002.install;
+    Vue.prototype.$loading001 = loading001.install;
+    Vue.prototype.$loading002 = loading002.install;
     // Vue.prototype.$Page=Page.install;
 }
 

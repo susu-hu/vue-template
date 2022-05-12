@@ -36,16 +36,23 @@ export default {
     {
       code: "0002",
       icon: "ios-add-circle",
-      label: "预处理器sass",
+      label: "预处理器/css框架",
       parent: "",
       url: "/",
     },
     {
       code: "0002-01",
       icon: "ios-add-circle",
-      label: "颜色函数",
+      label: "sass的颜色函数",
       parent: "0002",
       url: "/sassColor",
+    },
+    {
+      code: "0002-02",
+      icon: "ios-add-circle",
+      label: "TailwindCSS",
+      parent: "0002",
+      url: "/tailwindCSS",
     },
     {
       code: "0003",

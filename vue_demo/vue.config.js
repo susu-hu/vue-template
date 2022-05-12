@@ -1,3 +1,11 @@
+/*
+ * @Author: susu 1628469970@qq.com
+ * @Date: 2022-02-20 20:30:08
+ * @LastEditors: susu 1628469970@qq.com
+ * @LastEditTime: 2022-05-12 21:42:22
+ * @FilePath: \vue_demo\vue.config.js
+ * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ */
 var webpack = require('webpack');
 const path = require('path');        //引入path模块
 function resolve(dir) {
@@ -77,6 +85,14 @@ module.exports = {
                 'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
             }),
         ]
+    },
+    css: {
+        loaderOptions: {
+            postcss: {
+                plugins: [require('tailwindcss'), require('autoprefixer')]
+            }
+        }
     }
+
 
 }

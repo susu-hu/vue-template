@@ -9,9 +9,7 @@ export default {
   name: "App",
   watch: {
     // 控制滚动条位置
-    $route: function (to, from) {
-      console.log(to, from);
-      console.log(document.documentElement.scrollTop);
+    $route: function (to) {
       if (to.meta.keepAlive) {
         document.body.scrollTop = to.meta.scrollTop;
         document.documentElement.scrollTop = to.meta.scrollTop;
