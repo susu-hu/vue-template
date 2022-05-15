@@ -162,6 +162,9 @@ const router = new Router({
           path: "/table",
           name: "table",
           component: table,
+          meta: {
+            keepAlive: true
+          },
         },
         {
           path: "/exportFile",
@@ -222,6 +225,38 @@ const router = new Router({
           path: "/base/whiteRouter",
           name: "whiteRouter",
           component: () => import("@/views/base/whiteRouter.vue"),
+        },
+        {
+          path: "/base/keepAlive",
+          name: "keepAlive",
+          component: () => import("@/views/base/keepAlive/keepAlive.vue"),
+          redirect: '/base/keepAlive/A',
+          children: [
+            {
+              path: 'A',
+              name: 'A',
+              component: () => import("@/views/base/keepAlive/a.vue"),
+              meta: {
+                keepAlive: true
+              },
+            },
+            {
+              path: 'B',
+              name: 'B',
+              component: () => import("@/views/base/keepAlive/b.vue"),
+              meta: {
+                keepAlive: true
+              },
+            },
+            {
+              path: 'C',
+              name: 'C',
+              component: () => import("@/views/base/keepAlive/c.vue"),
+              meta: {
+                keepAlive: true
+              },
+            }
+          ]
         },
         {
           path: "/eleUi/reForm",

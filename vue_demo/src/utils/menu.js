@@ -19,6 +19,7 @@ export default {
       label: "Table",
       parent: "0001",
       url: "/table",
+      name: 'suTable'
     },
     {
       code: "0001-02",
@@ -36,7 +37,7 @@ export default {
     {
       code: "0002",
       icon: "ios-add-circle",
-      label: "预处理器/css框架",
+      label: "预处理器/css",
       parent: "",
       url: "/",
     },
@@ -186,6 +187,13 @@ export default {
       label: "路由白名单",
       parent: "0006",
       url: "/base/whiteRouter",
+    },
+    {
+      code: "0006-07",
+      icon: "ios-add-circle",
+      label: "keep-alive",
+      parent: "0006",
+      url: "/base/keepAlive",
     },
     {
       code: "0007",

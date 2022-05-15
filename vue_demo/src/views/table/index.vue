@@ -9,7 +9,6 @@
         <Button type="primary" @click="batch">批量操作</Button>
       </template>
       <Table
-        class="table"
         border
         stripe
         :columns="columns"
@@ -89,6 +88,7 @@ const columns = [
   },
 ];
 export default {
+  name: "suTable",
   data() {
     return {
       columns,
@@ -135,7 +135,11 @@ export default {
     },
   },
   created() {
+    console.log("--------created");
     this.getList();
+  },
+  activated() {
+    console.log("--------activated");
   },
   destroyed() {
     // clearInterval(this.myInterval);
@@ -236,6 +240,40 @@ export default {
       }
       console.log(this.checkedList);
     },
+  },
+  beforeRouteLeave(to, from, next) {
+    // 拿到keep-alive的cache
+    // 此处我是因为多嵌套了一层 router-view
+    // 所以要向上取2层才能访问到keep-alive组件
+    const cache = this.$vnode.parent.componentInstance.cache;
+    console.log("--------------------------", cache);
+    // 拿到keep-alive的keys
+    // const keys = this.$vnode.parent.parent.componentInstance.keys;
+    // // 获取keep-alive第一个子组件的key值
+    // // 此处我是因为多嵌套了一层 router-view
+    // // 所以要多向上取一次才是keep-alive的第一层子组件 router-view
+    // const key =
+    //   this.$vnode.parent.key == null
+    //     ? this.$vnode.parent.componentOptions.Ctor.cid +
+    //       (this.$vnode.parent.componentOptions.tag
+    //         ? `::${this.$vnode.parent.componentOptions.tag}`
+    //         : "")
+    //     : this.$vnode.parent.key;
+    // // 我们的业务(判断当前所有打开的标签页是否有当前页面)
+    // const flag = this.$store.state.tagsView.visitedViews.find(
+    //   (tag) => tag.name === "examManagement"
+    // );
+    // if (!flag) {
+    //   if (keys.length) {
+    //     let index = keys.indexOf(key);
+    //     // 删除存在keep-alive keys列表内的组件key
+    //     if (index > -1) keys.splice(index, 1);
+    //   }
+    //   // 删除当前组件的缓存
+    //   delete cache[key];
+    //   this.$destroy(); // 缓存删除了，顺便也让当前组件销毁
+    // }
+    next();
   },
 };
 </script>

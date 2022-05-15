@@ -160,9 +160,26 @@
             <Button @click="goback">返回</Button>
           </div>
           <div>
-            <keep-alive :include="catch_components">
+            <!-- 方法一：利用页面的name -->
+            <!-- <keep-alive :include="catch_components" :max="10">
               <router-view></router-view>
+            </keep-alive> -->
+            <!-- 方法二： -->
+            <!-- <keep-alive :max="10">
+              <router-view v-if="$route.meta.keepAlive"></router-view>
             </keep-alive>
+            <router-view v-if="!$route.meta.keepAlive"></router-view> -->
+            <!-- 方法三 -->
+            <keep-alive :max="10">
+              <router-view
+                :key="$route.path"
+                v-if="catch_components.includes(this.$route.path)"
+              ></router-view>
+            </keep-alive>
+            <router-view
+              :key="$route.path"
+              v-if="!catch_components.includes(this.$route.path)"
+            ></router-view>
           </div>
         </Content>
       </Layout>
@@ -215,6 +232,13 @@ export default {
       this.ishomepage = this.$route.name === "index" ? true : false;
       // 路由跳转页面回到0
       this.$refs.Content.$el.scrollTo(0, 0);
+
+      // console.log("当前路由", this.$route.path);
+      // console.log("当前缓存路径", this.$store.state.catch_components);
+      // console.log(
+      //   "是否被缓存",
+      //   this.$store.state.catch_components.includes(this.$route.path)
+      // );
     },
     openNames() {
       this.$nextTick(() => {
@@ -227,7 +251,10 @@ export default {
       });
     },
   },
-  mounted() {},
+  mounted() {
+    // console.log(this.$router.options.routes);
+    // console.log(this.$vnode);
+  },
   created() {
     this.getPermission();
     var mm = [
@@ -286,6 +313,7 @@ export default {
         menuMap[menu.parent].children.push({
           title: menu.label,
           path: menu.url,
+          name: menu.name,
         });
       }
     });
@@ -332,6 +360,10 @@ export default {
       this.$store.dispatch("SET_PERMISSION", perms);
     },
     handleClose(tab, index) {
+      // console.log(this.$vnode);
+      // .parent.componentInstance.cache
+      const cache = this;
+      console.log(cache);
       var oldOpenNames = this.$store.state.openNames,
         oldActiveName = this.$store.state.activeName,
         oldActivePath = this.$store.state.activePath,
@@ -467,6 +499,10 @@ export default {
     },
     submit() {},
     cancel() {},
+  },
+  beforeRouteEnter(to, from, next) {
+    console.log(to, from, next);
+    next();
   },
 };
 </script>
