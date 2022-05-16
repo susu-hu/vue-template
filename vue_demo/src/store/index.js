@@ -12,16 +12,20 @@ export default new Vuex.Store({
         openNames: [],
         activeName: "",
         tranx: "-0",
-        tabList: [
-            { path: '/index', label: '首页', name: '首页' }
-        ]
+        tabList: [{
+            path: '/index',
+            label: '首页',
+            name: '首页'
+        }],
+        closeFlag: false, //是否点击关闭，true表示当前点击
+        currPath: '', //关闭路径
     },
     //状态计算
     getters: {
 
     },
     mutations: {
-        SET_PERMISSION(state, permission) {//permission 为传入的权限标识集合
+        SET_PERMISSION(state, permission) { //permission 为传入的权限标识集合
             // 传入的权限集合 赋值给状态中的 permission
             state.permission = permission;
         },
@@ -32,9 +36,11 @@ export default new Vuex.Store({
             state.openNames = []
             state.activeName = ""
             state.tranx = "-0"
-            state.tabList = [
-                { path: '/homepage', label: '首页', name: 'home' }
-            ]
+            state.tabList = [{
+                path: '/homepage',
+                label: '首页',
+                name: 'home'
+            }]
         },
         // 跳转页面执行
         selectMenu(state, submenu) {
@@ -94,9 +100,17 @@ export default new Vuex.Store({
             state.activePath = val.path
             state.activeName = val.subName + "-" + val.index
             state.openNames = [val.subName]
-        }
+        },
+        //判断当前是点开或者关闭按钮
+        setCloseTag(state, val) {
+            state.closeFlag = val
+        },
+        //获取当前关闭的路径
+        setCurrPath(state, val) {
+            state.currPath = val
+        },
     },
-    actions: {// 官方不推荐直接修改mutation， 可使用actions来提交 mutation
+    actions: { // 官方不推荐直接修改mutation， 可使用actions来提交 mutation
 
         SET_PERMISSION(context, permission) {
             // 提交到 mutation 中的 SET_PERMISSION 函数

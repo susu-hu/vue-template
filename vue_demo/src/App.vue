@@ -20,7 +20,6 @@ export default {
     console.log("版本号", this.getBrowserNameVersion());
     console.log("cc", this.getPageCharset());
     console.log("1", document.characterSet);
-    console.log("2", document.charset);
     console.log(process.env);
     if (sessionStorage.getItem("store")) {
       this.$store.replaceState(

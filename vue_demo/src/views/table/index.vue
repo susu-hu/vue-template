@@ -99,7 +99,6 @@ export default {
       tbList: [],
       total: 0,
       checkedList: [],
-      myInterval: "",
     };
   },
   filters: {
@@ -141,9 +140,7 @@ export default {
   activated() {
     console.log("--------activated");
   },
-  destroyed() {
-    // clearInterval(this.myInterval);
-  },
+  destroyed() {},
   methods: {
     async getList() {
       // this.$Spin.show();
@@ -242,11 +239,24 @@ export default {
     },
   },
   beforeRouteLeave(to, from, next) {
-    // 拿到keep-alive的cache
-    // 此处我是因为多嵌套了一层 router-view
-    // 所以要向上取2层才能访问到keep-alive组件
-    const cache = this.$vnode.parent.componentInstance.cache;
-    console.log("--------------------------", cache);
+    // let flag = this.$store.state.closeFlag,
+    //   currPath = this.$store.state.currPath;
+    // console.log("是否点击关闭", flag);
+    // if (flag) {
+    //   // 拿到keep-alive的cache
+    //   let cache = this.$vnode.parent.componentInstance.cache; //缓存的组件
+    //   let keys = this.$vnode.parent.componentInstance.keys; // 缓存的组件名
+    //   console.log("cache-------------------------", cache);
+    //   console.log("keys--------------------------", keys);
+    //   console.log(currPath);
+    //   if (cache[currPath] != null) {
+    //     delete cache[currPath];
+    //     keys.splice(keys.indexOf(currPath), 1);
+    //   }
+    // }
+
+    // ---------------------------------------------------------------------------------------------------------------
+
     // 拿到keep-alive的keys
     // const keys = this.$vnode.parent.parent.componentInstance.keys;
     // // 获取keep-alive第一个子组件的key值

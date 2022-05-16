@@ -222,7 +222,31 @@ export default {
       openNames: (state) => state.openNames,
       activeName: (state) => state.activeName,
       tranx: (state) => state.tranx,
+      closeFlag: (state) => state.closeFlag,
     }),
+
+    cache: {
+      get() {
+        if (!this.$route.matched[1]) return;
+        const instances = this.$route.matched[1].instances;
+        return instances.default.$vnode.parent.componentInstance.cache;
+      },
+      set(val) {
+        this.$route.matched[1].instances.default.$vnode.parent.componentInstance.cache =
+          val;
+      },
+    },
+    cache_key: {
+      get() {
+        if (!this.$route.matched[1]) return;
+        const instances = this.$route.matched[1].instances;
+        return instances.default.$vnode.parent.componentInstance.keys;
+      },
+      set(val) {
+        this.$route.matched[1].instances.default.$vnode.parent.componentInstance.keys =
+          val;
+      },
+    },
   },
   watch: {
     $route() {
@@ -239,6 +263,8 @@ export default {
       //   "是否被缓存",
       //   this.$store.state.catch_components.includes(this.$route.path)
       // );
+
+      console.log("flag", this.$store.state.closeFlag);
     },
     openNames() {
       this.$nextTick(() => {
@@ -360,10 +386,17 @@ export default {
       this.$store.dispatch("SET_PERMISSION", perms);
     },
     handleClose(tab, index) {
-      // console.log(this.$vnode);
-      // .parent.componentInstance.cache
-      const cache = this;
-      console.log(cache);
+      console.log("缓存-------------------------------", this.cache);
+      console.log("keys---------------------------------", this.cache_key);
+      let cache = this.cache,
+        keys = this.cache_key;
+      if (cache[tab.path] != null) {
+        delete cache[tab.path];
+        keys.splice(keys.indexOf(tab.path), 1);
+      }
+
+      this.$store.commit("setCloseTag", true);
+      this.$store.commit("setCurrPath", tab.path);
       var oldOpenNames = this.$store.state.openNames,
         oldActiveName = this.$store.state.activeName,
         oldActivePath = this.$store.state.activePath,
@@ -416,6 +449,7 @@ export default {
       }
     },
     changeMenu(item) {
+      this.$store.commit("setCloseTag", false);
       var oldActivePath = this.$store.state.activePath;
       if (oldActivePath === item.path) {
         return;
@@ -427,6 +461,7 @@ export default {
       });
     },
     selectMenu(item, i, subName) {
+      this.$store.commit("setCloseTag", false);
       // 加入keepalive缓存
       this.$store.commit("addKeepAliveCache", item.path);
       var submenu = {

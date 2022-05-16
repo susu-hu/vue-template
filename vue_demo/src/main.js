@@ -16,7 +16,9 @@ Vue.prototype.$echarts = echarts;
 import api from "@/request/api.js"; // 导入api接口
 import tools from "@/utils/tools.js";
 import menus from "./utils/menu";
-import { hasPermission } from "@/permission/index.js";
+import {
+  hasPermission
+} from "@/permission/index.js";
 
 import Loading from "@/components/loading";
 Vue.use(Loading);
@@ -103,6 +105,40 @@ Vue.prototype.$http = axios; // 临时处理
 
 Vue.prototype.$sessionToken = () => sessionStorage.token;
 Vue.prototype.$bus = new Vue();
+
+// 全局混入
+Vue.mixin({
+  beforeRouteLeave(to, from, next) {
+    // let flag = this.$store.state.closeFlag,
+    //   currPath = this.$store.state.currPath;
+    // console.log("是否点击关闭", flag);
+    // if (flag) {
+    //   // 拿到keep-alive的cache
+    //   let cache = this.$vnode.parent.componentInstance.cache; //缓存的组件
+    //   let keys = this.$vnode.parent.componentInstance.keys; // 缓存的组件名
+    //   console.log("cache-------------------------", cache);
+    //   console.log("keys--------------------------", keys);
+    //   console.log(currPath);
+    //   if (cache[currPath] != null) {
+    //     delete cache[currPath];
+    //     keys.splice(keys.indexOf(currPath), 1);
+    //     console.log('this-----------', this.$destroy)
+    //     this.$destroy();
+
+    //   }
+    // }
+    next()
+  },
+  beforeRouteEnter(to, from, next) {
+    // 在渲染该组件的对应路由被 confirm 前调用
+    // 不！能！获取组件实例 `this`
+    // 因为当守卫执行前，组件实例还没被创建
+    // 可以通过传一个回调给 next来访问组件实例
+    // eslint-disable-next-line no-unused-vars
+    next((vm) => {})
+  },
+
+})
 
 new Vue({
   router,
