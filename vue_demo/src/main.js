@@ -8,9 +8,9 @@ import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
 
 import iView from "iview";
-// import "iview/dist/styles/iview.css";
-import './iview/theme.less'; //--定制主题
-import './index.scss';
+import "iview/dist/styles/iview.css";
+// import './iview/theme.less'; //--定制主题
+import './index.scss';// 台湾css
 
 
 import * as echarts from "echarts";
@@ -134,7 +134,7 @@ Vue.mixin({
     // 因为当守卫执行前，组件实例还没被创建
     // 可以通过传一个回调给 next来访问组件实例
     // eslint-disable-next-line no-unused-vars
-    next((vm) => {})
+    next((vm) => { })
   },
 
 })

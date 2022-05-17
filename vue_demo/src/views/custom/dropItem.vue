@@ -10,7 +10,7 @@
     <div>
       <div class="flex-row">
         <div
-          class="hd_sel flex-row j_b"
+          class="flex-row hd_sel j_b"
           @click="show_month = !show_month"
           ref="s1"
         >

@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-17 18:14:03
+ * @LastEditTime: 2022-05-17 21:03:29
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
@@ -88,7 +88,6 @@ module.exports = {
     },
     css: {
         loaderOptions: {
-
             postcss: {
                 plugins: [require('tailwindcss'), require('autoprefixer')],
             },
@@ -98,11 +97,10 @@ module.exports = {
                     javascriptEnabled: true,
                 },
             },
-            // less 5.0以上
+            // less-loader5.0以上
             // less: {
             //     javascriptEnabled: true,
             // },
-
         },
     },
 
