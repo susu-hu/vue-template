@@ -16,10 +16,6 @@
           type="ios-monitor-outline"
           style="font-size: 32px; color: #c5c5c5"
         ></Icon>
-        <img
-          src="/static/images/pc_addfile_icn_n.png"
-          style="margin-bottom: 6px"
-        />
         <p style="color: #999">从本地添加</p>
       </div>
     </Upload>
@@ -74,7 +70,7 @@
               <img style="width: 103px; height: 74px" :src="SuccessImgUrl" />
             </div>
             <span class="upload-span">{{ UploadMessage }}</span>
-            <!-- <span class="upload-span">{{ FilesNum }} 个文件上传成功 </span> -->
+            <span class="upload-span">{{ FilesNum }} 个文件上传成功 </span>
           </div>
           <!-- 上传失败 -->
           <div v-else-if="UploadState == 'on-error'" style="height: 30px">
@@ -112,7 +108,7 @@
       <div slot="footer">
         <div v-if="UploadState == 'before-upload'">
           <Checkbox class="center-checkbox" v-model="SynchronousCloud"
-            >同步至云平台“个人中心资源”</Checkbox
+            >同步</Checkbox
           >
           <Button
             type="ghost"
@@ -162,18 +158,15 @@
  
 <script type="text/ecmascript-6">
 import { Icon, Upload, Modal, Checkbox, Button, Progress } from "iView";
-import { PostUploadFile } from "../../services/lesson/upload";
 import { Random } from "../../services/utils/utils";
-
 export default {
   name: "PrepareUpload",
   props: ["SetUploadParams", "UploadStyle"],
   data() {
     return {
-      orgID: this.$route.params.orgID, //机构ID
-      ModalTitle: "本地文件上传", //弹框title
-      UploadModal: false, //导入弹框modal
-      SynchronousCloud: true, //同步云勾选状态
+      ModalTitle: "本地文件上传",
+      UploadModal: false,
+      SynchronousCloud: true,
       ImgUrl: "",
       SuccessImgUrl: "/static/images/success_upload.png",
       ErrorImgUrl: "/static/images/error_icn.png",
@@ -287,7 +280,6 @@ export default {
       return false; //阻断自动上传
     },
     Upload() {
-      var vm_this = this;
       this.loadingStatus = true;
       this.UploadState = "on-progress";
       var num = 0;
@@ -300,27 +292,6 @@ export default {
       for (let index = 1; index < num + 1; index++) {
         this.PercentNum = index;
       }
-
-      PostUploadFile(this.orgID, this.UploadParams)
-        // eslint-disable-next-line no-unused-vars
-        .then(function (data) {
-          // vm_this.$emit("RefreshClassPracList");
-          vm_this.$emit("RefreshLessonFileList");
-          //成功后执行内容
-          vm_this.FilesNum = vm_this.FilesID.push(Random(100));
-          for (let index = num + 1; index < 101; index++) {
-            vm_this.PercentNum = index;
-          }
-          vm_this.File = [];
-          vm_this.loadingStatus = false;
-          vm_this.UploadState = "on-success";
-        })
-        .catch(function (error) {
-          vm_this.File = [];
-          vm_this.loadingStatus = false;
-          vm_this.UploadState = "on-error";
-          console.log(error);
-        });
     },
     AgainUpload() {
       //   this.UploadModal = false;
@@ -338,9 +309,6 @@ export default {
       } else if (this.VerifyType == "type") {
         return "本地上传文件错误";
       }
-    },
-    UploadUrl() {
-      return "/" + this.orgID + "/lessonfile/UploadFile";
     },
   },
 };

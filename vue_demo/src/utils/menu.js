@@ -1,6 +1,5 @@
 export default {
-  menuTree: [
-    {
+  menuTree: [{
       code: "0006",
       icon: "ios-add-circle",
       label: "Vue基础",
@@ -32,6 +31,12 @@ export default {
       label: "日期选择器",
       parent: "0001",
       url: "/table/datepicker",
+    },
+    {
+      code: "0001-04",
+      label: "文件上传",
+      parent: "0001",
+      url: "/table/uploadFile",
     },
 
     {
@@ -241,7 +246,7 @@ export default {
     {
       code: "0009",
       icon: "ios-add-circle",
-      label: "Vue插件",
+      label: "Vue插件/插件",
       parent: "",
       url: "/",
     },
@@ -262,11 +267,10 @@ export default {
     {
       code: "0009-04",
       icon: "ios-add-circle",
-      label: "文件预览",
+      label: "文件预览Vue-pdf",
       parent: "0009",
       url: "/plug/reviewer",
     },
-
     {
       code: "0009-02",
       icon: "ios-add-circle",

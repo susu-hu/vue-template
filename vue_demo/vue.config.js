@@ -2,14 +2,14 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-12 21:42:22
+ * @LastEditTime: 2022-05-17 18:14:03
  * @FilePath: \vue_demo\vue.config.js
- * @Description: 这是默认设置,请设置`customMade`, 打开koroFileHeader查看配置 进行设置: https://github.com/OBKoro1/koro1FileHeader/wiki/%E9%85%8D%E7%BD%AE
+ * @Description: vue.config.js
  */
 var webpack = require('webpack');
-const path = require('path');        //引入path模块
+const path = require('path'); //引入path模块
 function resolve(dir) {
-    return path.join(__dirname, dir)  //path.join(__dirname)设置绝对路径
+    return path.join(__dirname, dir) //path.join(__dirname)设置绝对路径
 }
 
 module.exports = {
@@ -28,28 +28,28 @@ module.exports = {
         proxy: {
             '/susutest': { // 匹配所有以 '/api'开头的请求路径
                 target: 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/', // 代理目标的基础路径
-                secure: false,// 如果是https接口的话，需要配置这个参数
+                secure: false, // 如果是https接口的话，需要配置这个参数
                 changeOrigin: true, // 支持跨域
                 ws: true, // 是否代理websockets
-                pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
+                pathRewrite: { // 重写路径: 去掉路径中开头的'/api'
                     // '^/api': '',// 替换成target中的地址
                 }
             },
             '/api': {
                 target: 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest', // 代理目标的基础路径
-                secure: false,// 如果是https接口的话，需要配置这个参数
+                secure: false, // 如果是https接口的话，需要配置这个参数
                 changeOrigin: true, // 支持跨域
                 ws: true, // 是否代理websockets
-                pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
-                    '^/api': '',// 替换成target中的地址
+                pathRewrite: { // 重写路径: 去掉路径中开头的'/api'
+                    '^/api': '', // 替换成target中的地址
                 }
             },
             '/dev': {
                 target: 'https://elnbkt-dev-outer.oss-cn-shanghai.aliyuncs.com/', // 代理目标的基础路径
-                secure: false,// 如果是https接口的话，需要配置这个参数
+                secure: false, // 如果是https接口的话，需要配置这个参数
                 changeOrigin: true, // 支持跨域
                 ws: true, // 是否代理websockets
-                pathRewrite: {// 重写路径: 去掉路径中开头的'/api'
+                pathRewrite: { // 重写路径: 去掉路径中开头的'/api'
                     // '^/api': '',// 替换成target中的地址
                 }
             },
@@ -81,18 +81,31 @@ module.exports = {
     configureWebpack: {
         plugins: [
             new webpack.ProvidePlugin({
-                'window.Quill': 'quill/dist/quill.js',//注意路径，可能与你们路径不一致
+                'window.Quill': 'quill/dist/quill.js', //注意路径，可能与你们路径不一致
                 'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
             }),
         ]
     },
     css: {
         loaderOptions: {
+
             postcss: {
-                plugins: [require('tailwindcss'), require('autoprefixer')]
-            }
-        }
-    }
+                plugins: [require('tailwindcss'), require('autoprefixer')],
+            },
+            // less - loader版本大于6 .0 以上
+            less: {
+                lessOptions: {
+                    javascriptEnabled: true,
+                },
+            },
+            // less 5.0以上
+            // less: {
+            //     javascriptEnabled: true,
+            // },
+
+        },
+    },
+
 
 
 }

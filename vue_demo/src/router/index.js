@@ -4,14 +4,10 @@ import layout from "@/views/layout.vue";
 import page404 from "@/views/404.vue";
 //首页
 import index from "@/views/index/home.vue";
-// sass
 import sassColor from "@/views/sass/color.vue";
-// 自定义下拉组件
 import dropItem from "@/views/custom/dropItem.vue";
-// 文件导出
 import exportFile from "@/views/layout/export.vue";
 import table from "@/views/table/index.vue";
-//layout路由懒加载
 const layIndex = (r) =>
   require.ensure(
     [],
@@ -87,7 +83,7 @@ const originPush = Router.prototype.push;
 const originReplace = Router.prototype.replace;
 Router.prototype.push = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
-    return originPush.call(this, location, onComplete, onAbort).catch(() => { });
+    return originPush.call(this, location, onComplete, onAbort).catch(() => {});
   } else {
     originPush.call(this, location, onComplete, onAbort);
   }
@@ -96,7 +92,7 @@ Router.prototype.replace = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
     return originReplace
       .call(this, location, onComplete, onAbort)
-      .catch(() => { });
+      .catch(() => {});
   } else {
     originReplace.call(this, location, onComplete, onAbort);
   }
@@ -107,27 +103,26 @@ const router = new Router({
     if (savedPosition) {
       return savedPosition;
     } else {
-      return { x: 0, y: 0 };
+      return {
+        x: 0,
+        y: 0
+      };
     }
   },
-  routes: [
-    {
+  routes: [{
       path: "/",
       name: "layout",
       component: layout,
       redirect: "/index", // 重定位后页面加载的页面
-      children: [
-        {
+      children: [{
           path: "/index",
           name: "index",
           component: index,
           meta: {
-            menu: [
-              {
-                path: "/",
-                name: "欢迎来到苏苏的vue之旅",
-              },
-            ],
+            menu: [{
+              path: "/",
+              name: "欢迎来到苏苏的vue之旅",
+            }, ],
           },
         },
         {
@@ -135,12 +130,10 @@ const router = new Router({
           name: "sassColor",
           component: sassColor,
           meta: {
-            menu: [
-              {
-                path: "/",
-                name: "颜色函数",
-              },
-            ],
+            menu: [{
+              path: "/",
+              name: "颜色函数",
+            }, ],
           },
         },
         {
@@ -197,6 +190,12 @@ const router = new Router({
           component: () => import("@/views/table/datepicker.vue"),
         },
         {
+          path: "/table/uploadFile",
+          name: "uploadFile",
+          component: () => import("@/views/table/uploadFile.vue"),
+
+        },
+        {
           path: "/base/childAp",
           name: "childAp",
           component: childAp,
@@ -231,8 +230,7 @@ const router = new Router({
           name: "keepAlive",
           component: () => import("@/views/base/keepAlive/keepAlive.vue"),
           redirect: '/base/keepAlive/A',
-          children: [
-            {
+          children: [{
               path: 'A',
               name: 'A',
               component: () => import("@/views/base/keepAlive/a.vue"),
@@ -389,7 +387,7 @@ const router = new Router({
 });
 //白名单
 // eslint-disable-next-line
-const whiteRouter = ['/login'];   //indexOf方法，判断数组中是否存在指定的某个对象，如果不存在，则返回-1
+const whiteRouter = ['/login']; //indexOf方法，判断数组中是否存在指定的某个对象，如果不存在，则返回-1
 router.beforeEach((to, from, next) => {
   // if (to.path === "/login") return next();
   // //获取token
@@ -419,20 +417,20 @@ router.beforeEach((to, from, next) => {
 
   // 路由白名单
   /**
-    * next():执行了to里面的路由对象,进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed (确认的)。
-    *
-    *     1.不带参数:指向(进入)to钩子--进入下一个页面，但是不会触发beforeEach
-    *     2.带参数next('/')或者next({path:'/'}):进入指定页面,发生路由变化，有变化就会触发beforeEach ---  问题:容易造成死循环--比如next('/index'),当执行到这里的时候，触发beforeEach,又遇到里面的next('/index')，又触发next('/index')......
-    *     
-    *     如果要进入下一个页面，直接next()--进入to钩子，调用to里面的路径，往下一个页面跑
-    * 
-    *      console.log(to)  // 进入的页面(下一个页面)
-    *      console.log(from) // 离开之前的页面(上一个页面)
-    *      console.log(next) // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。确保要调用 next 方法，否则钩子就不会被 resolved。
-    *      
-    *      to.path:进入的下一个页面的路径
-    *     
-    */
+   * next():执行了to里面的路由对象,进行管道中的下一个钩子。如果全部钩子执行完了，则导航的状态就是 confirmed (确认的)。
+   *
+   *     1.不带参数:指向(进入)to钩子--进入下一个页面，但是不会触发beforeEach
+   *     2.带参数next('/')或者next({path:'/'}):进入指定页面,发生路由变化，有变化就会触发beforeEach ---  问题:容易造成死循环--比如next('/index'),当执行到这里的时候，触发beforeEach,又遇到里面的next('/index')，又触发next('/index')......
+   *     
+   *     如果要进入下一个页面，直接next()--进入to钩子，调用to里面的路径，往下一个页面跑
+   * 
+   *      console.log(to)  // 进入的页面(下一个页面)
+   *      console.log(from) // 离开之前的页面(上一个页面)
+   *      console.log(next) // next: Function: 一定要调用该方法来 resolve 这个钩子。执行效果依赖 next 方法的调用参数。确保要调用 next 方法，否则钩子就不会被 resolved。
+   *      
+   *      to.path:进入的下一个页面的路径
+   *     
+   */
 
   //token令牌--处理权限
 

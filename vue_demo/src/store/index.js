@@ -17,8 +17,8 @@ export default new Vuex.Store({
             label: '首页',
             name: '首页'
         }],
-        closeFlag: false, //是否点击关闭，true表示当前点击
-        currPath: '', //关闭路径
+        // closeFlag: false, //是否点击关闭，true表示当前点击
+        // currPath: '', //关闭路径
     },
     //状态计算
     getters: {
@@ -101,14 +101,14 @@ export default new Vuex.Store({
             state.activeName = val.subName + "-" + val.index
             state.openNames = [val.subName]
         },
-        //判断当前是点开或者关闭按钮
-        setCloseTag(state, val) {
-            state.closeFlag = val
-        },
-        //获取当前关闭的路径
-        setCurrPath(state, val) {
-            state.currPath = val
-        },
+        // //判断当前是点开或者关闭按钮
+        // setCloseTag(state, val) {
+        //     state.closeFlag = val
+        // },
+        // //获取当前关闭的路径
+        // setCurrPath(state, val) {
+        //     state.currPath = val
+        // },
     },
     actions: { // 官方不推荐直接修改mutation， 可使用actions来提交 mutation
 

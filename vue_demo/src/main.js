@@ -3,17 +3,20 @@ import App from "./App.vue";
 import store from "./store/index";
 import router from "./router";
 import axios from "axios";
+
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
+
 import iView from "iview";
-import "iview/dist/styles/iview.css";
+// import "iview/dist/styles/iview.css";
+import './iview/theme.less'; //--定制主题
 import './index.scss';
 
 
 import * as echarts from "echarts";
 Vue.prototype.$echarts = echarts;
 
-import api from "@/request/api.js"; // 导入api接口
+import api from "@/request/api.js";
 import tools from "@/utils/tools.js";
 import menus from "./utils/menu";
 import {
@@ -29,8 +32,8 @@ Vue.prototype.$my_message = Message.install;
 import load from "@/components/load";
 Vue.use(load);
 
-import loading from "@/components/load2/index.js"; // 引入loading
-Vue.use(loading); // 全局使用loading
+import loading from "@/components/load2/index.js";
+Vue.use(loading);
 
 import loading001 from "@/components/loading001/index.js";
 Vue.use(loading001);
@@ -94,9 +97,6 @@ Vue.directive("access", {
 import Components from './components'
 Vue.use(Components)
 
-// import Page from '@/views/custom/components/page.vue'
-// Vue.component('Pager',Page)
-
 Vue.prototype.hasPermission = hasPermission; // 通用方法
 Vue.prototype.$api = api; // 接口
 Vue.prototype.tools = tools; // 通用方法
@@ -111,7 +111,6 @@ Vue.mixin({
   beforeRouteLeave(to, from, next) {
     // let flag = this.$store.state.closeFlag,
     //   currPath = this.$store.state.currPath;
-    // console.log("是否点击关闭", flag);
     // if (flag) {
     //   // 拿到keep-alive的cache
     //   let cache = this.$vnode.parent.componentInstance.cache; //缓存的组件
