@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-17 09:47:29
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-17 17:14:22
+ * @LastEditTime: 2022-05-18 08:59:55
  * @FilePath: \vue_demo\src\views\table\uploadFile.vue
  * @Description: 文件上传
 -->
@@ -51,7 +51,7 @@
         </div>
       </div>
     </Card>
-    <div id="demo" style="height: 1000px"></div>
+    <!-- <div id="demo" style="height: 1000px"></div> -->
   </div>
 </template>
 

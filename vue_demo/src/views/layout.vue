@@ -275,8 +275,7 @@ export default {
     },
   },
   mounted() {
-    // console.log(this.$router.options.routes);
-    // console.log(this.$vnode);
+    // console.log(this.$router.options.routes);//所有路由信息
   },
   created() {
     this.getPermission();
@@ -531,10 +530,10 @@ export default {
     submit() {},
     cancel() {},
   },
-  beforeRouteEnter(to, from, next) {
-    console.log(to, from, next);
-    next();
-  },
+  // beforeRouteEnter(to, from, next) {
+  //   console.log(to, from, next);
+  //   next();
+  // },
 };
 </script>
 <style lang="less" >
