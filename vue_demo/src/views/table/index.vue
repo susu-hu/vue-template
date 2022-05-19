@@ -24,6 +24,9 @@
         <template slot-scope="{ row }" slot="iconCover">
           <Avatar shape="square" size="large" :src="row.icon_cover" />
         </template>
+        <template slot-scope="{ row }" slot="action">
+          <a href="javascript:;" @click="del(row)"> 删除</a>
+        </template>
       </Table>
       <div>
         <Pager
@@ -84,6 +87,11 @@ const columns = [
   {
     title: "头像",
     slot: "iconCover",
+    align: "center",
+  },
+  {
+    title: "操作",
+    slot: "action",
     align: "center",
   },
 ];
@@ -236,6 +244,15 @@ export default {
         return this.$Message.error("尚未选择呢");
       }
       console.log(this.checkedList);
+    },
+    del(e) {
+      this.$Modal.confirm({
+        title: "提示",
+        content: `确认删除${e.name}`,
+        okText: "确定",
+        cancelText: "取消",
+        onOk: async () => {},
+      });
     },
   },
 };
