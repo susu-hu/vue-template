@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-15 20:51:18
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-15 23:55:47
+ * @LastEditTime: 2022-05-20 23:33:49
  * @FilePath: \vue_demo\src\views\base\keepAlive.vue
  * @Description: keep-alive
 -->
@@ -10,7 +10,7 @@
   <div class="contentBox">
     <div class="flex-row j_b hd_tab">
       <div
-        @click="tabNav(index, item, $route.path, this)"
+        @click="tabNav(index, item, $route.path)"
         v-for="(item, index) in tab"
         :key="index"
         :class="['hd_tab_item', curr == index ? 'hd_tab_item_active' : '']"
@@ -18,14 +18,17 @@
         {{ item.name }}
       </div>
     </div>
-    <keep-alive :max="10" :include="aliveList">
-      <router-view class="rv" />
+    <!-- :include="aliveList"  三级路由无法缓存问题2022-5-20待解决-->
+    <keep-alive :max="10">
+      <router-view class="rv" v-if="$route.meta.keepAlive" />
     </keep-alive>
+    <router-view class="rv" v-if="!$route.meta.keepAlive" />
   </div>
 </template>
 
 <script>
 export default {
+  name: "keepAliveIndex",
   data() {
     return {
       tab: [
@@ -43,13 +46,13 @@ export default {
         },
       ],
       curr: 0,
-      aliveList: ["A", "B"],
+      aliveList: ["A", "B", "C"],
     };
   },
   mounted() {
-    console.log(this.$router);
-    console.log(this.$route);
-    console.log(this.$route.path);
+    // console.log(this.$router);
+    // console.log(this.$route);
+    // console.log(this.$route.path);
     switch (this.$route.path) {
       case "/base/keepAlive/C":
         this.curr = 2;
@@ -66,14 +69,12 @@ export default {
     }
   },
   methods: {
-    tabNav(e, item, path, me) {
+    tabNav(e, item, path) {
       this.curr = e;
-      this.$router.push({
-        path: item.url,
-      });
-
+      // this.$router.push({
+      //   path: item.url,
+      // });
       console.log("path-------------------", path);
-      console.log("me-----------------", me);
     },
   },
 };

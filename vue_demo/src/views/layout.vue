@@ -226,8 +226,10 @@ export default {
 
     cache: {
       get() {
+        console.log(this.$route.matched);
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
+        console.log(instances);
         return instances.default.$vnode.parent.componentInstance.cache;
       },
       set(val) {
