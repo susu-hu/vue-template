@@ -2,12 +2,19 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-20 23:36:26
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-20 23:47:26
+ * @LastEditTime: 2022-05-21 00:05:03
  * @FilePath: \vue_demo\src\views\plug\xsheet.vue
  * @Description: xsheet
 -->
 <template>
-  <div id="demo"></div>
+  <div>
+    <Button type="primary" @click="review">预览</Button>
+    <div
+      class="mt20"
+      id="demo"
+      style="height: 1000px; border: 1px solid red"
+    ></div>
+  </div>
 </template>
 
 <script>
@@ -115,21 +122,23 @@ export default {
   data() {
     return {};
   },
-  mounted() {
-    // eslint-disable-next-line no-undef
-    new XSheet("#demo", {
-      workConfig: {
-        body: {
-          sheets: [
-            {
-              tableConfig: tabledata,
-            },
-          ],
+  mounted() {},
+  methods: {
+    review() {
+      // eslint-disable-next-line no-undef
+      new XSheet("#demo", {
+        workConfig: {
+          body: {
+            sheets: [
+              {
+                tableConfig: tabledata,
+              },
+            ],
+          },
         },
-      },
-    });
+      });
+    },
   },
-  methods: {},
 };
 </script>
 

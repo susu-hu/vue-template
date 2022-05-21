@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-20 23:41:48
+ * @LastEditTime: 2022-05-21 00:26:18
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
@@ -78,15 +78,17 @@ module.exports = {
         },
     },
     // 要引入webpack
-    configureWebpack: {
-        plugins: [
-            new webpack.ProvidePlugin({
-                'window.Quill': 'quill/dist/quill.js', //注意路径，可能与你们路径不一致
-                'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
-            }),
-        ],
-        externals: {
-            Xsheet: 'Xsheet'
+    configureWebpack() {
+        return {
+            plugins: [
+                new webpack.ProvidePlugin({
+                    'window.Quill': 'quill/dist/quill.js', //注意路径，可能与你们路径不一致
+                    'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
+                }),
+            ],
+            externals: {
+                Xsheet: 'Xsheet'
+            }
         }
     },
     css: {

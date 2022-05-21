@@ -286,6 +286,13 @@ export default {
     url: "/plug/xsheet",
   },
   {
+    code: "0009-06",
+    icon: "ios-add-circle",
+    label: "excel预览luckysheet",
+    parent: "0009",
+    url: "/plug/luckysheet",
+  },
+  {
     code: "0010",
     icon: "ios-add-circle",
     label: "数据可视化",

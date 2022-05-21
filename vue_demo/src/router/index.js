@@ -302,6 +302,12 @@ const router = new Router({
       component: () => import("@/views/plug/xsheet.vue"),
     },
     {
+      path: "/plug/luckysheet",
+      name: "luckysheet",
+      component: () => import("@/views/plug/luckysheet.vue"),
+    },
+
+    {
       path: "/plug/demoDrag",
       name: "demoDrag",
       component: demoDrag,
