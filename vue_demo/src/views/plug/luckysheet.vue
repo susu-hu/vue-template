@@ -3,9 +3,15 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-20 23:36:26
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-21 23:38:26
+ * @LastEditTime: 2022-05-22 01:08:09
  * @FilePath: \vue_demo\src\views\plug\xsheet.vue
  * @Description: luckysheet
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/pluginsCss.css' />
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/plugins.css' />
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/css/luckysheet.css' />
+  <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/assets/iconfont/iconfont.css' />
+  <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/js/plugin.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script> 
 -->
 <template>
   <div>
@@ -195,6 +201,6 @@ export default {
 #luckysheet {
   margin-top: 20px;
   width: 100%;
-  height: calc(100vh - 184px);
+  height: calc(100vh - 220px);
 }
 </style>

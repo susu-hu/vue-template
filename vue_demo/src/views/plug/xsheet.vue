@@ -2,18 +2,14 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-20 23:36:26
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-21 00:05:03
+ * @LastEditTime: 2022-05-22 01:07:19
  * @FilePath: \vue_demo\src\views\plug\xsheet.vue
  * @Description: xsheet
 -->
 <template>
   <div>
     <Button type="primary" @click="review">预览</Button>
-    <div
-      class="mt20"
-      id="demo"
-      style="height: 1000px; border: 1px solid red"
-    ></div>
+    <div id="demo"></div>
   </div>
 </template>
 
@@ -142,5 +138,10 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#demo {
+  margin-top: 20px;
+  width: 100%;
+  height: calc(100vh - 220px);
+}
 </style>

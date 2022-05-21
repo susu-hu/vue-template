@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-21 00:26:18
+ * @LastEditTime: 2022-05-22 00:23:39
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
@@ -13,13 +13,17 @@ function resolve(dir) {
 }
 
 module.exports = {
+    lintOnSave: true,//eslint检查
     runtimeCompiler: true,
     publicPath: '/', //根路径
     outputDir: "dist",
     assetsDir: "assets",
-    lintOnSave: true,
     productionSourceMap: true,
     devServer: {
+        overlay: {
+            warnings: false, //不显示警告
+            errors: false	//不显示错误
+        },
         disableHostCheck: true,
         https: false,
         open: true,
@@ -97,18 +101,17 @@ module.exports = {
                 plugins: [require('tailwindcss'), require('autoprefixer')],
             },
             // less - loader版本大于6 .0 以上
-            less: {
-                lessOptions: {
-                    javascriptEnabled: true,
-                },
-            },
+            // less: {
+            //     lessOptions: {
+            //         javascriptEnabled: true,
+            //     },
+            // },
             // less-loader5.0以上
             // less: {
             //     javascriptEnabled: true,
             // },
         },
     },
-
 
 
 }

@@ -230,7 +230,9 @@ export default {
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
         console.log(instances);
-        return instances.default.$vnode.parent.componentInstance.cache;
+        return instances.default.$vnode
+          ? instances.default.$vnode.parent.componentInstance.cache
+          : {};
       },
       set(val) {
         this.$route.matched[1].instances.default.$vnode.parent.componentInstance.cache =
@@ -241,7 +243,9 @@ export default {
       get() {
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
-        return instances.default.$vnode.parent.componentInstance.keys;
+        return instances.default.$vnode
+          ? instances.default.$vnode.parent.componentInstance.keys
+          : [];
       },
       set(val) {
         this.$route.matched[1].instances.default.$vnode.parent.componentInstance.keys =

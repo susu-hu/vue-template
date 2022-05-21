@@ -2,9 +2,9 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-13 16:08:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-13 16:08:12
+ * @LastEditTime: 2022-05-22 00:06:23
  * @FilePath: \preview_demo\public\Xsheet\index.html
- * @Description: 
+ * @Description: 测试demo页面
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -28,17 +28,119 @@
     <script src="./js/XSheet.js" type="text/javascript"></script>
     <script src="./js/runtime.js" type="text/javascript"></script>
     <script src="./js/vendor.js" type="text/javascript"></script>
-    <script src="./js/aa.js"></script>
 </head>
 
 <body id="demo">
-
 </body>
 <script>
+    const tabledata = {
+        merge: {
+            merges: [],
+        },
+        cols: {
+            len: 3,
+        },
+        rows: {
+            len: 16,
+            data: [
+                {
+                    height: 13.5,
+                    row: 0,
+                },
+                {
+                    height: 13.5,
+                    row: 1,
+                },
+                {
+                    height: 13.5,
+                    row: 2,
+                },
+                {
+                    height: 13.5,
+                    row: 3,
+                },
+                {
+                    height: 13.5,
+                    row: 4,
+                },
+                {
+                    height: 13.5,
+                    row: 5,
+                },
+                {
+                    height: 13.5,
+                    row: 6,
+                },
+                {
+                    height: 13.5,
+                    row: 7,
+                },
+                {
+                    height: 13.5,
+                    row: 8,
+                },
+                {
+                    height: 13.5,
+                    row: 9,
+                },
+                {
+                    height: 13.5,
+                    row: 10,
+                },
+                {
+                    height: 13.5,
+                    row: 11,
+                },
+                {
+                    height: 13.5,
+                    row: 12,
+                },
+                {
+                    height: 13.5,
+                    row: 13,
+                },
+                {
+                    height: 13.5,
+                    row: 14,
+                },
+                {
+                    height: 13.5,
+                    row: 15,
+                },
+                {
+                    height: 13.5,
+                    row: 16,
+                },
+            ],
+        },
+        data: [
+            ["1", "2", "3", ""],
+            ["2", "3", "4", ""],
+            ["3", "4", "5", ""],
+            ["4", "5", "6", ""],
+            ["5", "6", "7", ""],
+            ["6", "7", "8", ""],
+            ["7", "8", "9", ""],
+            ["8", "9", "10", ""],
+            ["9", "10", "11", ""],
+            ["10", "11", "12", ""],
+            ["11", "12", "13", ""],
+            ["12", "13", "14", ""],
+            ["", "14", "15", ""],
+            ["", "", "16", ""],
+            ["", "", "17", ""],
+            ["", "", "18", ""],
+            ["", "", "19", ""],
+        ],
+    };
     const xSheet = new XSheet('#demo', {
         workConfig: {
             body: {
-                sheets: [bb],
+                sheets: [
+                    {
+                        tableConfig: tabledata,
+                    },
+                ],
             },
         },
     });
