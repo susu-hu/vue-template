@@ -16,7 +16,8 @@
 | vue-dplayer| 0.0.10 | 视频播放组件，npm对DPlayer做了封装，vue项目中使用vue-dplayer|
 | tailwindcss| npm:@tailwindcss/postcss7-compat@^2.2.17 | https://tailwindcss.com/ Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, pt-4, text-center 和 rotate-90 这样的的类，它们能直接在脚本标记语言中组合起来，构建出任何设计|
 |vue-pdf| 4.3.0 | vue-pdf 一个基于vue的pdf预览插件 npm install --save vue-pdf|
-
+|Xsheet| 直接引入js文件 | 免费开源的高性能JavaScript电子表格。地址：https://gitee.com/eigi/x-sheet|
+|Luckysheet| 直接引入js文件/cdn | Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源。文档地址：https://mengshukeji.gitee.io/LuckysheetDocs/zh/|
 #### 介绍
 ##### 1.vue基础语法 
 
@@ -83,6 +84,10 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-quill-editor.gif)
 #### 7.4 pdf预览vue-pdf
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-pdf.gif)
+#### 7.5 Xsheet-在线表格预览
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/xsheet.png)
+#### 7.6 Luckysheet-在线表格预览
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/lucksheet.png)
 ## 8.数据可视化
 #### 8.1 data-V
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
