@@ -2,12 +2,12 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-20 23:36:26
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-22 01:07:19
+ * @LastEditTime: 2022-05-22 15:34:37
  * @FilePath: \vue_demo\src\views\plug\xsheet.vue
  * @Description: xsheet
 -->
 <template>
-  <div>
+  <div class="contentBox">
     <Button type="primary" @click="review">预览</Button>
     <div id="demo"></div>
   </div>

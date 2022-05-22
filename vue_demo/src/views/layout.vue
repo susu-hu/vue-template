@@ -230,7 +230,7 @@ export default {
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
         console.log(instances);
-        return instances.default.$vnode
+        return instances && instances.default && instances.default.$vnode
           ? instances.default.$vnode.parent.componentInstance.cache
           : {};
       },
@@ -243,7 +243,7 @@ export default {
       get() {
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
-        return instances.default.$vnode
+        return instances && instances.default && instances.default.$vnode
           ? instances.default.$vnode.parent.componentInstance.keys
           : [];
       },
@@ -261,7 +261,6 @@ export default {
       this.ishomepage = this.$route.name === "index" ? true : false;
       // 路由跳转页面回到0
       this.$refs.Content.$el.scrollTo(0, 0);
-
       // console.log("当前路由", this.$route.path);
       // console.log("当前缓存路径", this.$store.state.catch_components);
       // console.log(
@@ -359,27 +358,17 @@ export default {
       });
     },
     loginOut() {
-      // let that = this;
-      // let data = {
-      //   token: window.sessionStorage.getItem("token"),
-      // };
-      // this.$Modal.confirm({
-      //   title: "提示",
-      //   content: `确认退出登录`,
-      //   okText: "确定",
-      //   cancelText: "取消",
-      //   onOk: async () => {
-      //     that.$api["userExit"](data).then((res) => {
-      //       if (res.code == "200") {
-      //         that.$Message.success("退出成功");
-      //         window.sessionStorage.clear();
-      //         that.$router.replace("/login");
-      //       }
-      //     });
-      //   },
-      // });
+      // let token = window.sessionStorage.getItem("token");
+      this.$Modal.confirm({
+        title: "提示",
+        content: `确认退出登录`,
+        okText: "确定",
+        cancelText: "取消",
+        onOk: async () => {
+          window.sessionStorage.clear();
+        },
+      });
     },
-
     getPermission() {
       // 模拟权限数据集合 有以下几个权限
       let perms = ["search", "view", "edit", "delete", "add"];
@@ -463,7 +452,6 @@ export default {
     },
     selectMenu(item, i, subName) {
       // this.$store.commit("setCloseTag", false);
-      // 加入keepalive缓存
       this.$store.commit("addKeepAliveCache", item.path);
       var submenu = {
         path: item.path,
@@ -536,13 +524,9 @@ export default {
     submit() {},
     cancel() {},
   },
-  // beforeRouteEnter(to, from, next) {
-  //   console.log(to, from, next);
-  //   next();
-  // },
 };
 </script>
-<style lang="less" >
+<style lang="less">
 .ivu-menu-light.ivu-menu-vertical .ivu-menu-item-active:not(.ivu-menu-submenu) {
   color: #ffc0cb !important;
   background: #ecf0f3 !important;
@@ -585,258 +569,6 @@ export default {
   color: #ffff;
 }
 </style>
-<style scoped>
-@keyframes movement {
-  0%,
-  100% {
-    background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
-      110vmax 110vmax, 90vmax 90vmax;
-    background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
-      -30vmax -10vmax, 50vmax 50vmax;
-  }
-  25% {
-    background-size: 100vmax 100vmax, 90vmax 90vmax, 100vmax 100vmax,
-      90vmax 90vmax, 60vmax 60vmax;
-    background-position: -60vmax -90vmax, 50vmax -40vmax, 0vmax -20vmax,
-      -40vmax -20vmax, 40vmax 60vmax;
-  }
-  50% {
-    background-size: 80vmax 80vmax, 110vmax 110vmax, 80vmax 80vmax,
-      60vmax 60vmax, 80vmax 80vmax;
-    background-position: -50vmax -70vmax, 40vmax -30vmax, 10vmax 0vmax,
-      20vmax 10vmax, 30vmax 70vmax;
-  }
-  75% {
-    background-size: 90vmax 90vmax, 90vmax 90vmax, 100vmax 100vmax,
-      90vmax 90vmax, 70vmax 70vmax;
-    background-position: -50vmax -40vmax, 50vmax -30vmax, 20vmax 0vmax,
-      -10vmax 10vmax, 40vmax 60vmax;
-  }
-}
-.logobox {
-  height: 64px;
-  width: 100%;
-  border-bottom: 1px solid #e4e4e4;
-  box-shadow: 2px 0px 6px 0px #e7e7fc;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding-right: 15px;
-}
-.logobox i {
-  cursor: pointer;
-}
-.logoBoxI {
-  transform: rotate(-90deg);
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  width: 100%;
-}
-.logo {
-  height: 63px;
-  vertical-align: top;
-}
-
-.ivu-layout-header {
-  padding: 0 0;
-}
-.content {
-  padding: 24px;
-  background: #ecf0f3;
-  /* background-color: #e493d0;
-  background-image: radial-gradient(
-      closest-side,
-      rgba(235, 105, 78, 1),
-      rgba(235, 105, 78, 0)
-    ),
-    radial-gradient(closest-side, rgba(243, 11, 164, 1), rgba(243, 11, 164, 0)),
-    radial-gradient(
-      closest-side,
-      rgba(254, 234, 131, 1),
-      rgba(254, 234, 131, 0)
-    ),
-    radial-gradient(
-      closest-side,
-      rgba(170, 142, 245, 1),
-      rgba(170, 142, 245, 0)
-    ),
-    radial-gradient(
-      closest-side,
-      rgba(248, 192, 147, 1),
-      rgba(248, 192, 147, 0)
-    );
-  background-size: 130vmax 130vmax, 80vmax 80vmax, 90vmax 90vmax,
-    110vmax 110vmax, 90vmax 90vmax;
-  background-position: -80vmax -80vmax, 60vmax -30vmax, 10vmax 10vmax,
-    -30vmax -10vmax, 50vmax 50vmax;
-  background-repeat: no-repeat;
-  animation: 10s movement linear infinite; */
-}
-.autor {
-  height: 42px;
-  width: 42px;
-  border-radius: 50%;
-}
-.headerCol {
-  display: flex;
-  align-items: center;
-  height: 64px;
-}
-.headerCol .dropcontent {
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-}
-.headerCol .dropcontent .dropleft {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  height: 64px;
-  margin-right: 20px;
-}
-.headerCol .dropcontent .dropleft div {
-  height: 22px;
-  line-height: 22px;
-  text-align: center;
-  font-size: 13px;
-  font-weight: 400;
-  color: #a9a8a8;
-}
-.headerCol .dropcontent .dropleft div.droptitle {
-  font-size: 15px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.65);
-}
-.ivu-menu-vertical.ivu-menu-light:after {
-  width: 0;
-  box-shadow: 2px 0px 6px 0px #e7e7fc;
-}
-.topBar {
-  height: 70px;
-  background: #fff;
-  margin: -23px -24px 24px -24px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0 24px;
-  border-bottom: 1px solid #e9e9e9;
-}
-.topBarTitle {
-  font-size: 20px;
-  font-weight: bold;
-  color: rgba(0, 0, 0, 0.85);
-  line-height: 28px;
-}
-
-.menu-item .icon {
-  width: 14px;
-  height: 14px;
-  margin-bottom: -1px;
-  margin-right: 8px;
-}
-.collapsed-menu span.menuTitle {
-  display: none;
-}
-.collapsed-menu i {
-  font-size: 20px;
-}
-.collapsed-menu .icon {
-  width: 20px;
-  height: 20px;
-}
-.code-row-bg {
-  box-shadow: 0 1px 1px rgb(0 0 0 / 8%);
-  padding: 0 20px;
-}
-.head-tags {
-  height: 50px;
-  line-height: 50px;
-  padding: 0 70px;
-  box-sizing: border-box;
-  overflow: hidden;
-  display: flex;
-  position: relative;
-}
-.tags-box {
-  overflow: hidden;
-  white-space: nowrap;
-  scrollbar-width: none; /* 火狐 */
-}
-.tags-.tags-box-scroll::-webkit-scrollbar {
-  display: none;
-}
-.tags-box-scroll {
-  white-space: nowrap;
-  box-sizing: border-box;
-  position: relative;
-  transition: transform 0.5s ease-in-out;
-}
-.tags-item {
-  height: 28px;
-  line-height: 28px;
-  padding: 0 13px;
-  background: transparent;
-  border: 1px solid #ffc0cb !important;
-}
-.tags-item-active {
-  background: #ffc0cb;
-}
-.head-left {
-  width: 50px;
-  text-align: center;
-  position: absolute;
-  z-index: 99;
-  top: 0;
-  cursor: pointer;
-}
-.head-left.left {
-  left: 0;
-  border-right: 1px solid rgb(0 0 0 / 8%);
-}
-.head-left.right {
-  right: 0;
-  border-left: 1px solid rgb(0 0 0 / 8%);
-}
-/* 侧边栏 */
-.sider {
-  height: 100vh;
-  overflow: scroll;
-  -ms-overflow-style: none;
-  overflow: -moz-scrollbars-none;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-.sider::-webkit-scrollbar {
-  width: 0 !important;
-  display: none;
-}
-.content {
-  height: calc(100vh - 114px);
-  overflow: scroll;
-  box-sizing: border-box;
-}
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  background-color: #ffc0cb;
-  background-image: -webkit-linear-gradient(
-    45deg,
-    hsla(0, 0%, 100%, 0.2) 25%,
-    transparent 0,
-    transparent 50%,
-    hsla(0, 0%, 100%, 0.2) 0,
-    hsla(0, 0%, 100%, 0.2) 75%,
-    transparent 0,
-    transparent
-  );
-}
-::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
-  background: #fff;
-  border-radius: 10px;
-}
+<style  lang="less" scoped>
+@import "./layout.less";
 </style>

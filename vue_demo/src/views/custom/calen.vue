@@ -1,5 +1,5 @@
 <template>
-  <div class="contentBox flex flex-wrap j_b">
+  <div class="flex flex-wrap contentBox j_b">
     <Calendar theme_color="pink" class="cal"></Calendar>
     <Calendar theme_color="orange" class="cal"></Calendar>
     <Calendar theme_color="#000" class="cal"></Calendar>
@@ -10,9 +10,10 @@
 </template>
 
 <script>
+// 参考链接：https://github.com/ajun568/vue-calendar
 import Calendar from "./components/calendar";
 export default {
-  name: "calen",
+  name: "calenCust",
   components: {
     Calendar,
   },
@@ -20,7 +21,6 @@ export default {
     return {};
   },
 };
-// 参考链接：https://github.com/ajun568/vue-calendar
 </script>
 
 <style scoped>

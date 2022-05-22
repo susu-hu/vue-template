@@ -4,10 +4,10 @@ import layout from "@/views/layout.vue";
 import page404 from "@/views/404.vue";
 //首页
 import index from "@/views/index/home.vue";
-import sassColor from "@/views/sass/color.vue";
-import dropItem from "@/views/custom/dropItem.vue";
-import exportFile from "@/views/layout/export.vue";
-import table from "@/views/table/index.vue";
+// Failed to resolve async component异步组件报错，改成普通引入
+import Calendar from "@/views/custom/calen.vue";
+import QuillEditor from "@/views/plug/quillEditor.vue";
+
 const layIndex = (r) =>
   require.ensure(
     [],
@@ -128,7 +128,7 @@ const router = new Router({
     {
       path: "/sassColor",
       name: "sassColor",
-      component: sassColor,
+      component: () => import('@/views/sass/color.vue'),
       meta: {
         menu: [{
           path: "/",
@@ -154,7 +154,7 @@ const router = new Router({
     {
       path: "/table",
       name: "table",
-      component: table,
+      component: () => import('@/views/table/index.vue'),
       meta: {
         keepAlive: true
       },
@@ -162,12 +162,12 @@ const router = new Router({
     {
       path: "/exportFile",
       name: "exportFile",
-      component: exportFile,
+      component: () => import('@/views/layout/export.vue'),
     },
     {
       path: "/custom/dropItem", //(一级路由)
       name: "dropItem",
-      component: dropItem,
+      component: () => import('@/views/custom/dropItem.vue'),
     },
     {
       path: "/event/throttle",
@@ -289,7 +289,7 @@ const router = new Router({
     {
       path: "/plug/quillEditor",
       name: "quillEditor",
-      component: () => import("@/views/plug/quillEditor.vue"),
+      component: QuillEditor,
     },
     {
       path: "/plug/reviewer",
@@ -370,7 +370,9 @@ const router = new Router({
     {
       path: "/custom/calendar",
       name: "calendar",
-      component: () => import("@/views/custom/calen.vue"),
+      component: Calendar,
+      // component: resolve => require(['@/views/custom/calen.vue'], resolve)
+      // component: () => import("@/views/custom/calen.vue"),
     },
     {
       path: "/custom/page",

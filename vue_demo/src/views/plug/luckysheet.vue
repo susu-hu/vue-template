@@ -1,9 +1,8 @@
-/* eslint-disable no-undef */
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-20 23:36:26
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-22 01:08:09
+ * @LastEditTime: 2022-05-22 15:36:11
  * @FilePath: \vue_demo\src\views\plug\xsheet.vue
  * @Description: luckysheet
   <link rel='stylesheet' href='https://cdn.jsdelivr.net/npm/luckysheet/dist/plugins/css/pluginsCss.css' />
@@ -14,7 +13,7 @@
   <script src="https://cdn.jsdelivr.net/npm/luckysheet/dist/luckysheet.umd.js"></script> 
 -->
 <template>
-  <div>
+  <div class="contentBox">
     <div class="flex-row j_b">
       <Button type="primary" @click="open">打开预览</Button>
       <Button type="primary" @click="close">关闭预览</Button>

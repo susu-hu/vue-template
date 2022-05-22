@@ -443,7 +443,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .calendar {
   overflow-x: hidden;
 }
