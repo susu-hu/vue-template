@@ -104,7 +104,7 @@ export default {
   min-height: calc(100vh - 260px);
 }
 * {
-  cursor: url(https://cdn.jsdelivr.net/gh/honjun/cdn@1.6/img/cursor/normal.cur),
+  cursor: url(https://cdn.jsdelivr.net/gh/susu-hu/cdn@1.0.1/img/cursor/Handwriting.cur),
     default;
 }
 ::-webkit-scrollbar {
