@@ -275,6 +275,12 @@ const router = new Router({
       component: () => import("@/views/baseJavascript/export.vue"),
     },
     {
+      path: "/js/common",
+      name: "jscommon",
+      component: () => import("@/views/baseJavascript/common.vue"),
+    },
+
+    {
       path: "/event/autoSave",
       name: "autoSave",
       component: autoSave,
@@ -494,6 +500,11 @@ router.beforeEach((to, from, next) => {
 // router.beforeEach((to, from, next) => {
 //     to.meta.title && (document.title = to.meta.title);
 //     next()
+// });
+// 滚到顶部
+// router.afterEach((to, from, next) => {
+//   window.scrollTo(0, 0)
+//   next()
 // });
 
 export default router;

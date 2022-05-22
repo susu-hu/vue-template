@@ -429,3 +429,7 @@ button::after {
     background-color: pink !important;
     border-color    : pink !important;
 }
+
+.ivu-upload-drag:hover {
+    border: 1px dashed pink !important;
+}

@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-17 09:47:29
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-22 16:27:22
+ * @LastEditTime: 2022-05-22 17:30:34
  * @FilePath: \vue_demo\src\views\table\uploadFile.vue
  * @Description: 文件上传
 -->
@@ -28,7 +28,7 @@
               <Icon
                 type="ios-cloud-upload"
                 size="52"
-                style="color: #3399ff"
+                style="color: pink"
               ></Icon>
               <p style="margin-bottom: 10px">点击或将文件拖拽到这里上传</p>
               <p>(提示：只支持.docx,.xlsx文件类型)</p>

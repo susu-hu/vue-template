@@ -240,11 +240,17 @@ export default {
   {
     code: "0008-03",
     icon: "ios-add-circle",
-    label: "export",
+    label: "export怎么定义",
     parent: "0008",
     url: "/js/export",
   },
-
+  {
+    code: "0008-04",
+    icon: "ios-add-circle",
+    label: "常见js函数",
+    parent: "0008",
+    url: "/js/common",
+  },
   {
     code: "0009",
     icon: "ios-add-circle",
