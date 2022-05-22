@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-17 09:47:29
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-18 08:59:55
+ * @LastEditTime: 2022-05-22 16:27:22
  * @FilePath: \vue_demo\src\views\table\uploadFile.vue
  * @Description: 文件上传
 -->
@@ -159,6 +159,7 @@ const tabledata = {
   ],
 };
 export default {
+  name: "uploadFile",
   data() {
     return {
       pdfUrl: "",

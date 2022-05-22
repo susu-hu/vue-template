@@ -17,20 +17,22 @@ export default {
     code: "0001-01",
     label: "Table",
     parent: "0001",
-    url: "/table",
-    name: 'suTable'
+    url: "/tableList",
+    name: 'tableList'
   },
   {
     code: "0001-02",
     label: "表单动态校验",
     parent: "0001",
     url: "/table/dynamicForm",
+    name: 'dynamicForm'
   },
   {
     code: "0001-03",
     label: "日期选择器",
     parent: "0001",
     url: "/table/datepicker",
+    name: 'datepicker'
   },
   {
     code: "0001-04",

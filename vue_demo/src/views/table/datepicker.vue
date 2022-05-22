@@ -99,6 +99,7 @@
 
 <script>
 export default {
+  name: "datepicker",
   data() {
     const vaTime = (rule, value, callback) => {
       if (this.formInline.beginDate && this.formInline.endDate) {

@@ -9,6 +9,7 @@
         cursor: pointer;
       "
       href="https://gitee.com/susuhhhhhh/su-sus-vue"
+      target="_blank"
       ><img
         src="https://gitee.com/susuhhhhhh/su-sus-vue/widgets/widget_2.svg"
         alt="Fork me on Gitee"
@@ -160,16 +161,11 @@
             <Button @click="goback">返回</Button>
           </div>
           <div>
-            <!-- 方法一：利用页面的name -->
+            <!-- 方法一：利用页面的name,此方法需要所有页面都定义name，基于页面较多，先放弃此法 -->
             <!-- <keep-alive :include="catch_components" :max="10">
               <router-view></router-view>
             </keep-alive> -->
             <!-- 方法二： -->
-            <!-- <keep-alive :max="10">
-              <router-view v-if="$route.meta.keepAlive"></router-view>
-            </keep-alive>
-            <router-view v-if="!$route.meta.keepAlive"></router-view> -->
-            <!-- 方法三 -->
             <keep-alive :max="10">
               <router-view
                 :key="$route.path"
@@ -226,10 +222,10 @@ export default {
 
     cache: {
       get() {
-        console.log(this.$route.matched);
+        // console.log(this.$route.matched);
         if (!this.$route.matched[1]) return;
         const instances = this.$route.matched[1].instances;
-        console.log(instances);
+        // console.log(instances);
         return instances && instances.default && instances.default.$vnode
           ? instances.default.$vnode.parent.componentInstance.cache
           : {};
@@ -377,16 +373,14 @@ export default {
       this.$store.dispatch("SET_PERMISSION", perms);
     },
     handleClose(tab, index) {
-      console.log("缓存-------------------------------", this.cache);
-      console.log("keys---------------------------------", this.cache_key);
+      // console.log("缓存-------------------------------", this.cache);
+      // console.log("keys---------------------------------", this.cache_key);
       let cache = this.cache,
         keys = this.cache_key;
       if (cache[tab.path] != null) {
         delete cache[tab.path];
         keys.splice(keys.indexOf(tab.path), 1);
       }
-      // this.$store.commit("setCloseTag", true);
-      // this.$store.commit("setCurrPath", tab.path);
       var oldOpenNames = this.$store.state.openNames,
         oldActiveName = this.$store.state.activeName,
         oldActivePath = this.$store.state.activePath,
@@ -399,6 +393,9 @@ export default {
         }
       }
       // 删除keepAlive缓存
+      // 方法一：利用include
+      // this.$store.commit("removeKeepAliveCache", tab.name);
+      // 方法二：利用path
       this.$store.commit("removeKeepAliveCache", tab.path);
       this.getTrans(2, tab);
       if (tab.path !== oldActivePath) {
@@ -439,7 +436,6 @@ export default {
       }
     },
     changeMenu(item) {
-      // this.$store.commit("setCloseTag", false);
       var oldActivePath = this.$store.state.activePath;
       if (oldActivePath === item.path) {
         return;
@@ -451,11 +447,13 @@ export default {
       });
     },
     selectMenu(item, i, subName) {
-      // this.$store.commit("setCloseTag", false);
+      // 方法一：利用include
+      // this.$store.commit("addKeepAliveCache", item.name);
+      // 方法二：利用path
       this.$store.commit("addKeepAliveCache", item.path);
       var submenu = {
         path: item.path,
-        name: item.title,
+        name: item.name,
         label: item.title,
         index: i,
         subName: subName,

@@ -96,7 +96,7 @@ const columns = [
   },
 ];
 export default {
-  name: "suTable",
+  name: "tableList",
   data() {
     return {
       columns,
@@ -109,38 +109,7 @@ export default {
       checkedList: [],
     };
   },
-  filters: {
-    statusFilter(status) {
-      let sTxt = "";
-      switch (+status) {
-        case 30 || 2:
-          sTxt = "待发货";
-          break;
-        case 40:
-          sTxt = "已发货";
-          break;
-        case 45:
-          sTxt = "已完成";
-          break;
-        case 0:
-          sTxt = "已关闭";
-          break;
-        case 10:
-          sTxt = "待付款";
-          break;
-        case 21:
-          sTxt = "待确认";
-          break;
-        case 20:
-          sTxt = "待付款";
-          break;
-        default:
-          sTxt = "无";
-          break;
-      }
-      return sTxt;
-    },
-  },
+  filters: {},
   created() {
     console.log("--------created");
     this.getList();

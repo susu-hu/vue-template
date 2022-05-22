@@ -152,12 +152,25 @@ const router = new Router({
       component: loading,
     },
     {
-      path: "/table",
-      name: "table",
+      path: "/tableList",
+      name: "tableList",
       component: () => import('@/views/table/index.vue'),
-      meta: {
-        keepAlive: true
-      },
+      meta: {},
+    },
+    {
+      path: "/table/dynamicForm",
+      name: "dynamicForm",
+      component: dynamicForm,
+    },
+    {
+      path: "/table/datepicker",
+      name: "datepicker",
+      component: () => import("@/views/table/datepicker.vue"),
+    },
+    {
+      path: "/table/uploadFile",
+      name: "uploadFile",
+      component: () => import("@/views/table/uploadFile.vue"),
     },
     {
       path: "/exportFile",
@@ -179,22 +192,7 @@ const router = new Router({
       name: "lodash",
       component: lodash,
     },
-    {
-      path: "/table/dynamicForm",
-      name: "dynamicForm",
-      component: dynamicForm,
-    },
-    {
-      path: "/table/datepicker",
-      name: "datepicker",
-      component: () => import("@/views/table/datepicker.vue"),
-    },
-    {
-      path: "/table/uploadFile",
-      name: "uploadFile",
-      component: () => import("@/views/table/uploadFile.vue"),
 
-    },
     {
       path: "/base/childAp",
       name: "childAp",

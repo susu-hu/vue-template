@@ -42,6 +42,7 @@
 
 <script>
 export default {
+  name: "dynamicForm",
   data() {
     return {
       formInline: {
