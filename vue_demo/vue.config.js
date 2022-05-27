@@ -2,10 +2,13 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-22 00:23:39
+ * @LastEditTime: 2022-05-27 23:54:18
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
+
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin') //引入插件
+
 var webpack = require('webpack');
 const path = require('path'); //引入path模块
 function resolve(dir) {
@@ -91,8 +94,27 @@ module.exports = {
                 }),
             ],
             externals: {
-                Xsheet: 'Xsheet'
+
+            },
+            optimization: {
+                minimizer: [
+                    new UglifyJsPlugin({
+                        uglifyOptions: {
+                            // 删除注释
+                            output: {
+                                comments: false
+                            },
+                            // 删除console debugger 删除警告
+                            compress: {
+                                drop_console: true, //console
+                                drop_debugger: false,
+                                pure_funcs: ['console.log'] //移除console
+                            }
+                        }
+                    })
+                ]
             }
+
         }
     },
     css: {
