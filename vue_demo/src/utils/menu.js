@@ -40,7 +40,12 @@ export default {
     parent: "0001",
     url: "/table/uploadFile",
   },
-
+  {
+    code: "0001-05",
+    label: "v-for表单校验",
+    parent: "0001",
+    url: "/table/moreForm",
+  },
   {
     code: "0002",
     icon: "ios-add-circle",
