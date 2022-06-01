@@ -90,7 +90,6 @@
 export default {
   data() {
     const validlLength = (rule, value, callback) => {
-      console.log("aaaaaaaaaaaaaaa", value);
       value = value + "";
       value = value.match(/^\d*(\.?\d{0,2})/g)[0] || "";
       let reg = /^([0-9]\d{0,6})(\.\d{1,2})?$/;
@@ -130,11 +129,15 @@ export default {
     };
   },
   methods: {
-    changeT1(e, index, k) {
-      this.$forceUpdate();
-      // this.$set(this.form, "condition" + `${[index]}` + "actionList", oneList);
-      // this.form.condition[index].t3 = "";
-      console.log("参数一", e, index);
+    changeT1(e, index) {
+      this.form.condition[index].t3 = "";
+      if (e) {
+        this.getDropList(e, index);
+      } else {
+        this.form.condition[index].t1 = "";
+      }
+    },
+    getDropList(e, index, k) {
       let oneList = [
           // {
           //   code: 1,
@@ -172,37 +175,25 @@ export default {
           },
         ];
       if (e == 1) {
-        console.log("11111111111111111111");
         setTimeout(() => {
           this.form.condition[index].actionList = oneList;
           if (k) {
-            console.log(oneList);
-            oneList.unshift({
+            this.form.condition[index].actionList.unshift({
               code: k.t3,
               name: k.name,
             });
-            console.log(oneList);
           }
-          this.$set(
-            this.form,
-            "condition" + `${[index]}` + "actionList",
-            oneList
-          );
-          console.log("接口11", this.form.condition[index].actionList);
-        }, 0);
+          // this.$set(
+          //   this.form,
+          //   "condition" + `${[index]}` + "actionList",
+          //   oneList
+          // );
+        }, 1000);
       } else if (e == 2) {
         setTimeout(() => {
           this.form.condition[index].actionList = twoList;
-          this.$set(this.form.condition[index], "actionList", twoList);
-          console.log("接口22", this.form.condition[index].actionList);
-        }, 0);
-
-        return false;
-      } else {
-        this.form.condition[index].t1 = "";
-        this.form.condition[index].actionList = [];
+        }, 1000);
       }
-      // this.$forceUpdate();
     },
     changeT3() {},
     del(index) {
@@ -218,7 +209,6 @@ export default {
     },
     submit() {
       let data = { ...this.form };
-      console.log(data);
       this.$refs.formValidate.validate((valid) => {
         if (valid) {
           console.log(data);
@@ -238,33 +228,25 @@ export default {
     },
     edit() {
       // mock已有假数据
-      let data = [
-          {
-            t1: "1",
-            t2: "1",
-            t3: 1,
-            name: "加1单",
-          },
-        ],
+      let data = {
+          t1: "1",
+          t2: "1",
+          t3: 1,
+          name: "加1单",
+        },
         data1 = JSON.stringify(data);
-      let condition = JSON.parse(data1);
-      console.log(condition);
-      this.form.condition = condition;
-      this.changeT1(condition[0].t1, 0, condition[0]);
+      this.$set(this.form.condition, 0, JSON.parse(data1));
+      this.$set(this.form.condition[0], "actionList", []);
+      this.getDropList(this.form.condition[0].t1, 0, this.form.condition[0]);
     },
   },
   watch: {
     "form.condition": {
       immediate: true,
       deep: true,
-      // eslint-disable-next-line no-unused-vars
-      handler: (newVal, oldVal) => {
-        // let that = this;
-        console.log(newVal, "变化后的值");
-        // newVal.forEach((item, index) => {
-        //   that.changeT1(item.t1, index);
-        // });
-      },
+      // handler: (newVal, oldVal) => {
+      //   console.log(newVal, "变化后的值");
+      // },
     },
   },
 };
