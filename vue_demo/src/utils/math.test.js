@@ -1,5 +1,9 @@
 /* eslint-disable no-undef */
-const { add, minus, multi } = require("./math");
+const {
+    add,
+    minus,
+    multi
+} = require("./math");
 test("测试加法 3 + 3", () => {
     expect(add(3, 3)).toBe(6);
 });

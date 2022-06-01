@@ -83,7 +83,7 @@ const originPush = Router.prototype.push;
 const originReplace = Router.prototype.replace;
 Router.prototype.push = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
-    return originPush.call(this, location, onComplete, onAbort).catch(() => { });
+    return originPush.call(this, location, onComplete, onAbort).catch(() => {});
   } else {
     originPush.call(this, location, onComplete, onAbort);
   }
@@ -92,7 +92,7 @@ Router.prototype.replace = function (location, onComplete, onAbort) {
   if (onComplete === undefined && onAbort === undefined) {
     return originReplace
       .call(this, location, onComplete, onAbort)
-      .catch(() => { });
+      .catch(() => {});
   } else {
     originReplace.call(this, location, onComplete, onAbort);
   }
@@ -110,305 +110,320 @@ const router = new Router({
     }
   },
   routes: [{
-    path: "/",
-    name: "layout",
-    component: layout,
-    redirect: "/index", // 重定位后页面加载的页面
-    children: [{
-      path: "/index",
-      name: "index",
-      component: index,
-      meta: {
-        menu: [{
-          path: "/",
-          name: "欢迎来到苏苏的vue之旅",
-        },],
-      },
-    },
-    {
-      path: "/sassColor",
-      name: "sassColor",
-      component: () => import('@/views/sass/color.vue'),
-      meta: {
-        menu: [{
-          path: "/",
-          name: "颜色函数",
-        },],
-      },
-    },
-    {
-      path: "/tailwindCSS",
-      name: "tailwindCSS",
-      component: () => import('@/views/sass/tailwindCSS.vue'),
-    },
-    {
-      path: "/layIndex",
-      name: "layIndex",
-      component: layIndex,
-    },
-    {
-      path: "/loading",
-      name: "loading",
-      component: loading,
-    },
-    {
-      path: "/tableList",
-      name: "tableList",
-      component: () => import('@/views/table/index.vue'),
-      meta: {},
-    },
-    {
-      path: "/table/dynamicForm",
-      name: "dynamicForm",
-      component: dynamicForm,
-    },
-    {
-      path: "/table/datepicker",
-      name: "datepicker",
-      component: () => import("@/views/table/datepicker.vue"),
-    },
-    {
-      path: "/table/uploadFile",
-      name: "uploadFile",
-      component: () => import("@/views/table/uploadFile.vue"),
-    },
-    {
-      path: "/table/moreForm",
-      name: "moreForm",
-      component: () => import("@/views/table/moreForm.vue"),
-    },
-    {
-      path: "/exportFile",
-      name: "exportFile",
-      component: () => import('@/views/layout/export.vue'),
-    },
-    {
-      path: "/custom/dropItem", //(一级路由)
-      name: "dropItem",
-      component: () => import('@/views/custom/dropItem.vue'),
-    },
-    {
-      path: "/event/throttle",
-      name: "throttle",
-      component: throttle,
-    },
-    {
-      path: "/event/lodash",
-      name: "lodash",
-      component: lodash,
-    },
-
-    {
-      path: "/base/childAp",
-      name: "childAp",
-      component: childAp,
-    },
-    {
-      path: "/base/cAndM",
-      name: "cAndM",
-      component: cAndM,
-    },
-    {
-      path: "/base/sync",
-      name: "sync",
-      component: sync,
-    },
-    {
-      path: "/base/slot",
-      name: "slot",
-      component: slot,
-    },
-    {
-      path: "/base/mixin",
-      name: "mixin",
-      component: () => import("@/views/base/mixin.vue"),
-    },
-    {
-      path: "/base/whiteRouter",
-      name: "whiteRouter",
-      component: () => import("@/views/base/whiteRouter.vue"),
-    },
-    {
-      path: "/base/keepAlive",
-      name: "keepAlive",
-      component: () => import("@/views/base/keepAlive/keepAlive.vue"),
-      // redirect: '/base/keepAlive/A',
+      path: "/",
+      name: "layout",
+      component: layout,
+      redirect: "/index", // 重定位后页面加载的页面
       children: [{
-        path: 'A',
-        name: 'A',
-        component: () => import("@/views/base/keepAlive/a.vue"),
-        meta: {
-          keepAlive: true
+          path: "/index",
+          name: "index",
+          component: index,
+          meta: {
+            menu: [{
+              path: "/",
+              name: "欢迎来到苏苏的vue之旅",
+            }, ],
+          },
         },
+        {
+          path: "/sassColor",
+          name: "sassColor",
+          component: () => import('@/views/sass/color.vue'),
+          meta: {
+            menu: [{
+              path: "/",
+              name: "颜色函数",
+            }, ],
+          },
+        },
+        {
+          path: "/tailwindCSS",
+          name: "tailwindCSS",
+          component: () => import('@/views/sass/tailwindCSS.vue'),
+        },
+        {
+          path: "/layIndex",
+          name: "layIndex",
+          component: layIndex,
+        },
+        {
+          path: "/loading",
+          name: "loading",
+          component: loading,
+        },
+        {
+          path: "/tableList",
+          name: "tableList",
+          component: () => import('@/views/table/index.vue'),
+          meta: {},
+        },
+        {
+          path: "/table/dynamicForm",
+          name: "dynamicForm",
+          component: dynamicForm,
+        },
+        {
+          path: "/table/datepicker",
+          name: "datepicker",
+          component: () => import("@/views/table/datepicker.vue"),
+        },
+        {
+          path: "/table/uploadFile",
+          name: "uploadFile",
+          component: () => import("@/views/table/uploadFile.vue"),
+        },
+        {
+          path: "/table/moreForm",
+          name: "moreForm",
+          component: () => import("@/views/table/moreForm.vue"),
+        },
+        {
+          path: "/exportFile",
+          name: "exportFile",
+          component: () => import('@/views/layout/export.vue'),
+        },
+        {
+          path: "/custom/dropItem", //(一级路由)
+          name: "dropItem",
+          component: () => import('@/views/custom/dropItem.vue'),
+        },
+        {
+          path: "/event/throttle",
+          name: "throttle",
+          component: throttle,
+        },
+        {
+          path: "/event/lodash",
+          name: "lodash",
+          component: lodash,
+        },
+
+        {
+          path: "/base/childAp",
+          name: "childAp",
+          component: childAp,
+        },
+        {
+          path: "/base/cAndM",
+          name: "cAndM",
+          component: cAndM,
+        },
+        {
+          path: "/base/sync",
+          name: "sync",
+          component: sync,
+        },
+        {
+          path: "/base/slot",
+          name: "slot",
+          component: slot,
+        },
+        {
+          path: "/base/mixin",
+          name: "mixin",
+          component: () => import("@/views/base/mixin.vue"),
+        },
+        {
+          path: "/base/whiteRouter",
+          name: "whiteRouter",
+          component: () => import("@/views/base/whiteRouter.vue"),
+        },
+        {
+          path: "/base/keepAlive",
+          name: "keepAlive",
+          component: () => import("@/views/base/keepAlive/keepAlive.vue"),
+          // redirect: '/base/keepAlive/A',
+          children: [{
+              path: 'A',
+              name: 'A',
+              component: () => import("@/views/base/keepAlive/a.vue"),
+              meta: {
+                keepAlive: true
+              },
+            },
+            {
+              path: 'B',
+              name: 'B',
+              component: () => import("@/views/base/keepAlive/b.vue"),
+              meta: {
+                keepAlive: true
+              },
+            },
+            {
+              path: 'C',
+              name: 'C',
+              component: () => import("@/views/base/keepAlive/c.vue"),
+              meta: {
+                keepAlive: true
+              },
+            }
+          ]
+        },
+        {
+          path: "/eleUi/reForm",
+          name: "reForm",
+          component: reForm,
+        },
+        {
+          path: "/js/index",
+          name: "jsIndex",
+          component: jsIndex,
+        },
+        {
+          path: "/js/closure",
+          name: "closure",
+          component: closure,
+        },
+        {
+          path: "/js/export",
+          name: "export",
+          component: () => import("@/views/baseJavascript/export.vue"),
+        },
+        {
+          path: "/js/common",
+          name: "jscommon",
+          component: () => import("@/views/baseJavascript/common.vue"),
+        },
+        {
+          path: "/js/nullJadge",
+          name: "nullJadge",
+          component: () => import("@/views/baseJavascript/nullJadge.vue"),
+
+        },
+        {
+          path: "/event/autoSave",
+          name: "autoSave",
+          component: autoSave,
+        },
+        {
+          path: "/plug/vuedraggable",
+          name: "vuedraggable",
+          component: vuedraggable,
+        },
+        {
+          path: "/plug/quillEditor",
+          name: "quillEditor",
+          component: QuillEditor,
+        },
+        {
+          path: "/plug/reviewer",
+          name: "reviewer",
+          component: () => import("@/views/plug/reviewer.vue"),
+        },
+        {
+          path: "/plug/xsheet",
+          name: "xsheet",
+          component: () => import("@/views/plug/xsheet.vue"),
+        },
+        {
+          path: "/plug/luckysheet",
+          name: "luckysheet",
+          component: () => import("@/views/plug/luckysheet.vue"),
+        },
+
+        {
+          path: "/plug/demoDrag",
+          name: "demoDrag",
+          component: demoDrag,
+        },
+        {
+          path: "/plug/aweDnd",
+          name: "aweDnd",
+          component: aweDnd,
+        },
+        {
+          path: "/layout/lineG",
+          name: "lineG",
+          component: lineG,
+        },
+        {
+          path: "/data/dataV",
+          name: "dataV",
+          component: dataV,
+        },
+        {
+          path: "/jest/index",
+          name: "jestIndex",
+          component: () => import("@/views/jest/index.vue"),
+        },
+        {
+          path: "/jest/test01",
+          name: "test01",
+          component: () => import("@/views/jest/test01.vue"),
+        },
+        {
+          path: "/canvas/index",
+          name: "demo01",
+          component: () => import("@/views/canvas/index.vue"),
+        },
+        {
+          path: "/canvas/ggk",
+          name: "ggk",
+          component: () => import("@/views/canvas/ggk.vue"),
+        },
+        {
+          path: "/map/amap",
+          name: "amap",
+          component: () => import("@/views/map/amap.vue"),
+        },
+        {
+          path: "/map/amap2",
+          name: "amap2",
+          component: () => import("@/views/map/amap2.vue"),
+        },
+        {
+          path: "/media/video",
+          name: "video",
+          component: () => import("@/views/media/video.vue"),
+        },
+        {
+          path: "/media/vueDplayer",
+          name: "vueDplayer",
+          component: () => import("@/views/media/vueDplayer.vue"),
+        },
+        {
+          path: "/custom/calendar",
+          name: "calendar",
+          component: Calendar,
+          // component: resolve => require(['@/views/custom/calen.vue'], resolve)
+        },
+        {
+          path: "/custom/page",
+          name: "page",
+          component: () => import("@/views/custom/page.vue"),
+        },
+        {
+          path: "/custom/modal",
+          name: "customModal",
+          component: () => import("@/views/custom/modal.vue"),
+        },
+        // 处理类库
+        {
+          path: "/library/moment",
+          name: "moment",
+          component: () => import("@/views/library/moment.vue"),
+        },
+        {
+          path: "/library/anime",
+          name: "anime",
+          component: () => import("@/views/library/anime.vue"),
+        },
+      ],
+    },
+
+    // 404页面需要放在最底下
+    {
+      path: "/404",
+      name: "404",
+      meta: {
+        noAuth: true,
       },
-      {
-        path: 'B',
-        name: 'B',
-        component: () => import("@/views/base/keepAlive/b.vue"),
-        meta: {
-          keepAlive: true
-        },
-      },
-      {
-        path: 'C',
-        name: 'C',
-        component: () => import("@/views/base/keepAlive/c.vue"),
-        meta: {
-          keepAlive: true
-        },
-      }
-      ]
+      component: page404,
     },
     {
-      path: "/eleUi/reForm",
-      name: "reForm",
-      component: reForm,
+      path: "*",
+      redirect: "/404",
     },
-    {
-      path: "/js/index",
-      name: "jsIndex",
-      component: jsIndex,
-    },
-    {
-      path: "/js/closure",
-      name: "closure",
-      component: closure,
-    },
-    {
-      path: "/js/export",
-      name: "export",
-      component: () => import("@/views/baseJavascript/export.vue"),
-    },
-    {
-      path: "/js/common",
-      name: "jscommon",
-      component: () => import("@/views/baseJavascript/common.vue"),
-    },
-    {
-      path: "/js/nullJadge",
-      name: "nullJadge",
-      component: () => import("@/views/baseJavascript/nullJadge.vue"),
-
-    },
-    {
-      path: "/event/autoSave",
-      name: "autoSave",
-      component: autoSave,
-    },
-    {
-      path: "/plug/vuedraggable",
-      name: "vuedraggable",
-      component: vuedraggable,
-    },
-    {
-      path: "/plug/quillEditor",
-      name: "quillEditor",
-      component: QuillEditor,
-    },
-    {
-      path: "/plug/reviewer",
-      name: "reviewer",
-      component: () => import("@/views/plug/reviewer.vue"),
-    },
-    {
-      path: "/plug/xsheet",
-      name: "xsheet",
-      component: () => import("@/views/plug/xsheet.vue"),
-    },
-    {
-      path: "/plug/luckysheet",
-      name: "luckysheet",
-      component: () => import("@/views/plug/luckysheet.vue"),
-    },
-
-    {
-      path: "/plug/demoDrag",
-      name: "demoDrag",
-      component: demoDrag,
-    },
-    {
-      path: "/plug/aweDnd",
-      name: "aweDnd",
-      component: aweDnd,
-    },
-    {
-      path: "/layout/lineG",
-      name: "lineG",
-      component: lineG,
-    },
-    {
-      path: "/data/dataV",
-      name: "dataV",
-      component: dataV,
-    },
-    {
-      path: "/jest/index",
-      name: "jestIndex",
-      component: () => import("@/views/jest/index.vue"),
-    },
-    {
-      path: "/jest/test01",
-      name: "test01",
-      component: () => import("@/views/jest/test01.vue"),
-    },
-    {
-      path: "/canvas/index",
-      name: "demo01",
-      component: () => import("@/views/canvas/index.vue"),
-    },
-    {
-      path: "/canvas/ggk",
-      name: "ggk",
-      component: () => import("@/views/canvas/ggk.vue"),
-    },
-    {
-      path: "/map/amap",
-      name: "amap",
-      component: () => import("@/views/map/amap.vue"),
-    },
-    {
-      path: "/map/amap2",
-      name: "amap2",
-      component: () => import("@/views/map/amap2.vue"),
-    },
-    {
-      path: "/media/video",
-      name: "video",
-      component: () => import("@/views/media/video.vue"),
-    },
-    {
-      path: "/media/vueDplayer",
-      name: "vueDplayer",
-      component: () => import("@/views/media/vueDplayer.vue"),
-    },
-    {
-      path: "/custom/calendar",
-      name: "calendar",
-      component: Calendar,
-      // component: resolve => require(['@/views/custom/calen.vue'], resolve)
-      // component: () => import("@/views/custom/calen.vue"),
-    },
-    {
-      path: "/custom/page",
-      name: "page",
-      component: () => import("@/views/custom/page.vue"),
-    },
-    ],
-  },
-
-  // 404页面需要放在最底下
-  {
-    path: "/404",
-    name: "404",
-    meta: {
-      noAuth: true,
-    },
-    component: page404,
-  },
-  {
-    path: "*",
-    redirect: "/404",
-  },
   ],
   mode: "history", // mode 设置为history ，去掉地址栏上的 # 号
 });

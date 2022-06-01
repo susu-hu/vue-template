@@ -1,13 +1,14 @@
 /*
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
- * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-05-27 23:54:18
+ * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditTime: 2022-06-01 17:21:25
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin') //引入插件
+const MomentLocalesPlugin = require('moment-locales-webpack-plugin'); //moment配置语言环境
 
 var webpack = require('webpack');
 const path = require('path'); //引入path模块
@@ -16,7 +17,7 @@ function resolve(dir) {
 }
 
 module.exports = {
-    lintOnSave: true,//eslint检查
+    lintOnSave: true, //eslint检查
     runtimeCompiler: true,
     publicPath: '/', //根路径
     outputDir: "dist",
@@ -25,7 +26,7 @@ module.exports = {
     devServer: {
         overlay: {
             warnings: false, //不显示警告
-            errors: false	//不显示错误
+            errors: false //不显示错误
         },
         disableHostCheck: true,
         https: false,
@@ -91,6 +92,15 @@ module.exports = {
                 new webpack.ProvidePlugin({
                     'window.Quill': 'quill/dist/quill.js', //注意路径，可能与你们路径不一致
                     'Quill': 'quill/dist/quill.js' //注意路径，可能与你们路径不一致
+                }),
+
+                // 剥离除 “en” 以外的所有语言环境。
+                // new MomentLocalesPlugin(),
+
+                // 或者：剥离除 “en”、“es-us” 和 “ru” 以外的所有语言环境。
+                //（“en” 内置于 Moment 中，无法移除）
+                new MomentLocalesPlugin({
+                    localesToKeep: ['es-us', 'zh-cn'],
                 }),
             ],
             externals: {

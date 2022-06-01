@@ -244,9 +244,9 @@ export default {
     "form.condition": {
       immediate: true,
       deep: true,
-      // handler: (newVal, oldVal) => {
-      //   console.log(newVal, "变化后的值");
-      // },
+      handler: (newVal) => {
+        console.log(newVal, "变化后的值");
+      },
     },
   },
 };
