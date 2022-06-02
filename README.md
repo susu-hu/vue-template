@@ -82,26 +82,7 @@
 ![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/awe-dnd.gif)
 #### 7.3 富文本编辑器vue-quill-editor
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-quill-editor.gif)
-#### 7.4 pdf预览vue-pdf
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-pdf.gif)
-#### 7.5 Xsheet-在线表格预览
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/xsheet.png)
-#### 7.6 Luckysheet-在线表格预览
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/lucksheet.png)
-## 8.数据可视化
-#### 8.1 data-V
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
-## 9.饿了么ui篇章
-#### 9.1 二次封装饿了么表单页面
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E8%A1%A8%E5%8D%952.png)
-## 10.Jest
-#### 10.1 Jest入门
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/jest%E5%85%A5%E9%97%A8.png)
-## 11.地图
-#### 11.1 高德地图
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E9%AB%98%E5%BE%B7map.png)
-## 12.js+
-#### 12.1 添加babel，配置链式（?.）/NULL(??)判断运算符
+
 #### 参与贡献
 
 1.  Fork 本仓库
