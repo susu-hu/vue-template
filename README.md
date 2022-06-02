@@ -14,6 +14,7 @@
 | Jest  | 27.5.1 |Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。并且它对同样是 Facebook 的开源前端框架 React 的测试十分友好。|
 | dplayer| 1.26.0 | 视频播放组件：http://dplayer.js.org/|
 | vue-dplayer| 0.0.10 | 视频播放组件，npm对DPlayer做了封装，vue项目中使用vue-dplayer|
+| tailwindcss| npm:@tailwindcss/postcss7-compat@^2.2.17 | https://tailwindcss.com/ Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, pt-4, text-center 和 rotate-90 这样的的类，它们能直接在脚本标记语言中组合起来，构建出任何设计|
 #### 介绍
 ##### 1.vue基础语法 
 
