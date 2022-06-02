@@ -16,7 +16,7 @@
 | vue-dplayer| 0.0.10 | 视频播放组件，npm对DPlayer做了封装，vue项目中使用vue-dplayer|
 | tailwindcss| npm:@tailwindcss/postcss7-compat@^2.2.17 | https://tailwindcss.com/ Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, pt-4, text-center 和 rotate-90 这样的的类，它们能直接在脚本标记语言中组合起来，构建出任何设计|
 |vue-pdf| 4.3.0 | vue-pdf 一个基于vue的pdf预览插件 npm install --save vue-pdf|
-|Xsheet| 直接引入js文件 | 开源的高性能JavaScript电子表格。地址：https://gitee.com/eigi/x-sheet|
+|xsheet.js| 直接引入js文件 | 开源的高性能JavaScript电子表格。|
 #### 介绍
 ##### 1.vue基础语法 
 
