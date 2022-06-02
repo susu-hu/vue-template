@@ -56,7 +56,46 @@
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-loading.gif)
 #### 4.3 自定义日期组件-可选主题色
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E8%87%AA%E5%AE%9A%E4%B9%89%E6%97%A5%E6%9C%9F%E7%BB%84%E4%BB%B6.png)
-
+## 5.事件优化
+#### 5.1 节流+防抖
+#### 5.2 lodash的使用
+## 6.vue相关语法基础内容
+#### 6.1 vue生命周期
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F.png)
+#### 6.2 .sync
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/sync.png)
+#### 6.3 子组件与父组件生命周期执行顺序
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E6%89%A7%E8%A1%8C%E9%A1%BA%E5%BA%8F.png)
+#### 6.4 slot插槽的使用(具名插槽+默认插槽+作用域插槽)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/slot%E6%8F%92%E6%A7%BD.png)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/v-slot.png)
+## 7.vue插件
+#### 7.1 vuedraggable
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-drag.gif)
+#### 7.2 awe-dnd
+![输入图片说明](https://gitee.com/susuhhhhhh/su-sus-vue/raw/master/demo%E5%9B%BE%E9%9B%86/awe-dnd.gif)
+#### 7.3 富文本编辑器vue-quill-editor
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-quill-editor.gif)
+#### 7.4 pdf预览vue-pdf
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-pdf.gif)
+#### 7.5 Xsheet-在线表格预览
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/xsheet.png)
+#### 7.6 Luckysheet-在线表格预览
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/lucksheet.png)
+## 8.数据可视化
+#### 8.1 data-V
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
+## 9.饿了么ui篇章
+#### 9.1 二次封装饿了么表单页面
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E8%A1%A8%E5%8D%952.png)
+## 10.Jest
+#### 10.1 Jest入门
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/jest%E5%85%A5%E9%97%A8.png)
+## 11.地图
+#### 11.1 高德地图
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E9%AB%98%E5%BE%B7map.png)
+## 12.js+
+#### 12.1 添加babel，配置链式（?.）/NULL(??)判断运算符
 
 
 #### 参与贡献
