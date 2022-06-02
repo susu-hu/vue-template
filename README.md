@@ -12,6 +12,12 @@
 | awe-dnd  | 0.3.4 |封装了 v-dragging 全局指令，然后通过全局指令去数据绑定等。相比及 vuedraggable 来说， awe-dnd 是没有双向绑定（这里没有双向绑定并不是很严谨，准确的来说没有暴露双向绑定的方式），因此提供了事件，在拖拽结束的时候用来更新列表（不需要手动更新列表，其实内部是实现了双向绑定的）或者是去触发父组件监听的事件|
 | vue-quill-editor  | 3.0.6 |基于 Quill,适用于Vue的富文本编辑器,支持服务端渲染和单页应用，兼容IE10+|
 | Jest  | 27.5.1 |Jest是 Facebook 的一套开源的 JavaScript 测试框架， 它自动集成了断言、JSDom、覆盖率报告等开发者所需要的所有测试工具，是一款几乎零配置的测试框架。并且它对同样是 Facebook 的开源前端框架 React 的测试十分友好。|
+| dplayer| 1.26.0 | 视频播放组件|
+| vue-dplayer| 0.0.10 | 视频播放组件，npm对DPlayer做了封装，vue项目中使用vue-dplayer|
+| tailwindcss| npm:@tailwindcss/postcss7-compat@^2.2.17 |  Tailwind CSS 是一个功能类优先的 CSS 框架，它集成了诸如 flex, pt-4, text-center 和 rotate-90 这样的的类，它们能直接在脚本标记语言中组合起来，构建出任何设计|
+|vue-pdf| 4.3.0 | vue-pdf 一个基于vue的pdf预览插件 npm install --save vue-pdf|
+|Xsheet| 直接引入js文件 | 免费开源的高性能JavaScript电子表格。|
+|Luckysheet| 直接引入js文件/cdn | Luckysheet ，一款纯前端类似excel的在线表格，功能强大、配置简单、完全开源|
 
 #### 介绍
 ##### 1.vue基础语法 
