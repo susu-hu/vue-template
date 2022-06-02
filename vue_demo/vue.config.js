@@ -2,13 +2,13 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: 胡苏珍 1628469970@qq.com
- * @LastEditTime: 2022-06-01 17:21:25
+ * @LastEditTime: 2022-06-02 15:19:26
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
 
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin') //引入插件
-const MomentLocalesPlugin = require('moment-locales-webpack-plugin'); //moment配置语言环境
+// const MomentLocalesPlugin = require('moment-locales-webpack-plugin'); //moment配置语言环境
 
 var webpack = require('webpack');
 const path = require('path'); //引入path模块
@@ -16,11 +16,13 @@ function resolve(dir) {
     return path.join(__dirname, dir) //path.join(__dirname)设置绝对路径
 }
 
+const packageInfo = require('./package.json');
+
 module.exports = {
     lintOnSave: true, //eslint检查
     runtimeCompiler: true,
     publicPath: '/', //根路径
-    outputDir: "dist",
+    outputDir: 'susu' + packageInfo.version, //打包之后的文件名字，默认是dist
     assetsDir: "assets",
     productionSourceMap: true,
     devServer: {
@@ -99,9 +101,9 @@ module.exports = {
 
                 // 或者：剥离除 “en”、“es-us” 和 “ru” 以外的所有语言环境。
                 //（“en” 内置于 Moment 中，无法移除）
-                new MomentLocalesPlugin({
-                    localesToKeep: ['es-us', 'zh-cn'],
-                }),
+                // new MomentLocalesPlugin({
+                //     localesToKeep: ['es-us', 'zh-cn'],
+                // }),
             ],
             externals: {
 

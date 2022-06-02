@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-06-01 17:35:43
  * @LastEditors: 胡苏珍 1628469970@qq.com
- * @LastEditTime: 2022-06-01 17:59:38
+ * @LastEditTime: 2022-06-02 16:23:40
  * @FilePath: \vue_demo\src\views\library\anime.vue
  * @Description:anime.js
 
@@ -26,21 +26,38 @@
     </div>
     <Divider />
     <div class="container">
-      <div class="stagger-visualizer"></div>
+      <div class="a">
+        <div></div>
+      </div>
+      <div class="b">
+        <div></div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-//npm install animejs
+import anime from "animejs/lib/anime.js";
+//npm install animejs --save
 export default {
   data() {
     return {};
   },
+  mounted() {
+    anime({
+      targets: [".a", ".b"],
+      translateX: "-300px",
+      rotate: 360,
+      borderRadius: 100,
+      duration: 2000 * 2,
+      loop: true,
+      easing: "linear",
+    });
+  },
 };
 </script>
 
-<style scoped>
+<style scoped lang="less">
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -50,18 +67,23 @@ export default {
   background-color: #222;
 }
 
-.stagger-visualizer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 450px;
-  height: 450px;
+.a,
+.b {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  padding: 10px 0 0 10px;
+  div {
+    width: 30px;
+    height: 30px;
+    border-radius: 20px;
+    background-color: #fff;
+  }
 }
-
-.stagger-visualizer div {
-  width: 64px;
-  height: 128px;
-  border: 1px solid #373535;
-  background-color: pink;
+.a {
+  background-color: #ffc0cb;
+}
+.b {
+  background-color: #e27815;
 }
 </style>
