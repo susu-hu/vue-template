@@ -201,6 +201,10 @@ export default {
           ) {
             item.validateState = "";
             item.validateMessage = "";
+
+            // validateDisabled 是否校验
+            // validateState 展示状态（校验错误时此处值为 'error'）
+            // validateMessage 错误提示文字
           }
         });
       }

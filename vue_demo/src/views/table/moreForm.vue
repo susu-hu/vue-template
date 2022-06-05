@@ -2,13 +2,15 @@
   <div class="contentBox">
     <div class="mb20">
       <Button type="primary" @click="add">新增</Button>
-      <Button type="default" @click="edit">修改</Button>
+      <Button type="default" @click="edit" style="margin-left: 20px"
+        >修改</Button
+      >
     </div>
     <Button
       type="primary"
       @click="addmore"
       v-if="form.condition.length > 0"
-      class="mb20"
+      style="margin-bottom: 20px"
       >新增一组数据</Button
     >
     <Form
@@ -76,6 +78,35 @@
         >
         <Divider />
       </Row>
+      <Table
+        v-if="form.tunnelRangeList.length > 0"
+        :columns="columnsTunnel"
+        :data="form.tunnelRangeList"
+        stripe
+        border
+        style="margin-bottom: 25px"
+      >
+        <template slot="name" slot-scope="{ index }">
+          {{ form.tunnelRangeList[index].tunnelName }}
+        </template>
+        <template slot="meter" slot-scope="{ index }">
+          <FormItem
+            :prop="`tunnelRangeList.${index}.distance`"
+            :rules="ruleValidate.distance"
+          >
+            <InputNumber
+              :min="0"
+              v-model="form.tunnelRangeList[index].distance"
+              type="text"
+            />
+          </FormItem>
+        </template>
+        <template slot="flag" slot-scope="{ index }">
+          <p>
+            {{ form.tunnelRangeList[index].direction == 0 ? "减量" : "增量" }}
+          </p>
+        </template>
+      </Table>
     </Form>
     <Button
       type="primary"
@@ -99,9 +130,30 @@ export default {
         callback();
       }
     };
+    const validDistance = (rule, value, callback) => {
+      if (
+        this.form.tunnelRangeList[0].distance >=
+        this.form.tunnelRangeList[1].distance
+      ) {
+        callback(new Error("增量不能大于减量"));
+      } else {
+        // validateField对部分表单字段进行校验的方法，参数1为需校验的 prop，参数2为检验完回调，返回错误信息
+        this.$refs.formValidate.fields.forEach((e) => {
+          if (
+            e.prop == "tunnelRangeList.0.distance" ||
+            e.prop == "tunnelRangeList.1.distance"
+          ) {
+            e.validateState = "";
+            e.validateMessage = "";
+          }
+        });
+        callback();
+      }
+    };
     return {
       form: {
         condition: [],
+        tunnelRangeList: [],
       },
       ruleValidate: {
         t1: [
@@ -125,7 +177,32 @@ export default {
             message: "参数3 不能为空",
           },
         ],
+        distance: [
+          {
+            type: "number",
+            required: true,
+            validator: validDistance,
+            trigger: "blur,change",
+          },
+        ],
       },
+      columnsTunnel: [
+        {
+          title: "巷道名称",
+          slot: "name",
+          align: "center",
+        },
+        {
+          title: "巷道位置（米）",
+          slot: "meter",
+          align: "center",
+        },
+        {
+          title: "进入标识",
+          slot: "flag",
+          align: "center",
+        },
+      ],
     };
   },
   methods: {
@@ -139,10 +216,6 @@ export default {
     },
     getDropList(e, index, k) {
       let oneList = [
-          // {
-          //   code: 1,
-          //   name: "加1单",
-          // },
           {
             code: 2,
             name: "加2单",
@@ -209,7 +282,9 @@ export default {
     },
     submit() {
       let data = { ...this.form };
+      console.log(data);
       this.$refs.formValidate.validate((valid) => {
+        //对整个表单进行校验，参数为检验完的回调，会返回一个 Boolean 表示成功与失败，支持 Promise
         if (valid) {
           console.log(data);
         }
@@ -225,6 +300,7 @@ export default {
           actionList: [],
         },
       ];
+      this.addTun();
     },
     edit() {
       // mock已有假数据
@@ -238,6 +314,18 @@ export default {
       this.$set(this.form.condition, 0, JSON.parse(data1));
       this.$set(this.form.condition[0], "actionList", []);
       this.getDropList(this.form.condition[0].t1, 0, this.form.condition[0]);
+    },
+    addTun() {
+      for (let i = 0; i < 2; i++) {
+        this.form.tunnelRangeList.push({
+          tunnelId: 1,
+          tunnelName: "苏苏小苏苏",
+          distance: 0,
+          direction: "",
+        });
+      }
+      this.form.tunnelRangeList[0].direction = 1;
+      this.form.tunnelRangeList[1].direction = 0;
     },
   },
   watch: {
