@@ -42,7 +42,7 @@ export default {
     },
     {
       code: "0001-05",
-      label: "v-for表单校验",
+      label: "高级表单校验",
       parent: "0001",
       url: "/table/moreForm",
     },
@@ -340,6 +340,13 @@ export default {
       label: "excel预览luckysheet",
       parent: "0009",
       url: "/plug/luckysheet",
+    },
+    {
+      code: "0009-07",
+      icon: "ios-add-circle",
+      label: "fullPage",
+      parent: "0009",
+      url: "/plug/fullPage",
     },
     {
       code: "0010",

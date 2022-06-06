@@ -84,15 +84,6 @@ import formRuleValidate from "./ruleForm.js";
 export default {
   name: "dynamicForm",
   data() {
-    // var validatePass2 = (rule, value, callback) => {
-    //   if (value === "") {
-    //     callback(new Error("请再次输入新密码"));
-    //   } else if (value !== this.formInline.newPwd) {
-    //     callback(new Error("两次输入新密码不一致!"));
-    //   } else {
-    //     callback();
-    //   }
-    // };
     return {
       formInline: {
         remark: "",
@@ -105,35 +96,6 @@ export default {
         stock: "",
       },
       ruleValidate: formRuleValidate(this),
-      // {
-      //   status: [
-      //     { required: true, message: "审核结果不能为空", trigger: "change" },
-      //   ],
-      //   remark: [
-      //     { required: true, message: "请填写不通过原因", trigger: "blur" },
-      //   ],
-      //   telephone: [
-      //     {
-      //       required: true,
-      //       pattern: /^1[3456789]\d{9}$/,
-      //       message: "手机号码格式不正确",
-      //       trigger: "blur",
-      //     },
-      //   ],
-      //   idCard: [
-      //     {
-      //       required: true,
-      //       pattern:
-      //         /^[1-9]\d{5}(18|19|20)\d{2}((0[1-9])|(1[0-2]))(([0-2][1-9])|10|20|30|31)\d{3}[0-9Xx]$/,
-      //       message: "身份证号格式不正确",
-      //       trigger: "blur",
-      //     },
-      //   ],
-      //   newPwd: [{ required: true, message: "请输入新密码", trigger: "blur" }],
-      //   newPwd2: [
-      //     { required: true, validator: validatePass2, trigger: "blur" },
-      //   ],
-      // },
     };
   },
   created() {
@@ -141,7 +103,6 @@ export default {
   },
   methods: {
     change(e) {
-      console.log(e);
       if (e == 1) {
         for (let item of this.$refs.formValidate.fields) {
           if (item.prop === "remark") {

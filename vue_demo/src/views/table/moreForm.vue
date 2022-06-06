@@ -103,7 +103,7 @@
         </template>
         <template slot="flag" slot-scope="{ index }">
           <p>
-            {{ form.tunnelRangeList[index].direction == 0 ? "减量" : "增量" }}
+            {{ form.tunnelRangeList[index].direction == 0 ? "减" : "增" }}
           </p>
         </template>
       </Table>
@@ -114,6 +114,13 @@
       class="flex-row j_c"
       @click="submit"
       >提交数据</Button
+    >
+    <Button
+      v-if="form.condition.length > 0"
+      class="flex-row j_c"
+      @click="reset"
+      style="margin-left: 20px"
+      >重置</Button
     >
   </div>
 </template>
@@ -188,17 +195,17 @@ export default {
       },
       columnsTunnel: [
         {
-          title: "巷道名称",
+          title: "名称",
           slot: "name",
           align: "center",
         },
         {
-          title: "巷道位置（米）",
+          title: "距离",
           slot: "meter",
           align: "center",
         },
         {
-          title: "进入标识",
+          title: "增减",
           slot: "flag",
           align: "center",
         },
@@ -326,6 +333,9 @@ export default {
       }
       this.form.tunnelRangeList[0].direction = 1;
       this.form.tunnelRangeList[1].direction = 0;
+    },
+    reset() {
+      this.$refs.formValidate.resetFields(); //重置表单
     },
   },
   watch: {

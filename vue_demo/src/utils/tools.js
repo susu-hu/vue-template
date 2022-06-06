@@ -11,17 +11,23 @@ export default {
     var hours = addZero(date.getHours());
     var minutes = addZero(date.getMinutes());
     var seconds = addZero(date.getSeconds());
-    if (accurate) { return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds; }
+    if (accurate) {
+      return year + '-' + month + '-' + day + ' ' + hours + ':' + minutes + ':' + seconds;
+    }
     return year + '-' + month + '-' + day;
   },
 
   // 选择器时间转月份 yyyy-mm
   yyyymm: function (d) {
-    if (!d) { return '' }
+    if (!d) {
+      return ''
+    }
     let str = new Date(d);
     let y = String(str.getFullYear());
     let m = String(str.getMonth() + 1);
-    if (m.length == 1) { m = '0' + m }
+    if (m.length == 1) {
+      m = '0' + m
+    }
     return y + m;
   },
 
@@ -44,7 +50,7 @@ export default {
         (child) => father['code'] == child['parentCode']
       )
       branchArr.length > 0 ? (father['children'] = branchArr) : '';
-      return father['code'] == '';//父级code键名，默认为''
+      return father['code'] == ''; //父级code键名，默认为''
     })
   },
 
@@ -93,8 +99,25 @@ export default {
       }, gapTime);
     };
   },
-
-
+  /** 
+   * 深拷贝  
+   *  @param source Array/Object  对象/数组
+   */
+  /* eslint-disable */
+  deepClone(source) {
+    const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
+    for (let keys in source) { // 遍历目标
+      if (source.hasOwnProperty(keys)) {
+        if (source[keys] && typeof source[keys] === 'object') { // 如果值是对象，就递归一下
+          targetObj[keys] = source[keys].constructor === Array ? [] : {};
+          targetObj[keys] = deepClone(source[keys]);
+        } else { // 如果不是，就直接赋值
+          targetObj[keys] = source[keys];
+        }
+      }
+    }
+    return targetObj;
+  }
 
 }
 
