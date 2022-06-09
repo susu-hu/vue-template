@@ -1,6 +1,6 @@
 import axios from 'axios'; // 引入axios
 // import QS from 'qs';
-import { Message } from "iview";
+import { Message } from 'view-design';
 // import loading from '@/components/load2/index.js' // 引入loading
 import Vue from 'vue';
 // import router from "./router";
