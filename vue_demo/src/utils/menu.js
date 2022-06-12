@@ -53,6 +53,12 @@ export default {
     url: "/table/treeTable",
   },
   {
+    code: "0001-07",
+    label: "tree",
+    parent: "0001",
+    url: "/table/tree",
+  },
+  {
     code: "0002",
     icon: "ios-add-circle",
     label: "预处理器/css",

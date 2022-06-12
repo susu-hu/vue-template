@@ -179,6 +179,11 @@ const router = new Router({
       component: () => import("@/views/table/treeTable.vue"),
     },
     {
+      path: "/table/tree",
+      name: "tree",
+      component: () => import("@/views/table/tree.vue"),
+    },
+    {
       path: "/exportFile",
       name: "exportFile",
       component: () => import('@/views/layout/export.vue'),
