@@ -1,3 +1,4 @@
+
 <template>
   <div class="contentBox">
     <Tree :data="data" show-checkbox multiple @on-check-change="change"></Tree>
@@ -37,12 +38,13 @@ export default {
                 {
                   title: "leaf 1-2-1",
                   disableCheckbox: true,
+                  disabled: true,
                   is_d: 1,
                 },
                 {
                   title: "leaf 1-2-1",
-                  disableCheckbox: false,
-                  disable: true,
+                  // disableCheckbox: false,
+                  disabled: false,
                   is_d: 0,
                 },
               ],
