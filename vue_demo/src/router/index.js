@@ -184,6 +184,11 @@ const router = new Router({
       component: () => import("@/views/table/tree.vue"),
     },
     {
+      path: "/table/formPage",
+      name: "formPage",
+      component: () => import("@/views/table/formPage/index.vue"),
+    },
+    {
       path: "/exportFile",
       name: "exportFile",
       component: () => import('@/views/layout/export.vue'),

@@ -59,6 +59,12 @@ export default {
     url: "/table/tree",
   },
   {
+    code: "0001-08",
+    label: "表单项",
+    parent: "0001",
+    url: "/table/formPage",
+  },
+  {
     code: "0002",
     icon: "ios-add-circle",
     label: "预处理器/css",
