@@ -187,6 +187,10 @@ const router = new Router({
       path: "/table/formPage",
       name: "formPage",
       component: () => import("@/views/table/formPage/index.vue"),
+    }, {
+      path: "/table/todayPicker",
+      name: "todayPicker",
+      component: () => import("@/views/table/todayPicker.vue"),
     },
     {
       path: "/exportFile",
