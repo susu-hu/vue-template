@@ -1,7 +1,7 @@
 <!--
- * @Author: 胡苏珍 1628469970@qq.com
+ * @Author: susu 1628469970@qq.com
  * @Date: 2022-06-01 17:35:43
- * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditors: susu 1628469970@qq.com
  * @LastEditTime: 2022-06-02 16:23:40
  * @FilePath: \vue_demo\src\views\library\anime.vue
  * @Description:anime.js

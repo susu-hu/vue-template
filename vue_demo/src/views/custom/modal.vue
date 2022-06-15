@@ -1,7 +1,7 @@
 <!--
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-05-22 14:45:55
- * @LastEditors: 胡苏珍 1628469970@qq.com
+ * @LastEditors: susu 1628469970@qq.com
  * @LastEditTime: 2022-06-01 15:07:51
  * @FilePath: \vue_demo\src\views\custom\modal.vue
  * @Description: 二次封装iview的Modal组件

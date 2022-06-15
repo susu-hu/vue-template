@@ -3,3 +3,11 @@ npm i
 npm run serve
 npm run build
 ！！！
+
+
+koroFileHeader:
+用于生成文件头部注释和函数注释的插件，支持所有主流语言,功能强大，灵活方便，文档齐全，食用简单！
+https://github.com/OBKoro1/koro1FileHeader/wiki/%E5%AE%89%E8%A3%85%E5%92%8C%E5%BF%AB%E9%80%9F%E4%B8%8A%E6%89%8B
+
+快捷键：
+window：ctrl+win+i,mac：ctrl+cmd+i, linux: ctrl+meta+i,Ubuntu: ctrl+super+i
