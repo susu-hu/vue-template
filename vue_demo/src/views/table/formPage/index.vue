@@ -673,9 +673,9 @@ export default {
     return {
       modalTip: 0,
       dayOptions: {
-        disabledDate: (date) => {
-          return date >= Date.now();
-        },
+        // disabledDate: (date) => {
+        //   return date >= Date.now();
+        // },
       },
       copyCardNo: "",
       copyDate: formatDate(new Date()),
@@ -743,59 +743,107 @@ export default {
       this.hasChange = true;
       this.form.attendance[index][type] = e;
       if (type == "inwellTime") {
-        if (
-          this.form.attendance[this.currentIndex].oriInStationItem &&
-          !this.form.attendance[this.currentIndex].is_copy_his
-        ) {
-          let oldTime = JSON.parse(
-              this.form.attendance[this.currentIndex].oriInStationItem
-            ),
-            orDateTime = formatDate(oldTime.dataTime, true);
-          if (e < orDateTime) {
-            this.form.attendance[
-              this.currentIndex
-            ].inStationItem.no_del = false;
-            let len = this.form.attendance[this.currentIndex].list.filter(
-              (item) => {
-                return (
-                  item.dataTime == oldTime.dataTime &&
-                  item.stationNo == oldTime.stationNo
-                );
-              }
-            ).length;
-            if (len == 0) {
-              this.form.attendance[this.currentIndex].list.unshift(oldTime);
-            }
-          }
-        }
+        this.timeValid(e, "oriInStationItem", "inStationItem", "unshift");
+        // if (
+        //   this.form.attendance[this.currentIndex].oriInStationItem &&
+        //   !this.form.attendance[this.currentIndex].is_copy_his
+        // ) {
+        //   let oldTime = JSON.parse(
+        //       this.form.attendance[this.currentIndex].oriInStationItem
+        //     ),
+        //     orDateTime = formatDate(oldTime.dataTime, true);
+        //   if (e < orDateTime) {
+        //     this.form.attendance[
+        //       this.currentIndex
+        //     ].inStationItem.no_del = false;
+        //     let len = this.form.attendance[this.currentIndex].list.filter(
+        //       (item) => {
+        //         return (
+        //           item.dataTime == oldTime.dataTime &&
+        //           item.stationNo == oldTime.stationNo
+        //         );
+        //       }
+        //     ).length;
+        //     if (len == 0) {
+        //       this.form.attendance[this.currentIndex].list.unshift(oldTime);
+        //     }
+        //   }
+        // }
         this.$set(this.form.inStationItem, "dataTime", e);
       } else {
-        if (
-          this.form.attendance[this.currentIndex].oriOutStationItem &&
-          !this.form.attendance[this.currentIndex].is_copy_his
-        ) {
-          let oldTime = JSON.parse(
-              this.form.attendance[this.currentIndex].oriOutStationItem
-            ),
-            orDateTime = formatDate(oldTime.dataTime, true);
+        this.timeValid(e, "oriOutStationItem", "outStationItem", "push");
+        // if (
+        //   this.form.attendance[this.currentIndex].oriOutStationItem &&
+        //   !this.form.attendance[this.currentIndex].is_copy_his
+        // ) {
+        //   let oldTime = JSON.parse(
+        //       this.form.attendance[this.currentIndex].oriOutStationItem
+        //     ),
+        //     orDateTime = formatDate(oldTime.dataTime, true);
+        //   if (e > orDateTime) {
+        //     this.form.attendance[
+        //       this.currentIndex
+        //     ].outStationItem.no_del = false;
+        //     let len = this.form.attendance[this.currentIndex].list.filter(
+        //       (item) => {
+        //         return (
+        //           item.dataTime == oldTime.dataTime &&
+        //           item.stationNo == oldTime.stationNo
+        //         );
+        //       }
+        //     ).length;
+        //     if (len == 0) {
+        //       this.form.attendance[this.currentIndex].list.push(oldTime);
+        //     }
+        //   }
+        // }
+        this.$set(this.form.outStationItem, "dataTime", e);
+      }
+    },
+    /**
+     * 修改历史轨迹数据回显
+     * @param {*} e
+     * @param {*} oriType
+     * @param {*} type
+     * @param {*} action
+     */
+    timeValid(e, oriType, type, action) {
+      if (
+        this.form.attendance[this.currentIndex][oriType] &&
+        !this.form.attendance[this.currentIndex].is_copy_his
+      ) {
+        let oldTime = JSON.parse(
+            this.form.attendance[this.currentIndex][oriType]
+          ),
+          orDateTime = formatDate(oldTime.dataTime, true);
+        if (oriType == "oriInStationItem") {
+          if (e < orDateTime) {
+            this.setTime(type, action, oldTime);
+          }
+        } else {
           if (e > orDateTime) {
-            this.form.attendance[
-              this.currentIndex
-            ].outStationItem.no_del = false;
-            let len = this.form.attendance[this.currentIndex].list.filter(
-              (item) => {
-                return (
-                  item.dataTime == oldTime.dataTime &&
-                  item.stationNo == oldTime.stationNo
-                );
-              }
-            ).length;
-            if (len == 0) {
-              this.form.attendance[this.currentIndex].list.push(oldTime);
-            }
+            this.setTime(type, action, oldTime);
           }
         }
-        this.$set(this.form.outStationItem, "dataTime", e);
+      }
+    },
+    /**
+     * 只添加一条数据
+     * @param {*} type
+     * @param {*} action
+     * @param {*} oldTime
+     */
+    setTime(type, action, oldTime) {
+      this.form.attendance[this.currentIndex][type].no_del = false;
+      let len = this.form.attendance[this.currentIndex].list.filter((item) => {
+        return (
+          formatDate(item.dataTime, true) ==
+            formatDate(oldTime.dataTime, true) &&
+          item.stationNo == oldTime.stationNo
+        );
+      }).length;
+      if (len == 0) {
+        this.form.attendance[this.currentIndex].list[action](oldTime);
       }
     },
     changeStation(e, index, type) {
@@ -867,7 +915,7 @@ export default {
         // const { data } = await api.getUserInfo(this.copyCardNo);
         // if (data.code == 200 && data.data) {
         //   this.copyNo = data.data.userInfoCode;
-        //   this.getInwellTimeStatics(this.copyCardNo, this.copyDate, 2);
+        this.getInwellTimeStatics(this.copyCardNo, this.copyDate, 2);
         // } else {
         //   this.$Message.error("查询的员工不存在！");
         // }
@@ -962,6 +1010,74 @@ export default {
           //     });
           // });
           // this.copyData = data.data;
+          this.copyData = [
+            {
+              is_copy_his: true,
+              inwellTime: "2022-06-15 05:05:05",
+              outwellTime: "2022-06-15 08:08:08",
+              shiftTimeQuantumId: "1",
+              inwellStationNo: "1",
+              outwellStationNo: "2",
+              list: [
+                {
+                  stationDistance: 111,
+                  dataTime: "2022-06-15 07:07:07",
+                  stationDirection: 1,
+                },
+                {
+                  stationDistance: 222,
+                  dataTime: "2022-06-15 06:06:06",
+                  stationDirection: 1,
+                },
+                // 出入基站
+                {
+                  stationDistance: 888,
+                  dataTime: "2022-06-15 05:05:05",
+                  stationNo: 1,
+                  stationDirection: 1,
+                },
+                {
+                  stationDistance: 999,
+                  dataTime: "2022-06-15 08:08:08",
+                  stationNo: 2,
+                  stationDirection: 1,
+                },
+              ],
+            },
+            {
+              is_copy_his: true,
+              inwellTime: "2022-06-15 09:09:09",
+              outwellTime: "2022-06-15 12:12:12",
+              shiftTimeQuantumId: "2",
+              inwellStationNo: "2",
+              outwellStationNo: "3",
+              list: [
+                {
+                  stationDistance: 999,
+                  dataTime: "2022-06-15 10:07:07",
+                  stationDirection: 1,
+                },
+                {
+                  stationDistance: 999,
+                  dataTime: "2022-06-15 11:06:06",
+                  stationDirection: 1,
+                },
+                // 出入基站
+                {
+                  stationDistance: 999,
+                  dataTime: "2022-06-15 09:09:09",
+                  stationNo: 2,
+                  stationDirection: 1,
+                },
+                {
+                  stationDistance: 999,
+                  dataTime: "2022-06-15 12:12:12",
+                  stationNo: 3,
+                  stationDirection: 1,
+                },
+              ],
+            },
+          ];
         }
       }
     },
@@ -983,42 +1099,54 @@ export default {
         {
           stationDistance: 111,
           dataTime: "2022-06-15 07:07:07",
+          stationDirection: 1,
+          stationNo: "2",
         },
         {
           stationDistance: 222,
           dataTime: "2022-06-15 06:06:06",
+          stationDirection: 1,
+          stationNo: "1",
         },
         // 出入基站
-        {
-          stationDistance: 888,
-          dataTime: "2022-06-15 05:05:05",
-          stationNo: 1,
-        },
-        {
-          stationDistance: 999,
-          dataTime: "2022-06-15 08:08:08",
-          stationNo: 2,
-        },
+        // {
+        //   stationDistance: 888,
+        //   dataTime: "2022-06-15 05:05:05",
+        //   stationNo: '1',
+        //   stationDirection: 1,
+        // },
+        // {
+        //   stationDistance: 999,
+        //   dataTime: "2022-06-15 08:08:08",
+        //   stationNo: 2,
+        //   stationDirection: '1',
+        // },
       ];
       let list2 = [
         {
           stationDistance: 999,
           dataTime: "2022-06-15 10:07:07",
+          stationDirection: 1,
+          stationNo: "5",
         },
         {
           stationDistance: 999,
           dataTime: "2022-06-15 11:06:06",
+          stationDirection: 1,
+          stationNo: "6",
         },
         // 出入基站
         {
           stationDistance: 999,
           dataTime: "2022-06-15 09:09:09",
-          stationNo: 2,
+          stationNo: "2",
+          stationDirection: 1,
         },
         {
           stationDistance: 999,
           dataTime: "2022-06-15 12:12:12",
-          stationNo: 3,
+          stationNo: "3",
+          stationDirection: 1,
         },
       ];
       let list = index == 0 ? list1 : list2;
@@ -1078,8 +1206,20 @@ export default {
       this.form.inStationItem = this.form.attendance[index].inStationItem;
       this.form.outStationItem = this.form.attendance[index].outStationItem;
     },
+    /**
+     * 当有历史轨迹，但是无法匹配出入井基站时候，设置当前出入井跟随页面考勤
+     */
+    initStationData(index, e, type, time, station) {
+      this.$set(
+        this.form.attendance[index],
+        [type],
+        JSON.parse(JSON.stringify(originForm[type]))
+      );
+      this.form.attendance[index][type].dataTime = e[time];
+      this.form.attendance[index][type].stationNo = e[station];
+      this.form[type] = this.form.attendance[index][type];
+    },
     initListData(e, w, index) {
-      console.log("1231231");
       let q = JSON.parse(w);
       if (!e.inStationItem) {
         let list1 = q.filter((item) => item.stationNo == e.inwellStationNo);
@@ -1095,6 +1235,15 @@ export default {
             JSON.stringify(getMinObj(list1))
           );
           this.form.inStationItem = getMinObj(list1);
+        } else {
+          console.log("无匹配入井");
+          this.initStationData(
+            index,
+            e,
+            "inStationItem",
+            "inwellTime",
+            "inwellStationNo"
+          );
         }
       }
       if (!e.outStationItem) {
@@ -1111,6 +1260,15 @@ export default {
             JSON.stringify(getMaxObj(list2))
           );
           this.form.outStationItem = getMaxObj(list2);
+        } else {
+          console.log("无匹配出井");
+          this.initStationData(
+            index,
+            e,
+            "outStationItem",
+            "outwellTime",
+            "outwellStationNo"
+          );
         }
       }
       // 除去入井基站，出井基站
@@ -1403,14 +1561,14 @@ export default {
           });
           this.form.attendance = newArr;
           this.saveAttence(JSON.stringify(newArr));
-          if (this.showTrack) {
-            this.saveTrack();
-          }
+          // 不论是否展示，直接调用，在这个方法中做判断
+          this.saveTrack();
         }
       });
     },
     // 新增考勤
     saveAttence(newArr) {
+      console.log("原始数据", JSON.parse(newArr));
       let list = JSON.parse(newArr);
       list.forEach((item) => {
         item.inwellTime = formatDate(item.inwellTime, true);
@@ -1419,6 +1577,9 @@ export default {
         if (item.list) delete item.list;
         if (item.inStationItem) delete item.inStationItem;
         if (item.outStationItem) delete item.outStationItem;
+        if (item.oriInStationItem) delete item.oriInStationItem;
+        if (item.oriInStationItem) delete item.oriInStationItem;
+        if (item.oriOutStationItem) delete item.oriOutStationItem;
       });
       console.log(list);
       // api
@@ -1437,13 +1598,15 @@ export default {
     },
     // 新增轨迹
     saveTrack() {
-      let l = flatten(this.form.attendance.map((item) => item.list)).filter(
+      let l = [],
+        new_a = [];
+      l = flatten(this.form.attendance.map((item) => item.list)).filter(
         (item) => item != undefined
       );
-      let new_a = [];
       this.form.attendance.forEach((item) => {
         new_a.push(item.inStationItem, item.outStationItem);
       });
+
       let list = l.concat(new_a.filter((item) => item != undefined));
       let params = {
         objectNo: this.userInfo.userInfoCode,
@@ -1457,25 +1620,34 @@ export default {
         item.dataTime = formatDate(item.dataTime, true);
         item.dataDate = formatDate(item.dataTime, true);
       });
+
+      let lll = newArr.filter(
+        (item) => item.dataDate && item.stationDistance && item.stationDirection
+      );
+      console.log("feino_del", lll);
       let t_list = newArr.filter(
         (item) =>
           item.dataDate &&
           item.stationDistance &&
           item.stationDirection &&
+          item.stationNo &&
           !item.no_del
       );
       console.log(t_list);
-      // api
-      //   .addLocus(t_list)
-      //   .then((res) => {
-      //     if (res.data.code == 200) {
-      //     } else {
-      //       this.$Message.error("操作失败，请稍后重试！");
-      //     }
-      //   })
-      //   .catch(() => {
-      //     this.$Message.error("操作失败，请稍后重试！");
-      //   });
+      // 当有值的时候 再去调用此接口
+      if (t_list.length) {
+        // api
+        //   .addLocus(t_list)
+        //   .then((res) => {
+        //     if (res.data.code == 200) {
+        //     } else {
+        //       this.$Message.error("操作失败，请稍后重试！");
+        //     }
+        //   })
+        //   .catch(() => {
+        //     this.$Message.error("操作失败，请稍后重试！");
+        //   });
+      }
     },
   },
   watch: {
