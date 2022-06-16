@@ -1,48 +1,47 @@
 export const ruleValidate = (obj) => {
   const rule = {
-    inwellTime: [{
-      required: true,
-      message: "入井时间不能为空",
-      trigger: "blur,change",
-    },],
-    outwellTime: [{
-      required: true,
-      message: "出井时间不能为空",
-      trigger: "blur,change",
-    },
-    ],
-    shiftTimeQuantumId: [{
-      type: 'number',
-      required: true,
-      message: "时间段不能为空",
-      trigger: "blur,change",
-    },],
-    inwellStationNo: [{
-      required: true,
-      message: "入井基站不能为空",
-      trigger: "blur,change",
-    },],
-    outwellStationNo: [{
-      required: true,
-      message: "出井基站不能为空",
-      trigger: "blur,change",
-    },],
-    stationNo: [{
-      required: true,
-      message: "出井基站不能为空",
-      trigger: "blur,change",
-    },],
-    stationDirection: [{
-      type: 'number',
-      required: true,
-      message: "方向不能为空",
-      trigger: "blur,change",
-    },],
-    stationDistance: [{
-      required: true,
-      message: "距离不能为空",
-      trigger: "blur,change",
-    },],
+    // inwellTime: [{
+    //   required: true,
+    //   message: "入井时间不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // outwellTime: [{
+    //   required: true,
+    //   message: "出井时间不能为空",
+    //   trigger: "blur,change",
+    // },
+    // ],
+    // shiftTimeQuantumId: [{
+    //   required: true,
+    //   message: "时间段不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // inwellStationNo: [{
+    //   required: true,
+    //   message: "入井基站不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // outwellStationNo: [{
+    //   required: true,
+    //   message: "出井基站不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // stationNo: [{
+    //   required: true,
+    //   message: "出井基站不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // stationDirection: [{
+    //   type: 'number',
+    //   required: true,
+    //   message: "方向不能为空",
+    //   trigger: "blur,change",
+    // },],
+    // stationDistance: [{
+    //   required: true,
+    //   message: "距离不能为空",
+    //   trigger: "blur,change",
+    // },],
   }
   return rule;
 }

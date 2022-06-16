@@ -9,7 +9,7 @@ import Calendar from "@/views/custom/calen.vue";
 import QuillEditor from "@/views/plug/quillEditor.vue";
 import UploadFile from "@/views/table/uploadFile.vue";
 import dynamicForm from "@/views/table/dynamicForm.vue";
-
+import formPage from '@/views/table/formPage/index.vue';
 const layIndex = (r) =>
   require.ensure(
     [],
@@ -186,7 +186,7 @@ const router = new Router({
     {
       path: "/table/formPage",
       name: "formPage",
-      component: () => import("@/views/table/formPage/index.vue"),
+      component: formPage,
     }, {
       path: "/table/todayPicker",
       name: "todayPicker",
