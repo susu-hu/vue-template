@@ -418,6 +418,11 @@ const router = new Router({
       name: "customModal",
       component: () => import("@/views/custom/modal.vue"),
     },
+    {
+      path: "/custom/vDrag",
+      name: "vDrag",
+      component: () => import("@/views/custom/vDrag.vue"),
+    },
     // 处理类库
     {
       path: "/library/moment",

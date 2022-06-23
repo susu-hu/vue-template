@@ -658,6 +658,7 @@
 </template>
 
 <script>
+/* eslint-disable */
 import {
   getMinObj,
   getMaxObj,

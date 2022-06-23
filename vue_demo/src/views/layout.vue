@@ -182,6 +182,7 @@
     </Layout>
     <!-- 关于苏苏 -->
     <Modal
+      :transfer="true"
       v-model="formModel"
       title="关于苏苏"
       :loading="formModalLoading"

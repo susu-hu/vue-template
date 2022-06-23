@@ -18,6 +18,7 @@
 </template>
  
 <script>
+/* eslint-disable */
 import expandRow from "./components/table-expand1.vue";
 export default {
   components: { expandRow },
@@ -125,8 +126,7 @@ export default {
       ],
     };
   },
-  created() {},
-  watch: {},
+
   mounted() {
     // 给tableData1  增加_expanded/_text
     this.tableData = this.tableData1.map((item) => {
@@ -137,6 +137,8 @@ export default {
     console.log(this.tableData);
   },
   methods: {
+    onSelect() {},
+    selectionClick() {},
     //点击展开收起
     expand(item, index) {
       console.log(item, index);

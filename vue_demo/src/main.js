@@ -72,8 +72,8 @@ import "vue-dplayer/dist/vue-dplayer.css";
 Vue.use(VueDPlayer);
 
 // 全屏滚动
-import VueFullPage from 'vue-fullpage.js';
-Vue.use(VueFullPage);
+// import VueFullPage from 'vue-fullpage.js';
+// Vue.use(VueFullPage);
 
 import Storage from "vue-ls";
 const options = {

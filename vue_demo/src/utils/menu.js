@@ -156,6 +156,14 @@ export default {
     url: "/custom/modal",
   },
   {
+    code: "0004-05",
+    icon: "ios-add-circle",
+    label: "v-drag实现元素拖拽",
+    parent: "0004",
+    url: "/custom/vDrag",
+  },
+
+  {
     code: "0005",
     icon: "ios-add-circle",
     label: "事件优化",
