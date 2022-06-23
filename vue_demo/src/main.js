@@ -49,6 +49,9 @@ Vue.use(loading001);
 import btn from "@/directive/btn.js";
 Vue.use(btn);
 
+import drag from "@/directive/drag.js";
+Vue.use(drag);
+
 import VueDND from "awe-dnd";
 
 Vue.use(VueDND);
