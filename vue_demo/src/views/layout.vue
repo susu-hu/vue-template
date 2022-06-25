@@ -54,7 +54,7 @@
             <span class="menuTitle">首页</span>
           </MenuItem>
           <Submenu
-            v-for="(item, index) in menuMap"
+            v-for="(item, index, sort) in menuMap"
             :name="index"
             :key="index"
             class="sub_title"
@@ -64,7 +64,7 @@
                 <use :xlink:href="item.fonticon"></use>
               </svg>
               <Icon :type="item.icon" v-else />
-              <span class="menuTitle">{{ item.title }}</span>
+              <span class="menuTitle">{{ sort + 1 }}.{{ item.title }}</span>
             </template>
             <template v-if="item.children">
               <MenuItem
@@ -72,7 +72,9 @@
                 :name="index + '-' + i"
                 :key="index + '-' + i"
                 @click.native="selectMenu(each, i, index)"
-                ><span class="menuTitle">{{ each.title }}</span>
+                ><span class="menuTitle"
+                  >{{ sort + 1 }}-{{ i + 1 }}.{{ each.title }}</span
+                >
               </MenuItem>
             </template>
           </Submenu>

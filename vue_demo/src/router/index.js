@@ -421,7 +421,7 @@ const router = new Router({
     {
       path: "/custom/vDrag",
       name: "vDrag",
-      component: () => import("@/views/custom/vDrag.vue"),
+      component: () => import("@/views/custom/drag/vDrag.vue"),
     },
     // 处理类库
     {

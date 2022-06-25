@@ -194,7 +194,7 @@ export default {
   {
     code: "0006-01",
     icon: "ios-add-circle",
-    label: "created+mounted",
+    label: "created与mounted",
     parent: "0006",
     url: "/base/cAndM",
   },
