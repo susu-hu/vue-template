@@ -191,7 +191,7 @@ const router = new Router({
     },
     {
       path: "/table/bigData",
-      name: "todayPicker",
+      name: "bigData",
       component: bigData,
     },
     {

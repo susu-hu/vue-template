@@ -1,4 +1,4 @@
-import expandRow from "./table-expand.vue";
+// import expandRow from "./table-expand.vue";
 const publistHead = [{
   title: "序号",
   slot: "sort",
@@ -83,19 +83,20 @@ const columns = {
       key: "outwellTime",
       align: "center",
     },
-    {
-      title: "操作",
-      align: "center",
-      type: "expand",
-      width: 150,
-      render: (h, params) => {
-        return h(expandRow, {
-          props: {
-            row: params.row,
-          },
-        });
-      },
-    },]
+    // {
+    //   title: "操作",
+    //   align: "center",
+    //   type: "expand",
+    //   width: 150,
+    //   render: (h, params) => {
+    //     return h(expandRow, {
+    //       props: {
+    //         row: params.row,
+    //       },
+    //     });
+    //   },
+    // },
+  ]
 
 };
 export default columns;

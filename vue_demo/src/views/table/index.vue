@@ -50,7 +50,7 @@
           > 删除</a>
         </template>
       </Table>
-      <!-- <div>
+      <div>
         <Pager
           class="public-page"
           :style="{ marginTop: '20px' }"
@@ -66,7 +66,7 @@
           @on-change="(val) => pageNumChange(val, 'params')"
           @on-page-size-change="(val) => pageSizeChange(val, 'params')"
         />
-      </div> -->
+      </div>
     </Card>
   </div>
 </template>

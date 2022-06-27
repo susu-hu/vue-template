@@ -1,4 +1,3 @@
-
 const columns = (obj) => {
 
     const table = [
@@ -11,7 +10,7 @@ const columns = (obj) => {
         {
             title: "序号",
             slot: "index",
-            width: 80,
+            width: 120,
             align: "center",
         },
         {
