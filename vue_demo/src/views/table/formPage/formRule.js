@@ -1,3 +1,4 @@
+/* eslint-disable */
 export const ruleValidate = (obj) => {
   const rule = {
     // inwellTime: [{

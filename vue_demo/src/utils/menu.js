@@ -65,6 +65,12 @@ export default {
     url: "/table/formPage",
   },
   {
+    code: "0001-09",
+    label: "大数据表格渲染",
+    parent: "0001",
+    url: "/table/bigData",
+  },
+  {
     code: "0002",
     icon: "ios-add-circle",
     label: "预处理器/css",

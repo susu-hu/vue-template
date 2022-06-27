@@ -1,555 +1,636 @@
 <template>
-  <div class="container contentBox">
-    <h1 class="mb-20 t-l-c">苏苏测试工具</h1>
+  <div class="content">
+    <h1 class="mb-20 t-l-c">测试工具</h1>
     <Row>
-      <Form ref="Form" :model="form" :rules="rules">
-        <Col span="24" class="flex-row mb-20">
-          <FormItem
-            label="卡号："
-            class="flex-row mb-0 mr-40"
-            style="padding-left: 16px"
-          >
-            <Input
-              clearable
-              v-model.trim="form.cardNo"
-              type="text"
-              placeholder="请输入卡号"
-              style="width: 180px"
-            />
-          </FormItem>
-          <FormItem label="日期：" class="flex-row mb-0 mr-40">
-            <Date-picker
-              confirm
-              :transfer="true"
-              clearable
-              style="width: 180px"
-              v-model="form.date"
-              type="date"
-              @on-change="changeFormDate"
-              @on-open-change="openChangeDate"
-              :options="dayOptions"
-              placeholder="选择日期"
-            ></Date-picker>
-          </FormItem>
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="search(1)"
-            >查询</Button
-          >
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="nextDay(-1, 'form.date')"
-            >前一天</Button
-          >
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="nextDay(1, 'form.date')"
-            >后一天</Button
-          >
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="openModal"
-            >复制</Button
-          >
-          <Button type="primary" size="large" class="act-btn" @click="saveData"
-            >保存</Button
-          >
+      <Form
+        ref="Form"
+        :model="form"
+        :rules="rules"
+      >
+        <Col
+          span="24"
+          class="flex-row mb-20"
+        >
+        <FormItem
+          label="卡号："
+          class="flex-row mb-0 mr-40"
+          style="padding-left: 16px"
+        >
+          <Input
+            clearable
+            v-model.trim="form.cardNo"
+            type="text"
+            placeholder="请输入卡号"
+            style="width: 180px"
+          />
+        </FormItem>
+        <FormItem
+          label="日期："
+          class="flex-row mb-0 mr-40"
+        >
+          <Date-picker
+            confirm
+            :transfer="true"
+            clearable
+            style="width: 180px"
+            v-model="form.date"
+            type="date"
+            @on-change="changeFormDate"
+            @on-open-change="openChangeDate"
+            :options="dayOptions"
+            placeholder="选择日期"
+          ></Date-picker>
+        </FormItem>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="search(1)"
+        >查询</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="nextDay(-1, 'form.date')"
+        >前一天</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="nextDay(1, 'form.date')"
+        >后一天</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="openModal"
+        >复制</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="act-btn"
+          @click="saveData"
+        >保存</Button>
         </Col>
-        <Col span="24" style="margin-bottom: 10px">
-          <Card>
-            <div class="flex-row">
-              <FormItem label="姓名：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.cnName"
-                  type="text"
-                  placeholder="请输入姓名"
-                  style="width: 180px"
-                />
-              </FormItem>
-              <FormItem label="部门：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.deptName"
-                  type="text"
-                  placeholder="请输入部门"
-                  style="width: 180px"
-                />
-              </FormItem>
-              <FormItem label="工号：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.userInfoCode"
-                  type="text"
-                  placeholder="请输入工号"
-                  style="width: 180px"
-                />
-              </FormItem>
-              <FormItem label="工种：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.dutyName"
-                  type="text"
-                  placeholder="请输入工种"
-                  style="width: 180px"
-                />
-              </FormItem>
-              <FormItem label="职务：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.positionName"
-                  type="text"
-                  placeholder="请输入职务"
-                  style="width: 180px"
-                />
-              </FormItem>
-              <FormItem label="班次：" class="flex-row mb-0 mr-40">
-                <Input
-                  :disabled="true"
-                  v-model.trim="userInfo.shiftName"
-                  type="text"
-                  placeholder="请输入班次"
-                  style="width: 180px"
-                />
-              </FormItem>
-            </div>
-          </Card>
+        <Col
+          span="24"
+          style="margin-bottom: 10px"
+        >
+        <Card>
+          <div class="flex-row">
+            <FormItem
+              label="姓名："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.cnName"
+                type="text"
+                placeholder="请输入姓名"
+                style="width: 180px"
+              />
+            </FormItem>
+            <FormItem
+              label="部门："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.deptName"
+                type="text"
+                placeholder="请输入部门"
+                style="width: 180px"
+              />
+            </FormItem>
+            <FormItem
+              label="工号："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.userInfoCode"
+                type="text"
+                placeholder="请输入工号"
+                style="width: 180px"
+              />
+            </FormItem>
+            <FormItem
+              label="工种："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.dutyName"
+                type="text"
+                placeholder="请输入工种"
+                style="width: 180px"
+              />
+            </FormItem>
+            <FormItem
+              label="职务："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.positionName"
+                type="text"
+                placeholder="请输入职务"
+                style="width: 180px"
+              />
+            </FormItem>
+            <FormItem
+              label="班次："
+              class="flex-row mb-0 mr-40"
+            >
+              <Input
+                :disabled="true"
+                v-model.trim="userInfo.shiftName"
+                type="text"
+                placeholder="请输入班次"
+                style="width: 180px"
+              />
+            </FormItem>
+          </div>
+        </Card>
         </Col>
         <!-- 考勤 -->
-        <Col span="24" style="margin-bottom: 10px; margin-top: 30px">
-          <div class="flex-row mb-20">
-            <h2 class="mr-20">考勤信息</h2>
-            <Icon
-              type="md-add-circle"
-              size="30"
-              color="#57A3F3"
-              @click="addInfo"
-            />
-          </div>
-          <Table
-            style="border-bottom: 1px solid #dcdee2"
-            :columns="columnAttendance"
-            :data="form.attendance"
-            stripe
-            :row-class-name="rowClassName"
-            border
-            max-height="185"
-            @on-row-click="handleRowChange"
-            @on-row-dblclick="handleRowChange"
-            highlight-row
+        <Col
+          span="24"
+          style="margin-bottom: 10px; margin-top: 30px"
+        >
+        <div class="flex-row mb-20">
+          <h2 class="mr-20">考勤信息</h2>
+          <Icon
+            type="md-add-circle"
+            size="30"
+            color="#57A3F3"
+            @click="addInfo"
+          />
+        </div>
+        <Table
+          style="border-bottom: 1px solid #dcdee2"
+          :columns="columnAttendance"
+          :data="form.attendance"
+          stripe
+          :row-class-name="rowClassName"
+          border
+          max-height="185"
+          @on-row-click="handleRowChange"
+          @on-row-dblclick="handleRowChange"
+          highlight-row
+        >
+          <template
+            slot="sort"
+            slot-scope="{ index }"
           >
-            <template slot="sort" slot-scope="{ index }">
-              {{ index + 1 }}
-            </template>
-            <template slot="shiftTimeQuantumId" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                :prop="`attendance.${index}.shiftTimeQuantumId`"
-                :rules="rules.shiftTimeQuantumId"
-                style="width: 220px"
+            {{ index + 1 }}
+          </template>
+          <template
+            slot="shiftTimeQuantumId"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              class="mb-0 td-ipt"
+              :prop="`attendance.${index}.shiftTimeQuantumId`"
+              :rules="rules.shiftTimeQuantumId"
+              style="width: 220px"
+            >
+              <Select
+                :transfer="true"
+                v-model="form.attendance[index].shiftTimeQuantumId"
+                filterable
+                clearable
+                placeholder="请选择"
+                :disabled="form.attendance[index].no_del"
+                @on-change="(e) => changeShift(e, index)"
+                @on-open-change="hasChange = true"
+                label-in-value
               >
-                <Select
-                  :transfer="true"
-                  v-model="form.attendance[index].shiftTimeQuantumId"
-                  filterable
-                  clearable
-                  placeholder="请选择"
-                  :disabled="form.attendance[index].no_del"
-                  @on-change="(e) => changeShift(e, index)"
-                  @on-open-change="hasChange = true"
-                  label-in-value
-                >
-                  <Option
-                    v-for="(item, index) in shiftList"
-                    :value="item.shiftTimeQuantumId"
-                    :key="item.shiftTimeQuantumId + `${index}`"
-                    >{{ item.timeName }}</Option
-                  >
-                </Select>
-              </FormItem>
-            </template>
-            <template slot="inwellTime" slot-scope="{ index }">
-              <FormItem
-                style="width: 220px"
-                class="mb-0 td-ipt"
-                :prop="`attendance.${index}.inwellTime`"
-                :rules="rules.inwellTime"
-              >
-                <Date-picker
-                  format="yyyy-MM-dd HH:mm:ss"
-                  :options="dayOptions"
-                  :transfer="true"
-                  v-model="form.attendance[index].inwellTime"
-                  @on-change="(e) => changeWelTime(e, index, 'inwellTime')"
-                  type="datetime"
-                  placeholder="选择时间"
-                ></Date-picker>
-              </FormItem>
-            </template>
-            <template slot="outwellTime" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                style="width: 220px"
-                :prop="`attendance.${index}.outwellTime`"
-                :rules="rules.outwellTime"
-              >
-                <Date-picker
-                  :options="dayOptions"
-                  format="yyyy-MM-dd HH:mm:ss"
-                  :transfer="true"
-                  v-model="form.attendance[index].outwellTime"
-                  @on-change="(e) => changeWelTime(e, index, 'outwellTime')"
-                  type="datetime"
-                  placeholder="选择时间"
-                ></Date-picker>
-              </FormItem>
-            </template>
-            <template slot="inwellStationNo" slot-scope="{ index }">
-              <FormItem
-                style="width: 220px"
-                class="mb-0 td-ipt"
-                :prop="`attendance.${index}.inwellStationNo`"
-                :rules="rules.inwellStationNo"
-              >
-                <Select
-                  :transfer="true"
-                  v-model="form.attendance[index].inwellStationNo"
-                  filterable
-                  clearable
-                  placeholder="请选择基站"
-                  :disabled="form.attendance[index].no_del"
-                  label-in-value
-                  @on-change="
+                <Option
+                  v-for="(item, index) in shiftList"
+                  :value="item.shiftTimeQuantumId"
+                  :key="item.shiftTimeQuantumId + `${index}`"
+                >{{ item.timeName }}</Option>
+              </Select>
+            </FormItem>
+          </template>
+          <template
+            slot="inwellTime"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              style="width: 220px"
+              class="mb-0 td-ipt"
+              :prop="`attendance.${index}.inwellTime`"
+              :rules="rules.inwellTime"
+            >
+              <Date-picker
+                format="yyyy-MM-dd HH:mm:ss"
+                :options="dayOptions"
+                :transfer="true"
+                v-model="form.attendance[index].inwellTime"
+                @on-change="(e) => changeWelTime(e, index, 'inwellTime')"
+                type="datetime"
+                placeholder="选择时间"
+              ></Date-picker>
+            </FormItem>
+          </template>
+          <template
+            slot="outwellTime"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              class="mb-0 td-ipt"
+              style="width: 220px"
+              :prop="`attendance.${index}.outwellTime`"
+              :rules="rules.outwellTime"
+            >
+              <Date-picker
+                :options="dayOptions"
+                format="yyyy-MM-dd HH:mm:ss"
+                :transfer="true"
+                v-model="form.attendance[index].outwellTime"
+                @on-change="(e) => changeWelTime(e, index, 'outwellTime')"
+                type="datetime"
+                placeholder="选择时间"
+              ></Date-picker>
+            </FormItem>
+          </template>
+          <template
+            slot="inwellStationNo"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              style="width: 220px"
+              class="mb-0 td-ipt"
+              :prop="`attendance.${index}.inwellStationNo`"
+              :rules="rules.inwellStationNo"
+            >
+              <Select
+                :transfer="true"
+                v-model="form.attendance[index].inwellStationNo"
+                filterable
+                clearable
+                placeholder="请选择基站"
+                :disabled="form.attendance[index].no_del"
+                label-in-value
+                @on-change="
                     (e) => changeStation(e, index, 'inwellStationName')
                   "
-                  @on-open-change="hasChange = true"
-                >
-                  <Option
-                    v-for="(item, index) in stationList"
-                    :value="item.stationNo"
-                    :key="item.stationNo + `${index}`"
-                    >{{ item.stationName }}</Option
-                  >
-                </Select>
-              </FormItem>
-            </template>
-            <template slot="outwellStationNo" slot-scope="{ index }">
-              <FormItem
-                style="width: 220px"
-                class="mb-0 td-ipt"
-                :prop="`attendance.${index}.outwellStationNo`"
-                :rules="rules.outwellStationNo"
-              >
-                <Select
-                  :transfer="true"
-                  v-model="form.attendance[index].outwellStationNo"
-                  filterable
-                  clearable
-                  placeholder="请选择基站"
-                  :disabled="form.attendance[index].no_del"
-                  label-in-value
-                  @on-change="
-                    (e) => changeStation(e, index, 'outwellStationName')
-                  "
-                  @on-open-change="hasChange = true"
-                >
-                  <Option
-                    v-for="(item, index) in stationList"
-                    :value="item.stationNo"
-                    :key="item.stationNo + `${index}`"
-                    >{{ item.stationName }}</Option
-                  >
-                </Select>
-              </FormItem>
-            </template>
-            <template slot="action" slot-scope="{ row, index }">
-              <a
-                v-if="!row.no_del"
-                href="javascript:;"
-                style="color: #d55516"
-                @click.stop="del(index, 'attendance')"
-                class="mr-40"
-                >删除</a
-              >
-              <a
-                href="javascript:;"
-                style="color: #57a3f3"
-                @click.stop="copy(row, 'attendance')"
-                >复制</a
-              >
-            </template>
-          </Table>
-        </Col>
-        <!-- 轨迹 -->
-        <Col span="24" style="margin-top: 30px" v-if="showTrack">
-          <div class="flex-row mb-20">
-            <h2 class="mr-20">轨迹信息</h2>
-            <Icon
-              type="md-add-circle"
-              size="30"
-              color="#57A3F3"
-              @click="addTrack"
-            />
-          </div>
-          <div class="flex-row mb-20">
-            <FormItem label="入井基站：" class="flex-row mb-0 mr-40">
-              <Select
-                :disabled="true"
-                style="width: 220px"
-                :transfer="true"
-                v-model="form.inStationItem.stationNo"
-                placeholder="请选择基站"
+                @on-open-change="hasChange = true"
               >
                 <Option
                   v-for="(item, index) in stationList"
                   :value="item.stationNo"
                   :key="item.stationNo + `${index}`"
-                  >{{ item.stationName }}</Option
-                >
+                >{{ item.stationName }}</Option>
               </Select>
             </FormItem>
+          </template>
+          <template
+            slot="outwellStationNo"
+            slot-scope="{ index }"
+          >
             <FormItem
-              label="方向："
-              :rules="rules.stationDirection"
-              prop="inStationItem.stationDirection"
-              class="flex-row mb-0 mr-40"
+              style="width: 220px"
+              class="mb-0 td-ipt"
+              :prop="`attendance.${index}.outwellStationNo`"
+              :rules="rules.outwellStationNo"
             >
               <Select
-                v-model="form.inStationItem.stationDirection"
-                placeholder="请选择方向"
-                style="width: 220px"
                 :transfer="true"
+                v-model="form.attendance[index].outwellStationNo"
                 filterable
                 clearable
+                placeholder="请选择基站"
+                :disabled="form.attendance[index].no_del"
+                label-in-value
+                @on-change="
+                    (e) => changeStation(e, index, 'outwellStationName')
+                  "
                 @on-open-change="hasChange = true"
               >
-                <!--  :disabled="form.inStationItem.no_del" -->
+                <Option
+                  v-for="(item, index) in stationList"
+                  :value="item.stationNo"
+                  :key="item.stationNo + `${index}`"
+                >{{ item.stationName }}</Option>
+              </Select>
+            </FormItem>
+          </template>
+          <template
+            slot="action"
+            slot-scope="{ row, index }"
+          >
+            <a
+              v-if="!row.no_del"
+              href="javascript:;"
+              style="color: #d55516"
+              @click.stop="del(index, 'attendance')"
+              class="mr-40"
+            >删除</a>
+            <a
+              href="javascript:;"
+              style="color: #57a3f3"
+              @click.stop="copy(row, 'attendance')"
+            >复制</a>
+          </template>
+        </Table>
+        </Col>
+        <!-- 轨迹 -->
+        <Col
+          span="24"
+          style="margin-top: 30px"
+          v-if="showTrack"
+        >
+        <div class="flex-row mb-20">
+          <h2 class="mr-20">轨迹信息</h2>
+          <Icon
+            type="md-add-circle"
+            size="30"
+            color="#57A3F3"
+            @click="addTrack"
+          />
+        </div>
+        <div class="flex-row mb-20">
+          <FormItem
+            label="入井基站："
+            class="flex-row mb-0 mr-40"
+          >
+            <Select
+              :disabled="true"
+              style="width: 220px"
+              :transfer="true"
+              v-model="form.inStationItem.stationNo"
+              placeholder="请选择基站"
+            >
+              <Option
+                v-for="(item, index) in stationList"
+                :value="item.stationNo"
+                :key="item.stationNo + `${index}`"
+              >{{ item.stationName }}</Option>
+            </Select>
+          </FormItem>
+          <FormItem
+            label="方向："
+            :rules="rules.stationDirection"
+            prop="inStationItem.stationDirection"
+            class="flex-row mb-0 mr-40"
+          >
+            <Select
+              v-model="form.inStationItem.stationDirection"
+              placeholder="请选择方向"
+              style="width: 220px"
+              :transfer="true"
+              filterable
+              clearable
+              @on-open-change="hasChange = true"
+            >
+              <!--  :disabled="form.inStationItem.no_del" -->
+              <Option :value="1">左</Option>
+              <Option :value="2">右</Option>
+            </Select>
+          </FormItem>
+          <FormItem
+            label="距离(米)："
+            class="flex-row mb-0 mr-40"
+            :rules="rules.stationDistance"
+            prop="inStationItem.stationDistance"
+          >
+            <!--  :disabled="form.inStationItem.no_del" -->
+            <Input
+              @on-change="hasChange = true"
+              v-model.trim="form.inStationItem.stationDistance"
+              type="text"
+              placeholder="请输入距离"
+              style="width: 220px"
+            />
+          </FormItem>
+          <FormItem
+            label="时间："
+            class="flex-row mb-0 mr-40"
+          >
+            <Date-picker
+              style="width: 220px"
+              :options="dayOptions"
+              :disabled="true"
+              :transfer="true"
+              v-model="form.inStationItem.dataTime"
+              type="datetime"
+              placeholder="选择时间"
+              @on-change="hasChange = true"
+              format="yyyy-MM-dd HH:mm:ss"
+            ></Date-picker>
+          </FormItem>
+        </div>
+        <Table
+          style="margin-bottom: 20px; border-bottom: 1px solid #dcdee2"
+          :columns="columnTrack"
+          :data="form.trackList"
+          stripe
+          border
+          :row-class-name="rowClassNameIn"
+          @on-row-click="handleRowChangeTrack"
+          @on-row-dblclick="handleRowChangeTrack"
+          highlight-row
+          max-height="285"
+        >
+          <template
+            slot="sort"
+            slot-scope="{ index }"
+          >
+            {{ index + 1 }}
+          </template>
+          <template
+            slot="stationNo"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              class="mb-0 td-ipt"
+              :prop="`trackList.${index}.stationNo`"
+              :rules="rules.inwellStationNo"
+            >
+              <Select
+                :transfer="true"
+                v-model="form.trackList[index].stationNo"
+                filterable
+                clearable
+                placeholder="请选择基站"
+                @on-change="(e) => selectStation(e, index)"
+                :disabled="form.trackList[index].no_del"
+                @on-open-change="hasChange = true"
+              >
+                <Option
+                  v-for="(item, index) in stationList"
+                  :value="item.stationNo"
+                  :key="item.stationNo + `${index}`"
+                >{{ item.stationName }}</Option>
+              </Select>
+            </FormItem>
+          </template>
+          <template
+            slot="mainStationHid"
+            slot-scope="{ index }"
+          >
+            {{ form.trackList[index].mainStationHid }}
+          </template>
+          <template
+            slot="stationDirection"
+            slot-scope="{ index }"
+          >
+            <FormItem
+              class="mb-0 td-ipt"
+              :prop="`trackList.${index}.stationDirection`"
+              :rules="rules.stationDirection"
+            >
+              <Select
+                @on-open-change="hasChange = true"
+                :transfer="true"
+                v-model="form.trackList[index].stationDirection"
+                filterable
+                clearable
+                placeholder="请选择方向"
+                :disabled="form.trackList[index].no_del"
+              >
                 <Option :value="1">左</Option>
                 <Option :value="2">右</Option>
               </Select>
             </FormItem>
+          </template>
+          <template
+            slot="stationDistance"
+            slot-scope="{ index }"
+          >
             <FormItem
-              label="距离(米)："
-              class="flex-row mb-0 mr-40"
+              class="mb-0 td-ipt"
+              :prop="`trackList.${index}.stationDistance`"
               :rules="rules.stationDistance"
-              prop="inStationItem.stationDistance"
             >
-              <!--  :disabled="form.inStationItem.no_del" -->
               <Input
                 @on-change="hasChange = true"
-                v-model.trim="form.inStationItem.stationDistance"
+                clearable
+                v-model.trim="form.trackList[index].stationDistance"
                 type="text"
                 placeholder="请输入距离"
-                style="width: 220px"
+                :disabled="form.trackList[index].no_del"
               />
             </FormItem>
-            <FormItem label="时间：" class="flex-row mb-0 mr-40">
-              <Date-picker
-                style="width: 220px"
-                :options="dayOptions"
-                :disabled="true"
-                :transfer="true"
-                v-model="form.inStationItem.dataTime"
-                type="datetime"
-                placeholder="选择时间"
-                @on-change="hasChange = true"
-                format="yyyy-MM-dd HH:mm:ss"
-              ></Date-picker>
-            </FormItem>
-          </div>
-          <Table
-            style="margin-bottom: 20px; border-bottom: 1px solid #dcdee2"
-            :columns="columnTrack"
-            :data="form.trackList"
-            stripe
-            border
-            :row-class-name="rowClassNameIn"
-            @on-row-click="handleRowChangeTrack"
-            @on-row-dblclick="handleRowChangeTrack"
-            highlight-row
-            max-height="285"
+          </template>
+          <template
+            slot="dataTime"
+            slot-scope="{ index }"
           >
-            <template slot="sort" slot-scope="{ index }">
-              {{ index + 1 }}
-            </template>
-            <template slot="stationNo" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                :prop="`trackList.${index}.stationNo`"
-                :rules="rules.inwellStationNo"
-              >
-                <Select
-                  :transfer="true"
-                  v-model="form.trackList[index].stationNo"
-                  filterable
-                  clearable
-                  placeholder="请选择基站"
-                  @on-change="(e) => selectStation(e, index)"
-                  :disabled="form.trackList[index].no_del"
-                  @on-open-change="hasChange = true"
-                >
-                  <Option
-                    v-for="(item, index) in stationList"
-                    :value="item.stationNo"
-                    :key="item.stationNo + `${index}`"
-                    >{{ item.stationName }}</Option
-                  >
-                </Select>
-              </FormItem>
-            </template>
-            <template slot="mainStationHid" slot-scope="{ index }">
-              {{ form.trackList[index].mainStationHid }}
-            </template>
-            <template slot="stationDirection" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                :prop="`trackList.${index}.stationDirection`"
-                :rules="rules.stationDirection"
-              >
-                <Select
-                  @on-open-change="hasChange = true"
-                  :transfer="true"
-                  v-model="form.trackList[index].stationDirection"
-                  filterable
-                  clearable
-                  placeholder="请选择方向"
-                  :disabled="form.trackList[index].no_del"
-                >
-                  <Option :value="1">左</Option>
-                  <Option :value="2">右</Option>
-                </Select>
-              </FormItem>
-            </template>
-            <template slot="stationDistance" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                :prop="`trackList.${index}.stationDistance`"
-                :rules="rules.stationDistance"
-              >
-                <Input
-                  @on-change="hasChange = true"
-                  clearable
-                  v-model.trim="form.trackList[index].stationDistance"
-                  type="text"
-                  placeholder="请输入距离"
-                  :disabled="form.trackList[index].no_del"
-                />
-              </FormItem>
-            </template>
-            <template slot="dataTime" slot-scope="{ index }">
-              <FormItem
-                class="mb-0 td-ipt"
-                :prop="`trackList.${index}.dataTime`"
-                :rules="rules.dataTime"
-              >
-                <Date-picker
-                  :transfer="true"
-                  :options="dayOptions"
-                  v-model="form.trackList[index].dataTime"
-                  @on-change="
+            <FormItem
+              class="mb-0 td-ipt"
+              :prop="`trackList.${index}.dataTime`"
+              :rules="rules.dataTime"
+            >
+              <Date-picker
+                :transfer="true"
+                :options="dayOptions"
+                v-model="form.trackList[index].dataTime"
+                @on-change="
                     (form.trackList[index].dataTime = $event),
                       (hasChange = true)
                   "
-                  type="datetime"
-                  placeholder="选择时间"
-                  :disabled="form.trackList[index].no_del"
-                  format="yyyy-MM-dd HH:mm:ss"
-                ></Date-picker>
-              </FormItem>
-            </template>
-            <template slot="action" slot-scope="{ row, index }">
-              <a
-                v-if="!row.no_del"
-                href="javascript:;"
-                style="color: #d55516"
-                @click.stop="del(index, 'trackList')"
-                class="mr-40"
-                >删除</a
-              >
-              <a
-                href="javascript:;"
-                style="color: #57a3f3"
-                @click.stop="copy(row, 'trackList')"
-                >复制</a
-              >
-            </template>
-          </Table>
-          <div class="flex-row">
-            <FormItem label="出井基站：" class="flex-row mb-0 mr-40">
-              <Select
-                :disabled="true"
-                style="width: 220px"
-                :transfer="true"
-                v-model="form.outStationItem.stationNo"
-                placeholder="请选择基站"
-              >
-                <Option
-                  v-for="(item, index) in stationList"
-                  :value="item.stationNo"
-                  :key="item.stationNo + `${index}`"
-                  >{{ item.stationName }}</Option
-                >
-              </Select>
-            </FormItem>
-            <FormItem
-              label="方向："
-              class="flex-row mb-0 mr-40"
-              :rules="rules.stationDirection"
-              prop="outStationItem.stationDirection"
-            >
-              <Select
-                v-model="form.outStationItem.stationDirection"
-                placeholder="请选择方向"
-                style="width: 220px"
-                :transfer="true"
-                filterable
-                clearable
-                @on-open-change="hasChange = true"
-              >
-                <!--  :disabled="form.outStationItem.no_del" -->
-                <Option :value="1">左</Option>
-                <Option :value="2">右</Option>
-              </Select>
-            </FormItem>
-            <FormItem
-              label="距离(米)："
-              class="flex-row mb-0 mr-40"
-              :rules="rules.stationDistance"
-              prop="outStationItem.stationDistance"
-            >
-              <Input
-                @on-change="hasChange = true"
-                v-model.trim="form.outStationItem.stationDistance"
-                type="text"
-                placeholder="请输入距离"
-                style="width: 220px"
-              />
-              <!-- :disabled="form.outStationItem.no_del" -->
-            </FormItem>
-            <FormItem label="时间：" class="flex-row mb-0 mr-40">
-              <Date-picker
-                style="width: 220px"
-                :options="dayOptions"
-                :disabled="true"
-                :transfer="true"
-                v-model="form.outStationItem.dataTime"
-                @on-change="
-                  (form.outStationItem.dataTime = $event), (hasChange = true)
-                "
                 type="datetime"
                 placeholder="选择时间"
+                :disabled="form.trackList[index].no_del"
                 format="yyyy-MM-dd HH:mm:ss"
               ></Date-picker>
             </FormItem>
-          </div>
+          </template>
+          <template
+            slot="action"
+            slot-scope="{ row, index }"
+          >
+            <a
+              v-if="!row.no_del"
+              href="javascript:;"
+              style="color: #d55516"
+              @click.stop="del(index, 'trackList')"
+              class="mr-40"
+            >删除</a>
+            <a
+              href="javascript:;"
+              style="color: #57a3f3"
+              @click.stop="copy(row, 'trackList')"
+            >复制</a>
+          </template>
+        </Table>
+        <div class="flex-row">
+          <FormItem
+            label="出井基站："
+            class="flex-row mb-0 mr-40"
+          >
+            <Select
+              :disabled="true"
+              style="width: 220px"
+              :transfer="true"
+              v-model="form.outStationItem.stationNo"
+              placeholder="请选择基站"
+            >
+              <Option
+                v-for="(item, index) in stationList"
+                :value="item.stationNo"
+                :key="item.stationNo + `${index}`"
+              >{{ item.stationName }}</Option>
+            </Select>
+          </FormItem>
+          <FormItem
+            label="方向："
+            class="flex-row mb-0 mr-40"
+            :rules="rules.stationDirection"
+            prop="outStationItem.stationDirection"
+          >
+            <Select
+              v-model="form.outStationItem.stationDirection"
+              placeholder="请选择方向"
+              style="width: 220px"
+              :transfer="true"
+              filterable
+              clearable
+              @on-open-change="hasChange = true"
+            >
+              <!--  :disabled="form.outStationItem.no_del" -->
+              <Option :value="1">左</Option>
+              <Option :value="2">右</Option>
+            </Select>
+          </FormItem>
+          <FormItem
+            label="距离(米)："
+            class="flex-row mb-0 mr-40"
+            :rules="rules.stationDistance"
+            prop="outStationItem.stationDistance"
+          >
+            <Input
+              @on-change="hasChange = true"
+              v-model.trim="form.outStationItem.stationDistance"
+              type="text"
+              placeholder="请输入距离"
+              style="width: 220px"
+            />
+            <!-- :disabled="form.outStationItem.no_del" -->
+          </FormItem>
+          <FormItem
+            label="时间："
+            class="flex-row mb-0 mr-40"
+          >
+            <Date-picker
+              style="width: 220px"
+              :options="dayOptions"
+              :disabled="true"
+              :transfer="true"
+              v-model="form.outStationItem.dataTime"
+              @on-change="
+                  (form.outStationItem.dataTime = $event), (hasChange = true)
+                "
+              type="datetime"
+              placeholder="选择时间"
+              format="yyyy-MM-dd HH:mm:ss"
+            ></Date-picker>
+          </FormItem>
+        </div>
         </Col>
       </Form>
     </Row>
@@ -561,64 +642,73 @@
       draggable
     >
       <Form style="max-height: 500px; overflow-y: auto; overflow-x: hidden">
-        <Col span="24" class="flex-row mb-20">
-          <FormItem label="卡号：" class="flex-row mb-0 mr-40">
-            <Input
-              clearable
-              v-model.trim="copyCardNo"
-              type="text"
-              placeholder="请输入卡号"
-              style="width: 180px"
-            />
-          </FormItem>
-          <FormItem label="日期：" class="flex-row mb-0 mr-40">
-            <Date-picker
-              :transfer="true"
-              :options="dayOptions"
-              clearable
-              style="width: 180px"
-              v-model="copyDate"
-              type="date"
-              @on-change="copyDate = $event"
-              placeholder="选择日期"
-            ></Date-picker>
-          </FormItem>
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="search(2)"
-            >查询</Button
-          >
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="nextDay(-1, 'copyDate')"
-            >前一天</Button
-          >
-          <Button
-            type="primary"
-            size="large"
-            class="mr-20 act-btn"
-            @click="nextDay(1, 'copyDate')"
-            >后一天</Button
-          >
+        <Col
+          span="24"
+          class="flex-row mb-20"
+        >
+        <FormItem
+          label="卡号："
+          class="flex-row mb-0 mr-40"
+        >
+          <Input
+            clearable
+            v-model.trim="copyCardNo"
+            type="text"
+            placeholder="请输入卡号"
+            style="width: 180px"
+          />
+        </FormItem>
+        <FormItem
+          label="日期："
+          class="flex-row mb-0 mr-40"
+        >
+          <Date-picker
+            :transfer="true"
+            :options="dayOptions"
+            clearable
+            style="width: 180px"
+            v-model="copyDate"
+            type="date"
+            @on-change="copyDate = $event"
+            placeholder="选择日期"
+          ></Date-picker>
+        </FormItem>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="search(2)"
+        >查询</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="nextDay(-1, 'copyDate')"
+        >前一天</Button>
+        <Button
+          type="primary"
+          size="large"
+          class="mr-20 act-btn"
+          @click="nextDay(1, 'copyDate')"
+        >后一天</Button>
         </Col>
         <Col span="24">
-          <Table
-            class="mb-20"
-            :columns="columnsCopy"
-            :data="copyData"
-            highlight-row
-            border
-            @on-expand="onExpand"
-            @on-selection-change="selectionChange"
+        <Table
+          class="mb-20"
+          :columns="columnsCopy"
+          :data="copyData"
+          highlight-row
+          border
+          @on-expand="onExpand"
+          @on-selection-change="selectionChange"
+        >
+          <template
+            slot="index"
+            slot-scope="{ index }"
           >
-            <template slot="index" slot-scope="{ index }">
-              {{ index + 1 }}
-            </template>
-          </Table>
+            {{ index + 1 }}
+          </template>
+        </Table>
         </Col>
       </Form>
       <div slot="footer">
@@ -627,11 +717,14 @@
           long
           @click="modal = false"
           class="act-btn cancel-btn"
-          >取消</Button
-        >
-        <Button type="primary" size="large" long @click="submit" class="act-btn"
-          >确定</Button
-        >
+        >取消</Button>
+        <Button
+          type="primary"
+          size="large"
+          long
+          @click="submit"
+          class="act-btn"
+        >确定</Button>
       </div>
     </Modal>
     <Modal
@@ -646,10 +739,18 @@
         {{ modalTip == 0 ? "确认删除选中的数据?" : "数据有更新，是否离开?" }}
       </p>
       <div slot="footer">
-        <Button class="submit" icon="submit" @click="deleteok">{{
+        <Button
+          class="submit"
+          icon="submit"
+          @click="deleteok"
+        >{{
           modalTip == 0 ? "确 认" : "是"
         }}</Button>
-        <Button class="cancel" icon="cancel" @click="cancelModal">{{
+        <Button
+          class="cancel"
+          icon="cancel"
+          @click="cancelModal"
+        >{{
           modalTip == 0 ? "取 消" : "否"
         }}</Button>
       </div>
@@ -994,91 +1095,94 @@ export default {
             );
           }
         } else {
-          // data.data.forEach((item) => {
-          //   item.is_copy_his = true; //是复制的历史数据
-          //   item.list = [];
-          //   api
-          //     .getAuxiliaryInfo({
-          //       beginTime: item.inwellTime,
-          //       endTime: item.outwellTime,
-          //       empList: [{ empNo: this.copyNo }],
-          //     })
-          //     .then((res) => {
-          //       if (res.data.code == 200) {
-          //         item.list = res.data.data;
-          //         this.$set(item, "list", res.data.data);
-          //       }
-          //     });
-          // });
-          // this.copyData = data.data;
-          this.copyData = [
-            {
-              is_copy_his: true,
-              inwellTime: "2022-06-15 05:05:05",
-              outwellTime: "2022-06-15 08:08:08",
-              shiftTimeQuantumId: "1",
-              inwellStationNo: "1",
-              outwellStationNo: "2",
-              list: [
-                {
-                  stationDistance: 111,
-                  dataTime: "2022-06-15 07:07:07",
-                  stationDirection: 1,
-                },
-                {
-                  stationDistance: 222,
-                  dataTime: "2022-06-15 06:06:06",
-                  stationDirection: 1,
-                },
-                // 出入基站
-                {
-                  stationDistance: 888,
-                  dataTime: "2022-06-15 05:05:05",
-                  stationNo: 1,
-                  stationDirection: 1,
-                },
-                {
-                  stationDistance: 999,
-                  dataTime: "2022-06-15 08:08:08",
-                  stationNo: 2,
-                  stationDirection: 1,
-                },
-              ],
-            },
-            {
-              is_copy_his: true,
-              inwellTime: "2022-06-15 09:09:09",
-              outwellTime: "2022-06-15 12:12:12",
-              shiftTimeQuantumId: "2",
-              inwellStationNo: "2",
-              outwellStationNo: "3",
-              list: [
-                {
-                  stationDistance: 999,
-                  dataTime: "2022-06-15 10:07:07",
-                  stationDirection: 1,
-                },
-                {
-                  stationDistance: 999,
-                  dataTime: "2022-06-15 11:06:06",
-                  stationDirection: 1,
-                },
-                // 出入基站
-                {
-                  stationDistance: 999,
-                  dataTime: "2022-06-15 09:09:09",
-                  stationNo: 2,
-                  stationDirection: 1,
-                },
-                {
-                  stationDistance: 999,
-                  dataTime: "2022-06-15 12:12:12",
-                  stationNo: 3,
-                  stationDirection: 1,
-                },
-              ],
-            },
-          ];
+          new Promise((resolve) => {
+            setTimeout(() => {
+              let item = {
+                stationDistance: 111,
+                dataTime: "2022-06-15 07:07:07",
+                stationDirection: 1,
+              };
+              let res = { total: 10000 };
+              let data = [];
+              for (let i = 0; i < res.total; i++) {
+                data.push(item);
+              }
+              resolve(data);
+            }, 2000);
+            console.log("模拟数据", data);
+          }).then((res) => {
+            this.copyData = [
+              {
+                is_copy_his: true,
+                inwellTime: "2022-06-15 05:05:05",
+                outwellTime: "2022-06-15 08:08:08",
+                shiftTimeQuantumId: "1",
+                inwellStationNo: "1",
+                outwellStationNo: "2",
+                list: [
+                  // {
+                  //   stationDistance: 111,
+                  //   dataTime: "2022-06-15 07:07:07",
+                  //   stationDirection: 1,
+                  // },
+                  // {
+                  //   stationDistance: 222,
+                  //   dataTime: "2022-06-15 06:06:06",
+                  //   stationDirection: 1,
+                  // },
+                  // // 出入基站
+                  // {
+                  //   stationDistance: 888,
+                  //   dataTime: "2022-06-15 05:05:05",
+                  //   stationNo: 1,
+                  //   stationDirection: 1,
+                  // },
+                  // {
+                  //   stationDistance: 999,
+                  //   dataTime: "2022-06-15 08:08:08",
+                  //   stationNo: 2,
+                  //   stationDirection: 1,
+                  // },
+                ],
+              },
+              {
+                is_copy_his: true,
+                inwellTime: "2022-06-15 09:09:09",
+                outwellTime: "2022-06-15 12:12:12",
+                shiftTimeQuantumId: "2",
+                inwellStationNo: "2",
+                outwellStationNo: "3",
+                list: [
+                  // {
+                  //   stationDistance: 999,
+                  //   dataTime: "2022-06-15 10:07:07",
+                  //   stationDirection: 1,
+                  // },
+                  // {
+                  //   stationDistance: 999,
+                  //   dataTime: "2022-06-15 11:06:06",
+                  //   stationDirection: 1,
+                  // },
+                  // // 出入基站
+                  // {
+                  //   stationDistance: 999,
+                  //   dataTime: "2022-06-15 09:09:09",
+                  //   stationNo: 2,
+                  //   stationDirection: 1,
+                  // },
+                  // {
+                  //   stationDistance: 999,
+                  //   dataTime: "2022-06-15 12:12:12",
+                  //   stationNo: 3,
+                  //   stationDirection: 1,
+                  // },
+                ],
+              },
+            ];
+            this.copyData.forEach((item) => {
+              item.list = res;
+            });
+          });
         }
       }
     },

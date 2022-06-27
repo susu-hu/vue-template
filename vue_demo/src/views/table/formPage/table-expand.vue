@@ -11,17 +11,16 @@
         :key="index"
       >
         <P class="item_title">{{ item.dataTime }}</P>
-        <P class="item_title"
-          ><span>{{ item.stationName }}巷道</span
-          >{{
+        <P class="item_title"><span>{{ item.stationName }}巷道</span>{{
             item.stationDirection == 2
               ? parseInt(item.tunnelLoc) + parseInt(item.stationDistance)
               : parseInt(item.tunnelLoc) - parseInt(item.stationDistance)
-          }}米</P
-        >
+          }}米</P>
       </Row>
     </template>
-    <template v-else><p style="text-align: center">暂无轨迹信息</p></template>
+    <template v-else>
+      <p style="text-align: center">暂无轨迹信息</p>
+    </template>
   </div>
 </template>
 <script>
@@ -30,11 +29,11 @@ export default {
     row: Object,
   },
   watch: {
-    row: {
-      immediate: true,
-      deep: true,
-      handler(val) {},
-    },
+    // row: {
+    //   immediate: true,
+    //   deep: true,
+    //   handler(val) {},
+    // },
   },
 };
 </script>

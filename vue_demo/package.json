@@ -42,7 +42,9 @@
     "vue-quill-editor": "^3.0.6",
     "vue-router": "^3.5.3",
     "vuedraggable": "^2.24.3",
-    "vuex": "^3.6.2"
+    "vuex": "^3.6.2",
+    "vxe-table": "^3.0.1",
+    "xe-utils": "^3.5.4"
   },
   "devDependencies": {
     "@babel/plugin-proposal-nullish-coalescing-operator": "^7.17.12",

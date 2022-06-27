@@ -75,6 +75,12 @@ Vue.use(VueDPlayer);
 // import VueFullPage from 'vue-fullpage.js';
 // Vue.use(VueFullPage);
 
+
+import 'xe-utils'
+import VXETable from 'vxe-table'
+import 'vxe-table/lib/style.css'
+Vue.use(VXETable)
+
 import Storage from "vue-ls";
 const options = {
   namespace: "vuejs__", // key键前缀

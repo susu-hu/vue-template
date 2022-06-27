@@ -3,10 +3,16 @@
     <Card>
       <p slot="title">分页多选数据</p>
       <template slot="extra">
-        <Button type="primary" icon="md-sync" @click="reset()" class="mr10"
-          >刷新</Button
-        >
-        <Button type="primary" @click="batch">批量操作</Button>
+        <Button
+          type="primary"
+          icon="md-sync"
+          @click="reset()"
+          class="mr10"
+        >刷新</Button>
+        <Button
+          type="primary"
+          @click="batch"
+        >批量操作</Button>
       </template>
       <Table
         border
@@ -18,17 +24,33 @@
         @on-select="tableSelectRow"
         @on-select-cancel="tableSelectCancelRow"
       >
-        <template slot-scope="{ index }" slot="index">
+        <template
+          slot-scope="{ index }"
+          slot="index"
+        >
           {{ (params.page - 1) * params.pageSize + index + 1 }}
         </template>
-        <template slot-scope="{ row }" slot="iconCover">
-          <Avatar shape="square" size="large" :src="row.icon_cover" />
+        <template
+          slot-scope="{ row }"
+          slot="iconCover"
+        >
+          <Avatar
+            shape="square"
+            size="large"
+            :src="row.icon_cover"
+          />
         </template>
-        <template slot-scope="{ row }" slot="action">
-          <a href="javascript:;" @click="del(row)"> 删除</a>
+        <template
+          slot-scope="{ row }"
+          slot="action"
+        >
+          <a
+            href="javascript:;"
+            @click="del(row)"
+          > 删除</a>
         </template>
       </Table>
-      <div>
+      <!-- <div>
         <Pager
           class="public-page"
           :style="{ marginTop: '20px' }"
@@ -44,7 +66,7 @@
           @on-change="(val) => pageNumChange(val, 'params')"
           @on-page-size-change="(val) => pageSizeChange(val, 'params')"
         />
-      </div>
+      </div> -->
     </Card>
   </div>
 </template>
