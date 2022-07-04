@@ -195,6 +195,11 @@ const router = new Router({
       component: bigData,
     },
     {
+      path: "/table/treeAndCheckbox",
+      name: "treeAndCheckbox",
+      component: () => import("@/views/table/treeAndCheckbox.vue"),
+    },
+    {
       path: "/exportFile",
       name: "exportFile",
       component: () => import('@/views/layout/export.vue'),
@@ -443,6 +448,7 @@ const router = new Router({
     name: "formPage",
     component: formPage,
   },
+
   // 404页面需要放在最底下
   {
     path: "/404",

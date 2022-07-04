@@ -4,7 +4,14 @@ const publistHead = [{
   slot: "sort",
   width: 80,
   align: "center",
-},];
+},
+  // {
+  //   title: "id",
+  //   key: 'id',
+  //   width: 80,
+  //   align: "center",
+  // },
+];
 const publistFoot = [{
   title: "操作",
   slot: "action",

@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-02-20 20:30:08
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-06-02 15:19:26
+ * @LastEditTime: 2022-06-28 09:32:15
  * @FilePath: \vue_demo\vue.config.js
  * @Description: vue.config.js
  */
@@ -45,8 +45,18 @@ module.exports = {
                     // '^/api': '',// 替换成target中的地址
                 }
             },
+            // '/example': {
+            //     target: 'https://mock.mengxuegu.com/mock/62b94c7bc99b3c42abbc247d/', // 代理目标的基础路径
+            //     secure: false, // 如果是https接口的话，需要配置这个参数
+            //     changeOrigin: true, // 支持跨域
+            //     ws: true, // 是否代理websockets
+            //     pathRewrite: { // 重写路径: 去掉路径中开头的'/api'
+            //         // '^/api': '',// 替换成target中的地址
+            //     }
+            // },
             '/api': {
-                target: 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest', // 代理目标的基础路径
+                target: 'https://mock.mengxuegu.com/mock/62b94c7bc99b3c42abbc247d/example',
+                // target: 'https://mock.mengxuegu.com/mock/62261ce8e7ee771c8c6e23cc/susutest', // 代理目标的基础路径
                 secure: false, // 如果是https接口的话，需要配置这个参数
                 changeOrigin: true, // 支持跨域
                 ws: true, // 是否代理websockets

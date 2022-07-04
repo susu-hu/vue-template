@@ -71,6 +71,13 @@ export default {
     url: "/table/bigData",
   },
   {
+    code: "0001-10",
+    label: "多选框+树",
+    parent: "0001",
+    url: "/table/treeAndCheckbox",
+  },
+
+  {
     code: "0002",
     icon: "ios-add-circle",
     label: "预处理器/css",
