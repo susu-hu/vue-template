@@ -9,7 +9,6 @@ import Calendar from "@/views/custom/calen.vue";
 import QuillEditor from "@/views/plug/quillEditor.vue";
 import UploadFile from "@/views/table/uploadFile.vue";
 import dynamicForm from "@/views/table/dynamicForm.vue";
-import formPage from '@/views/table/formPage/index.vue';
 import bigData from "@/views/table/bigData.vue";
 const layIndex = (r) =>
   require.ensure(
@@ -443,12 +442,11 @@ const router = new Router({
     },
     ],
   },
-  {
-    path: "/table/formPage",
-    name: "formPage",
-    component: formPage,
-  },
-
+  // {
+  //   path: "/table/formPage",
+  //   name: "formPage",
+  //   component: formPage,
+  // },
   // 404页面需要放在最底下
   {
     path: "/404",

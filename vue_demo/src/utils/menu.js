@@ -59,14 +59,8 @@ export default {
     url: "/table/tree",
   },
   {
-    code: "0001-08",
-    label: "表单项",
-    parent: "0001",
-    url: "/table/formPage",
-  },
-  {
     code: "0001-09",
-    label: "大数据表格渲染",
+    label: "vxe-table表格渲染",
     parent: "0001",
     url: "/table/bigData",
   },

@@ -87,7 +87,7 @@ export default {
     this.loading = true;
     new Promise((resolve) => {
       setTimeout(() => {
-        let res = { total: 5000 };
+        let res = { total: 100000 };
         let data = [];
         for (let i = 0; i < res.total; i++) {
           data.push({

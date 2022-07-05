@@ -1,21 +1,24 @@
 <template>
   <div>
     <template v-if="row.list && row.list.length > 0">
-      <Row class="expand-row flex-row">
+      <Row class="flex-row expand-row">
         <P class="item_title">时间</P>
         <P class="item_title">位置</P>
       </Row>
       <Row
-        class="expand-row flex-row"
+        class="flex-row expand-row"
         v-for="(item, index) in row.list"
         :key="index"
       >
         <P class="item_title">{{ item.dataTime }}</P>
-        <P class="item_title"><span>{{ item.stationName }}巷道</span>{{
+        <P class="item_title"
+          ><span>{{ item.stationName }}巷道</span
+          >{{
             item.stationDirection == 2
               ? parseInt(item.tunnelLoc) + parseInt(item.stationDistance)
               : parseInt(item.tunnelLoc) - parseInt(item.stationDistance)
-          }}米</P>
+          }}米</P
+        >
       </Row>
     </template>
     <template v-else>
