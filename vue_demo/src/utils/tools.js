@@ -117,11 +117,29 @@ export default {
       }
     }
     return targetObj;
-  }
+  },
 
+  /**
+ * 数组去重
+ * @param {*} arr 数组
+ * @param {*} key 去重key值
+ */
+  duplicateList(arr, key) {
+    let obj = {};
+    arr = arr.reduce((item, next) => {
+      if (!obj[next[key]]) {
+        item.push(next);
+        obj[next[key]] = true;
+      }
+      return item;
+    }, []);
+    return arr;
+  }
 }
 
 //加0
 function addZero(num) {
   return num < 10 ? '0' + num : num;
 }
+
+

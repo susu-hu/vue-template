@@ -16,7 +16,6 @@ const link = {
     aaa: p => get('/dev/c31597bf-27f1-40b9-b569-268fdc614147/订单配送服务1646721023844.xls', p),
     tableList2: (p, show, msg) => post('/table/list', p, show, msg),
     tList: (p, show, msg) => post('/getList', p, show, msg),
-
-
+    getTreeData: (p, show, msg) => get('/' + p, show, msg),
 }
 export default link;
