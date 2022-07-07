@@ -1,3 +1,4 @@
+/* eslint-disable */
 export default {
   // 时间戳转年月日，accurate为true时精确到时分秒
   formatDate: function (timestamp, accurate) {
@@ -103,7 +104,6 @@ export default {
    * 深拷贝  
    *  @param source Array/Object  对象/数组
    */
-  /* eslint-disable */
   deepClone(source) {
     const targetObj = source.constructor === Array ? [] : {}; // 判断复制的目标是数组还是对象
     for (let keys in source) { // 遍历目标
@@ -134,7 +134,67 @@ export default {
       return item;
     }, []);
     return arr;
+  },
+
+  /**
+ * 搜索树
+ * @param {*} key 搜索匹配字段，如name
+ * @param {*} primary 数组去重字段 唯一
+ * @param {*} value 搜索字段
+ * @param {*} arr 树列表
+ * @returns 
+ */
+  searchTree(key, primary, value, arr) {
+    let newarr = [];
+    arr.forEach((item) => {
+      if (item.children && item.children.length) {
+        if (item[key].indexOf(value) > -1) {
+          item.expand = true;
+          newarr.push(item);
+        }
+        const i = this.duplicateList(this.searchTree(key, primary, value, item.children), primary);
+        const obj = {
+          ...item,
+          expand: true,
+          children: i,
+        };
+        if (i && i.length) {
+          newarr.push(obj);
+        }
+      } else {
+        if (item[key].indexOf(value) > -1) {
+          newarr.push(item);
+        }
+      }
+    });
+    return newarr;
+  },
+
+  /**
+   * 回显已选中的树
+   * @param {*} key 判断是否选择的字段
+   * @param {*} data 树
+   * @param {*} list 已选中列表
+   * @returns 
+   */
+  getCheckedTree(key, data, list) {
+    data.forEach((item) => {
+      if (
+        list.filter((it) => {
+          return it[key] == item[key];
+        }).length > 0
+      ) {
+        item.checked = true;
+      } else {
+        item.checked = false;
+      }
+      if (item.children && item.children.length) {
+        item.children = this.getCheckedTree(key, item.children, list);
+      }
+    });
+    return data;
   }
+
 }
 
 //加0

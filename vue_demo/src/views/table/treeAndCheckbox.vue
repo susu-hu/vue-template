@@ -46,7 +46,8 @@
             </div>
           </div>
           <div class="tree-box-right">
-            <p>已选：</p>
+            <p>已选：{{ checkedText }}</p>
+            <Button type="primary" @click="submit">提交</Button>
           </div>
         </div>
       </div>
@@ -58,6 +59,7 @@
 export default {
   data() {
     return {
+      checkedText: "",
       searchInput: "",
       checkedTree: [1, 2, 3, 4, 5], //树形结构
       checkMenuRow: ["CUR_DEPT", "CUR_SUB_DEPT"],
@@ -110,22 +112,75 @@ export default {
       ],
       authTreeData: [],
       originData: [],
+
+      checkedList: [],
     };
   },
-  created() {
-    this.$api.getTreeData("getTreeDataTwo").then((res) => {
+  async created() {
+    await this.$api.getTreeData("getTreeDataTwo").then((res) => {
       if (res.code == 200) {
         console.log(res.data);
         this.authTreeData = this.initData([res.data]);
         this.originData = JSON.stringify(this.initData([res.data]));
       }
     });
+
+    // 测试编辑回显
+    let checkdID = "70,3,4,5,65,56";
+    let a = checkdID.split(",");
+    let checkdIdList = a.map((item) => parseInt(item));
+    console.log(checkdIdList);
+    let checkedList = this.getDDD(checkdIdList, this.authTreeData, []);
+    // this.getEditData(checkdIdList, this.authTreeData);
+    console.log(checkedList);
+    this.checkedText = checkedList.map((item) => item.title).join(",");
   },
 
   methods: {
-    change() {
+    // getEditData(checkdIdList, data) {
+    //   return this.getDDD(checkdIdList, data, []);
+    // },
+    getDDD(checkdIdList, data, list) {
+      data.forEach((item) => {
+        if (checkdIdList.includes(item.id)) {
+          list.push(item);
+        }
+        if (item.children && item.children.length) {
+          this.getDDD(checkdIdList, item.children, list);
+        }
+      });
+      // console.log(list);
+      return list;
+    },
+    submit() {
       let nodes = this.$refs.authTree[0].getCheckedNodes();
-      console.log(nodes);
+      console.log("当前页面所看见的节点", nodes);
+      console.log("看不见的节点", this.checkedList);
+      let a = this.checkedList.map((item) => item.id).join(",");
+      console.log(a);
+    },
+    change(list, item) {
+      console.log(list, item);
+      let nodes = this.$refs.authTree[0].getCheckedNodes();
+      let l = nodes.filter((item) => !item.children);
+      // console.log("子节点", l);
+      l.forEach((item) => {
+        this.checkedList.push(item);
+      });
+      this.checkedList = this.tools.duplicateList(this.checkedList, "id");
+      console.log('"子节点"', this.checkedList);
+
+      this.checkedList.forEach((i, index) => {
+        if (!item.checked) {
+          if (item.id == i.id) {
+            this.checkedList.splice(index, 1);
+          }
+        }
+      });
+
+      console.log('"处理WAN"', this.checkedList);
+
+      this.checkedText = this.checkedList.map((item) => item.title).join(",");
     },
     search() {
       if (!this.searchInput) {
@@ -136,15 +191,16 @@ export default {
           this.searchInput,
           JSON.parse(this.originData)
         );
-        // console.log(
-        //   this.selISt(
-        //     "name",
-        //     this.searchInput,
-        //     JSON.parse(this.originData)
-        //   )
-        // );
       }
       console.log("最后", this.authTreeData);
+      // console.log(this.checkedList);
+      // console.log(this.tools.duplicateList(this.checkedList, "id"));
+      this.authTreeData = this.tools.getCheckedTree(
+        "id",
+        this.authTreeData,
+        this.checkedList
+        // this.tools.duplicateList(this.checkedList, "id")
+      );
     },
     selISt(key, value, treeList, saveList = []) {
       treeList.forEach((item) => {
@@ -168,16 +224,7 @@ export default {
       let newarr = [];
       arr.forEach((item) => {
         if (item.children && item.children.length) {
-          console.log("newaee", newarr);
-          console.log(
-            "是否存在",
-            item.name,
-            newarr.filter((i) => i.id == item.id).length
-          );
-          console.log("含有文字", item.name, item.name.indexOf(value));
-          // &&newarr.filter((i) => i.id == item.id).length == 0
           if (item.name.indexOf(value) > -1) {
-            console.log("父节点", item);
             item.expand = true;
             newarr.push(item);
           }
@@ -185,13 +232,11 @@ export default {
             this.selectList(value, item.children),
             "id"
           );
-          console.log("子类别", i);
           const obj = {
             ...item,
             expand: true,
             children: i,
           };
-          console.log("obj", obj);
           if (i && i.length) {
             newarr.push(obj);
           }
@@ -199,7 +244,6 @@ export default {
           // 子节点
           if (item.name.indexOf(value) > -1) {
             newarr.push(item);
-            console.log("子节点", item);
           }
         }
       });

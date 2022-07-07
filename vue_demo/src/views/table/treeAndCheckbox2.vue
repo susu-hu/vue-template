@@ -28,6 +28,15 @@ export default {
         { title: "徐汇", id: "4", parentId: "3" },
         { title: "美国", id: "5", parentId: "1" },
         { title: "纽约", id: "6", parentId: "5" },
+        { title: "金山", id: "7", parentId: "6" },
+        { title: "苏苏", id: "8", parentId: "6" },
+        { title: "解决", id: "9", parentId: "6" },
+        { title: "解决1", id: "19", parentId: "6" },
+        { title: "解决2", id: "323", parentId: "8" },
+        // { title: "解决3", id: "12", parentId: "6" },
+        // { title: "解决4", id: "13", parentId: "6" },
+        // { title: "解决5", id: "14", parentId: "6" },
+        // { title: "解决6", id: "15", parentId: "6" },
       ],
       treeData: [],
       searchName: "",
@@ -36,6 +45,7 @@ export default {
   },
   mounted() {
     this.treeData = this.listToTree(this.treeRawData);
+    console.log(this.treeData);
   },
   methods: {
     listToTree(list) {
@@ -67,6 +77,7 @@ export default {
       }
       for (let t of items[parentId]) {
         t.children = this.formatTree(items, t.id);
+        t.expand = true;
         result.push(t);
       }
       return result;
@@ -85,6 +96,11 @@ export default {
             { title: "徐汇", id: "4", parentId: "3" },
             { title: "美国", id: "5", parentId: "1" },
             { title: "纽约", id: "6", parentId: "5" },
+            { title: "金山", id: "7", parentId: "6" },
+            { title: "苏苏", id: "8", parentId: "6" },
+            { title: "解决", id: "9", parentId: "6" },
+            { title: "解决1", id: "19", parentId: "6" },
+            { title: "解决2", id: "323", parentId: "8" },
           ];
           this.treeData = this.listToTree(this.treeRawData);
 
