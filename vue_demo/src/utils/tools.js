@@ -190,6 +190,30 @@ export default {
       }
       if (item.children && item.children.length) {
         item.children = this.getCheckedTree(key, item.children, list);
+
+      }
+    });
+    return data;
+  },
+
+  /**
+   * 高亮
+   * @param {*} value 
+   * @param {*} key 
+   * @param {*} data 
+   * @returns 
+   */
+  hightLight(value, key, data) {
+    data.forEach((item) => {
+      if (
+        item[key].indexOf(value) > -1
+      ) {
+        item.selected = true;
+      } else {
+        item.selected = false;
+      }
+      if (item.children && item.children.length) {
+        item.children = this.hightLight(value, key, item.children);
       }
     });
     return data;

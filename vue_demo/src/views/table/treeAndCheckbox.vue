@@ -187,10 +187,20 @@ export default {
         this.authTreeData = JSON.parse(this.originData);
       } else {
         // 有重复
+
+        // 方法一：直接筛出数据：
         this.authTreeData = this.selectList(
           this.searchInput,
           JSON.parse(this.originData)
         );
+
+        // 方法二：颜色高亮
+        //  this.authTreeData = this.tools.hightLight(
+        //   this.searchInput,
+        //   'name',
+        //   JSON.parse(this.originData)
+        // );
+
       }
       console.log("最后", this.authTreeData);
       // console.log(this.checkedList);
