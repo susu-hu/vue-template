@@ -73,6 +73,12 @@ const lineG = (r) =>
 const dataV = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/dataV.vue")), "dataV");
 
+const dropItem = (r) =>
+  require.ensure([], () => r(require("@/views/custom/dropItem")), "custom");
+
+const searchTree = (r) =>
+  require.ensure([], () => r(require("@/views/custom/searchTree")), "custom");
+
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push;
@@ -206,7 +212,7 @@ const router = new Router({
     {
       path: "/custom/dropItem", //(一级路由)
       name: "dropItem",
-      component: () => import('@/views/custom/dropItem.vue'),
+      component: dropItem,
     },
     {
       path: "/event/throttle",
@@ -428,6 +434,11 @@ const router = new Router({
       path: "/custom/vDrag",
       name: "vDrag",
       component: () => import("@/views/custom/drag/vDrag.vue"),
+    },
+    {
+      path: "/custom/searchTree",
+      name: "searchTree",
+      component: searchTree
     },
     // 处理类库
     {

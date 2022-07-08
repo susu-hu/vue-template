@@ -169,7 +169,13 @@ export default {
     parent: "0004",
     url: "/custom/vDrag",
   },
-
+  {
+    code: "0004-06",
+    icon: "ios-add-circle",
+    label: "tree搜索",
+    parent: "0004",
+    url: "/custom/searchTree",
+  },
   {
     code: "0005",
     icon: "ios-add-circle",

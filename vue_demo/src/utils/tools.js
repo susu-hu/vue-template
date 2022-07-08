@@ -197,6 +197,26 @@ export default {
   },
 
   /**
+   * 获取满足条件的树列表下面的所有target字段
+   * @param {*} data 
+   * @param {*} key 
+   * @param {*} target 
+   * @param {*} outList 
+   * @returns 
+   */
+  getUnCheckedList(data, key, target, outList) {
+    data.forEach((item) => {
+      if (!item[key]) {
+        outList.push(item[target]);
+      }
+      if (item.children && item.children.length) {
+        this.getUnCheckedList(item.children, key, target, outList);
+      }
+    });
+    return outList;
+  },
+
+  /**
    * 高亮
    * @param {*} value 
    * @param {*} key 

@@ -2,35 +2,35 @@
 @charset "utf-8";
 
 * {
-    margin : 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 html,
 body {
-    width    : 100%;
-    height   : 100%;
-    min-width: 1000px;
+  width: 100%;
+  height: 100%;
+  min-width: 1000px;
 }
 
 * html body {
-    overflow: visible;
+  overflow: visible;
 }
 
 * html frame,
 * html iframe {
-    overflow: auto;
+  overflow: auto;
 }
 
 * html frameset {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 body {
-    color      : #333;
-    background : #ffffff;
-    font-size  : 16px;
-    font-family: Microsoft Yahei, SimSun, Helvetica;
+  color: #333;
+  background: #ffffff;
+  font-size: 16px;
+  font-family: Microsoft Yahei, SimSun, Helvetica;
 }
 
 body,
@@ -51,8 +51,8 @@ table,
 td,
 tr,
 ul {
-    margin : 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 
 img,
@@ -61,96 +61,96 @@ input,
 textarea,
 button,
 select {
-    vertical-align: middle;
+  vertical-align: middle;
 }
 
 /*让button 按钮 变成小手*/
 
 button {
-    cursor: pointer;
+  cursor: pointer;
 }
 
 /*取消链接的下划线且修改字体颜色*/
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 /*清除浮动*/
 
 ‍.clearfix:after {
-    content: " ";
-    display: block;
-    clear  : both;
-    height : 0;
+  content: " ";
+  display: block;
+  clear: both;
+  height: 0;
 }
 
 /*隐藏元素*/
 
 .hide,
 .none {
-    display: none;
+  display: none;
 }
 
 /*设定宽度*/
 .w {
-    width: 1200px;
+  width: 1200px;
 }
 
 
 .flex-row {
-    display       : flex;
-    flex-direction: row;
-    align-items   : center;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .flex-column {
-    display       : flex;
-    flex-direction: column;
-    align-items   : center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .i-flex {
-    display: inline-flex;
+  display: inline-flex;
 }
 
 .a_b {
-    align-items: baseline;
+  align-items: baseline;
 }
 
 .a_c {
-    align-items: center;
+  align-items: center;
 }
 
 .j_c {
-    justify-content: center;
+  justify-content: center;
 }
 
 .j_b {
-    justify-content: space-between;
+  justify-content: space-between;
 }
 
 .j_a {
-    justify-content: space-around;
+  justify-content: space-around;
 }
 
 .flex {
-    display: flex;
+  display: flex;
 }
 
 .col {
-    display       : flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
-    color                      : inherit;
-    text-decoration            : none;
-    border                     : none;
-    -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
-    -webkit-user-select        : none;
-    -moz-user-focus            : none;
-    user-select                : none;
+  color: inherit;
+  text-decoration: none;
+  border: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+  -webkit-user-select: none;
+  -moz-user-focus: none;
+  user-select: none;
 }
 
 a,
@@ -159,277 +159,282 @@ a:active,
 a:visited,
 a:link,
 a:focus {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    -webkit-tap-highlight-color: transparent;
-    outline                    : none;
-    background                 : none;
-    text-decoration            : none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  outline: none;
+  background: none;
+  text-decoration: none;
 }
 
 input,
 select,
 textarea {
-    background: none;
-    outline   : none;
-    border    : none;
+  background: none;
+  outline: none;
+  border: none;
 }
 
 textarea {
-    resize: none
+  resize: none
 }
 
 ul,
 li {
-    margin    : 0;
-    padding   : 0;
-    list-style: none;
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 
 .clearfix:after {
-    content   : ".";
-    display   : block;
-    height    : 0;
-    clear     : both;
-    visibility: hidden;
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
 }
 
 .clearfix {
-    *zoom: 1;
+  *zoom: 1;
 }
 
 /* 去掉IE的input框自带的X */
 ::-ms-clear,
 ::-ms-reveal {
-    display: none !important;
+  display: none !important;
 }
 
 /*  去掉button的默认样式*/
 button {
-    padding    : 0;
-    background : transparent;
-    font-weight: normal;
+  padding: 0;
+  background: transparent;
+  font-weight: normal;
 }
 
 button::after {
-    outline: none;
-    border : none;
+  outline: none;
+  border: none;
 }
 
 .button-hover {
-    /*点击后样式*/
-    background: transparent;
+  /*点击后样式*/
+  background: transparent;
 }
 
 /* 单行文字换行  */
 .text_ellipsis {
-    /*宽度自定义*/
-    text-overflow: ellipsis;
-    white-space  : nowrap;
-    overflow     : hidden;
+  /*宽度自定义*/
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
 }
 
 /* 多行文字换行 */
 .line_ellipsis {
-    overflow          : hidden;
-    text-overflow     : ellipsis;
-    display           : -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical
 }
 
 /* 背景图片 */
 .bg_img {
-    position: absolute;
-    width   : 100%;
-    height  : 100%;
-    z-index : -1;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 
 div,
 p {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 @import url('https://fonts.googleapis.com/css2?family=Mochiy+Pop+One&display=swap');
 
 * {
-    padding    : 0;
-    margin     : 0;
-    font-family: 'Mochiy Pop One', sans-serif;
+  padding: 0;
+  margin: 0;
+  font-family: 'Mochiy Pop One', sans-serif;
 }
 
 /* app.vue */
 .contentBox {
-    padding      : 20px;
-    background   : #fff;
-    border-radius: 5px;
-    box-shadow   : 0 1px 6px rgb(0 0 0 / 20%);
-    min-height   : calc(100vh - 260px);
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
+  min-height: calc(100vh - 260px);
 }
 
 * {
-    cursor: url(https://cdn.jsdelivr.net/gh/susu-hu/cdn@1.0.1/img/cursor/Handwriting.cur),
-        default;
+  cursor: url(https://cdn.jsdelivr.net/gh/susu-hu/cdn@1.0.1/img/cursor/Handwriting.cur),
+    default;
 }
 
 ::-webkit-scrollbar {
-    width : 6px;
-    height: 6px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius   : 10px;
-    background-color: #ffc0cb !important;
-    background-image: -webkit-linear-gradient(45deg,
-            hsla(0, 0%, 100%, 0.2) 25%,
-            transparent 0,
-            transparent 50%,
-            hsla(0, 0%, 100%, 0.2) 0,
-            hsla(0, 0%, 100%, 0.2) 75%,
-            transparent 0,
-            transparent);
+  border-radius: 10px;
+  background-color: #ffc0cb !important;
+  background-image: -webkit-linear-gradient(45deg,
+      hsla(0, 0%, 100%, 0.2) 25%,
+      transparent 0,
+      transparent 50%,
+      hsla(0, 0%, 100%, 0.2) 0,
+      hsla(0, 0%, 100%, 0.2) 75%,
+      transparent 0,
+      transparent);
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow   : inset 0 0 5px rgb(0 0 0 / 20%);
-    background   : #fff;
-    border-radius: 10px;
+  box-shadow: inset 0 0 5px rgb(0 0 0 / 20%);
+  background: #fff;
+  border-radius: 10px;
 }
 
 .public-page {
-    margin-top      : 10px;
-    display         : -webkit-box;
-    display         : -ms-flexbox;
-    display         : flex;
-    -webkit-box-pack: end;
-    -ms-flex-pack   : end;
-    justify-content : flex-end;
+  margin-top: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
 }
 
 .mr10 {
-    margin-right: 10px;
+  margin-right: 10px;
 }
 
 .ivu-btn-primary {
-    background-color: #ffc0cb !important;
-    border-color    : #ffc0cb !important;
+  background-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-page-item-active {
-    border-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-page-item-active a,
 .ivu-page-item-active:hover a {
-    color: #ffc0cb !important;
+  color: #ffc0cb !important;
 }
 
 .ivu-page-item:hover {
-    border-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-page-item:hover a {
-    color: #ffc0cb !important;
+  color: #ffc0cb !important;
 }
 
 a:hover {
-    color: #ffc0cb;
+  color: #ffc0cb;
 }
 
 .ivu-page-options-elevator input:hover {
-    border-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-page-options-elevator input:focus {
-    border-color: #ffc0cb !important;
-    box-shadow  : 0 0 0 2px #f1c8cf !important;
+  border-color: #ffc0cb !important;
+  box-shadow: 0 0 0 2px #f1c8cf !important;
 }
 
 .ivu-select-selection-focused,
 .ivu-select-selection:hover {
-    border-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-select-item-selected,
 .ivu-select-item-selected:hover {
-    color: #ffc0cb !important;
+  color: #ffc0cb !important;
 }
 
 .ivu-page-next:hover a,
 .ivu-page-prev:hover a {
-    color: #ffc0cb !important;
+  color: #ffc0cb !important;
 }
 
 a:hover {
-    color: #ffc0cb !important;
+  color: #ffc0cb !important;
 }
 
 .ivu-checkbox-checked .ivu-checkbox-inner {
-    border-color    : #ffc0cb !important;
-    background-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
+  background-color: #ffc0cb !important;
 }
 
 .ivu-input:hover {
-    border-color: #ffc0cb !important;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-btn:hover {
-    color           : #ffc0cb !important;
-    background-color: #fff;
-    border-color    : #ffc0cb !important;
+  color: #ffc0cb !important;
+  background-color: #fff;
+  border-color: #ffc0cb !important;
 }
 
 .ivu-btn-primary:hover {
-    color: #fff !important;
+  color: #fff !important;
 }
 
 .ivu-avatar>img {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 /*  去掉button的默认样式*/
 button {
-    border          : none;
-    background-color: transparent;
-    outline         : none;
-    cursor          : pointer;
-    vertical-align  : middle;
+  border: none;
+  background-color: transparent;
+  outline: none;
+  cursor: pointer;
+  vertical-align: middle;
 }
 
 button::after {
-    outline: none;
-    border : none;
+  outline: none;
+  border: none;
 }
 
 /*点击后样式*/
 .button-hover {
-    background: transparent;
+  background: transparent;
 }
 
 .mb20 {
-    margin-bottom: 20px;
+  margin-bottom: 20px;
 }
 
 .hd_t {
-    font-size  : 20px;
-    font-weight: bold;
+  font-size: 20px;
+  font-weight: bold;
 }
 
 .flex-wrap {
-    flex-wrap: wrap;
+  flex-wrap: wrap;
 }
 
 .mt20 {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .el-button--primary {
-    color           : #fff;
-    background-color: pink !important;
-    border-color    : pink !important;
+  color: #fff;
+  background-color: pink !important;
+  border-color: pink !important;
 }
 
 .ivu-upload-drag:hover {
-    border: 1px dashed pink !important;
+  border: 1px dashed pink !important;
+}
+
+.ivu-checkbox-indeterminate .ivu-checkbox-inner {
+  background-color: pink !important;
+  border-color: pink !important;
 }

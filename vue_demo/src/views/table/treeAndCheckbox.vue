@@ -2,12 +2,7 @@
   <div class="contentBox">
     <div>
       <CheckboxGroup v-model="checkMenuRow" style="text-align: left">
-        <div
-          @click="!item.checked ? getFileTree(item, index) : ''"
-          v-for="(item, index) in checkMenuRowList"
-          :key="item.horizonId + `${index}`"
-          style="display: inline-block"
-        >
+        <div @click="!item.checked ? getFileTree(item, index) : ''" v-for="(item, index) in checkMenuRowList" :key="item.horizonId + `${index}`" style="display: inline-block">
           <Checkbox :label="item.horizonId">
             <span>{{ item.horizonName }}</span>
           </Checkbox>
@@ -15,33 +10,16 @@
       </CheckboxGroup>
       <!-- 树形结构 -->
       <div class="modal-tree">
-        <div
-          v-for="(item, index) in checkedTree"
-          :key="item.horizonId + `${index}`"
-          class="tree-box"
-        >
+        <div v-for="(item, index) in checkedTree" :key="item.horizonId + `${index}`" class="tree-box">
           <div class="tree-box-left">
             <div class="box-header">选择</div>
             <div class="box-content">
               <div class="flex box-content-search">
-                <Input
-                  placeholder="请输入"
-                  clearable
-                  class="box-content-input"
-                  v-model.trim="searchInput"
-                />
-                <Button type="primary" class="box-content-btn" @click="search"
-                  >查询</Button
-                >
+                <Input placeholder="请输入" clearable class="box-content-input" v-model.trim="searchInput" />
+                <Button type="primary" class="box-content-btn" @click="search">查询</Button>
               </div>
               <div class="box-content-tree">
-                <Tree
-                  ref="authTree"
-                  class="tree-tab"
-                  :show-checkbox="true"
-                  :data="authTreeData"
-                  @on-check-change="change"
-                ></Tree>
+                <Tree ref="authTree" class="tree-tab" :show-checkbox="true" :data="authTreeData" @on-check-change="change"></Tree>
               </div>
             </div>
           </div>
@@ -119,7 +97,6 @@ export default {
   async created() {
     await this.$api.getTreeData("getTreeDataTwo").then((res) => {
       if (res.code == 200) {
-        console.log(res.data);
         this.authTreeData = this.initData([res.data]);
         this.originData = JSON.stringify(this.initData([res.data]));
       }
@@ -129,17 +106,11 @@ export default {
     let checkdID = "70,3,4,5,65,56";
     let a = checkdID.split(",");
     let checkdIdList = a.map((item) => parseInt(item));
-    console.log(checkdIdList);
     let checkedList = this.getDDD(checkdIdList, this.authTreeData, []);
-    // this.getEditData(checkdIdList, this.authTreeData);
-    console.log(checkedList);
     this.checkedText = checkedList.map((item) => item.title).join(",");
   },
 
   methods: {
-    // getEditData(checkdIdList, data) {
-    //   return this.getDDD(checkdIdList, data, []);
-    // },
     getDDD(checkdIdList, data, list) {
       data.forEach((item) => {
         if (checkdIdList.includes(item.id)) {
@@ -149,67 +120,58 @@ export default {
           this.getDDD(checkdIdList, item.children, list);
         }
       });
-      // console.log(list);
       return list;
     },
     submit() {
-      let nodes = this.$refs.authTree[0].getCheckedNodes();
-      console.log("当前页面所看见的节点", nodes);
-      console.log("看不见的节点", this.checkedList);
+      // let nodes = this.$refs.authTree[0].getCheckedNodes();
       let a = this.checkedList.map((item) => item.id).join(",");
       console.log(a);
     },
     change(list, item) {
-      console.log(list, item);
+      let unCheckedIdList = this.tools.getUnCheckedList(
+        [item],
+        "checked",
+        "id",
+        []
+      );
       let nodes = this.$refs.authTree[0].getCheckedNodes();
       let l = nodes.filter((item) => !item.children);
-      // console.log("子节点", l);
       l.forEach((item) => {
         this.checkedList.push(item);
       });
       this.checkedList = this.tools.duplicateList(this.checkedList, "id");
-      console.log('"子节点"', this.checkedList);
 
-      this.checkedList.forEach((i, index) => {
-        if (!item.checked) {
-          if (item.id == i.id) {
-            this.checkedList.splice(index, 1);
+      if (unCheckedIdList.length) {
+        let len = this.checkedList.length;
+        while (len--) {
+          if (unCheckedIdList.includes(this.checkedList[len].id)) {
+            this.checkedList.splice(len, 1);
           }
         }
-      });
-
+      }
       console.log('"处理WAN"', this.checkedList);
-
       this.checkedText = this.checkedList.map((item) => item.title).join(",");
     },
     search() {
       if (!this.searchInput) {
         this.authTreeData = JSON.parse(this.originData);
       } else {
-        // 有重复
-
         // 方法一：直接筛出数据：
         this.authTreeData = this.selectList(
           this.searchInput,
           JSON.parse(this.originData)
         );
-
         // 方法二：颜色高亮
         //  this.authTreeData = this.tools.hightLight(
         //   this.searchInput,
         //   'name',
         //   JSON.parse(this.originData)
         // );
-
       }
-      console.log("最后", this.authTreeData);
-      // console.log(this.checkedList);
-      // console.log(this.tools.duplicateList(this.checkedList, "id"));
       this.authTreeData = this.tools.getCheckedTree(
         "id",
         this.authTreeData,
         this.checkedList
-        // this.tools.duplicateList(this.checkedList, "id")
       );
     },
     selISt(key, value, treeList, saveList = []) {
