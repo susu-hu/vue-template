@@ -153,13 +153,13 @@ export default {
           item.expand = true;
           newarr.push(item);
         }
-        const i = this.duplicateList(this.searchTree(key, primary, value, item.children), primary);
+        const child = this.duplicateList(this.searchTree(key, primary, value, item.children), primary);
         const obj = {
           ...item,
           expand: true,
-          children: i,
+          children: child,
         };
-        if (i && i.length) {
+        if (child && child.length) {
           newarr.push(obj);
         }
       } else {

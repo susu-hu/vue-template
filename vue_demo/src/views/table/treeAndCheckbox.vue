@@ -176,7 +176,9 @@ export default {
         this.authTreeData = JSON.parse(this.originData);
       } else {
         // 方法一：直接筛出数据：
-        this.authTreeData = this.selectList(
+        this.authTreeData = this.tools.searchTree(
+          "name",
+          "id",
           this.searchInput,
           JSON.parse(this.originData)
         );
@@ -211,35 +213,7 @@ export default {
       });
       return saveList;
     },
-    selectList(value, arr) {
-      let newarr = [];
-      arr.forEach((item) => {
-        if (item.children && item.children.length) {
-          if (item.name.indexOf(value) > -1) {
-            item.expand = true;
-            newarr.push(item);
-          }
-          const i = this.tools.duplicateList(
-            this.selectList(value, item.children),
-            "id"
-          );
-          const obj = {
-            ...item,
-            expand: true,
-            children: i,
-          };
-          if (i && i.length) {
-            newarr.push(obj);
-          }
-        } else {
-          // 子节点
-          if (item.name.indexOf(value) > -1) {
-            newarr.push(item);
-          }
-        }
-      });
-      return newarr;
-    },
+
     initData(data) {
       data.forEach((item) => {
         item.title = item.name;
