@@ -402,6 +402,13 @@ export default {
     url: "/data/dataV",
   },
   {
+    code: "0010-01",
+    icon: "ios-add-circle",
+    label: "echarts",
+    parent: "0010",
+    url: "/data/echarts",
+  },
+  {
     code: "0011",
     icon: "ios-add-circle",
     label: "antV篇章",
