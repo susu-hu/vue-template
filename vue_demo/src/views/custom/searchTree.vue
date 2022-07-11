@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-07-08 16:25:20
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-08 18:01:05
+ * @LastEditTime: 2022-07-11 09:39:35
  * @FilePath: \vue_demo\src\views\custom\searchTree.vue
  * @Description: 基于iview的tree进行的二次封装，包括搜索关键字，搜索选中
 -->
@@ -29,8 +29,10 @@ export default {
     this.getTreeData();
   },
   methods: {
-    change(s, cur, e) {
-      console.log(e);
+    change(s, cur, e1, e2, e3) {
+      console.log("子节点勾选中", e1);
+      console.log("勾选中的所有数据", e2);
+      console.log("获取选中及半选节点ID", e3);
     },
     //   获取树列表
     async getTreeData() {
