@@ -33,7 +33,7 @@ export default {
   },
 
   // 将数组转换成树的形式,传入array数据，返回tree数据；
-  arrayToTree(list, type, name) {
+  arrayToTree(list, type, name, cid, pid) {
     let key = name ? name : 'name';
     let cloneList = list.map((item) => {
       // type 1树形选择 2树形目录
@@ -44,14 +44,15 @@ export default {
         ...item,
         title: item[key],
         expand: true,
+        // expand: item.parent > -1 ? false : true,
       }
     })
     return cloneList.filter((father) => {
       let branchArr = cloneList.filter(
-        (child) => father['code'] == child['parentCode']
+        (child) => father[cid] == child[pid]
       )
       branchArr.length > 0 ? (father['children'] = branchArr) : '';
-      return father['code'] == ''; //父级code键名，默认为''
+      return father[pid] == ''; //父级code键名，默认为''
     })
   },
 
@@ -237,13 +238,89 @@ export default {
       }
     });
     return data;
-  }
+  },
+  /**
+   * 数组-转到树
+   * @param {*} items 
+   * @param {*} key 
+   * @returns 
+   */
+  arrayToTree2(items, key) {
+    const result = [];   // 存放结果集
+    const itemMap = {};  // 
+    for (const item of items) {
+      const id = item.id;
+      const pid = item[key];
+      if (!itemMap[id]) {
+        itemMap[id] = {
+          children: [],
+        }
+      }
+      itemMap[id] = {
+        ...item,
+        children: itemMap[id]['children']
+      }
+      const treeItem = itemMap[id];
+      if (pid === 0) {
+        result.push(treeItem);
+      } else {
+        if (!itemMap[pid]) {
+          itemMap[pid] = {
+            children: [],
+          }
+        }
+        itemMap[pid].children.push(treeItem)
+      }
+    }
+    return result;
+  },
+  /**
+   * 数组-转到树 非递归
+   * @param {*} arr 
+   * @returns 
+   */
+  arrayToTree3(arr, key) {
+    const newArr = []
+    const map = {}
+    arr.forEach(item => {
+      item.children = []
+      map[item.id] = item
 
+    })
+    arr.forEach(item => {
+      const parent = map[item[key]]
+      parent ? parent.children.push(item) : newArr.push(item)
+    })
+    return newArr
+  },
+  arrayToTree4(data, key) {
+    let tree = []
+    if (!Array.isArray(data)) {
+      return tree
+    }
+    let map = {}
+    data.forEach(item => {
+      map[item.id] = item
+    })
+    data.forEach(item => {
+      let parent = map[item[key]]
+      item['label'] = item.name
+      if (parent) {
+        (parent.children || (parent.children = [])).push(item)
+      } else {
+        tree.push(item)
+      }
+    })
+    return tree
+  }
 }
 
 //加0
 function addZero(num) {
   return num < 10 ? '0' + num : num;
 }
+
+
+
 
 

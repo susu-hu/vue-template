@@ -1,4 +1,3 @@
-
 <template>
   <div class="contentBox">
     <Tree :data="data" show-checkbox multiple @on-check-change="change"></Tree>
@@ -67,6 +66,25 @@ export default {
           }
         });
     });
+
+    // test
+    let arr = [
+      { id: 1, name: "部门1", parentId: 0 },
+      { id: 2, name: "部门2", parentId: 1 },
+      { id: 3, name: "部门3", parentId: 1 },
+      { id: 4, name: "部门4", parentId: 3 },
+      { id: 5, name: "部门5", parentId: 4 },
+    ];
+    // 数组-转树
+    let newArr = this.tools.arrayToTree2(arr, "parentId");
+    console.log(newArr);
+    let newArr1 = this.tools.arrayToTree3(arr, "parentId");
+    console.log(newArr1);
+    let newArr2 = this.tools.arrayToTree4(arr, "parentId");
+    console.log(newArr2);
+
+    let newArr3 = this.tools.arrayToTree(arr, 0, null, "id", "parentId");
+    console.log(newArr3);
   },
   methods: {
     change(e, l) {
