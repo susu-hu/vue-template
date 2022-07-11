@@ -21,14 +21,14 @@
 export default {
   data() {
     return {
-      treeRawData: [
-        { title: "地球", id: "1", parentId: "0" },
-        { title: "中国", id: "2", parentId: "1" },
-        { title: "上海", id: "3", parentId: "2" },
-        { title: "徐汇", id: "4", parentId: "3" },
-        { title: "美国", id: "5", parentId: "1" },
-        { title: "纽约", id: "6", parentId: "5" },
-        { title: "金山", id: "7", parentId: "6" },
+      treeOrigin: [
+        { title: "解决5", id: "1", parentId: "0" },
+        { title: "解决6", id: "2", parentId: "1" },
+        { title: "解决7 ", id: "3", parentId: "2" },
+        { title: "解决9", id: "4", parentId: "3" },
+        { title: "解决`10", id: "5", parentId: "1" },
+        { title: "解决12", id: "6", parentId: "5" },
+        { title: "解决123", id: "7", parentId: "6" },
         { title: "苏苏", id: "8", parentId: "6" },
         { title: "解决", id: "9", parentId: "6" },
         { title: "解决1", id: "19", parentId: "6" },
@@ -44,7 +44,7 @@ export default {
     };
   },
   mounted() {
-    this.treeData = this.listToTree(this.treeRawData);
+    this.treeData = this.listToTree(this.treeOrigin);
     console.log(this.treeData);
   },
   methods: {
@@ -83,43 +83,37 @@ export default {
       return result;
     },
     searchTree() {
-      let exist = false;
-      for (var i = 0; i < this.treeRawData.length; i++) {
-        if (this.treeRawData[i].title.indexOf(this.searchName) !== -1) {
-          exist = true;
-          this.currentId = this.treeRawData[i].id;
-
-          this.treeRawData = [
-            { title: "地球", id: "1", parentId: "0" },
-            { title: "中国", id: "2", parentId: "1" },
-            { title: "上海", id: "3", parentId: "2" },
-            { title: "徐汇", id: "4", parentId: "3" },
-            { title: "美国", id: "5", parentId: "1" },
-            { title: "纽约", id: "6", parentId: "5" },
-            { title: "金山", id: "7", parentId: "6" },
+      for (var i = 0; i < this.treeOrigin.length; i++) {
+        if (this.treeOrigin[i].title.indexOf(this.searchName) !== -1) {
+          this.currentId = this.treeOrigin[i].id;
+          this.treeOrigin = [
+            { title: "解决5", id: "1", parentId: "0" },
+            { title: "解决6", id: "2", parentId: "1" },
+            { title: "解决7 ", id: "3", parentId: "2" },
+            { title: "解决9", id: "4", parentId: "3" },
+            { title: "解决`10", id: "5", parentId: "1" },
+            { title: "解决12", id: "6", parentId: "5" },
+            { title: "解决123", id: "7", parentId: "6" },
             { title: "苏苏", id: "8", parentId: "6" },
             { title: "解决", id: "9", parentId: "6" },
             { title: "解决1", id: "19", parentId: "6" },
             { title: "解决2", id: "323", parentId: "8" },
           ];
-          this.treeData = this.listToTree(this.treeRawData);
-
-          this.treeData = this.fineCurrentIdRecursive(this.treeData);
+          this.treeData = this.listToTree(this.treeOrigin);
+          this.treeData = this.setData(this.treeData);
           break;
-        } else if (!exist && i === this.treeRawData.length - 1) {
-          this.$Message.error("无搜索结果");
         }
       }
     },
 
-    fineCurrentIdRecursive(list) {
+    setData(list) {
       for (var i = 0; i < list.length; i++) {
         if (list[i].id === this.currentId) {
           list[i].selected = true;
           break;
         } else {
           if (list[i].children && list[i].children.length > 0) {
-            list[i].children = this.fineCurrentIdRecursive(list[i].children);
+            list[i].children = this.setData(list[i].children);
             for (var j = 0; j < list[i].children.length; j++) {
               if (list[i].children[j].selected || list[i].children[j].expand) {
                 list[i].expand = true;

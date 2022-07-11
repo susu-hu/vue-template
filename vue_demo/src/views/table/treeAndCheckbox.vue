@@ -2,7 +2,12 @@
   <div class="contentBox">
     <div>
       <CheckboxGroup v-model="checkMenuRow" style="text-align: left">
-        <div @click="!item.checked ? getFileTree(item, index) : ''" v-for="(item, index) in checkMenuRowList" :key="item.horizonId + `${index}`" style="display: inline-block">
+        <div
+          @click="!item.checked ? getFileTree(item, index) : ''"
+          v-for="(item, index) in checkMenuRowList"
+          :key="item.horizonId + `${index}`"
+          style="display: inline-block"
+        >
           <Checkbox :label="item.horizonId">
             <span>{{ item.horizonName }}</span>
           </Checkbox>
@@ -10,16 +15,33 @@
       </CheckboxGroup>
       <!-- 树形结构 -->
       <div class="modal-tree">
-        <div v-for="(item, index) in checkedTree" :key="item.horizonId + `${index}`" class="tree-box">
+        <div
+          v-for="(item, index) in checkedTree"
+          :key="item.horizonId + `${index}`"
+          class="tree-box"
+        >
           <div class="tree-box-left">
             <div class="box-header">选择</div>
             <div class="box-content">
               <div class="flex box-content-search">
-                <Input placeholder="请输入" clearable class="box-content-input" v-model.trim="searchInput" />
-                <Button type="primary" class="box-content-btn" @click="search">查询</Button>
+                <Input
+                  placeholder="请输入"
+                  clearable
+                  class="box-content-input"
+                  v-model.trim="searchInput"
+                />
+                <Button type="primary" class="box-content-btn" @click="search"
+                  >查询</Button
+                >
               </div>
               <div class="box-content-tree">
-                <Tree ref="authTree" class="tree-tab" :show-checkbox="true" :data="authTreeData" @on-check-change="change"></Tree>
+                <Tree
+                  ref="authTree"
+                  class="tree-tab"
+                  :show-checkbox="true"
+                  :data="authTreeData"
+                  @on-check-change="change"
+                ></Tree>
               </div>
             </div>
           </div>
@@ -90,7 +112,6 @@ export default {
       ],
       authTreeData: [],
       originData: [],
-
       checkedList: [],
     };
   },
@@ -101,29 +122,27 @@ export default {
         this.originData = JSON.stringify(this.initData([res.data]));
       }
     });
-
     // 测试编辑回显
     let checkdID = "70,3,4,5,65,56";
     let a = checkdID.split(",");
     let checkdIdList = a.map((item) => parseInt(item));
-    let checkedList = this.getDDD(checkdIdList, this.authTreeData, []);
+    let checkedList = this.getCheckedList(checkdIdList, this.authTreeData, []);
     this.checkedText = checkedList.map((item) => item.title).join(",");
   },
 
   methods: {
-    getDDD(checkdIdList, data, list) {
+    getCheckedList(checkdIdList, data, list) {
       data.forEach((item) => {
         if (checkdIdList.includes(item.id)) {
           list.push(item);
         }
         if (item.children && item.children.length) {
-          this.getDDD(checkdIdList, item.children, list);
+          this.getCheckedList(checkdIdList, item.children, list);
         }
       });
       return list;
     },
     submit() {
-      // let nodes = this.$refs.authTree[0].getCheckedNodes();
       let a = this.checkedList.map((item) => item.id).join(",");
       console.log(a);
     },
