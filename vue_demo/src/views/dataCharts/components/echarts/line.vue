@@ -33,16 +33,24 @@ export default {
     };
   },
   watch: {
-    chartInfo: {
+    data: {
       handler(val) {
-        this.chartInfos = val;
+        this.data = val;
         this.$nextTick(() => {
           if (this.charts == null) {
             this.charts = echarts.init(
-              document.getElementById("lineCharts" + this.byKey)
+              document.getElementById("lineCharts" + this.byKey),
+              null,
+              {
+                renderer: "canvas",
+                useDirtyRect: false,
+              }
             );
           }
-          this.initData();
+
+          setTimeout(() => {
+            this.initData();
+          }, 500);
         });
       },
       deep: true, // 深度监听
@@ -65,8 +73,34 @@ export default {
         this.charts.resize();
       });
     },
-    //掘进进尺图
     initData() {
+      var json = {
+        chart0: {
+          xcategory: [
+            "0:00",
+            "6:00",
+            "8:00",
+            "12:00",
+            "16:00",
+            "20:00",
+            "24:00",
+          ],
+          low: [222, 932, 66, 934, 111, 333, 0],
+          lowLine: [],
+        },
+      };
+      var zrUtil = echarts.util;
+      zrUtil.each(json.chart0.xcategory, function (item, index) {
+        json.chart0.lowLine.push([
+          {
+            coord: [index, json.chart0.low[index]],
+          },
+          {
+            coord: [index + 1, json.chart0.low[index + 1]],
+          },
+        ]);
+      });
+      console.log(json);
       if (this.byKey == "one") {
         this.charts.setOption({
           color: ["#ec5d5f", "#f2cb58", "#64a0c8"],
@@ -84,18 +118,7 @@ export default {
               fontSize: fitChartSize(14),
             },
           },
-          // legend: {
-          //   icon: "rect",
-          //   itemWidth: fitChartSize(12), // 设置宽度
-          //   itemHeight: fitChartSize(6), // 设置高度
-          //   data: ["计划掘进进尺", "实际掘进进尺"],
-          //   right: fitChartSize(0),
-          //   selectedMode: false,
-          //   textStyle: {
-          //     color: "#fff",
-          //     fontSize: fitChartSize(14),
-          //   },
-          // },
+
           grid: {
             left: fitChartSize(10),
             top: fitChartSize(40),
@@ -104,7 +127,12 @@ export default {
           },
           xAxis: [
             {
-              nameGap: 2, //坐标轴名称与轴线之间的距离。
+              nameGap: fitChartSize(3), //坐标轴名称与轴线之间的距离。
+              nameTextStyle: {
+                //坐标轴单位
+                color: "red",
+                fontSize: fitChartSize(12),
+              },
               type: "category",
               data: [
                 "0:00",
@@ -124,47 +152,28 @@ export default {
                   color: "#636E7C",
                 },
               },
+              axisLabel: {
+                // showMaxLabel: true,
+                color: "rgba(255,255,255,.8)", //坐标的字体颜色
+                fontSize: fitChartSize(12),
+              },
+              axisTick: {
+                //坐标轴刻度颜色
+                show: false,
+              },
             },
-            // {
-            //   name: "素数",
-            //   nameGap: fitChartSize(3),
-            //   nameTextStyle: {
-            //     //坐标轴单位
-            //     color: "rgba(255,255,255,.8)",
-            //     fontSize: fitChartSize(14),
-            //   },
-            //   type: "category",
-            //   axisLine: {
-            //     //坐标轴线颜色
-            //     lineStyle: {
-            //       color: "#636E7C",
-            //     },
-            //   },
-            //   axisLabel: {
-            //     // showMaxLabel: true,
-            //     color: "rgba(255,255,255,.8)", //坐标的字体颜色
-            //   },
-            //   axisTick: {
-            //     //坐标轴刻度颜色
-            //     show: false,
-            //   },
-            //   data: [
-            //     ["2019-10-10", 900],
-            //     ["2019-10-11", 560],
-            //     ["2019-10-12", 750],
-            //     ["2019-10-13", 580],
-            //     ["2019-10-14", 250],
-            //     ["2019-10-15", 300],
-            //     ["2019-10-16", 450],
-            //     ["2019-10-17", 300],
-            //     ["2019-10-18", 100],
-            //   ],
-            // },
           ],
           yAxis: [
             {
+              nameGap: fitChartSize(15), //坐标轴名称与轴线之间的距离。
               name: "人",
               type: "value",
+              // hoverAnimation:true,
+              min: 0,
+              max: function (value) {
+                return Math.ceil(value.max / 5) * 5;
+              },
+              splitNumber: 5,
               nameTextStyle: {
                 //坐标轴单位
                 color: "rgba(255,255,255,.89)",
@@ -179,8 +188,8 @@ export default {
                 //网格线颜色
               },
               axisTick: {
-                //坐标轴刻度颜色
-                show: true,
+                //坐标轴刻度颜色---不交叉
+                show: false,
               },
               axisLine: {
                 //坐标轴线颜色
@@ -189,74 +198,11 @@ export default {
                   color: "#636E7C",
                 },
               },
+              axisLabel: {
+                color: "rgba(255,255,255,.8)", //坐标的字体颜色
+                fontSize: fitChartSize(12),
+              },
             },
-            // {
-            //   type: "value",
-            //   name: "米",
-            //   min: 0,
-            //   max: function (value) {
-            //     return Math.ceil(value.max / 5) * 5;
-            //   },
-            //   splitNumber: 5,
-            //   nameTextStyle: {
-            //     //坐标轴单位
-            //     color: "rgba(255,255,255,.8)",
-            //     fontSize: fitChartSize(14),
-            //   },
-            //   splitLine: {
-            //     show: false,
-            //     //网格线颜色
-            //   },
-            //   axisTick: {
-            //     //坐标轴刻度颜色
-            //     show: false,
-            //   },
-            //   axisLine: {
-            //     //坐标轴线颜色
-            //     show: true,
-            //     lineStyle: {
-            //       color: "#636E7C",
-            //     },
-            //   },
-            //   axisLabel: {
-            //     color: "rgba(255,255,255,.8)", //坐标的字体颜色
-            //     formatter: function (num) {
-            //       var numStr = num.toString();
-            //       // 万以内直接返回
-            //       if (numStr.length < 5) {
-            //         return numStr;
-            //       } else if (numStr.length == 11) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 10) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 9) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 8) {
-            //         const number = num / 10000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "千万";
-            //       } else if (numStr.length == 7) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       } else if (numStr.length == 6) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       } else if (numStr.length == 5) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       }
-            //     },
-            //   },
-            // },
           ],
           series: [
             {
@@ -300,51 +246,54 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [222, 932, 66, 934, 111, 333, 444],
+              data: [222, 932, 66, 934, 111, 333, 0],
             },
-            // {
-            //   name: "实际掘进进尺",
-            //   type: "line",
-            //   smooth: true,
-            //   lineStyle: {
-            //     color: "#D07832",
-            //     width: fitChartSize(1),
-            //   },
-            //   itemStyle: {
-            //     color: "#D07832",
-            //   },
-            //   showSymbol: false,
-            //   areaStyle: {
-            //     color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
-            //       {
-            //         offset: 1,
-            //         color: "rgba(220, 120, 40,.3)",
-            //       },
-            //       {
-            //         offset: 0,
-            //         color: "rgba(220, 120, 40,0)",
-            //       },
-            //     ]),
-            //   },
-            //   emphasis: {
-            //     focus: "series",
-            //   },
-            //   data: [
-            //     ["2019-10-10", 900],
-            //     ["2019-10-11", 560],
-            //     ["2019-10-12", 750],
-            //     ["2019-10-13", 580],
-            //     ["2019-10-14", 250],
-            //     ["2019-10-15", 300],
-            //     ["2019-10-16", 450],
-            //     ["2019-10-17", 300],
-            //     ["2019-10-18", 100],
-            //   ],
-            // },
+            {
+              // polyline: true, // 多线段
+              // effect: {
+              //   show: true,
+              //   trailLength: 0.2, // 尾迹长度
+              //   period: 6, // 特效动画的时间, 走完全程的时长
+              //   symbolSize: [26, 72],
+              //   // symbol: img,
+              // },
+              showSymbol: false,
+              name: "苏苏小苏苏",
+              type: "lines",
+              smooth: this.smooth, //0.5,
+              coordinateSystem: "cartesian2d",
+              // zlevel: 1,
+              effect: {
+                trailLength: 0.2,
+                show: true,
+                smooth: this.smooth,
+                period: 1,
+                symbolSize: 3,
+                loop: true,
+              },
+              lineStyle: {
+                normal: {
+                  color: "#fff",
+                  width: 0,
+                  opacity: 0,
+                  curveness: 0,
+                  type: "dashed",
+                },
+              },
+              data: json.chart0.lowLine,
+            },
           ],
         });
       } else {
         this.charts.setOption({
+          // animation: true, //控制动画示否开启
+          // // animationDuration:5000, // 动画的时长，它是以毫秒为单位
+          // animationDuration: (arg) => {
+          //   console.log(arg);
+          //   return 1000 * arg;
+          // },
+          // animationEasing: "bounceOut", //缓动动画
+          // animationThreshold: 8, //动画元素的阈值
           // 给echarts图设置背景色
           backgroundColor: "transparent",
           // backgroundColor: "linear-gradient(90deg, #03224E 0%, #011030 100%)",
@@ -363,18 +312,7 @@ export default {
               fontSize: fitChartSize(14),
             },
           },
-          // legend: {
-          //   icon: "rect",
-          //   itemWidth: fitChartSize(12), // 设置宽度
-          //   itemHeight: fitChartSize(6), // 设置高度
-          //   data: ["计划掘进进尺", "实际掘进进尺"],
-          //   right: fitChartSize(0),
-          //   selectedMode: false,
-          //   textStyle: {
-          //     color: "#fff",
-          //     fontSize: fitChartSize(14),
-          //   },
-          // },
+
           grid: {
             left: fitChartSize(10),
             top: fitChartSize(40),
@@ -383,6 +321,12 @@ export default {
           },
           xAxis: [
             {
+              nameGap: fitChartSize(3),
+              nameTextStyle: {
+                //坐标轴单位
+                color: "rgba(255,255,255,.8)",
+                fontSize: fitChartSize(12),
+              },
               type: "category",
               data: [
                 "0:00",
@@ -398,7 +342,7 @@ export default {
                 // symbol: "arrow",
                 // 轴线两边的箭头。可以是字符串，表示两端使用同样的箭头；或者长度为 2 的字符串数组，分别表示两端的箭头。默认不显示箭头，
                 // 即 'none'。两端都显示箭头可以设置为 'arrow'，只在末端显示箭头可以设置为 ['none', 'arrow']。
-                onZero: true,
+                // onZero: true,
                 //坐标轴线颜色
                 rotate: 30, //坐标轴内容过长旋转
                 interval: 0,
@@ -406,46 +350,25 @@ export default {
                   color: "#636E7C",
                 },
               },
+              axisLabel: {
+                // showMaxLabel: true,
+                color: "rgba(255,255,255,.8)", //坐标的字体颜色
+                fontSize: fitChartSize(12),
+              },
+              axisTick: {
+                //坐标轴刻度颜色  x和y不交叉
+                show: false,
+              },
             },
-            // {
-            //   name: "素数",
-            //   nameGap: fitChartSize(3),
-            //   nameTextStyle: {
-            //     //坐标轴单位
-            //     color: "rgba(255,255,255,.8)",
-            //     fontSize: fitChartSize(14),
-            //   },
-            //   type: "category",
-            //   axisLine: {
-            //     //坐标轴线颜色
-            //     lineStyle: {
-            //       color: "#636E7C",
-            //     },
-            //   },
-            //   axisLabel: {
-            //     // showMaxLabel: true,
-            //     color: "rgba(255,255,255,.8)", //坐标的字体颜色
-            //   },
-            //   axisTick: {
-            //     //坐标轴刻度颜色
-            //     show: false,
-            //   },
-            //   data: [
-            //     ["2019-10-10", 900],
-            //     ["2019-10-11", 560],
-            //     ["2019-10-12", 750],
-            //     ["2019-10-13", 580],
-            //     ["2019-10-14", 250],
-            //     ["2019-10-15", 300],
-            //     ["2019-10-16", 450],
-            //     ["2019-10-17", 300],
-            //     ["2019-10-18", 100],
-            //   ],
-            // },
           ],
           yAxis: [
             {
               name: "人",
+              min: 0,
+              max: function (value) {
+                return Math.ceil(value.max / 5) * 5;
+              },
+              splitNumber: 5,
               type: "value",
               nameTextStyle: {
                 //坐标轴单位
@@ -462,7 +385,7 @@ export default {
               },
               axisTick: {
                 //坐标轴刻度颜色
-                show: true,
+                show: false,
               },
               axisLine: {
                 //坐标轴线颜色
@@ -471,74 +394,12 @@ export default {
                   color: "#636E7C",
                 },
               },
+              axisLabel: {
+                // showMaxLabel: true,
+                color: "rgba(255,255,255,.8)", //坐标的字体颜色
+                fontSize: fitChartSize(12),
+              },
             },
-            // {
-            //   type: "value",
-            //   name: "米",
-            //   min: 0,
-            //   max: function (value) {
-            //     return Math.ceil(value.max / 5) * 5;
-            //   },
-            //   splitNumber: 5,
-            //   nameTextStyle: {
-            //     //坐标轴单位
-            //     color: "rgba(255,255,255,.8)",
-            //     fontSize: fitChartSize(14),
-            //   },
-            //   splitLine: {
-            //     show: false,
-            //     //网格线颜色
-            //   },
-            //   axisTick: {
-            //     //坐标轴刻度颜色
-            //     show: false,
-            //   },
-            //   axisLine: {
-            //     //坐标轴线颜色
-            //     show: true,
-            //     lineStyle: {
-            //       color: "#636E7C",
-            //     },
-            //   },
-            //   axisLabel: {
-            //     color: "rgba(255,255,255,.8)", //坐标的字体颜色
-            //     formatter: function (num) {
-            //       var numStr = num.toString();
-            //       // 万以内直接返回
-            //       if (numStr.length < 5) {
-            //         return numStr;
-            //       } else if (numStr.length == 11) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 10) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 9) {
-            //         const number = num / 100000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "亿";
-            //       } else if (numStr.length == 8) {
-            //         const number = num / 10000000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "千万";
-            //       } else if (numStr.length == 7) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       } else if (numStr.length == 6) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       } else if (numStr.length == 5) {
-            //         const number = num / 10000;
-            //         const realVal = parseFloat(number).toFixed(0);
-            //         return realVal + "万";
-            //       }
-            //     },
-            //   },
-            // },
           ],
           series: [
             {
@@ -595,47 +456,32 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [222, 932, 66, 934, 111, 333, 444],
+              data: [222, 932, 66, 934, 111, 333, 0],
+              // data: [0, 0, 99, 0, 66, 0, 0],
             },
-            // {
-            //   name: "实际掘进进尺",
-            //   type: "line",
-            //   smooth: true,
-            //   lineStyle: {
-            //     color: "#D07832",
-            //     width: fitChartSize(1),
-            //   },
-            //   itemStyle: {
-            //     color: "#D07832",
-            //   },
-            //   showSymbol: false,
-            //   areaStyle: {
-            //     color: new echarts.graphic.LinearGradient(0, 1, 0, 0, [
-            //       {
-            //         offset: 1,
-            //         color: "rgba(220, 120, 40,.3)",
-            //       },
-            //       {
-            //         offset: 0,
-            //         color: "rgba(220, 120, 40,0)",
-            //       },
-            //     ]),
-            //   },
-            //   emphasis: {
-            //     focus: "series",
-            //   },
-            //   data: [
-            //     ["2019-10-10", 900],
-            //     ["2019-10-11", 560],
-            //     ["2019-10-12", 750],
-            //     ["2019-10-13", 580],
-            //     ["2019-10-14", 250],
-            //     ["2019-10-15", 300],
-            //     ["2019-10-16", 450],
-            //     ["2019-10-17", 300],
-            //     ["2019-10-18", 100],
-            //   ],
-            // },
+            {
+              showSymbol: false,
+              name: "苏苏小苏苏",
+              type: "lines",
+              smooth: this.smooth, //0.5,
+              coordinateSystem: "cartesian2d",
+              zlevel: 1,
+              effect: {
+                show: true,
+                smooth: true,
+                period: 1,
+                symbolSize: 3,
+              },
+              lineStyle: {
+                normal: {
+                  color: "#fff",
+                  width: 0,
+                  opacity: 0,
+                  curveness: 0,
+                },
+              },
+              data: json.chart0.lowLine,
+            },
           ],
         });
       }

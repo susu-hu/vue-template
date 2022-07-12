@@ -374,11 +374,7 @@ const router = new Router({
       name: "dataV",
       component: dataV,
     },
-    {
-      path: "/data/echarts",
-      name: "dataecharts",
-      component: () => import('@/views/dataCharts/charts.vue'),
-    },
+
     {
       path: "/jest/index",
       name: "jestIndex",
@@ -457,6 +453,11 @@ const router = new Router({
       component: () => import("@/views/library/anime.vue"),
     },
     ],
+  },
+  {
+    path: "/data/echarts",
+    name: "dataecharts",
+    component: () => import('@/views/dataCharts/charts.vue'),
   },
   // {
   //   path: "/table/formPage",

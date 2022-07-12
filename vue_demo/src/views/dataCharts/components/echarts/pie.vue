@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-12 01:36:57
+ * @LastEditTime: 2022-07-12 23:28:08
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -41,7 +41,9 @@ export default {
           if (this.charts == null) {
             this.charts = echarts.init(document.getElementById("pieCharts"));
           }
-          this.initData();
+          setTimeout(() => {
+            this.initData();
+          }, 500);
         });
       },
     },
@@ -85,9 +87,10 @@ export default {
     },
     initData() {
       this.charts.setOption({
-        // legend: {
-        //   top: "bottom",
-        // },
+        // animation: true, //控制动画示否开启
+        // animationDuration: 5000, // 动画的时长，它是以毫秒为单位
+        // animationEasing: "bounceOut", //缓动动画
+        // animationThreshold: 8, //动画元素的阈值
         tooltip: {
           trigger: "item",
           formatter: "{a}苏苏 <br/>{b} : {c} ({d}%)",
@@ -122,7 +125,7 @@ export default {
           },
         },
         legend: {
-          // type: "scroll",
+          type: "scroll",
           // scrollDataIndex: 0,
 
           orient: "vertical",
@@ -131,7 +134,7 @@ export default {
           icon: "rect",
           itemWidth: fitChartSize(10), // 设置宽度
           itemHeight: fitChartSize(10), // 设置高度
-          selectedMode: false,
+          selectedMode: true,
           textStyle: {
             color: "#fff",
             fontSize: fitChartSize(12),

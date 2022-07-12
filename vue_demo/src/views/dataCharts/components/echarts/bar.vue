@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-12 02:01:49
+ * @LastEditTime: 2022-07-13 00:52:51
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -41,7 +41,12 @@ export default {
           if (this.charts == null) {
             this.charts = echarts.init(document.getElementById("barCharts"));
           }
-          this.initData8();
+          // setInterval(() => {
+          //   this.initData8();
+          // }, 1000);
+          setTimeout(() => {
+            this.initData8();
+          }, 800);
         });
       },
     },
@@ -1508,7 +1513,7 @@ export default {
           },
         ],
       };
-      var barWidth = 30;
+      var barWidth = 20;
       var constData = [];
       var showData = [];
       data.filter(function (item) {
@@ -1530,16 +1535,36 @@ export default {
         }
       });
       return {
+        // animation: true, //控制动画示否开启
+        // // animationDuration:5000, // 动画的时长，它是以毫秒为单位
+        // animationDuration: (arg) => {
+        //   console.log(arg);
+        //   return 1000 * arg;
+        // },
+        // animationEasing: "bounceOut", //缓动动画
+        // animationThreshold: 8, //动画元素的阈值
         tooltip: {
+          // trigger: "axis",
+          // formatter: function (params) {
+          //   var str = params[0].axisValue + "：";
+          //   params.filter(function (item) {
+          //     if (item.componentSubType == "bar") {
+          //       str += "<br/>" + item.seriesName + "：" + item.value;
+          //     }
+          //   });
+          //   return str;
+          // },
           trigger: "axis",
-          formatter: function (params) {
-            var str = params[0].axisValue + "：";
-            params.filter(function (item) {
-              if (item.componentSubType == "bar") {
-                str += "<br/>" + item.seriesName + "：" + item.value;
-              }
-            });
-            return str;
+          backgroundColor: "rgba(0,0,0,.5)",
+          axisPointer: {
+            type: "cross",
+            label: {
+              backgroundColor: "rgba(0,0,0,.5)",
+            },
+          },
+          textStyle: {
+            color: "#fff",
+            fontSize: 14,
           },
         },
         grid: {
@@ -1554,16 +1579,28 @@ export default {
           axisTick: {
             show: false,
           },
+          axisLabel: {
+            // showMaxLabel: true,
+            color: "rgba(255,255,255,.8)", //坐标的字体颜色
+            fontSize: 12,
+          },
         },
         yAxis: {
-          axisTick: {
-            show: false,
-          },
           axisLine: {
-            show: false,
+            show: true,
           },
           axisLabel: {
-            show: false,
+            show: true,
+            color: "rgba(255,255,255,.8)", //坐标的字体颜色
+            fontSize: 12,
+          },
+          splitLine: {
+            show: true,
+            lineStyle: {
+              color: "rgba(255,255,255,.25)",
+              type: "dashed",
+            },
+            //网格线颜色
           },
         },
         series: [

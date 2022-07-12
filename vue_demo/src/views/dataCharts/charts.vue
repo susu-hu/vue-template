@@ -1,11 +1,14 @@
 <template>
-  <div class="chartsBox">
-    <div class="flex j_b">
+  <div class="flex chartsBox">
+    <div style="width: 260px"></div>
+    <div class="flex j_b" style="width: 1610px">
       <div class="home-left">
         <div class="head"></div>
-        <div class="center">
+        <div class="center mb20">
           <div class="comm-title">苏苏小苏苏</div>
-          <div class="center-box"></div>
+          <div class="center-box">
+            <data-spread :data="personList"></data-spread>
+          </div>
         </div>
         <div class="bottom">
           <div class="comm-title">苏苏小苏苏</div>
@@ -52,17 +55,52 @@
 import dataPie from "./components/echarts/pie.vue";
 import dataLine from "./components/echarts/line.vue";
 import dataBar from "./components/echarts/bar.vue";
+import dataSpread from "./components/echarts/spread.vue";
 export default {
   name: "dataCharts",
   components: {
     dataPie,
     dataLine,
     dataBar,
+    dataSpread,
   },
   data() {
     return {
       leaderList: [], //值班领导
-      personList: {}, //核定井下人数
+      personList: [
+        {
+          stationName: "苏苏2",
+          value: 90,
+        },
+        {
+          stationName: "苏苏44",
+          value: 40,
+        },
+        {
+          stationName: "苏苏12",
+          value: 20,
+        },
+        {
+          stationName: "苏苏12",
+          value: 55,
+        },
+        {
+          stationName: "苏苏12",
+          value: 0,
+        },
+        {
+          stationName: "苏苏12",
+          value: 1,
+        },
+        {
+          stationName: "苏苏12",
+          value: 3,
+        },
+        {
+          stationName: "苏苏12",
+          value: 2,
+        },
+      ],
       realTimeAlarmList: {}, //实时告警数据
       trendList: [], //人员趋势
       alarmList: {}, //告警统计
@@ -123,34 +161,35 @@ export default {
           stationName: "切记全文",
           value: 777,
         },
-        // {
-        //   stationName: "胜多负少是",
-        //   value: 544,
-        // },
-        // {
-        //   stationName: "哦你了框架",
-        //   value: 777,
-        // },
-        // {
-        //   stationName: "苏苏就是小苏苏呀有啊",
-        //   value: 444,
-        // },
-        // {
-        //   stationName: "苏苏就是小苏苏呀有啊1231232",
-        //   value: 399,
-        // },
-        // {
-        //   stationName: "pool",
-        //   value: 244,
-        // },
-        // {
-        //   stationName: "悔恨交加",
-        //   value: 777,
-        // },
       ], //重点区域人员分布
       specialList: [], //特种人员变化趋势
       stationList: [], //分站统计
     };
+  },
+  created() {
+    let maxValue = Math.max.apply(
+      Math,
+      this.personList.map((item) => {
+        return parseInt(item.value);
+      })
+    );
+    this.personList = this.personList.sort(
+      (a, b) => parseInt(b.value) - parseInt(a.value)
+    );
+    this.personList.forEach((item, index) => {
+      item.per = maxValue == 0 ? 0 : (parseInt(item.value) / maxValue) * 100;
+      if (index < 3) {
+        item.color = "#FF7E3C";
+        item.dropColor = "#FE6E23";
+        item.activeColor =
+          "linear-gradient(270deg, #FF7E3C 0%, rgba(255,126,60,0) 100%)";
+      } else {
+        item.color = "#5EB6FF";
+        item.dropColor = "#5EB6FF";
+        item.activeColor =
+          "linear-gradient(270deg, #5EB6FF 0%, rgba(94,182,255,0) 100%)";
+      }
+    });
   },
 };
 </script>
@@ -161,6 +200,7 @@ export default {
   background: linear-gradient(90deg, #03224e 0%, #011030 100%);
   padding: 38px 40px;
   box-sizing: border-box;
+  height: 100vh;
 }
 .comm-title {
   font-size: 18px;
@@ -169,6 +209,8 @@ export default {
   line-height: 25px;
   position: relative;
   padding-left: 10px;
+  font-weight: bold;
+  margin-bottom: 20px;
   &::after {
     content: "";
     width: 3px;
@@ -184,14 +226,10 @@ export default {
 .home-left {
   width: 437px;
   .head {
-    margin: 48px 0 40px;
-    width: 437px;
-    height: 93px;
-    background-size: 100% 100%;
   }
   .center {
     width: 100%;
-    height: 325px;
+    height: 355px;
   }
   .bottom {
     width: 100%;
@@ -199,15 +237,15 @@ export default {
   }
 }
 .home-center {
-  width: 616px;
-
+  // .w(640);
+  width: 640px;
   .head {
     width: 100%;
-    height: 113px;
-    margin-bottom: 40px;
+    // height: 214px;
+    margin-bottom: 15px;
   }
   .center {
-    height: 325px;
+    height: 355px;
   }
   .bottom {
     width: 100%;
@@ -215,19 +253,24 @@ export default {
   }
 }
 .home-right {
+  // .w(437);
   width: 437px;
-
   .head {
     width: 100%;
     height: 113px;
+    margin-top: 38px;
     margin-bottom: 40px;
   }
   .center {
-    height: 325px;
+    // height: 355px;
   }
   .bottom {
     width: 100%;
     height: 310px;
   }
+}
+
+.mb20 {
+  margin-bottom: 20px;
 }
 </style>
