@@ -35,7 +35,8 @@ export default {
   watch: {
     data: {
       handler(val) {
-        this.data = val;
+        this.list = val;
+        // console.log(val);
         this.$nextTick(() => {
           if (this.charts == null) {
             this.charts = echarts.init(
@@ -56,6 +57,28 @@ export default {
       deep: true, // 深度监听
       immediate: true, // 初次监听即执行
     },
+    // list: {
+    //   handler(val) {
+    //     console.log("变化了嘛", val);
+    //     this.$nextTick(() => {
+    //       if (this.charts == null) {
+    //         this.charts = echarts.init(
+    //           document.getElementById("lineCharts" + this.byKey),
+    //           null,
+    //           {
+    //             renderer: "canvas",
+    //             useDirtyRect: false,
+    //           }
+    //         );
+    //       }
+    //       setTimeout(() => {
+    //         this.initData();
+    //       }, 500);
+    //     });
+    //   },
+    //   deep: true, // 深度监听
+    //   immediate: true, // 初次监听即执行
+    // },
   },
   mounted() {
     erd.listenTo(
@@ -76,16 +99,8 @@ export default {
     initData() {
       var json = {
         chart0: {
-          xcategory: [
-            "0:00",
-            "6:00",
-            "8:00",
-            "12:00",
-            "16:00",
-            "20:00",
-            "24:00",
-          ],
-          low: [222, 932, 66, 934, 111, 333, 0],
+          xcategory: this.list[0],
+          low: this.list[1],
           lowLine: [],
         },
       };
@@ -134,15 +149,7 @@ export default {
                 fontSize: fitChartSize(12),
               },
               type: "category",
-              data: [
-                "0:00",
-                "6:00",
-                "8:00",
-                "12:00",
-                "16:00",
-                "20:00",
-                "24:00",
-              ],
+              data: this.list[0],
               boundaryGap: false, //从0开始
               axisLine: {
                 //坐标轴线颜色
@@ -246,7 +253,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [222, 932, 66, 934, 111, 333, 0],
+              data: this.list[1],
             },
             {
               // polyline: true, // 多线段

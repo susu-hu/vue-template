@@ -409,6 +409,13 @@ export default {
     url: "/data/echarts",
   },
   {
+    code: "0010-01",
+    icon: "ios-add-circle",
+    label: "pie饼图",
+    parent: "0010",
+    url: "/data/pie",
+  },
+  {
     code: "0011",
     icon: "ios-add-circle",
     label: "antV篇章",

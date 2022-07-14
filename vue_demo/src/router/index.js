@@ -374,6 +374,11 @@ const router = new Router({
       name: "dataV",
       component: dataV,
     },
+    {
+      path: "/data/pie",
+      name: "datapie",
+      component: () => import('@/views/dataCharts/pie.vue'),
+    },
 
     {
       path: "/jest/index",
@@ -459,6 +464,7 @@ const router = new Router({
     name: "dataecharts",
     component: () => import('@/views/dataCharts/charts.vue'),
   },
+
   // {
   //   path: "/table/formPage",
   //   name: "formPage",
