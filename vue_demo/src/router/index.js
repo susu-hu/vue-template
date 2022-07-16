@@ -379,7 +379,11 @@ const router = new Router({
       name: "datapie",
       component: () => import('@/views/dataCharts/pie.vue'),
     },
-
+    {
+      path: "/data/line",
+      name: "dataline",
+      component: () => import('@/views/dataCharts/line.vue'),
+    },
     {
       path: "/jest/index",
       name: "jestIndex",
@@ -457,6 +461,12 @@ const router = new Router({
       name: "anime",
       component: () => import("@/views/library/anime.vue"),
     },
+    {
+      path: "/svg/lineFlow",
+      name: "lineFlow",
+      component: () => import("@/views/svg/lineFlow.vue"),
+    },
+
     ],
   },
   {

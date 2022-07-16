@@ -402,18 +402,25 @@ export default {
     url: "/data/dataV",
   },
   {
-    code: "0010-01",
+    code: "0010-02",
     icon: "ios-add-circle",
     label: "echarts",
     parent: "0010",
     url: "/data/echarts",
   },
   {
-    code: "0010-01",
+    code: "0010-03",
     icon: "ios-add-circle",
     label: "pie饼图",
     parent: "0010",
     url: "/data/pie",
+  },
+  {
+    code: "0010-04",
+    icon: "ios-add-circle",
+    label: "折线图",
+    parent: "0010",
+    url: "/data/line",
   },
   {
     code: "0011",
@@ -506,7 +513,20 @@ export default {
     parent: "",
     url: "/",
   },
-
+  {
+    code: "0016",
+    icon: "ios-add-circle",
+    label: "SVG",
+    parent: "",
+    url: "/",
+  },
+  {
+    code: "0016=01",
+    icon: "ios-add-circle",
+    label: "流动线条",
+    parent: "0016",
+    url: "/svg/lineFlow",
+  },
 
   ],
 };

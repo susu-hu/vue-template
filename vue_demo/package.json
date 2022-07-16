@@ -21,6 +21,7 @@
     "dplayer": "^1.26.0",
     "echarts": "^5.3.1",
     "element-ui": "^2.15.6",
+    "flowline-for-echarts": "^1.0.0",
     "html2canvas": "^1.4.1",
     "iview": "^3.5.4",
     "js-base64": "^3.7.2",

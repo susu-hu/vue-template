@@ -97,6 +97,19 @@ export default {
       });
     },
     initData() {
+      var susuData = [
+        {
+          coords: [
+            ["0:00", 222],
+            ["6:00", 932],
+            ["8:00", 66],
+            ["12:00", 934],
+            ["16:00", 111],
+            ["20:00", 333],
+            ["24:00", 0],
+          ],
+        },
+      ];
       var json = {
         chart0: {
           xcategory: this.list[0],
@@ -115,9 +128,9 @@ export default {
           },
         ]);
       });
-      console.log(json);
       if (this.byKey == "one") {
         this.charts.setOption({
+          animationDuration: 3000,
           color: ["#ec5d5f", "#f2cb58", "#64a0c8"],
           tooltip: {
             trigger: "axis",
@@ -215,6 +228,7 @@ export default {
             {
               name: "苏苏小苏苏",
               type: "line",
+              smoothMonotone: "x",
               smooth: this.smooth, //0.5,
               lineStyle: {
                 // color: "#DC7828",
@@ -223,6 +237,7 @@ export default {
                 shadowOffsetX: 0, // 折线的X偏移
                 shadowOffsetY: 3, // 折线的Y偏移
                 shadowBlur: 4, // 折线模糊
+                opcity: 1,
                 shadowColor: "rgba(220,120,40,0.95)", //折线颜色
               },
               showSymbol: false,
@@ -255,8 +270,9 @@ export default {
               },
               data: this.list[1],
             },
+
             {
-              // polyline: true, // 多线段
+              polyline: true, // 多线段
               // effect: {
               //   show: true,
               //   trailLength: 0.2, // 尾迹长度
@@ -268,15 +284,17 @@ export default {
               name: "苏苏小苏苏",
               type: "lines",
               smooth: this.smooth, //0.5,
+              smoothMonotone: "x",
               coordinateSystem: "cartesian2d",
-              // zlevel: 1,
+              zlevel: 1,
               effect: {
                 trailLength: 0.2,
-                show: true,
-                smooth: this.smooth,
-                period: 1,
+                show: true, //是否展示
+                smooth: true,
+                period: 3, //光点滑动速度
                 symbolSize: 3,
                 loop: true,
+                symbol: "arrow",
               },
               lineStyle: {
                 normal: {
@@ -294,7 +312,7 @@ export default {
       } else {
         this.charts.setOption({
           // animation: true, //控制动画示否开启
-          // // animationDuration:5000, // 动画的时长，它是以毫秒为单位
+          animationDuration: 3000, // 动画的时长，它是以毫秒为单位
           // animationDuration: (arg) => {
           //   console.log(arg);
           //   return 1000 * arg;
@@ -415,6 +433,7 @@ export default {
               smooth: this.smooth, //可设置弧度，0-1
               lineStyle: {
                 // color: "#DC7828",
+                color: "#00CCA9", //------------------------------------------线条的颜色 ！！！！！
                 width: fitChartSize(1.5),
                 // width: 2,
                 type: "solid",
@@ -435,12 +454,15 @@ export default {
               },
               showSymbol: true, //是否默认展示圆点
               // symbol: "circle", //设定为实心点，不写symbol默认空心
-              symbolSize: 6, //设定实心点的大小
+              symbol: "circle", // 默认是空心圆（中间是白色的），改成实心圆
+              symbolSize: 7, //设定实心点的大小
               itemStyle: {
-                color: "#00CCA9", //小圆点和线的颜色
-                lineStyle: {
-                  color: "#00CCA9", //改变折线颜色
-                },
+                color: "#021E47", //小圆点和线的颜色  ---实心的圆点的背景颜色=---------------------圆透明！！！！！！！
+                borderWidth: 1, //圆点边框大小
+                borderColor: "#00CCA9", //实心的圆点边框颜色
+                // lineStyle: {
+                //   color: "#00CCA9", //改变折线颜色
+                // },
                 // normal: {
                 //   color: "#00CCA9", //改变折线点的颜色
                 //   lineStyle: {
@@ -470,24 +492,25 @@ export default {
               showSymbol: false,
               name: "苏苏小苏苏",
               type: "lines",
+              polyline: true,
               smooth: this.smooth, //0.5,
               coordinateSystem: "cartesian2d",
               zlevel: 1,
               effect: {
                 show: true,
                 smooth: true,
-                period: 1,
-                symbolSize: 3,
+                period: 6,
+                symbolSize: 4,
               },
               lineStyle: {
                 normal: {
                   color: "#fff",
-                  width: 0,
+                  width: 1,
                   opacity: 0,
                   curveness: 0,
                 },
               },
-              data: json.chart0.lowLine,
+              data: susuData,
             },
           ],
         });
@@ -497,11 +520,6 @@ export default {
 };
 </script>
 <style scoped lang="less">
-// @import "@/styles/mixin.less";
-// .chart {
-//   .wn(100);
-//   .h(180);
-// }
 .chart {
   width: 100%;
   height: 300px;
