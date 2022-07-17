@@ -248,8 +248,6 @@ export default {
 }
 .home-left {
   width: 437px;
-  .head {
-  }
   .center {
     width: 100%;
     height: 355px;
@@ -283,9 +281,6 @@ export default {
     height: 113px;
     margin-top: 38px;
     margin-bottom: 40px;
-  }
-  .center {
-    // height: 355px;
   }
   .bottom {
     width: 100%;
