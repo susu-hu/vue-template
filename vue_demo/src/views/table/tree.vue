@@ -1,6 +1,7 @@
 <template>
   <div class="contentBox">
     <Tree
+      ref="tree"
       :check-strictly="true"
       check-directly
       :data="treeData"
@@ -59,6 +60,7 @@ export default {
           ],
         },
       ],
+      nodeFirstId: "",
     };
   },
   async created() {
@@ -85,6 +87,21 @@ export default {
   methods: {
     change(e, l) {
       console.log(e, l);
+      if (l.id == this.nodeFirstId) {
+        console.log(l.checked);
+        this.checkedAll(this.treeData, l.checked);
+      }
+      let nodes = this.$refs.tree.getCheckedNodes();
+      console.log(nodes);
+    },
+    // 全选-全不选
+    checkedAll(data, type) {
+      data.forEach((item) => {
+        item.checked = type;
+        if (item.children && item.children.length) {
+          this.checkedAll(item.children, type);
+        }
+      });
     },
     initData(data, type) {
       data.forEach((item) => {
