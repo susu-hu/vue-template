@@ -17,10 +17,10 @@ export default {
   mounted() {
     if (this.charts == null) {
       this.charts = echarts.init(document.getElementById("chart"), null, {
-        renderer: "svg",
+        renderer: "canvas",
       });
     }
-    this.initData3();
+    this.initData5();
     erd.listenTo(document.getElementById("chart"), this.handleWindowResize);
   },
   beforeDestroy() {
@@ -283,6 +283,7 @@ export default {
       });
     },
     initData3() {
+      //  renderer: "svg",渲染
       //数据
       var XName = [
         "周一",

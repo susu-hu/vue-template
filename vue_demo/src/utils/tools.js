@@ -182,7 +182,7 @@ export default {
     data.forEach((item) => {
       if (
         list.filter((it) => {
-          return it[key] == item[key];
+          return it[key].toString() == item[key].toString();
         }).length > 0
       ) {
         item.checked = true;

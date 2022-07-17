@@ -1,12 +1,25 @@
-
 <template>
   <div>
     <div>
       <div class="flex mb10">
-        <Input placeholder="请输入" v-model="filterText" clearable class="mr20" />
-        <Button type="primary" class="box-content-btn" @click="searchOneTree()">查询</Button>
+        <Input
+          placeholder="请输入"
+          v-model.trim="filterText"
+          clearable
+          class="mr20"
+        />
+        <Button type="primary" class="box-content-btn" @click="searchOneTree()"
+          >查询</Button
+        >
       </div>
-      <Tree ref="sTree" :data="list" multiple :show-checkbox="true" @on-check-change="checkChange" @on-select-change="selectChange"></Tree>
+      <Tree
+        ref="sTree"
+        :data="list"
+        multiple
+        :show-checkbox="true"
+        @on-check-change="checkChange"
+        @on-select-change="selectChange"
+      ></Tree>
       <slot></slot>
     </div>
   </div>

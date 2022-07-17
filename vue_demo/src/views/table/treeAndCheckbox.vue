@@ -118,16 +118,23 @@ export default {
   async created() {
     await this.$api.getTreeData("getTreeDataTwo").then((res) => {
       if (res.code == 200) {
-        this.authTreeData = this.initData([res.data]);
-        this.originData = JSON.stringify(this.initData([res.data]));
+        this.authTreeData = this.initData([res.data], 0);
+        this.originData = JSON.stringify(this.initData([res.data], 0));
       }
     });
     // 测试编辑回显
-    let checkdID = "70,3,4,5,65,56";
+    let checkdID = "38";
     let a = checkdID.split(",");
     let checkdIdList = a.map((item) => parseInt(item));
     let checkedList = this.getCheckedList(checkdIdList, this.authTreeData, []);
+    console.log(checkedList);
     this.checkedText = checkedList.map((item) => item.title).join(",");
+    this.authTreeData = this.tools.getCheckedTree(
+      "id",
+      this.authTreeData,
+      checkedList
+    );
+    console.log(this.authTreeData);
   },
 
   methods: {
@@ -214,13 +221,15 @@ export default {
       return saveList;
     },
 
-    initData(data) {
+    initData(data, type) {
       data.forEach((item) => {
         item.title = item.name;
         item.checked = false;
-        item.expand = true;
+        if (type == 0) {
+          item.expand = true;
+        }
         if (item.children && item.children.length) {
-          this.initData(item.children);
+          this.initData(item.children, 1);
         }
       });
       return data;
