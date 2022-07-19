@@ -1,23 +1,11 @@
-
 <template>
   <div class="contentBox">
-    <publicForm
-      ref="publicForm"
-      :formObj="formObj"
-      :formData="formData"
-      :searchSelectOptionsCb="searchSelectOptionsCb"
-      @selectChange="selectChange"
-      @inputINPUT="inputINPUT"
-      @inputChange="inputChange"
-      @querySelectValue="querySelectValue"
-      @formSwitchChange="formSwitchChange"
-      @buttonClick="buttonClick"
-    >
+    <publicForm ref="publicForm" :formObj="formObj" :formData="formData" :searchSelectOptionsCb="searchSelectOptionsCb" @selectChange="selectChange" @inputINPUT="inputINPUT" @inputChange="inputChange" @querySelectValue="querySelectValue" @formSwitchChange="formSwitchChange" @buttonClick="buttonClick">
     </publicForm>
-    <span slot="footer" class="dialog-footer">
+    <div slot="footer" class="dialog-footer">
       <el-button type="primary" @click="dialogOK">确认</el-button>
       <el-button @click="dialog = false">取 消</el-button>
-    </span>
+    </div>
   </div>
 </template>
 <script>
@@ -77,4 +65,5 @@ export default {
 </script>
  
 <style lang="less" scoped>
+
 </style>

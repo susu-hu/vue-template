@@ -312,6 +312,69 @@ export default {
       }
     })
     return tree
+  },
+
+  /**
+   * 日期格式化
+   * @returns 
+   */
+  getFormatTime() {
+    let nowYear = new Date().getFullYear().toString(),
+      nowMonth = (new Date().getMonth() + 1).toString(),
+      nowDay = new Date().getDate().toString(),
+      nowHours = new Date().getHours().toString(), // 获取当前小时数(0-23)
+      nowMin = new Date().getMinutes().toString(), // 获取当前分钟数(0-59)
+      nowSeconds = new Date().getSeconds().toString(), // 获取当前秒数(0-59)
+      obj = {};
+    obj.nowYear = addZero(nowYear);
+    obj.nowMonth = addZero(nowMonth);
+    obj.nowDay = addZero(nowDay);
+    obj.nowHours = addZero(nowHours);
+    obj.nowMin = addZero(nowMin);
+    obj.nowSeconds = addZero(nowSeconds);
+    obj.nowDate = obj.nowYear + "-" + obj.nowMonth + "-" + obj.nowDay;
+    obj.nowTime = obj.nowHours + ":" + obj.nowMin + ":" + obj.nowSeconds;
+    obj.timeSfm = obj.nowYear +
+      "-" +
+      obj.nowMonth +
+      "-" +
+      obj.nowDay +
+      " " +
+      obj.nowHours +
+      ":" +
+      obj.nowMin +
+      ":" +
+      obj.nowSeconds;
+    obj.monDay = obj.nowMonth + "月" + obj.nowDay + "日";
+    obj.sfm = obj.nowHours + obj.nowMin + obj.nowSeconds;
+    obj.todayStart = obj.nowDate + " " + "00:00:00";
+    obj.todayEnd = obj.nowDate + " " + "23:59:59";
+    return obj;
+  },
+
+  /**
+ * 数组转转折现图数据格式
+ * @param {*} arr 
+ * @param {*} xkey 
+ * @param {*} ykey 
+ * @returns 
+ */ getLineData(arr, xkey, ykey) {
+    var xData = [];
+    var yData = [];
+    arr.forEach((item) => {
+      xData.push(item[xkey]);
+      yData.push(item[ykey]);
+    });
+    return { xData, yData };
+  },
+ /**
+  * 将数组按照某个属性的大小进行排序
+  * @param {*} data 
+  * @param {*} key 
+  * @returns 
+  */
+  getSortData(data, key) {
+    return data.sort((a, b) => parseInt(b[key]) - parseInt(a[key]));
   }
 }
 

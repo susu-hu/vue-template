@@ -1,198 +1,49 @@
 
 <template>
-  <el-form
-    style="min-width: 600px"
-    :model="formData"
-    ref="ruleForm"
-    label-position="left"
-    label-width="150px"
-  >
-    <el-col
-      :span="formobj.width ? formobj.width : 24"
-      v-for="(formobj, index) in formObj"
-      :key="index"
-      v-show="!formobj.notShow"
-    >
-      <el-form-item
-        :label="formobj.label"
-        :prop="formobj.prop"
-        :rules="formobj.rules"
-      >
-        <el-input
-          size="small"
-          v-if="formobj.input"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-          @input="inputINPUT($event, index, formobj.prop)"
-          @change="inputChange($event, index, formobj.prop)"
-        ></el-input>
-        <el-input
-          size="small"
-          type="textarea"
-          v-if="formobj.textarea"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-        ></el-input>
-        <el-select
-          size="small"
-          v-if="formobj.select"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-          @change="selectChange($event, index, formobj.prop)"
-        >
-          <el-option
-            :label="options.label"
-            :value="options.value"
-            v-for="(options, index) in formobj.options"
-            :key="index"
-          >
+  <el-form style="min-width: 600px" :model="formData" ref="ruleForm" label-position="left" label-width="150px">
+    <el-col :span="formobj.width ? formobj.width : 24" v-for="(formobj, index) in formObj" :key="index" v-show="!formobj.notShow">
+      <el-form-item :label="formobj.label" :prop="formobj.prop" :rules="formobj.rules">
+        <el-input size="small" v-if="formobj.input" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder" @input="inputINPUT($event, index, formobj.prop)" @change="inputChange($event, index, formobj.prop)"></el-input>
+        <el-input size="small" type="textarea" v-if="formobj.textarea" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder"></el-input>
+        <el-select size="small" v-if="formobj.select" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder" @change="selectChange($event, index, formobj.prop)">
+          <el-option :label="options.label" :value="options.value" v-for="(options, index) in formobj.options" :key="index">
           </el-option>
         </el-select>
 
-        <el-select
-          size="small"
-          v-if="formobj.searchSelect"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          filterable
-          remote
-          reserve-keyword
-          :placeholder="formobj.placeholder"
-          :remote-method="(query) => remoteMethod(query, index, formobj.prop)"
-          @change="selectChange($event, index, formobj.prop)"
-          :loading="searchSelectLoading"
-        >
-          <el-option
-            v-for="(item, index) in formobj.options"
-            :key="index"
-            :label="item.label"
-            :value="item.value"
-          >
+        <el-select size="small" v-if="formobj.searchSelect" :disabled="formobj.disabled" v-model="formData[formobj.prop]" filterable remote reserve-keyword :placeholder="formobj.placeholder" :remote-method="(query) => remoteMethod(query, index, formobj.prop)" @change="selectChange($event, index, formobj.prop)" :loading="searchSelectLoading">
+          <el-option v-for="(item, index) in formobj.options" :key="index" :label="item.label" :value="item.value">
           </el-option>
         </el-select>
-        <el-date-picker
-          value-format="yyyy-MM-dd HH:mm:ss"
-          type="datetime"
-          size="small"
-          v-if="formobj.dateTime"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-        ></el-date-picker>
-        <el-date-picker
-          value-format="yyyy-MM-dd HH:mm:ss"
-          format="yyyy-MM-dd HH:mm:ss"
-          size="small"
-          v-if="formobj.dateTimeRange"
-          type="datetimerange"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        ></el-date-picker>
-        <el-time-picker
-          value-format="HH:mm:ss"
-          format="HH:mm:ss"
-          size="small"
-          v-if="formobj.timePicker"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-          :picker-options="formobj.options"
-        >
+        <el-date-picker value-format="yyyy-MM-dd HH:mm:ss" type="datetime" size="small" v-if="formobj.dateTime" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder"></el-date-picker>
+        <el-date-picker value-format="yyyy-MM-dd HH:mm:ss" format="yyyy-MM-dd HH:mm:ss" size="small" v-if="formobj.dateTimeRange" type="datetimerange" :disabled="formobj.disabled" v-model="formData[formobj.prop]" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
+        <el-time-picker value-format="HH:mm:ss" format="HH:mm:ss" size="small" v-if="formobj.timePicker" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder" :picker-options="formobj.options">
         </el-time-picker>
-        <el-time-picker
-          value-format="HH:mm:ss"
-          format="HH:mm:ss"
-          is-range
-          size="small"
-          v-if="formobj.timePickerIsRange"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          range-separator="至"
-          start-placeholder="开始时间"
-          end-placeholder="结束时间"
-          placeholder="选择时间范围"
-        ></el-time-picker>
+        <el-time-picker value-format="HH:mm:ss" format="HH:mm:ss" is-range size="small" v-if="formobj.timePickerIsRange" :disabled="formobj.disabled" v-model="formData[formobj.prop]" range-separator="至" start-placeholder="开始时间" end-placeholder="结束时间" placeholder="选择时间范围"></el-time-picker>
 
-        <el-date-picker
-          value-format="yyyy-MM-dd"
-          size="small"
-          v-if="formobj.datePicker"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-        >
+        <el-date-picker value-format="yyyy-MM-dd" size="small" v-if="formobj.datePicker" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder">
         </el-date-picker>
 
-        <el-date-picker
-          value-format="yyyy-MM-dd"
-          type="daterange"
-          size="small"
-          v-if="formobj.datePickerIsRange"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          :placeholder="formobj.placeholder"
-          range-separator="至"
-          start-placeholder="开始日期"
-          end-placeholder="结束日期"
-        ></el-date-picker>
+        <el-date-picker value-format="yyyy-MM-dd" type="daterange" size="small" v-if="formobj.datePickerIsRange" :disabled="formobj.disabled" v-model="formData[formobj.prop]" :placeholder="formobj.placeholder" range-separator="至" start-placeholder="开始日期" end-placeholder="结束日期"></el-date-picker>
 
-        <el-switch
-          size="small"
-          v-if="formobj.switch"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-          @change="formSwitchChange($event, index, formobj.prop)"
-        ></el-switch>
+        <el-switch size="small" v-if="formobj.switch" :disabled="formobj.disabled" v-model="formData[formobj.prop]" @change="formSwitchChange($event, index, formobj.prop)"></el-switch>
 
-        <el-radio-group
-          v-if="formobj.radio"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-        >
-          <el-radio
-            :label="options.label"
-            :value="options.value"
-            v-for="(options, index) in formobj.options"
-            :key="index"
-          >
+        <el-radio-group v-if="formobj.radio" :disabled="formobj.disabled" v-model="formData[formobj.prop]">
+          <el-radio :label="options.label" :value="options.value" v-for="(options, index) in formobj.options" :key="index">
           </el-radio>
         </el-radio-group>
 
-        <el-checkbox-group
-          v-if="formobj.checkbox"
-          :disabled="formobj.disabled"
-          v-model="formData[formobj.prop]"
-        >
+        <el-checkbox-group v-if="formobj.checkbox" :disabled="formobj.disabled" v-model="formData[formobj.prop]">
           <!--eslint-disable -->
-          <el-checkbox
-            :label="options.label"
-            :key="options.value"
-            v-for="(options, index) in formobj.options"
-          >
+          <el-checkbox :label="options.label" :key="options.value" v-for="(options, index) in formobj.options">
           </el-checkbox>
         </el-checkbox-group>
-        <el-upload
-          :accept="formobj.accept ? formobj.accept : 'PNG,JPEG'"
-          v-if="formobj.upload"
-          :ref="formobj.prop"
-          :file-list="formData[formobj.prop] ? formData[formobj.prop] : []"
-          :action="`${uploadUrl}${
+        <el-upload :accept="formobj.accept ? formobj.accept : 'PNG,JPEG'" v-if="formobj.upload" :ref="formobj.prop" :file-list="formData[formobj.prop] ? formData[formobj.prop] : []" :action="`${uploadUrl}${
             formobj.uploadObj.fileType ? formobj.uploadObj.fileType : ''
-          }`"
-          :limit="formobj.uploadObj.limit"
-          :class="{
+          }`" :limit="formobj.uploadObj.limit" :class="{
             hide:
               formobj.uploadObj.hideUpload ||
               formData[formobj.prop].length == formobj.uploadObj.limit,
-          }"
-          :on-preview="handlePictureCardPreview"
-          :on-remove="
+          }" :on-preview="handlePictureCardPreview" :on-remove="
             (file, fileList) =>
               handleRemove(
                 file,
@@ -201,8 +52,7 @@
                 formobj.prop,
                 index
               )
-          "
-          :on-success="
+          " :on-success="
             (response, file, fileList) =>
               uploadSuccess(
                 response,
@@ -212,46 +62,17 @@
                 formobj.prop,
                 index
               )
-          "
-          list-type="picture-card"
-          :auto-upload="true"
-        >
+          " list-type="picture-card" :auto-upload="true">
           <i slot="default" class="el-icon-plus"></i>
         </el-upload>
-        <el-dialog
-          :visible.sync="dialogVisible"
-          v-if="formobj.upload"
-          :modal-append-to-body="false"
-          width="40%"
-        >
+        <el-dialog :visible.sync="dialogVisible" v-if="formobj.upload" :modal-append-to-body="false" width="40%">
           <img width="100%" :src="dialogImageUrl" alt="" />
         </el-dialog>
 
-        <el-button
-          size="small"
-          v-if="formobj.button"
-          :disabled="formobj.disabled"
-          :loading="formobj.loading"
-          :type="formobj.buttonType || 'primary'"
-          @click="buttonClick(formobj.prop, index)"
-          >{{ formobj.placeholder }}</el-button
-        >
+        <el-button size="small" v-if="formobj.button" :disabled="formobj.disabled" :loading="formobj.loading" :type="formobj.buttonType || 'primary'" @click="buttonClick(formobj.prop, index)">{{ formobj.placeholder }}</el-button>
         <span v-if="formobj.text" v-text="formData[formobj.prop]"></span>
         <span class="left10" v-if="formobj.unit">{{ formobj.unit }}</span>
-        <!-- <div class="amap_div" v-if="formobj.aMap">
-					<el-input size="small" v-model="formData[formobj.prop]" @input="aMapInput($event,formobj.prop)"></el-input>
-					<ul v-show="searchShow==formobj.prop" class="sreach_ul">
-						<li @click="selectVal(sval,formobj.prop,index)" v-for=" (sval, index) in setSearchVal" :key="index">{{sval.name}}
-							<span style="color:#8591A6 ;font-size: 12px;">{{sval.district}}</span>
-						</li>
-					</ul>
-					<aMap :ref="'aMap'+formobj.prop" :aMapId="'aMapId'+formobj.prop" :location="formData[formobj.prop+'location']" @cbSearch="cbSearch($event,formobj.prop)"></aMap>
-				</div> -->
-        <quillEditor
-          class="editor"
-          v-if="formobj.quillEditor"
-          :quill="formData[formobj.prop]"
-        ></quillEditor>
+        <quillEditor class="editor" v-if="formobj.quillEditor" :quill="formData[formobj.prop]"></quillEditor>
       </el-form-item>
     </el-col>
   </el-form>
@@ -423,6 +244,10 @@ export default {
 </script>
  
 <style lang="less" scoped>
+.editor /deep/ .ql-container {
+  line-height: normal !important;
+  height: 480px;
+}
 @width: 220px;
 /deep/.el-input {
   width: @width;

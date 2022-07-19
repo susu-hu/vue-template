@@ -266,7 +266,14 @@ export default {
     label: "二次封装表单",
     parent: "0007",
     url: "/eleUi/reForm",
-  },
+    },
+    {
+      code: "0007-02",
+      icon: "ios-add-circle",
+      label: "二次封装表单",
+      parent: "0007",
+      url: "/eleUi/list",
+    },
   {
     code: "0008",
     icon: "ios-add-circle",

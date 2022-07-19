@@ -158,10 +158,10 @@ export default {
   },
 };
 </script>
-<style lang='scss' >
-.editor {
+<style lang='less' scoped >
+.editor /deep/ .ql-container {
   line-height: normal !important;
-  height: 500px;
+  height: 480px;
 }
 .ql-snow .ql-tooltip[data-mode="link"]::before {
   content: "请输入链接地址:";
