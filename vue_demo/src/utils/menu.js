@@ -270,7 +270,7 @@ export default {
     {
       code: "0007-02",
       icon: "ios-add-circle",
-      label: "二次封装表单",
+      label: "封装表格",
       parent: "0007",
       url: "/eleUi/list",
     },

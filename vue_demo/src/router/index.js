@@ -78,6 +78,8 @@ const dropItem = (r) =>
 const searchTree = (r) =>
   require.ensure([], () => r(require("@/views/custom/searchTree")), "custom");
 
+const dataecharts = (r) =>
+  require.ensure([], () => r(require("@/views/dataCharts/charts.vue")), "dataV");
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push;
@@ -473,7 +475,7 @@ const router = new Router({
     {
       path: "/data/echarts",
       name: "dataecharts",
-      component: () => import('@/views/dataCharts/charts.vue'),
+      component: dataecharts,
     },
 
     // {

@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-13 00:52:51
+ * @LastEditTime: 2022-07-20 12:28:37
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -1535,8 +1535,8 @@ export default {
         }
       });
       return {
-        // animation: true, //控制动画示否开启
-        // // animationDuration:5000, // 动画的时长，它是以毫秒为单位
+        animation: true, //控制动画示否开启
+        animationDuration:5000, // 动画的时长，它是以毫秒为单位
         // animationDuration: (arg) => {
         //   console.log(arg);
         //   return 1000 * arg;
