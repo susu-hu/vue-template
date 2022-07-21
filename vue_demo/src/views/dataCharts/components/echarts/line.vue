@@ -1,5 +1,9 @@
 <template>
-  <div :id="'lineCharts' + byKey" class="chart" :ref="'lineCharts' + byKey"></div>
+  <div
+    :id="'lineCharts' + byKey"
+    class="chart"
+    :ref="'lineCharts' + byKey"
+  ></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -32,7 +36,6 @@ export default {
     data: {
       handler(val) {
         this.list = val;
-        // console.log(val);
         this.$nextTick(() => {
           if (this.charts == null) {
             this.charts = echarts.init(
@@ -53,28 +56,6 @@ export default {
       deep: true, // 深度监听
       immediate: true, // 初次监听即执行
     },
-    // list: {
-    //   handler(val) {
-    //     console.log("变化了嘛", val);
-    //     this.$nextTick(() => {
-    //       if (this.charts == null) {
-    //         this.charts = echarts.init(
-    //           document.getElementById("lineCharts" + this.byKey),
-    //           null,
-    //           {
-    //             renderer: "canvas",
-    //             useDirtyRect: false,
-    //           }
-    //         );
-    //       }
-    //       setTimeout(() => {
-    //         this.initData();
-    //       }, 500);
-    //     });
-    //   },
-    //   deep: true, // 深度监听
-    //   immediate: true, // 初次监听即执行
-    // },
   },
   mounted() {
     erd.listenTo(
@@ -90,6 +71,7 @@ export default {
       if (!this.charts) return;
       this.$nextTick(() => {
         this.charts.resize();
+        this.initData();
       });
     },
     initData() {

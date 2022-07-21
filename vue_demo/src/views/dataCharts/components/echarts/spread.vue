@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-12 11:00:28
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-21 14:20:08
+ * @LastEditTime: 2022-07-22 00:21:27
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\spread.vue
  * @Description: 
 -->
@@ -12,7 +12,10 @@
       <div v-for="(item, index) in list" :key="index">
         <div class="flex-row mb-12 j_b">
           <div class="flex-row">
-            <div class="trangle" :style="{ '--color': item.color, '--dropColor': item.dropColor }"></div>
+            <div
+              class="trangle"
+              :style="{ '--color': item.color, '--dropColor': item.dropColor }"
+            ></div>
 
             <span class="title">{{ item.stationName }}</span>
           </div>
@@ -21,11 +24,14 @@
           }}</span>
         </div>
         <div class="line">
-          <div class="line-active" :style="{
+          <div
+            class="line-active"
+            :style="{
               '--bgColor': item.activeColor,
               '--per': item.per + '%',
               '--delay': index + 's',
-            }">
+            }"
+          >
             <img :src="points" />
           </div>
         </div>
@@ -53,7 +59,6 @@ export default {
       immediate: true,
       handler: function (val) {
         this.list = val;
-
         console.log(this.list);
       },
     },
@@ -62,7 +67,7 @@ export default {
     defaultOption() {
       return {
         step: 0.5, // 数值越大速度滚动越快
-        limitMoveNum: 15, // 开始无缝滚动的数据量 this.dataList.length
+        limitMoveNum: 5, // 开始无缝滚动的数据量
         hoverStop: true, // 是否开启鼠标悬停stop
         direction: 1, // 0向下 1向上 2向左 3向右
         openWatch: true, // 开启数据实时监控刷新dom

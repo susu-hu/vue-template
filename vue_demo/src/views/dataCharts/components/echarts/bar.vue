@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-21 15:39:22
+ * @LastEditTime: 2022-07-22 00:22:13
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -12,7 +12,6 @@
 
 <script>
 import * as echarts from "echarts";
-// import { fitChartSize } from "@/utils/echartSize";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
@@ -36,7 +35,6 @@ export default {
           });
         });
         this.list = list;
-        console.log("饼图数据", val);
         this.$nextTick(() => {
           if (this.charts == null) {
             this.charts = echarts.init(document.getElementById("barCharts"));
@@ -65,6 +63,7 @@ export default {
       if (!this.charts) return;
       this.$nextTick(() => {
         this.charts.resize();
+        this.initData8();
       });
     },
     initData() {
@@ -1533,7 +1532,7 @@ export default {
       });
       return {
         animation: true, //控制动画示否开启
-        animationDuration:5000, // 动画的时长，它是以毫秒为单位
+        animationDuration: 5000, // 动画的时长，它是以毫秒为单位
         // animationDuration: (arg) => {
         //   console.log(arg);
         //   return 1000 * arg;
@@ -1620,7 +1619,7 @@ export default {
             type: "pictorialBar",
             data: constData,
             symbol: "diamond",
-            symbolOffset: ["0%", "50%"],
+            symbolOffset: ["0%", "50%"], //显示超出坐标
             symbolSize: [barWidth, 10],
             itemStyle: {
               normal: {

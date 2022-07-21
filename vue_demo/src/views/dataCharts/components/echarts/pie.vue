@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-21 14:13:25
+ * @LastEditTime: 2022-07-22 00:11:36
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -65,6 +65,7 @@ export default {
       if (!this.charts) return;
       this.$nextTick(() => {
         this.charts.resize();
+        this.initData();
       });
     },
     //params 要处理的字符串
@@ -170,7 +171,7 @@ export default {
               style: {
                 image: "https://i.postimg.cc/s1FSBr2c/su1.png",
                 width: fitChartSize(50),
-                borderRadius:'50%'
+                borderRadius: "50%",
               },
               left: "25%",
               top: "41%",

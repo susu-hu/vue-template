@@ -7,10 +7,16 @@
           <data-spread :data="personList"></data-spread>
         </div>
       </div>
-      <div class="bottom">
+      <div class="bottom mb20">
         <div class="comm-title">苏苏小苏苏</div>
         <div class="bottom-box">
           <data-pie :data="importAreaList"></data-pie>
+        </div>
+      </div>
+      <div class="center">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="center-box">
+          <data-shadow></data-shadow>
         </div>
       </div>
     </div>
@@ -51,6 +57,7 @@ import dataLine from "./components/echarts/line.vue";
 import dataBar from "./components/echarts/bar.vue";
 import dataSpread from "./components/echarts/spread.vue";
 import dataBarCircle from "./components/echarts/barCircle.vue";
+import dataShadow from "./components/echarts/barShadow.vue";
 export default {
   name: "dataCharts",
   components: {
@@ -59,6 +66,7 @@ export default {
     dataBar,
     dataSpread,
     dataBarCircle,
+    dataShadow,
   },
   data() {
     return {
@@ -84,6 +92,10 @@ export default {
         {
           stationName: "苏苏12",
           value: 0,
+        },
+        {
+          stationName: "苏苏99",
+          value: 99,
         },
       ],
       realTimeAlarmList: {},
@@ -208,6 +220,7 @@ export default {
   padding: 38px 40px;
   box-sizing: border-box;
   height: 100vh;
+  overflow-y: scroll;
 }
 .comm-title {
   font-size: 18px;
@@ -239,7 +252,7 @@ export default {
   }
   .bottom {
     width: 100%;
-    height: 310px;
+    height: 330px;
   }
 }
 .home-center {
