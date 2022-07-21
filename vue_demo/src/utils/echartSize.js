@@ -7,15 +7,8 @@ export const fitChartSize = (size) => {
   var screenRatio = width / height;
   let w = width / 1920;
   let h = height / 1080;
-  // let scale= null;
   if (!width) return size;
-  // if (screenRatio < screenDesignRatio) {
-  //   scale = w;
-  // } else {
-  //   scale = h;
-  // }
   let scale = (width / 1920);
   return Number((size * scale).toFixed(2));
 }
-fitChartSize()
-window.addEventListener('resize', () => fitChartSize());
+

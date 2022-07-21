@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-12 23:28:08
+ * @LastEditTime: 2022-07-21 14:13:25
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -87,14 +87,22 @@ export default {
     },
     initData() {
       this.charts.setOption({
-        // animation: true, //控制动画示否开启
-        // animationDuration: 5000, // 动画的时长，它是以毫秒为单位
-        // animationEasing: "bounceOut", //缓动动画
-        // animationThreshold: 8, //动画元素的阈值
+        color: [
+          "#3D75FC ",
+          "#3E46CE ",
+          "#E45C7E ",
+          "#2DB4D1 ",
+          "#CBAE2E ",
+          "#5ECAB9",
+          "#D36640",
+        ],
+        animation: true, //控制动画示否开启
+        animationDuration: 5000, // 动画的时长，它是以毫秒为单位
+        animationEasing: "bounceOut", //缓动动画
+        animationThreshold: 8, //动画元素的阈值
         tooltip: {
           trigger: "item",
           formatter: "{a}苏苏 <br/>{b} : {c} ({d}%)",
-          // extraCssText: "z-index:999999",
           position: function (point, params, dom, rect, size) {
             // 鼠标坐标和提示框位置的参考坐标系是：以外层div的左上角那一点为原点，x轴向右，y轴向下
             // 提示框位置
@@ -106,7 +114,6 @@ export default {
             // 提示框大小
             let boxWidth = size.contentSize[0];
             let boxHeight = size.contentSize[1];
-
             // boxWidth > pointX 说明鼠标左边放不下提示框
             if (boxWidth > pointX) {
               x = 5;
@@ -125,11 +132,10 @@ export default {
           },
         },
         legend: {
+          pageIconSize: fitChartSize(8),
           type: "scroll",
-          // scrollDataIndex: 0,
-
           orient: "vertical",
-          right: fitChartSize(0),
+          right: fitChartSize(10),
           top: "center",
           icon: "rect",
           itemWidth: fitChartSize(10), // 设置宽度
@@ -137,7 +143,8 @@ export default {
           selectedMode: true,
           textStyle: {
             color: "#fff",
-            fontSize: fitChartSize(12),
+            fontSize: fitChartSize(15),
+            padding: [1, 0, 0, 0],
           },
           formatter: function (name) {
             return name.length > 5 ? name.substr(0, 5) + "..." : name;
@@ -145,19 +152,6 @@ export default {
           tooltip: {
             show: true,
           },
-
-          //   left: "right",
-          //   top: "bottom",
-          //   data: [
-          //     "rose1",
-          //     "rose2",
-          //     "rose3",
-          //     "rose4",
-          //     "rose5",
-          //     "rose6",
-          //     "rose7",
-          //     "rose8",
-          //   ],
         },
         toolbox: {
           show: true,
@@ -169,15 +163,28 @@ export default {
           },
         },
         graphic: {
-          type: "text",
-          left: "30%",
-          top: "50%",
-          style: {
-            text: "重点区域",
-            textAlign: "center",
-            fill: "#5C5C5C",
-            fontSize: 12,
-          },
+          elements: [
+            {
+              type: "image",
+              z: 6,
+              style: {
+                image: "https://i.postimg.cc/s1FSBr2c/su1.png",
+                width: fitChartSize(50),
+                borderRadius:'50%'
+              },
+              left: "25%",
+              top: "41%",
+            },
+          ],
+          // type: "text",
+          // left: "30%",
+          // top: "50%",
+          // style: {
+          //   text: "susu",
+          //   textAlign: "center",
+          //   fill: "#5C5C5C",
+          //   fontSize: 12,
+          // },
         },
 
         series: [
@@ -186,9 +193,9 @@ export default {
             avoidLabelOverlap: true, //是否启用防止标签重叠策略
             labelLine: {
               minTurnAngle: 0,
-            }, //将 avoidLabelOverlap 设置为false，并将 labelLine里的minTurnAngle设置为0，\
+            }, //将 avoidLabelOverlap 设置为false，并将 labelLine里的minTurnAngle设置为0，
             // 即可解决该问题，饼图的label就会展示在对应色块旁边。
-            // name: "Nightingale Chart",
+            name: "susu",
             type: "pie",
             radius: [20, 120],
             center: ["30%", "50%"],
@@ -196,7 +203,6 @@ export default {
             itemStyle: {
               borderRadius: 0,
             },
-            // lable标签
             label: {
               show: false,
             },
@@ -217,23 +223,6 @@ export default {
               // },
             },
             data: this.list,
-            // [
-            //   { value: 40, name: "rose 1" },
-            //   { value: 38, name: "rose 2" },
-            //   { value: 32, name: "rose 3" },
-            //   { value: 30, name: "rose 4" },
-            //   { value: 28, name: "rose 5" },
-            //   { value: 26, name: "rose 6" },
-            //   { value: 22, name: "rose 7" },
-            //   { value: 18, name: "rose 8" },
-            //   { value: 55, name: "rose 9" },
-            //   { value: 60, name: "rose 19" },
-            //   { value: 32, name: "rose 11" },
-            //   { value: 30, name: "rose 12" },
-            //   { value: 28, name: "rose 13" },
-            //   { value: 26, name: "rose 16" },
-            //   { value: 22, name: "rose 17" },
-            // ],
           },
         ],
       });
@@ -243,10 +232,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-// @import "@/styles/mixin.less";
 .chart {
-  //   .wn(100);
-  //   .h(500);
   width: 437px;
   height: 310px;
 }

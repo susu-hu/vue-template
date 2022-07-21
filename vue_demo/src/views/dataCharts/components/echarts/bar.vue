@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-20 12:28:37
+ * @LastEditTime: 2022-07-21 15:39:22
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -41,9 +41,6 @@ export default {
           if (this.charts == null) {
             this.charts = echarts.init(document.getElementById("barCharts"));
           }
-          // setInterval(() => {
-          //   this.initData8();
-          // }, 1000);
           setTimeout(() => {
             this.initData8();
           }, 800);
@@ -1662,10 +1659,7 @@ export default {
 </script>
 
 <style scoped lang="less">
-// @import "@/styles/mixin.less";
 .chart {
-  //   .wn(100);
-  //   .h(500);
   width: 437px;
   height: 310px;
 }

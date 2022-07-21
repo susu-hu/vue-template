@@ -74,8 +74,6 @@ export default {
       for (var i = 1; i < 100; i++) {
         this.addData("", oneDay, now, date, data);
       }
-      console.log(data);
-      console.log(date);
       option = {
         xAxis: {
           type: "category",

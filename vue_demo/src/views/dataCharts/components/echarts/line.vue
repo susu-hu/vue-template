@@ -1,9 +1,5 @@
 <template>
-  <div
-    :id="'lineCharts' + byKey"
-    class="chart"
-    :ref="'lineCharts' + byKey"
-  ></div>
+  <div :id="'lineCharts' + byKey" class="chart" :ref="'lineCharts' + byKey"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -146,11 +142,11 @@ export default {
               fontSize: fitChartSize(14),
             },
           },
-
           grid: {
-            left: fitChartSize(10),
-            top: fitChartSize(40),
-            bottom: fitChartSize(10),
+            left: "3%", //图表距边框的距离
+            right: "3%",
+            top: "15%",
+            bottom: "5%",
             containLabel: true,
           },
           xAxis: [
@@ -336,11 +332,11 @@ export default {
               fontSize: fitChartSize(14),
             },
           },
-
           grid: {
-            left: fitChartSize(10),
-            top: fitChartSize(40),
-            bottom: fitChartSize(10),
+            left: "3%", //图表距边框的距离
+            right: "3%",
+            top: "15%",
+            bottom: "5%",
             containLabel: true,
           },
           xAxis: [

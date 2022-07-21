@@ -1,50 +1,44 @@
 <template>
-  <div class="flex chartsBox">
-    <div style="width: 260px"></div>
-    <div class="flex j_b" style="width: 1610px">
-      <div class="home-left">
-        <div class="head"></div>
-        <div class="center mb20">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="center-box">
-            <data-spread :data="personList"></data-spread>
-          </div>
-        </div>
-        <div class="bottom">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="bottom-box">
-            <data-pie :data="importAreaList"></data-pie>
-          </div>
+  <div class="flex chartsBox j_b">
+    <div class="home-left">
+      <div class="center mb20">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="center-box">
+          <data-spread :data="personList"></data-spread>
         </div>
       </div>
-      <div class="home-center">
-        <div class="head"></div>
-        <div class="center">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="center-box">
-            <data-line :data="trendList" :smooth="true" byKey="one"></data-line>
-          </div>
-        </div>
-        <div class="bottom">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="bottom-box">
-            <data-line :data="trendList" byKey="two"></data-line>
-          </div>
+      <div class="bottom">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="bottom-box">
+          <data-pie :data="importAreaList"></data-pie>
         </div>
       </div>
-      <div class="home-right">
-        <div class="head">
-          <div class="comm-title">苏苏小苏苏</div>
+    </div>
+    <div class="home-center">
+      <div class="center">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="center-box">
+          <data-line :data="trendList" :smooth="true" byKey="one"></data-line>
         </div>
-        <div class="center">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="center-box">
-            <data-bar :data="importAreaList"></data-bar>
-          </div>
+      </div>
+      <div class="bottom">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="bottom-box">
+          <data-line :data="trendList" byKey="two"></data-line>
         </div>
-        <div class="bottom">
-          <div class="comm-title">苏苏小苏苏</div>
-          <div class="bottom-box"></div>
+      </div>
+    </div>
+    <div class="home-right">
+      <div class="center">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="center-box">
+          <data-bar :data="importAreaList"></data-bar>
+        </div>
+      </div>
+      <div class="bottom">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="bottom-box">
+          <data-bar-circle :data="importAreaList"></data-bar-circle>
         </div>
       </div>
     </div>
@@ -56,6 +50,7 @@ import dataPie from "./components/echarts/pie.vue";
 import dataLine from "./components/echarts/line.vue";
 import dataBar from "./components/echarts/bar.vue";
 import dataSpread from "./components/echarts/spread.vue";
+import dataBarCircle from "./components/echarts/barCircle.vue";
 export default {
   name: "dataCharts",
   components: {
@@ -63,6 +58,7 @@ export default {
     dataLine,
     dataBar,
     dataSpread,
+    dataBarCircle,
   },
   data() {
     return {
@@ -76,14 +72,7 @@ export default {
           stationName: "苏苏44",
           value: 40,
         },
-        {
-          stationName: "苏苏12",
-          value: 20,
-        },
-        {
-          stationName: "苏苏12",
-          value: 55,
-        },
+
         {
           stationName: "苏苏12",
           value: 0,
@@ -94,11 +83,7 @@ export default {
         },
         {
           stationName: "苏苏12",
-          value: 3,
-        },
-        {
-          stationName: "苏苏12",
-          value: 2,
+          value: 0,
         },
       ],
       realTimeAlarmList: {},
@@ -126,11 +111,11 @@ export default {
         },
         {
           stationName: "测试333",
-          value: 999,
+          value: 66,
         },
         {
           stationName: "测试444",
-          value: 688,
+          value: 99,
         },
         {
           stationName: "测试555",
@@ -170,15 +155,14 @@ export default {
     };
   },
   created() {
+    this.importAreaList = this.tools.getSortData(this.importAreaList, "value");
     let maxValue = Math.max.apply(
       Math,
       this.personList.map((item) => {
         return parseInt(item.value);
       })
     );
-    this.personList = this.personList.sort(
-      (a, b) => parseInt(b.value) - parseInt(a.value)
-    );
+    this.personList = this.tools.getSortData(this.personList, "value");
     this.personList.forEach((item, index) => {
       item.per = maxValue == 0 ? 0 : (parseInt(item.value) / maxValue) * 100;
       if (index < 3) {
@@ -248,6 +232,7 @@ export default {
 }
 .home-left {
   width: 437px;
+  margin-right: 40px;
   .center {
     width: 100%;
     height: 355px;
@@ -258,11 +243,10 @@ export default {
   }
 }
 .home-center {
-  // .w(640);
   width: 640px;
+  margin-right: 40px;
   .head {
     width: 100%;
-    // height: 214px;
     margin-bottom: 15px;
   }
   .center {
@@ -274,7 +258,6 @@ export default {
   }
 }
 .home-right {
-  // .w(437);
   width: 437px;
   .head {
     width: 100%;

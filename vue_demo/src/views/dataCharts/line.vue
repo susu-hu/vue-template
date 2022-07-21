@@ -804,7 +804,7 @@ export default {
             coordinateSystem: "cartesian2d",
             zlevel: 1,
             polyline: true,
-            smooth: true,
+            // smooth: true,
             symbol: "circle",
             effect: {
               show: true,
@@ -826,7 +826,7 @@ export default {
           {
             name: "同比",
             type: "line",
-            smooth: true,
+            smooth: false,
             symbol: "none",
             symbolSize: 10,
             areaStyle: {
@@ -864,7 +864,6 @@ export default {
             type: "lines",
             coordinateSystem: "cartesian2d",
             zlevel: 1,
-            smooth: true,
             polyline: true,
             symbol: "circle",
             effect: {

@@ -69,9 +69,6 @@ const lodash = (r) =>
   require.ensure([], () => r(require("@/views/event/lodash.vue")), "lodash");
 const lineG = (r) =>
   require.ensure([], () => r(require("@/views/layout/lineG.vue")), "lineG");
-const dataV = (r) =>
-  require.ensure([], () => r(require("@/views/dataCharts/dataV.vue")), "dataV");
-
 const dropItem = (r) =>
   require.ensure([], () => r(require("@/views/custom/dropItem")), "custom");
 
@@ -80,6 +77,12 @@ const searchTree = (r) =>
 
 const dataecharts = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/charts.vue")), "dataV");
+const dataV = (r) =>
+  require.ensure([], () => r(require("@/views/dataCharts/dataV.vue")), "dataV");
+const dataPie = (r) =>
+  require.ensure([], () => r(require("@/views/dataCharts/pie.vue")), "dataV");
+const dataLine= (r) =>
+  require.ensure([], () => r(require("@/views/dataCharts/line.vue")), "dataV");
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push;
@@ -380,12 +383,12 @@ const router = new Router({
         {
           path: "/data/pie",
           name: "datapie",
-          component: () => import('@/views/dataCharts/pie.vue'),
+          component: dataPie,
         },
         {
           path: "/data/line",
           name: "dataline",
-          component: () => import('@/views/dataCharts/line.vue'),
+          component: dataLine,
         },
         {
           path: "/jest/index",
@@ -477,12 +480,6 @@ const router = new Router({
       name: "dataecharts",
       component: dataecharts,
     },
-
-    // {
-    //   path: "/table/formPage",
-    //   name: "formPage",
-    //   component: formPage,
-    // },
     // 404页面需要放在最底下
     {
       path: "/404",
