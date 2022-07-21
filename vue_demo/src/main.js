@@ -6,18 +6,14 @@ import axios from "axios";
 
 import ElementUI from "element-ui";
 import "element-ui/lib/theme-chalk/index.css";
-
+import './element/index.css'//--定制主题
+// import locale from 'element-ui/lib/locale/lang/en';//英文
 //-------------------4.x
 import ViewUI from 'view-design';
 import 'view-design/dist/styles/iview.css';
 Vue.use(ViewUI);
-
-// -------------3.x版本
-// import iView from "iview";
-// import "iview/dist/styles/iview.css";
-// Vue.use(iView);
-
 // import './iview/theme.less'; //--定制主题
+
 import './index.scss'; // 台湾css
 
 
@@ -90,8 +86,8 @@ const options = {
 Vue.use(Storage, options);
 
 Vue.config.productionTip = false; // 阻止启动生产消息
-// 引入饿了么ui
-Vue.use(ElementUI);
+// 引入饿了么ui 国际化
+Vue.use(ElementUI,)//{ locale }
 
 
 // 处理按钮权限
@@ -113,6 +109,7 @@ Vue.directive("access", {
     }
   },
 });
+
 // 全局注册组件
 import Components from './components'
 Vue.use(Components)
@@ -135,15 +132,11 @@ Vue.mixin({
     //   // 拿到keep-alive的cache
     //   let cache = this.$vnode.parent.componentInstance.cache; //缓存的组件
     //   let keys = this.$vnode.parent.componentInstance.keys; // 缓存的组件名
-    //   console.log("cache-------------------------", cache);
-    //   console.log("keys--------------------------", keys);
-    //   console.log(currPath);
     //   if (cache[currPath] != null) {
     //     delete cache[currPath];
     //     keys.splice(keys.indexOf(currPath), 1);
     //     console.log('this-----------', this.$destroy)
     //     this.$destroy();
-
     //   }
     // }
     next()

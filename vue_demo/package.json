@@ -20,7 +20,7 @@
     "core-js": "^3.6.5",
     "dplayer": "^1.26.0",
     "echarts": "^5.3.1",
-    "element-ui": "2.15.6",
+    "element-ui": "^2.15.9",
     "flowline-for-echarts": "^1.0.0",
     "html2canvas": "^1.4.1",
     "iview": "^3.5.4",
