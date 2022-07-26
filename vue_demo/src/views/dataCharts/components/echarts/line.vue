@@ -1,9 +1,5 @@
 <template>
-  <div
-    :id="'lineCharts' + byKey"
-    class="chart"
-    :ref="'lineCharts' + byKey"
-  ></div>
+  <div :id="'lineCharts' + byKey" class="chart" :ref="'lineCharts' + byKey"></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -211,7 +207,7 @@ export default {
               lineStyle: {
                 // color: "#DC7828",
                 width: fitChartSize(1.5),
-                type: "solid",
+                type: "dashed", //solid实线
                 shadowOffsetX: 0, // 折线的X偏移
                 shadowOffsetY: 3, // 折线的Y偏移
                 shadowBlur: 4, // 折线模糊
@@ -221,9 +217,6 @@ export default {
               showSymbol: false,
               itemStyle: {
                 color: "#DC7828",
-                // lineStyle: {
-                //   color: "#1F824E", //改变折线颜色
-                // },
               },
               areaStyle: {
                 // // 颜色渐变函数 前四个参数分别表示四个位置依次为
@@ -415,9 +408,9 @@ export default {
                 // width: 2,
                 type: "solid",
                 shadowOffsetX: 0, // 折线的X偏移
-                shadowOffsetY: 3, // 折线的Y偏移
+                shadowOffsetY: 10, // 折线的Y偏移
                 shadowBlur: 4, // 折线模糊
-                shadowColor: "rgba(0,204,169,0.95)", //折线颜色
+                shadowColor: "rgba(255, 255, 255, 0.8)", //设置折线阴影颜色 shadowColor: "rgba(0,204,169,0.95)"
                 // color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [
                 //   {
                 //     offset: 0,
@@ -498,6 +491,6 @@ export default {
 <style scoped lang="less">
 .chart {
   width: 100%;
-  height: 300px;
+  height: 310px;
 }
 </style>

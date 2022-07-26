@@ -81,7 +81,7 @@ const dataV = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/dataV.vue")), "dataV");
 const dataPie = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/pie.vue")), "dataV");
-const dataLine= (r) =>
+const dataLine = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/line.vue")), "dataV");
 Vue.use(Router);
 // 解决路由重复点击报错
@@ -455,6 +455,11 @@ const router = new Router({
           path: "/custom/searchTree",
           name: "searchTree",
           component: searchTree
+        },
+        {
+          path: "/custom/stretch",
+          name: "stretch",
+          component: () => import('@/views/custom/stretch.vue')
         },
         // 处理类库
         {

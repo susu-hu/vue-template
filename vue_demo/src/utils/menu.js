@@ -177,6 +177,13 @@ export default {
     url: "/custom/searchTree",
   },
   {
+    code: "0004-07",
+    icon: "ios-add-circle",
+    label: "页面拉伸",
+    parent: "0004",
+    url: "/custom/stretch",
+  },
+  {
     code: "0005",
     icon: "ios-add-circle",
     label: "事件优化",
@@ -266,14 +273,14 @@ export default {
     label: "二次封装表单",
     parent: "0007",
     url: "/eleUi/reForm",
-    },
-    {
-      code: "0007-02",
-      icon: "ios-add-circle",
-      label: "封装表格",
-      parent: "0007",
-      url: "/eleUi/list",
-    },
+  },
+  {
+    code: "0007-02",
+    icon: "ios-add-circle",
+    label: "封装表格",
+    parent: "0007",
+    url: "/eleUi/list",
+  },
   {
     code: "0008",
     icon: "ios-add-circle",

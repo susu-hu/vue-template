@@ -1,5 +1,5 @@
 <template>
-  <div id="barShadow" ref="barShadow" class="chart"></div>
+  <div :id="'barShadow' + byKey" :class="['chart',{'chart2':byKey=='two'}]" :ref="'barShadow' + byKey"></div>
 </template>
 
 <script>
@@ -13,17 +13,32 @@ export default {
       list: [],
     };
   },
+  props: {
+    byKey: {
+      type: String,
+      default: "",
+    },
+  },
   mounted() {
     this.$nextTick(() => {
       if (this.charts == null) {
-        this.charts = echarts.init(document.getElementById("barShadow"));
+        this.charts = echarts.init(
+          document.getElementById("barShadow" + this.byKey)
+        );
       }
-      this.initData();
+      if (this.byKey == "one") {
+        this.initData();
+      } else {
+        this.initData2();
+      }
     });
-    erd.listenTo(document.getElementById("barShadow"), this.handleWindowResize);
+    erd.listenTo(
+      document.getElementById("barShadow" + this.byKey),
+      this.handleWindowResize
+    );
   },
   beforeDestroy() {
-    erd.uninstall(this.$refs.barShadow);
+    erd.uninstall(this.$refs.barShadow + this.byKey);
   },
   methods: {
     handleWindowResize() {
@@ -103,7 +118,7 @@ export default {
         tooltip: {
           trigger: "axis",
           axisPointer: {
-            type: "shadow",
+            type: "shadow", // 默认为直线，可选为：'line' | 'shadow'
           },
           // eslint-disable-next-line no-unused-vars
           formatter: function (params, ticket, callback) {
@@ -160,7 +175,12 @@ export default {
             },
           },
           splitLine: {
-            show: false,
+            show: true,
+            lineStyle: {
+              color: "rgba(255,255,255,.25)",
+              type: "dashed",
+            },
+            //网格线颜色
           },
           //   boundaryGap: ["20%", "20%"],
         },
@@ -299,7 +319,185 @@ export default {
           },
         ],
       };
+      // 循环高亮展示
+      let current = -1;
+      let dataLen1 = option.series[0].data.length;
+      setInterval(() => {
+        // 取消之前高亮的图形
+        this.charts.dispatchAction({
+          type: "downplay",
+          seriesIndex: 0,
+          dataIndex: current,
+        });
+        current = (current + 1) % dataLen1;
+        // 高亮当前图形
+        this.charts.dispatchAction({
+          type: "highlight",
+          seriesIndex: 0,
+          dataIndex: current,
+        });
+        // 显示 tooltip
+        this.charts.dispatchAction({
+          type: "showTip",
+          seriesIndex: 0,
+          dataIndex: current,
+        });
+      }, 2000);
       this.charts.setOption(option);
+    },
+    initData2() {
+      this.charts.setOption({
+        color: ["#3cefff"],
+        tooltip: {},
+        grid: {
+          left: "3%", //图表距边框的距离
+          right: "9%",
+          top: "15%",
+          bottom: "5%",
+          containLabel: true,
+        },
+        xAxis: [
+          {
+            type: "category",
+            data: [
+              "01月",
+              "02月",
+              "03月",
+              "04月",
+              "05月",
+              "06月",
+              "07月",
+              "08月",
+              "09月",
+              "10月",
+              "11月",
+              "12月",
+            ],
+            axisTick: {
+              alignWithLabel: true,
+            },
+            nameTextStyle: {
+              color: "#636E7C",
+            },
+
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: "#636E7C",
+              },
+            },
+            axisLabel: {
+              textStyle: {
+                color: "#636E7C",
+              },
+            },
+          },
+        ],
+        yAxis: [
+          {
+            type: "value",
+            axisLabel: {
+              textStyle: {
+                color: "#636E7C",
+              },
+              formatter: "{value}%",
+            },
+            splitLine: {
+              show: true,
+              lineStyle: {
+                color: "rgba(255,255,255,.25)",
+                type: "dashed",
+              },
+            },
+            axisLine: {
+              show: true,
+              lineStyle: {
+                color: "#636E7C",
+              },
+            },
+          },
+        ],
+        series: [
+          {
+            name: "",
+            type: "pictorialBar",
+            symbolSize: [20, 10],
+            symbolOffset: [0, -5],
+            symbolPosition: "end",
+            z: 12,
+            label: {
+              normal: {
+                show: true,
+                position: "top",
+                formatter: "{c}%",
+              },
+            },
+            data: [60, 70, 80, 90, 60, 70, 80, 90],
+          },
+          {
+            name: "",
+            type: "pictorialBar",
+            symbolSize: [20, 10],
+            symbolOffset: [0, 5],
+            z: 12,
+            data: [60, 70, 80, 90, 60, 70, 80, 90],
+          },
+          {
+            type: "bar",
+            itemStyle: {
+              normal: {
+                opacity: 0.7,
+              },
+            },
+            barWidth: "20",
+            data: [60, 70, 80, 90, 60, 70, 80, 90],
+            markLine: {
+              silent: true,
+              label: {
+                position: "middle",
+                formatter: "{b}",
+                color: "red",
+              },
+              data: [
+                {
+                  name: "目标值",
+                  yAxis: 80,
+                  lineStyle: {
+                    color: "red",
+                  },
+                  itemStyle: {
+                    color: "red",
+                  },
+                  label: {
+                    position: "end",
+                    formatter: "{b}\n {c}%",
+                  },
+                },
+              ],
+            },
+          },
+          {
+            type: "effectScatter",
+            silent: true,
+            tooltip: {
+              show: false,
+            },
+            zlevel: 3,
+            symbolSize: 10,
+            showEffectOn: "render",
+            rippleEffect: {
+              brushType: "stroke",
+              color: "#3cefff",
+              scale: 5,
+            },
+            itemStyle: {
+              color: "#3cefff",
+            },
+            hoverAnimation: true,
+            data: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+          },
+        ],
+      });
     },
   },
 };
@@ -308,5 +506,9 @@ export default {
 .chart {
   width: 437px;
   height: 310px;
+}
+.chart2 {
+  width: 100%;
+  height: 330px;
 }
 </style>

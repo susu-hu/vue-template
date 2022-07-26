@@ -16,7 +16,7 @@
       <div class="center">
         <div class="comm-title">苏苏小苏苏</div>
         <div class="center-box">
-          <data-shadow></data-shadow>
+          <data-shadow byKey="one"></data-shadow>
         </div>
       </div>
     </div>
@@ -27,10 +27,16 @@
           <data-line :data="trendList" :smooth="true" byKey="one"></data-line>
         </div>
       </div>
-      <div class="bottom">
+      <div class="bottom mb20">
         <div class="comm-title">苏苏小苏苏</div>
         <div class="bottom-box">
           <data-line :data="trendList" byKey="two"></data-line>
+        </div>
+      </div>
+      <div class="center">
+        <div class="comm-title">苏苏小苏苏</div>
+        <div class="center-box">
+          <data-shadow byKey="two"></data-shadow>
         </div>
       </div>
     </div>
@@ -252,7 +258,6 @@ export default {
   }
   .bottom {
     width: 100%;
-    height: 330px;
   }
 }
 .home-center {
@@ -267,7 +272,6 @@ export default {
   }
   .bottom {
     width: 100%;
-    height: 310px;
   }
 }
 .home-right {
@@ -280,7 +284,6 @@ export default {
   }
   .bottom {
     width: 100%;
-    height: 310px;
   }
 }
 
