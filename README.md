@@ -6,6 +6,8 @@
 ![输入图片说明](https://img.shields.io/badge/less--loader-4.1.0-red)
 ![输入图片说明](https://img.shields.io/badge/node--sass-4.14.1-red)
 
+![](https://s3.bmp.ovh/imgs/2022/07/27/c3bdf18a88cc56a5.png)
+
 |  插件   | 版本  |介绍|
 |  ----  | ----  |----  |
 | vuedraggable  | 2.24.3 |vuedraggable 是标准的组件式封装，并且将可拖动元素放进了 transition-group 上面，过渡动画都比较好|
