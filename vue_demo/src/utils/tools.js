@@ -367,15 +367,65 @@ export default {
     });
     return { xData, yData };
   },
- /**
-  * 将数组按照某个属性的大小进行排序
-  * @param {*} data 
-  * @param {*} key 
-  * @returns 
-  */
+  /**
+   * 将数组按照某个属性的大小进行排序
+   * @param {*} data 
+   * @param {*} key 
+   * @returns 
+   */
   getSortData(data, key) {
     return data.sort((a, b) => parseInt(b[key]) - parseInt(a[key]));
-  }
+  },
+  /**
+  * 获取指定时间-当前时间的秒数
+  * @param {*} end_time 
+  */
+  getTimestap(end_time) {
+    // 当前时间
+    var currentTime = parseInt(new Date().getTime() / 1000);
+    // 未来时间
+    var futureTime = parseInt(new Date(end_time.replace(/-/g, '/')).getTime() / 1000); //ios无法解析
+    return futureTime <= currentTime ? 0 : futureTime - currentTime;
+  },
+  /**
+  * 毫秒-天-时-分-秒
+  * @param {*} value 
+  */
+  formatSeconds(value) {
+    let time = [],
+      day = parseInt(value / 86400),
+      hour = parseInt((value % 86400) / 3600),
+      min = parseInt(((value % 86400) % 3600) / 60),
+      sec = parseInt(((value % 86400) % 3600) % 60);
+    time[0] = day > 0 ? this.addZero(day) : this.addZero(0);
+    time[1] = hour > 0 ? this.addZero(hour) : this.addZero(0);
+    time[2] = min > 0 ? this.addZero(min) : this.addZero(0);
+    time[3] = sec > 0 ? this.addZero(sec) : this.addZero(0);
+    return time;
+  },
+
+  /**
+  * 拆分数组-天-时-分-秒
+  * @param {*} e 
+  */
+  formatDate(e) {
+    let list = JSON.parse(e);
+    for (let i = 0; i < list.length; i++) {
+      list[i] = list[i].toString().split('');
+    }
+    return list;
+  },
+  /**
+  * 拆分数组-天-时-分-秒
+  * @param {*} e 
+  */
+  formatDate(e) {
+    let list = JSON.parse(e);
+    for (let i = 0; i < list.length; i++) {
+      list[i] = list[i].toString().split('');
+    }
+    return list;
+  },
 }
 
 //加0
