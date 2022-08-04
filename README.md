@@ -58,7 +58,7 @@
 ## 4.自定义组件
 #### 4.1 自定义下拉框
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E4%B8%8B%E6%8B%89%E6%A1%86.gif)
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E4%B8%8B%E6%8B%89%E6%A1%86-vue.gif)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/%E4%B8%8B%E6%8B%89%E6%A1%862.gif)
 #### 4.2 定义全局loading组件
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/vue-loading.gif)
 #### 4.3 自定义日期组件-可选主题色
@@ -98,7 +98,7 @@
 #### 8.1 data-V
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
 #### 8.2 echarts图表-折线图（路径动画)/立体柱状/饼图/关系图等
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/echarts-%E5%9B%BE%E8%A1%A8gif.gif)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/echarts%E5%9B%BE%E8%A1%A8gif.gif)
 
 ## 9.饿了么ui篇章
 #### 9.1 二次封装饿了么表单页面
