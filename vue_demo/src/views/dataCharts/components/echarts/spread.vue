@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-12 11:00:28
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-22 00:21:27
+ * @LastEditTime: 2022-08-04 23:11:54
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\spread.vue
  * @Description: 
 -->
@@ -88,7 +88,6 @@ export default {
 </script>
 
 <style scoped lang="less">
-@import url("../../base.less");
 .sp-box {
   height: 313px;
   width: 100%;

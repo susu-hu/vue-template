@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-07-22 00:11:36
+ * @LastEditTime: 2022-08-04 23:01:00
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -68,21 +68,20 @@ export default {
         this.initData();
       });
     },
-    //params 要处理的字符串
     //length 每行显示长度
-    getEqualNewlineString(params, length) {
+    getString(p, l) {
       let text = "";
-      let count = Math.ceil(params.length / length); // 向上取整数
+      let count = Math.ceil(p.length / l); // 向上取整数
       // 一行展示length个
       if (count > 1) {
         for (let z = 1; z <= count; z++) {
-          text += params.substr((z - 1) * length, length);
+          text += p.substr((z - 1) * l, l);
           if (z < count) {
             text += "\n";
           }
         }
       } else {
-        text += params.substr(0, length);
+        text += p.substr(0, l);
       }
       return text;
     },
@@ -215,7 +214,7 @@ export default {
               //   },
               //   formatter: (params) => {
               //     //调用自定义显示格式
-              //     return this.getEqualNewlineString(params.name, 10);
+              //     return this.getString(params.name, 10);
               //   },
               // },
               // labelLine: {
