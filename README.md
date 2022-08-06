@@ -98,7 +98,7 @@
 #### 8.1 data-V
 ![输入图片说明](demo%E5%9B%BE%E9%9B%86/data-v.png)
 #### 8.2 echarts图表-折线图（路径动画)/立体柱状/饼图/关系图等
-![输入图片说明](demo%E5%9B%BE%E9%9B%86/echarts%E5%9B%BE%E8%A1%A8gif.gif)
+![输入图片说明](demo%E5%9B%BE%E9%9B%86/echarts1.gif)
 
 ## 9.饿了么ui篇章
 #### 9.1 二次封装饿了么表单页面
