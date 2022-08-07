@@ -371,6 +371,12 @@ const router = new Router({
           component: aweDnd,
         },
         {
+          path: "/plug/seamlesScroll",
+          name: "seamlesScroll",
+          component: () => import('@/views/plug/seamlesScroll.vue'),
+        },
+
+        {
           path: "/layout/lineG",
           name: "lineG",
           component: lineG,

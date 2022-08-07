@@ -402,6 +402,13 @@ export default {
     url: "/plug/fullPage",
   },
   {
+    code: "0009-08",
+    icon: "ios-add-circle",
+    label: "seamlesScroll",
+    parent: "0009",
+    url: "/plug/seamlesScroll",
+  },
+  {
     code: "0010",
     icon: "ios-add-circle",
     label: "数据可视化",
