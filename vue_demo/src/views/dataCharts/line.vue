@@ -1271,7 +1271,7 @@ export default {
             showSymbol: false,
             name: "苏苏小苏苏",
             type: "lines",
-            polyline: true,
+            polyline: false,
             smooth: false,
             coordinateSystem: "cartesian2d",
             zlevel: 1,
