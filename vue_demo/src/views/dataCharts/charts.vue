@@ -64,23 +64,21 @@
 </template>
 
 <script>
-import dataPie from "./components/echarts/pie.vue";
-import dataLine from "./components/echarts/line.vue";
-import dataBar from "./components/echarts/bar.vue";
-import dataSpread from "./components/echarts/spread.vue";
-import dataBarCircle from "./components/echarts/barCircle.vue";
-import dataShadow from "./components/echarts/barShadow.vue";
-import dataGra from "./components/echarts/graph.vue";
+// 批量注册局部组件--组件必须有name字段
+const requireComponent = require.context(
+    "./components/echarts",
+    true,
+    /\w+\.(vue|js)$/
+  ),
+  comps = {};
+requireComponent.keys().forEach((fileName) => {
+  let com = requireComponent(fileName).default;
+  comps[com.name] = com;
+});
 export default {
   name: "dataCharts",
   components: {
-    dataPie,
-    dataLine,
-    dataBar,
-    dataSpread,
-    dataBarCircle,
-    dataShadow,
-    dataGra,
+    ...comps,
   },
   data() {
     return {

@@ -2,7 +2,7 @@
  * @Author: susu 1628469970@qq.com
  * @Date: 2022-08-04 23:00:30
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-08-04 23:39:36
+ * @LastEditTime: 2022-08-13 23:40:35
  * @FilePath: \vue_demo\src\views\dataCharts\components\echarts\graph.vue
  * @Description: 关系图
 -->
@@ -15,7 +15,7 @@ import * as echarts from "echarts";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
-  name: "pie",
+  name: "dataGra",
   props: {
     data: {
       type: Array,

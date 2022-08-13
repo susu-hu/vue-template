@@ -2,7 +2,7 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-11 16:18:55
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-08-04 23:01:00
+ * @LastEditTime: 2022-08-13 23:40:51
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\pie.vue
  * @Description: 饼图
 -->
@@ -16,7 +16,7 @@ import { fitChartSize } from "@/utils/echartSize";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
-  name: "pie",
+  name: "dataPie",
   props: {
     data: {
       type: Array,

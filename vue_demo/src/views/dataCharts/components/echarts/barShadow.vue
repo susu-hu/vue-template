@@ -1,5 +1,9 @@
 <template>
-  <div :id="'barShadow' + byKey" :class="['chart',{'chart2':byKey=='two'}]" :ref="'barShadow' + byKey"></div>
+  <div
+    :id="'barShadow' + byKey"
+    :class="['chart', { chart2: byKey == 'two' }]"
+    :ref="'barShadow' + byKey"
+  ></div>
 </template>
 
 <script>
@@ -7,6 +11,7 @@ import * as echarts from "echarts";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
+  name: "dataShadow",
   data() {
     return {
       charts: null,

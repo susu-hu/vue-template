@@ -1,5 +1,9 @@
 <template>
-  <div :id="'lineCharts' + byKey" class="chart" :ref="'lineCharts' + byKey"></div>
+  <div
+    :id="'lineCharts' + byKey"
+    class="chart"
+    :ref="'lineCharts' + byKey"
+  ></div>
 </template>
 <script>
 import * as echarts from "echarts";
@@ -7,7 +11,7 @@ import { fitChartSize } from "@/utils/echartSize";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
-  name: "lineData",
+  name: "dataLine",
   props: {
     data: {
       type: Array,

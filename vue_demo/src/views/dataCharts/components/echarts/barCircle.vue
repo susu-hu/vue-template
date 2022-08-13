@@ -8,6 +8,7 @@ import { fitChartSize } from "@/utils/echartSize";
 import elementResizeDetectorMaker from "element-resize-detector";
 var erd = elementResizeDetectorMaker();
 export default {
+  name: "dataBarCircle",
   props: {
     data: {
       type: Array,
