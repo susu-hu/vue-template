@@ -179,6 +179,13 @@ export default {
   {
     code: "0004-07",
     icon: "ios-add-circle",
+    label: "文字溢出展示tooltip",
+    parent: "0004",
+    url: "/custom/textOverFlow",
+  },
+  {
+    code: "0004-08",
+    icon: "ios-add-circle",
     label: "页面拉伸",
     parent: "0004",
     url: "/custom/stretch",

@@ -1,7 +1,7 @@
 @font-face {
     font-family: 'iconfont';
     /* project id 3443486 */
-    src: url('?#iefix') format('embedded-opentype'),
+    src        : url('?#iefix') format('embedded-opentype'),
         url('//at.alicdn.com/t/font_3443486_mx24eskqgx.woff2') format('woff2'),
         url('//at.alicdn.com/t/font_3443486_mx24eskqgx.woff') format('woff'),
         url('//at.alicdn.com/t/font_3443486_mx24eskqgx.ttf') format('truetype'),
@@ -9,11 +9,11 @@
 }
 
 .iconfont {
-    font-family: "iconfont" !important;
-    font-size: 25px !important;
-    color: pink;
-    font-style: normal;
-    -webkit-font-smoothing: antialiased;
+    font-family            : "iconfont" !important;
+    font-size              : 25px !important;
+    color                  : pink;
+    font-style             : normal;
+    -webkit-font-smoothing : antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
@@ -23,4 +23,19 @@
 
 .icon-inner::before {
     content: "\eb11";
+}
+
+/* 字体 */
+@font-face {
+    font-family: "AlibabaPuHuiTiH";
+    src        : url('../fonts/Alibaba-PuHuiTi-Regular.ttf');
+    font-weight: normal;
+    font-style : normal;
+}
+
+@font-face {
+    font-family: "AlibabaPuHuiTiM";
+    src        : url('../fonts/Alibaba-PuHuiTi-Medium.ttf');
+    font-weight: normal;
+    font-style : normal;
 }

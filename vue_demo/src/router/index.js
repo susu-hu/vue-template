@@ -463,6 +463,11 @@ const router = new Router({
           component: searchTree
         },
         {
+          path: "/custom/textOverFlow",
+          name: "textOverFlow",
+          component: () => import('@/views/custom/textOverFlow.vue')
+        },
+        {
           path: "/custom/stretch",
           name: "stretch",
           component: () => import('@/views/custom/stretch.vue')
