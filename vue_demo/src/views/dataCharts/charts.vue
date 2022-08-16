@@ -89,11 +89,6 @@ export default {
           value: 9000,
         },
         {
-          stationName: "苏苏44",
-          value: 9999,
-        },
-
-        {
           stationName: "苏苏12",
           value: 777,
         },
@@ -110,7 +105,6 @@ export default {
           value: 4,
         },
       ],
-      realTimeAlarmList: {},
       trendList: [
         ["0:00", "6:00", "8:00", "12:00", "16:00", "20:00", "24:00"],
         [222, 932, 66, 934, 111, 333, 0],
@@ -205,6 +199,13 @@ export default {
     //     [9, 0, 1000, 0, 111, 55555, 0],
     //   ];
     // }, 3000);
+
+    setTimeout(() => {
+      this.personList.unshift({
+        stationName: "动态插入一个数据",
+        value: 10000,
+      });
+    }, 5000);
   },
 };
 </script>

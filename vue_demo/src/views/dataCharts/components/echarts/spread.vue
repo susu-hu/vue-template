@@ -2,13 +2,17 @@
  * @Author: 胡苏珍 1628469970@qq.com
  * @Date: 2022-07-12 11:00:28
  * @LastEditors: susu 1628469970@qq.com
- * @LastEditTime: 2022-08-04 23:11:54
+ * @LastEditTime: 2022-08-16 21:54:01
  * @FilePath: \control-platform-vue\src\view\threePosition\echarts\spread.vue
  * @Description: 
 -->
 <template>
   <div class="sp-box">
-    <vue-seamless-scroll :data="list" :class-option="defaultOption">
+    <vue-seamless-scroll
+      :data="list"
+      :class-option="defaultOption"
+      ref="seamless"
+    >
       <div v-for="(item, index) in list" :key="index">
         <div class="flex-row mb-12 j_b">
           <div class="flex-row">
@@ -59,7 +63,7 @@ export default {
       immediate: true,
       handler: function (val) {
         this.list = val;
-        console.log(this.list);
+        this.$refs.seamless && this.$refs.seamless.reset(); //解决动态更新数据-滚动不改变问题
       },
     },
   },
