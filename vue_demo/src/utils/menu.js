@@ -542,17 +542,24 @@ export default {
     url: "/",
   },
   {
-    code: "0016",
+    code: "0017",
     icon: "ios-add-circle",
     label: "SVG",
     parent: "",
     url: "/",
   },
   {
-    code: "0016=01",
+    code: "0016-01",
+    icon: "ios-add-circle",
+    label: "websocket定义",
+    parent: "0016",
+    url: "/websocket/def",
+  },
+  {
+    code: "0017-01",
     icon: "ios-add-circle",
     label: "流动线条",
-    parent: "0016",
+    parent: "0017",
     url: "/svg/lineFlow",
   },
 
