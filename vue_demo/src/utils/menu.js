@@ -128,6 +128,14 @@ export default {
     url: "/layout/lineG",
   },
   {
+    code: "0003-05",
+    icon: "ios-add-circle",
+    label: "数字雨",
+    parent: "0003",
+    url: "/layout/numRain",
+  },
+
+  {
     code: "0004",
     icon: "ios-add-circle",
     label: "自定义组件",
@@ -554,14 +562,14 @@ export default {
     label: "websocket定义",
     parent: "0016",
     url: "/websocket/def",
-    },
-    {
-      code: "0016-02",
-      icon: "ios-add-circle",
-      label: "websocket测试",
-      parent: "0016",
-      url: "/websocket/index",
-    },
+  },
+  {
+    code: "0016-02",
+    icon: "ios-add-circle",
+    label: "websocket测试",
+    parent: "0016",
+    url: "/websocket/index",
+  },
   {
     code: "0017-01",
     icon: "ios-add-circle",

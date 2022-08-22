@@ -9,14 +9,6 @@ import QuillEditor from "@/views/plug/quillEditor.vue";
 import UploadFile from "@/views/table/uploadFile.vue";
 import dynamicForm from "@/views/table/dynamicForm.vue";
 import bigData from "@/views/table/bigData.vue";
-const layIndex = (r) =>
-  require.ensure(
-    [],
-    () => r(require("@/views/layout/layIndex.vue")),
-    "layIndex"
-  );
-const loading = (r) =>
-  require.ensure([], () => r(require("@/views/layout/loading.vue")), "loading");
 const throttle = (r) =>
   require.ensure(
     [],
@@ -67,8 +59,7 @@ const aweDnd = (r) =>
   require.ensure([], () => r(require("@/views/plug/aweDnd.vue")), "aweDnd");
 const lodash = (r) =>
   require.ensure([], () => r(require("@/views/event/lodash.vue")), "lodash");
-const lineG = (r) =>
-  require.ensure([], () => r(require("@/views/layout/lineG.vue")), "lineG");
+
 const dropItem = (r) =>
   require.ensure([], () => r(require("@/views/custom/dropItem")), "custom");
 
@@ -149,16 +140,7 @@ const router = new Router({
           name: "tailwindCSS",
           component: () => import('@/views/sass/tailwindCSS.vue'),
         },
-        {
-          path: "/layIndex",
-          name: "layIndex",
-          component: layIndex,
-        },
-        {
-          path: "/loading",
-          name: "loading",
-          component: loading,
-        },
+     
         {
           path: "/tableList",
           name: "tableList",
@@ -210,11 +192,7 @@ const router = new Router({
           name: "treeAndCheckbox",
           component: () => import("@/views/table/treeAndCheckbox.vue"),
         },
-        {
-          path: "/exportFile",
-          name: "exportFile",
-          component: () => import('@/views/layout/export.vue'),
-        },
+      
         {
           path: "/custom/dropItem", //(一级路由)
           name: "dropItem",
@@ -376,11 +354,6 @@ const router = new Router({
           component: () => import('@/views/plug/seamlesScroll.vue'),
         },
 
-        {
-          path: "/layout/lineG",
-          name: "lineG",
-          component: lineG,
-        },
         {
           path: "/data/dataV",
           name: "dataV",
