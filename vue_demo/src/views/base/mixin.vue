@@ -29,7 +29,7 @@ export default {
   mixins: [myMixin], //混入  相当把 混入对象的 属性 都 写在了当前 组件里。
   data() {
     return {
-      src: require("@/assets/img/susu.jpg"),
+      src: require("@/assets/img/susu.png"),
       o_data: "苏苏来了",
     };
   },

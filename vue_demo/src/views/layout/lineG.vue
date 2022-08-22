@@ -35,7 +35,7 @@
     </div>
     <div class="mb20">
       <div class="line4">
-        <img src="../../assets/img/susu.jpg" alt="" width="200" height="90" />
+        <img src="../../assets/img/susu.png" alt="" width="200" height="90" />
         <p>苏苏</p>
       </div>
     </div>

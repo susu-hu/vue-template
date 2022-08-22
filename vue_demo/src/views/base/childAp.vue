@@ -33,7 +33,7 @@ export default {
   },
   data() {
     return {
-      src: require("@/assets/img/susu.jpg"),
+      src: require("@/assets/img/susu.png"),
       name: "susuxoaoss",
     };
   },

@@ -7,5 +7,12 @@ export default [
         },
         component: () => import('@/views/websocket/index.vue'),
     },
-
+    {
+        path: '/websocket/index',
+        name: 'websocketIndex',
+        meta: {
+            title: '',
+        },
+        component: () => import('@/views/websocket/test.vue'),
+    },
 ];

@@ -554,7 +554,14 @@ export default {
     label: "websocket定义",
     parent: "0016",
     url: "/websocket/def",
-  },
+    },
+    {
+      code: "0016-02",
+      icon: "ios-add-circle",
+      label: "websocket测试",
+      parent: "0016",
+      url: "/websocket/index",
+    },
   {
     code: "0017-01",
     icon: "ios-add-circle",

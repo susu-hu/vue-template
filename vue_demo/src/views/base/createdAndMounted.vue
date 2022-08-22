@@ -86,7 +86,7 @@
 export default {
   data() {
     return {
-      src: require("@/assets/img/susu.jpg"),
+      src: require("@/assets/img/susu.png"),
       item: [1, 2, 3, 4],
       message: "susu",
     };
