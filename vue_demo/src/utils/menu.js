@@ -197,7 +197,14 @@ export default {
     label: "页面拉伸",
     parent: "0004",
     url: "/custom/stretch",
-  },
+    },
+    {
+      code: "0004-09",
+      icon: "ios-add-circle",
+      label: "树列表渲染",
+      parent: "0004",
+      url: "/custom/renderTree",
+    },
   {
     code: "0005",
     icon: "ios-add-circle",

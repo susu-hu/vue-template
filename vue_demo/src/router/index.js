@@ -140,7 +140,7 @@ const router = new Router({
           name: "tailwindCSS",
           component: () => import('@/views/sass/tailwindCSS.vue'),
         },
-     
+
         {
           path: "/tableList",
           name: "tableList",
@@ -192,7 +192,7 @@ const router = new Router({
           name: "treeAndCheckbox",
           component: () => import("@/views/table/treeAndCheckbox.vue"),
         },
-      
+
         {
           path: "/custom/dropItem", //(一级路由)
           name: "dropItem",
@@ -444,6 +444,11 @@ const router = new Router({
           path: "/custom/stretch",
           name: "stretch",
           component: () => import('@/views/custom/stretch.vue')
+        },
+        {
+          path: "/custom/renderTree",
+          name: "renderTree",
+          component: () => import('@/views/custom/renderTree.vue')
         },
         // 处理类库
         {
