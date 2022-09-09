@@ -433,6 +433,33 @@ function addZero(num) {
   return num < 10 ? '0' + num : num;
 }
 
+/**
+ * map处理根据某个数据进行分组
+ * @param {*} key 分组的key值
+ * @param {*} arr 数组
+ * @param {*} key1 key值相关字段
+ * @returns 
+ */
+function groupByKey(key, arr, key1) {
+  let map = new Map(),
+    resData = [];
+  arr.map(item => {
+    if (!map[item[key]]) {
+      map[item[key]] = [item]
+    } else {
+      map[item[key]].push(item)
+    }
+  })
+  Object.keys(map).forEach(i => {
+    console.log(map, i)
+    resData.push({
+      [key]: i,
+      [key1]: map[i][0][key1],
+      list: map[i]
+    })
+  })
+  return resData;
+}
 
 
 
