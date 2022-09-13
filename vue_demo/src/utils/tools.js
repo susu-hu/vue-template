@@ -434,14 +434,14 @@ function addZero(num) {
 }
 
 /**
- * map处理根据某个数据进行分组
+ * 处理根据某个数据进行分组
  * @param {*} key 分组的key值
  * @param {*} arr 数组
  * @param {*} key1 key值相关字段
  * @returns 
  */
 function groupByKey(key, arr, key1) {
-  let map = new Map(),
+  let map = {},
     resData = [];
   arr.map(item => {
     if (!map[item[key]]) {
@@ -461,6 +461,31 @@ function groupByKey(key, arr, key1) {
   return resData;
 }
 
-
+/**
+ * 
+ * @param {*} arr 数组
+ * @param {*} f function
+ * @param {*} keyId 分组的key值
+ * @param {*} keyName key值相关字段
+ * @returns 
+ */
+function groupMapBykey(arr, f, keyId, keyName) {
+  let result = [], arr1 = [];
+  let map = new Map()
+  arr.forEach(function (obj) {
+    let key = f(obj)
+    map.set(key, (map.get(key) || []))
+    map.get(key).push(obj)
+  });
+  arr1 = Array.from(map);
+  arr1.forEach(item => {
+    result.push({
+      [keyId]: item[0],
+      [keyName]: item[1][0][keyName],
+      list: item[1]
+    })
+  })
+  return result;
+}
 
 
