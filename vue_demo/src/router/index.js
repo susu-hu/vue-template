@@ -74,6 +74,9 @@ const dataPie = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/pie.vue")), "dataV");
 const dataLine = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/line.vue")), "dataV");
+const swiperPlug = (r) =>
+  require.ensure([], () => r(require("@/views/plug/swiper.vue")), "swiperPlug");
+
 Vue.use(Router);
 // 解决路由重复点击报错
 const originPush = Router.prototype.push;
@@ -353,7 +356,12 @@ const router = new Router({
           name: "seamlesScroll",
           component: () => import('@/views/plug/seamlesScroll.vue'),
         },
-
+        {
+          path: "/plug/swiper",
+          name: "swiperPlug",
+          component: swiperPlug,
+          // component: () => import('@/views/plug/swiper.vue'),
+        },
         {
           path: "/data/dataV",
           name: "dataV",
