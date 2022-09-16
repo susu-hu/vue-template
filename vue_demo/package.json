@@ -33,6 +33,7 @@
     "quill-image-drop-module": "^1.0.3",
     "quill-image-resize-module": "^3.0.0",
     "sass": "^1.51.0",
+    "swiper": "^8.4.2",
     "view-design": "^4.7.0",
     "vue": "^2.6.11",
     "vue-dplayer": "0.0.10",

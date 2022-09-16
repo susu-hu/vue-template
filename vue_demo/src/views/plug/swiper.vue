@@ -53,7 +53,7 @@
 // import { Swiper, SwiperSlide } from "swiper/vue";
 // import "swiper/css";
 // import "swiper/dist/js/swiper";
-import "swiper/swiper-bundle.css"; //6.8.4版本
+// import "swiper/swiper-bundle.css"; //6.8.4版本
 import Swiper from "swiper";
 export default {
   components: {

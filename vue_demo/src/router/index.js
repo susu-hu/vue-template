@@ -75,7 +75,7 @@ const dataPie = (r) =>
 const dataLine = (r) =>
   require.ensure([], () => r(require("@/views/dataCharts/line.vue")), "dataV");
 const swiperPlug = (r) =>
-  require.ensure([], () => r(require("@/views/plug/swiper.vue")), "swiperPlug");
+  require.ensure([], () => r(require("@/views/plug/swiper2.vue")), "swiperPlug");
 
 Vue.use(Router);
 // 解决路由重复点击报错
