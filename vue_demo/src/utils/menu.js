@@ -134,7 +134,20 @@ export default {
     parent: "0003",
     url: "/layout/numRain",
   },
-
+  {
+    code: "0003-06",
+    icon: "ios-add-circle",
+    label: "抛物线",
+    parent: "0003",
+    url: "/layout/parabolic",
+  },
+  {
+    code: "0003-07",
+    icon: "ios-add-circle",
+    label: "抛物线Js实现",
+    parent: "0003",
+    url: "/layout/parabolicJs",
+  },
   {
     code: "0004",
     icon: "ios-add-circle",

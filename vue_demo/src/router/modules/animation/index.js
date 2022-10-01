@@ -34,4 +34,14 @@ export default [
         name: "numRain",
         component: () => import('@/views/layout/numRain.vue'),
     },
+    {
+        path: "/layout/parabolic",
+        name: "parabolic",
+        component: () => import('@/views/layout/parabolic.vue'),
+    },
+    {
+        path: "/layout/parabolicJs",
+        name: "parabolicJs",
+        component: () => import('@/views/layout/parabolicJs.vue'),
+    },
 ];
