@@ -171,6 +171,11 @@ const router = new Router({
           component: () => import("@/views/table/moreForm.vue"),
         },
         {
+          path: "/table/traverseForm",
+          name: "traverseForm",
+          component: () => import("@/views/table/traverseForm.vue"),
+        },
+        {
           path: "/table/treeTable",
           name: "treeTable",
           component: () => import("@/views/table/treeTable.vue"),

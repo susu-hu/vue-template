@@ -48,6 +48,13 @@ export default {
   },
   {
     code: "0001-06",
+    label: "表单多层循环",
+    parent: "0001",
+    url: "/table/traverseForm",
+  },
+
+  {
+    code: "0001-06",
     label: "treeTable",
     parent: "0001",
     url: "/table/treeTable",
