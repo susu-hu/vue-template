@@ -27,26 +27,54 @@
         <FormItem
           :label="item.paramName"
           :prop="'params.' + index + '.paramCode'"
-          :rules="ruleValidate.r1"
+          :rules="[
+            {
+              required: true,
+              message: item.paramName + '不能为空',
+              trigger: 'blur',
+            },
+            ruleValidate.t1,
+          ]"
         >
           <Input
             type="text"
-            v-model="item.paramCode"
-            placeholder="Enter something..."
+            v-model.trim="item.paramCode"
+            placeholder="输入一个小参数吧"
+            clearable
           ></Input>
         </FormItem>
         <Row v-for="(x, y) in item.paramValue" :key="y">
           <FormItem
             :label="x.name"
-            :rules="ruleValidate.r1"
+            :rules="[
+              {
+                required: true,
+                message: x.name + '不能为空',
+                trigger: 'blur',
+              },
+              ruleValidate.t1,
+            ]"
             :prop="'params.' + index + '.paramValue.' + y + '.value'"
           >
-            <Input type="text" v-model="x.value" placeholder="苏苏苏"></Input>
+            <Input
+              type="text"
+              v-model.trim="x.value"
+              placeholder="paramValue"
+              clearable
+            ></Input>
           </FormItem>
           <Row v-for="(a, b) in x.configValue" :key="b">
             <FormItem
               :label="a.name"
-              :rules="ruleValidate.r1"
+              :rules="[
+                {
+                  required: true,
+                  message: a.name + '不能为空',
+                  trigger: 'blur',
+                },
+                ruleValidate.t1,
+                ruleValidate.t2,
+              ]"
               :prop="
                 'params.' +
                 index +
@@ -59,8 +87,9 @@
             >
               <Input
                 type="text"
-                v-model="a.value"
-                placeholder="configValue的value值"
+                v-model.trim="a.value"
+                placeholder="configValue"
+                clearable
               ></Input>
             </FormItem>
           </Row>
@@ -74,37 +103,10 @@
 </template>
 
 <script>
-const validateSelfHandler = (msg, rule, value, callback) => {
-  console.log(value);
-  if (new RegExp(rule).test("" + value)) {
-    callback();
-  } else {
-    callback(new Error(msg));
-  }
-};
+import { ruleValidate } from "./traverseForm";
 export default {
   data() {
     return {
-      params: [
-        {
-          paramCode: "参数编号1",
-          paramName: "参数名称1",
-          paramValue: [
-            {
-              name: "名称1",
-              value: "点号1",
-              configValue: [
-                {
-                  name: "名称1",
-                  code: "编号1",
-                  value: "",
-                  unit: "",
-                },
-              ],
-            },
-          ],
-        },
-      ],
       form: {
         params: [
           {
@@ -134,13 +136,13 @@ export default {
                 value: "",
                 configValue: [
                   {
-                    name: "名称2-name1",
+                    name: "量程开始",
                     code: "",
                     value: "",
                     unit: "",
                   },
                   {
-                    name: "名称2-name2",
+                    name: "量程结束",
                     code: "",
                     value: "",
                     unit: "",
@@ -151,26 +153,8 @@ export default {
           },
         ],
       },
-      ruleValidate: {
-        r1: [
-          {
-            required: true,
-            message: "不能为空",
-            trigger: "blur",
-          },
-          {
-            trigger: "blur",
-            validator: (rule, value, callback) =>
-              validateSelfHandler(
-                "请输入正整数哈哈哈哈",
-                /^[1-9]\d*$/,
-                value,
-                callback
-              ),
-          },
-        ],
-      },
-      //   validateSelfHandler,//若是在template中调用，需要return返回
+      ruleValidate: ruleValidate(this),
+      //validateSelfHandler,//若是在template中调用，需要return返回
     };
   },
   methods: {
@@ -182,13 +166,9 @@ export default {
       this.$refs[name].validate((valid) => {
         if (valid) {
           this.$Message.success("Success!");
-        } else {
-          this.$Message.error("Fail!");
         }
       });
     },
   },
 };
 </script>
-
-<style></style>
