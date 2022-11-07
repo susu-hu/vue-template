@@ -493,6 +493,13 @@ export default {
     url: "/data/line",
   },
   {
+    code: "0010-05",
+    icon: "ios-add-circle",
+    label: "水球图",
+    parent: "0010",
+    url: "/data/waterCss",
+  },
+  {
     code: "0011",
     icon: "ios-add-circle",
     label: "antV篇章",

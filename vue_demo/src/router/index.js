@@ -383,6 +383,11 @@ const router = new Router({
           component: dataLine,
         },
         {
+          path: "/data/waterCss",
+          name: "waterCss",
+          component: () => import('@/views/dataCharts/waterCss.vue'),
+        },
+        {
           path: "/jest/index",
           name: "jestIndex",
           component: () => import("@/views/jest/index.vue"),
