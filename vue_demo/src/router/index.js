@@ -479,11 +479,7 @@ const router = new Router({
           name: "anime",
           component: () => import("@/views/library/anime.vue"),
         },
-        {
-          path: "/svg/lineFlow",
-          name: "lineFlow",
-          component: () => import("@/views/svg/lineFlow.vue"),
-        },
+
         ...constantRoutes
       ],
     },

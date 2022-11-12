@@ -611,13 +611,5 @@ export default {
     parent: "0016",
     url: "/websocket/index",
   },
-  {
-    code: "0017-01",
-    icon: "ios-add-circle",
-    label: "流动线条",
-    parent: "0017",
-    url: "/svg/lineFlow",
-  },
-
   ],
 };
