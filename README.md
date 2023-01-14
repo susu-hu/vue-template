@@ -6,6 +6,9 @@
 ![输入图片说明](https://img.shields.io/badge/less--loader-4.1.0-red)
 ![输入图片说明](https://img.shields.io/badge/node--sass-4.14.1-red)
 
+#### 联系我
+##### 公众号：苏苏的bug
+![](https://camo.githubusercontent.com/927762d2b67f6d53db4b1146ca78273ccbb380f731ec285470d3b35acba76a53/68747470733a2f2f63646e2e6a7364656c6976722e6e65742f67682f737573752d68752f737573752d68752f696d672fe88b8fe88b8fe79a846275672e6a7067)
 ![](https://s3.bmp.ovh/imgs/2022/07/27/c3bdf18a88cc56a5.png)
 
 |  插件   | 版本  |介绍|
@@ -122,5 +125,4 @@
 4.  新建 Pull Request
 
 
-#### 联系我 
-公众号:苏苏的bug
+
