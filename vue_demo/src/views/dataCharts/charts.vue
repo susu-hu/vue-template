@@ -28,9 +28,9 @@
         </div>
       </div>
       <div class="bottom mb20">
-        <div class="comm-title">苏苏小苏苏</div>
+        <div class="comm-title">苏苏小苏苏1</div>
         <div class="bottom-box">
-          <data-line :data="trendList" byKey="two"></data-line>
+          <data-line :data="trendList2" byKey="two"></data-line>
         </div>
       </div>
       <div class="last-b">
@@ -108,6 +108,10 @@ export default {
       trendList: [
         ["0:00", "6:00", "8:00", "12:00", "16:00", "20:00", "24:00"],
         [222, 932, 66, 934, 111, 333, 0],
+      ],
+      trendList2: [
+        ["0:00", "6:00", "8:00", "12:00", "16:00", "20:00", "24:00"],
+        [888, 344, 333, 555, 111, 999, 0],
       ],
       alarmList: {},
       importAreaList: [

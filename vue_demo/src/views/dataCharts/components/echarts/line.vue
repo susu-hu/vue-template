@@ -75,37 +75,21 @@ export default {
       });
     },
     initData() {
-      var susuData = [
-        {
-          coords: [
-            ["0:00", 222],
-            ["6:00", 932],
-            ["8:00", 66],
-            ["12:00", 934],
-            ["16:00", 111],
-            ["20:00", 333],
-            ["24:00", 0],
-          ],
+      let x = this.list[0], //x轴数据
+        y = this.list[1]; //y轴数据
+      let json = {
+          xcategory: x,
+          low: y,
         },
-      ];
-      var json = {
-        chart0: {
-          xcategory: this.list[0],
-          low: this.list[1],
-          lowLine: [],
-        },
-      };
-      var zrUtil = echarts.util;
-      zrUtil.each(json.chart0.xcategory, function (item, index) {
-        json.chart0.lowLine.push([
+        datacoords = [
           {
-            coord: [index, json.chart0.low[index]],
+            coords: [],
           },
-          {
-            coord: [index + 1, json.chart0.low[index + 1]],
-          },
-        ]);
-      });
+        ];
+      for (let i = 0; i < json.xcategory.length; i++) {
+        datacoords[0].coords.push([json.xcategory[i], y[i]]);
+      }
+      // 以下代码按需合并--，不用多写这么多重复内容
       if (this.byKey == "one") {
         this.charts.setOption({
           animationDuration: 3000,
@@ -140,7 +124,7 @@ export default {
                 fontSize: fitChartSize(12),
               },
               type: "category",
-              data: this.list[0],
+              data: x,
               boundaryGap: false, //从0开始
               axisLine: {
                 //坐标轴线颜色
@@ -243,9 +227,8 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: this.list[1],
+              data: json.low,
             },
-
             {
               polyline: true, // 多线段
               // effect: {
@@ -279,7 +262,7 @@ export default {
                 type: "dashed",
                 cap: "round",
               },
-              data: json.chart0.lowLine,
+              data: datacoords,
             },
           ],
         });
@@ -327,15 +310,7 @@ export default {
                 fontSize: fitChartSize(12),
               },
               type: "category",
-              data: [
-                "0:00",
-                "6:00",
-                "8:00",
-                "12:00",
-                "16:00",
-                "20:00",
-                "24:00",
-              ],
+              data: x,
               boundaryGap: false, //从0开始
               axisLine: {
                 // symbol: "arrow",
@@ -459,8 +434,7 @@ export default {
               emphasis: {
                 focus: "series",
               },
-              data: [222, 932, 66, 934, 111, 333, 0],
-              // data: [0, 0, 99, 0, 66, 0, 0],
+              data: json.low,
             },
             {
               showSymbol: false,
@@ -483,7 +457,7 @@ export default {
                 curveness: 0,
                 cap: "round",
               },
-              data: susuData,
+              data: datacoords,
             },
           ],
         });
